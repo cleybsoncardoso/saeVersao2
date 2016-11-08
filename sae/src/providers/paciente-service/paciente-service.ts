@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {CadastroPaciente} from '../../model/cadastroPaciente';
-
 
 export class Enfermeira{
 
@@ -27,9 +26,12 @@ export class PacienteService {
   logar(login:string, senha:string){
     let type = "login";
     let data = JSON.stringify({type, login, senha});
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let options = new RequestOptions({ headers: headers, method: "post" });
+
     let link = "http://localhost/saeApi.php";
 
-    return this.http.post(link, data)
+    return this.http.post(link, data, options)
           .map(res => res.json())
           .catch(this.handleError);
   }
