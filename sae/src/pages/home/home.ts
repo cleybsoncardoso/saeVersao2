@@ -37,13 +37,10 @@ export class HomePage {
             this.service.getIdEnfermeiro(username)
             .subscribe(respostaID=>{
               this.id = respostaID[0].id;
-              console.log("id" + " = " + this.id);
+              this.nav.setRoot(PacientesPage, {parametro: this.id});
             },error => {
               console.log("Não foi possível se conectar ao servidor");
             });
-
-
-          this.nav.setRoot(PacientesPage, {parametro: this.id});
         },error => {
             let alert = this.alert.create({
                 title: 'Warning',

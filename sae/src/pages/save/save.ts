@@ -33,7 +33,7 @@ export class Save {
   }
   slide(passar){
     if(passar.deltaX>0){
-      this.nav.push(Observacoes,{parametro: this.paciente});
+      this.nav.pop();
     }
   }
 
