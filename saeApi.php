@@ -95,10 +95,32 @@ switch($_SERVER['REQUEST_METHOD']){
 		}else {
 			echo "Not called properly with username parameter!";
 		}
-		break;
+	break;
 
 	default:
-}
+	$putdata = file_get_contents("php://input");
+		if (isset($putdata)) {
+			$request = json_decode($postdata);
+			$type = $request->type;
+			switch($type){
+				case 'alterarSenha':
+					$id = $request->id;
+					$senhaAntiga = $request->senhaAntiga;
+					$senhaNova = $request->senhaNova;
+					if ($password != "" && $username != "") {
+						$sel = "INSERT INTO tb_cadastros (login, senha) VALUES ('$username', '$password')";
+				    		$result = $conn->query($sel);
+					    	$numrow = $result->num_rows;
+					}else {
+						header('HTTP/1.1 401 Unauthorized', true, 401);
+					}
+					break;
+				
+				default:
 
+				break;
+			}
+		}
 
+break
 ?>
