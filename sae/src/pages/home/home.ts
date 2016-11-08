@@ -19,6 +19,23 @@ export class HomePage {
   constructor(private nav: NavController, private http : Http, private alert :AlertController, private loading : LoadingController, private service : PacienteService) {
   }
 
+
+  entrar (){
+    let username = this.coren;
+    let password = this.senha;
+
+    this.service.logar(username, password)
+      .subscribe(         //call the post
+        data =>{
+          let teste = JSON.stringify(data);
+          console.log(teste);
+        }, // put the data returned from the server in our variable
+        error => console.log("Error HTTP Post Service"), // in case of failure show this message
+        () => console.log("Job Done Post !")//run this code in all cases
+        );
+    }
+
+  /*
   entrar(){
     let username = this.coren;
     let password = this.senha;
@@ -49,9 +66,8 @@ export class HomePage {
             });
             alert.present();
         });
-
-
   }
+  */
 
   esqueci(){
     this.nav.setRoot(EsqueciSenhaPage);

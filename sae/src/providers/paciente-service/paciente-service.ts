@@ -24,6 +24,16 @@ export class PacienteService {
 
   }
 
+  logar(login:string, senha:string){
+    let type = "login";
+    let data = JSON.stringify({type, login, senha});
+    let link = "http://localhost/saeApi.php";
+
+    return this.http.post(link, data)
+          .map(res => res.json())
+          .catch(this.handleError);
+  }
+
   getUser(idUser){
     let url= "http://localhost/saeApi.php?id="+ idUser;
     console.log(url);
