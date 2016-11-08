@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Bem Vinda {{nomeUser}}
+    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button (click)="carregarPacientes()">
+        <ion-icon name="md-refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getPacientes($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let paciente of listaPacientes" (click)="openPaciente(paciente)">
+      {{paciente.nome}}
+    </ion-item>
+  </ion-list>
+  <ion-fab bottom right>
+    <button ion-fab (click)="novoPaciente()"><ion-icon name="md-person-add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

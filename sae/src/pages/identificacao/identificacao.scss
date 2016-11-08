@@ -1,0 +1,36 @@
+.mycard{
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+}
+
+.cardtitulo{
+  color: white;
+  background-color: #548B54;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.lista{
+  color: gray;
+  position: relative;
+  overflow: hidden;
+  border-style: none;
+  display: none;
+}
+
+.label{
+  color: gray;
+}
+
+.buttons{
+  margin: 0px;
+}
+
+.inputgrupo{
+  border-style: none;
+  border-bottom-style: solid;
+  border-width: thin;
+  border-color: #D3D3D3;
+}

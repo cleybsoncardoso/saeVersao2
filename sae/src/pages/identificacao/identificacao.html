@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+   <ion-title>
+     Novo Paciente
+   </ion-title>
+   <ion-buttons start>
+     <button ion-button (click)="cancel()">Cancelar</button>
+   </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="identificacao" (swipe)="slide($event)">
+  <ion-card class="mycard">
+    <ion-card-header class="cardtitulo"> Identificação </ion-card-header>
+    <ion-list>
+      <ion-item>
+            <ion-label floating>Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="paciente.nome"></ion-input>
+          </ion-item>
+            <ion-row>
+              <ion-col class="col" width-33>
+                <ion-item>
+                  <ion-label floating>Idade</ion-label>
+                  <ion-input type="number" [(ngModel)]="paciente.idade"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col class="col">
+                <ion-item>
+                  <ion-label floating>Sexo</ion-label>
+                  <ion-select [(ngModel)]="paciente.sexo">
+                    <ion-option value="Masculino">Masculino</ion-option>
+                    <ion-option value="Feminino">Feminino</ion-option>
+                </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-item>
+              <ion-label floating>Estado Civil</ion-label>
+              <ion-select [(ngModel)]="paciente.estadoCivil">
+                <ion-option value="Solteiro">Solteiro</ion-option>
+                <ion-option value="Casado">Casado</ion-option>
+                <ion-option value="Divorciado">Divorciado</ion-option>
+                <ion-option value="Viúvo">Viúvo</ion-option>
+            </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Religião</ion-label>
+              <ion-input type="text" [(ngModel)]="paciente.religiao"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Naturalidade</ion-label>
+              <ion-input type="text"[(ngModel)]="paciente.naturalidade" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Procedência</ion-label>
+              <ion-input type="text" [(ngModel)]="paciente.procedencia" ></ion-input>
+            </ion-item>
+            <ion-row>
+              <ion-col class="col">
+                <ion-item>
+                  <ion-label floating>Leito</ion-label>
+                  <ion-input type="number" [(ngModel)]="paciente.leito"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col class="col">
+                <ion-item>
+                  <ion-label stacked>Data Internação</ion-label>
+                  <ion-input type="date" [(ngModel)]="paciente.dataInternacao"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-item>
+              <ion-label floating>Registro</ion-label>
+              <ion-input type="text" [(ngModel)]="paciente.registro"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Setor de Procedência</ion-label>
+              <ion-input type="text" [(ngModel)]="paciente.setorDeProcedencia"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Diagnóstico Médico</ion-label>
+              <ion-input type="text" [(ngModel)]="paciente.diagnosticoMedico"></ion-input>
+            </ion-item>
+      </ion-list>
+    </ion-card>
+</ion-content>

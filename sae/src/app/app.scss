@@ -14,3 +14,160 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.ionitem{
+  background-color: #F0FFFF;
+}
+.slide{
+  background-color: #F5F5F5;
+  overflow-y: scroll;
+  display: block;
+  margin-bottom: 32px;
+}
+
+.card{
+  border-style: none;
+  border-color: transparent;
+  position: absolute;
+  top: 0px;
+  padding-bottom: 35px;
+  background-color: white;
+}
+
+.cardheader{
+    color: white;
+    background-color: #548B54;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.col{
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+}
+
+.listtitle{
+  background-color: #7CCD7C;
+  font-size: 16px;
+  color: white;
+  text-align: left;
+  text-transform: none;
+  border-style: solid;
+  border-width: thin;
+  border-color: #D3D3D3;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+
+.inputitem{
+  border-bottom-style: solid;
+  border-color: #D3D3D3;
+  border-width: thin;
+}
+
+.outros{
+  margin: 0px;
+  padding: 0px;
+}
+
+.divitem2{
+  color: #1C1C1C;
+  text-align: left;
+  padding: 3px;
+  margin-left: 6px;
+  margin-bottom: 0px;
+  margin-top: 4px;
+  font-size: 14px;
+  border-style: inset;
+  border-width: thin;
+  border-radius: 5px;
+  width: 95%;
+}
+
+.divitem4{
+  text-align: left;
+  padding: 3px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.listitem{
+    border-color: #D3D3D3;
+    margin: 0px;
+    padding: 0px;
+}
+
+.subgrupo{
+  color: gray;
+  position: relative;
+  overflow: hidden;
+  visibility: visible;
+  display: none;
+}
+
+//novas classes a serem seguidas
+
+.cartao{
+  border-radius: 5px;
+  position: absolute;
+  top: 0px;
+  padding-bottom: 35px;
+}
+
+.titulolista{
+  text-align: left;
+  border-style: none;
+  background-color: #7CCD7C;
+  border-radius: 5px;
+  color: white;
+}
+
+.lista{
+  border-style: none;
+  border-right-style: solid;
+  border-left-style: solid;
+  visibility: visible;
+  display: none;
+}
+
+.icone{
+  color: white;
+}
+
+
+.testes{
+  -webkit-marquee: auto medium infinite scroll normal;
+  overflow-x: -webkit-marquee;
+}
+.marquee {
+  height: 50px;
+  width: 360px;
+
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee div {
+  display: block;
+  width: 200%;
+  height: 50px;
+
+  position: absolute;
+  overflow: hidden;
+
+  animation: marquee 10s linear infinite;
+}
+
+.marquee ion-label {
+  float: left;
+  width: 100%;
+}
+
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
+}

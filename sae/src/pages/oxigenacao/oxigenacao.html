@@ -1,0 +1,292 @@
+<!--
+  Generated template for the Oxigenacao page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+   <ion-title>
+     Novo Paciente
+   </ion-title>
+   <ion-buttons start>
+     <button ion-button round (click)="cancel()">Cancelar</button>
+   </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="oxigenacao" (swipe)="slide($event)">
+  <ion-card class="mycard">
+    <ion-card-header class="cardtitulo"> Oxigenação </ion-card-header>
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Respiração <p class="icone" id="icone0" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines id="dados0" class="lista">
+      <ion-item>
+        <ion-label class="label">Espontânea</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.espontanea"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Catéter</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.cateter"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Máscara</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.mascara"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Traqueostomia</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.traqueostomia"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" style="margin: 0px">Outros</ion-label>
+      </ion-item>
+      <ion-list no-lines id="respiracao" class="listitem">
+      </ion-list>
+      <ion-list no-lines class="listitem">
+        <ion-item style="margin: 0px;">
+          <button ion-button class="buttons" (click)="addRespiracao()">Adicionar</button>
+          <button ion-button class="buttons" (click)="removerRespiracao()">Remover</button>
+        </ion-item>
+      </ion-list>
+      <ion-list no-lines style="margin: 0px; padding: 0px;">
+        <ion-item style="margin-top: 0px;">
+          <ion-label floating>O² (Litros/Min)</ion-label>
+          <ion-input type="number" [(ngModel)]="paciente.o" class="inputitem"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>SpO²</ion-label>
+          <ion-input type="number" [(ngModel)]="paciente.sop" class="inputitem"></ion-input>
+        </ion-item>
+        <ion-item  style="margin-bottom:15px;">
+          <ion-label floating>FR (mrpm)</ion-label>
+          <ion-input type="number" [(ngModel)]="paciente.fr" class="inputitem"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Dispnéia</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.dispneia"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Taquipnéia</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.taquipneia"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Bradipnéia</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.bradipneia"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Hiperventilação neurogênica central</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.hiperventilacaoNeurogenica"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Apnêustica</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.apneustica"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Biot</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.biot"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Cheyne-Stokes</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.cheyne"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Kussmaul</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.kussmaul"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">em Salvas</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.emSalvas"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Ventilação mecânica</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.ventilacaoMecanica"></ion-checkbox>
+        </ion-item>
+        <ion-item  style="margin-bottom:15px;">
+          <ion-label floating>Modalidade</ion-label>
+          <ion-input type="text" [(ngModel)]="paciente.modalidade" class="inputitem"></ion-input>
+        </ion-item>
+        <ion-item  style="margin-bottom:15px;">
+          <ion-label floating>FiO2</ion-label>
+          <ion-input type="text" [(ngModel)]="paciente.fiO2" class="inputitem"></ion-input>
+        </ion-item>
+        <ion-item  style="margin-bottom:15px;">
+          <ion-label floating>PEEP</ion-label>
+          <ion-input type="text" [(ngModel)]="paciente.peep" class="inputitem"></ion-input>
+        </ion-item>
+        <ion-item  style="margin-bottom:15px;">
+          <ion-label floating>SpO2</ion-label>
+          <ion-input type="text" [(ngModel)]="paciente.spO2" class="inputitem"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+      <ion-list-header class="titulolista" (click)="toggleGroup(1)">Ausculta pulmonar <p class="icone" id="icone1" style="float: right">+</p></ion-list-header>
+        <ion-list no-lines class="lista" id="dados1">
+          <ion-item-divider light style="text-align: left; border-radius: 5px;">MV presentes</ion-item-divider>
+          <ion-item>
+            <ion-label class="label">Bilateralmente</ion-label>
+            <ion-checkbox [(ngModel)]="paciente.bilateralmente"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label">Diminuídos</ion-label>
+            <ion-checkbox [(ngModel)]="paciente.diminuidos"></ion-checkbox>
+          </ion-item>
+          <ion-item-divider light style="text-align: left; border-radius: 5px;">Ruídos adventícios</ion-item-divider>
+          <ion-item>
+            <ion-label class="label">Roncos</ion-label>
+            <ion-checkbox [(ngModel)]="paciente.roncos"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label">Sibilos</ion-label>
+            <ion-checkbox [(ngModel)]="paciente.sibilos"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label">Estertores</ion-label>
+            <ion-checkbox [(ngModel)]="paciente.estertores"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+        <ion-list-header class="titulolista" (click)="toggleGroup(2)">Presenção de tosse <p class="icone" id="icone2" style="float: right">+</p></ion-list-header>
+          <ion-list no-lines class="lista" id="dados2" style="margin: 0px">
+            <ion-item>
+              <ion-label class="label">Não</ion-label>
+              <ion-checkbox [(ngModel)]="paciente.presencaoDeTosseNao"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label class="label">Sim</ion-label>
+              <ion-checkbox [(ngModel)]="paciente.presencaoDeTosseSim"></ion-checkbox>
+            </ion-item>
+            <ion-item-divider light style="text-align: left; border-radius: 5px;">Ruídos adventícios</ion-item-divider>
+            <ion-item>
+              <ion-label class="label">Seca</ion-label>
+              <ion-checkbox [(ngModel)]="paciente.presencaoDeTosseSeca"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label class="label">Produtiva</ion-label>
+              <ion-checkbox [(ngModel)]="paciente.presencaoDeTosseProdutiva"></ion-checkbox>
+            </ion-item>
+            <ion-item style="margin-bottom: 0px">
+              <ion-label style="margin-bottom: 0px" class="label">Expectoração</ion-label>
+              <ion-checkbox (click)="toggleExpetoracao()" [(ngModel)]="paciente.presencaoDeTosseExpectoracao"></ion-checkbox>
+            </ion-item>
+            <ion-list no-lines class="lista" id="expetoracao" style="margin: 0px">
+                <ion-row style="margin: 0px">
+                  <ion-col>
+                    <ion-item>
+                      <ion-label style="margin: 0px" floating>quantidade</ion-label>
+                      <ion-input class="inputgrupo" type="number"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label style="margin: 0px" floating>característica</ion-label>
+                      <ion-input class="inputgrupo" type="text"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+            </ion-list>
+          </ion-list>
+
+            <ion-list-header class="titulolista" (click)="toggleGroup(3)">Aspiração <p class="icone" id="icone3" style="float: right">+</p></ion-list-header>
+            <ion-list class="lista" id="dados3">
+            <ion-list radio-group [(ngModel)]="paciente.aspiracao" id="dados3">
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label class="label">Sim</ion-label>
+                    <ion-radio value="sim" (click)="toggleGroup2(0,'block')"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col><ion-item>
+                  <ion-label class="label">Não</ion-label>
+                  <ion-radio value="nao" (click)="toggleGroup2(0,'none')"></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+        </ion-list>
+        <ion-list no-lines id="listRadio0" style="display: none; padding: 0px; margin: 0px" >
+          <ion-row style="margin: 0px">
+            <ion-col>
+              <ion-item>
+                <ion-label class="label "style="margin: 0px" floating>quantidade</ion-label>
+                <ion-input class="inputgrupo" [(ngModel)]="paciente.aspiracaoQuantidade" type="number"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label class="label" style="margin: 0px" floating>característica</ion-label>
+                <ion-input class="inputgrupo" [(ngModel)]="paciente.aspiracaoCaracteristica" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+        </ion-list>
+
+        <ion-list-header class="titulolista" (click)="toggleGroup(4)">Drenagem torácica <p class="icone" id="icone4" style="float: right">+</p></ion-list-header>
+        <ion-list class="lista" id="dados4">
+          <ion-list radio-group [(ngModel)]="paciente.drenagemToracica">
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label class="label">Sim</ion-label>
+                  <ion-radio value="sim" (click)="toggleGroup2(1,'block')"></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label class="label">Não</ion-label>
+                  <ion-radio value="nao" (click)="toggleGroup2(1,'none')"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+        <ion-list no-lines id="listRadio1" style="display: none; padding: 0px; margin: 0px;">
+          <ion-row style="margin: 0px">
+            <ion-col>
+              <ion-item style="margin: 0px">
+                <ion-label class="label" style="margin: 0px" floating>quantidade</ion-label>
+                <ion-input class="inputgrupo" [(ngModel)]="paciente.drenagemToracicaQuantidade" type="number"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label class="label" style="margin: 0px" floating>característica</ion-label>
+                <ion-input class="inputgrupo" [(ngModel)]="paciente.drenagemToracicaCaracteristica" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+          <ion-list no-lines  style="margin: 0px; padding: 0px;">
+            <ion-item>
+              <ion-label class="label">DTE</ion-label>
+              <ion-checkbox [(ngModel)]="paciente.drenagemToracicaDTE"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label class="label">DTD</ion-label>
+              <ion-checkbox [(ngModel)]="paciente.drenagemToracicaDTD"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-list>
+
+      <ion-list-header class="titulolista" (click)="toggleGroup(5)">Mamas <p class="icone" id="icone5" style="float: right">+</p></ion-list-header>
+      <ion-list no-lines class="lista" id="dados5">
+        <ion-item>
+          <ion-label class="label">Sem alterações</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.mamaSemAltecacoes"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Nódulos</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.mamaNodulos"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Dor</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.mamaDor"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Assimétrica</ion-label>
+          <ion-checkbox [(ngModel)]="paciente.mamaAssimetrica"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Outros</ion-label>
+          <ion-input class="inputgrupo" [(ngModel)]="paciente.mamaOutros" type="text"></ion-input>
+        </ion-item>
+      </ion-list>
+  </ion-card>
+</ion-content>
