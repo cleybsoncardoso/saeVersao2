@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {CadastroPaciente} from '../../model/cadastroPaciente';
 
+
 export class Enfermeira{
 
   public id : number;
@@ -35,11 +36,6 @@ export class PacienteService {
           .map(res => res.json());
   }
 */
-  getUser(idUser){
-    let url= "http://localhost/saeApi.php?id="+ idUser;
-    console.log(url);
-    return this.http.get(url).map(res => res.json());
-  }
 
   getIdEnfermeiro(inputLogin){
       let url= "http://localhost/saeApi.php?login="+ inputLogin;

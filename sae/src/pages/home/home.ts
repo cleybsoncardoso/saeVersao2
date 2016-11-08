@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha';
 import { Component } from '@angular/core';
 import {PacienteService} from "../../providers/paciente-service/paciente-service";
+import {UsuarioDados} from '../../model/usuario';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -14,7 +15,8 @@ export class HomePage {
 
   private coren : string;
   private senha : string;
-  private id:any;
+  private usuario:UsuarioDados=new UsuarioDados();
+
 
   constructor(private nav: NavController, private http : Http, private alert :AlertController, private loading : LoadingController, private service : PacienteService) {
   }
@@ -53,8 +55,9 @@ export class HomePage {
             loader.present();
             this.service.getIdEnfermeiro(username)
             .subscribe(respostaID=>{
-              this.id = respostaID[0].id;
-              this.nav.setRoot(PacientesPage, {parametro: this.id});
+              this.usuario.id = respostaID[0].id;
+              this.usuario.nome = respostaID[0].nome;
+              this.nav.setRoot(PacientesPage, {parametro: this.usuario});
             },error => {
               console.log("Não foi possível se conectar ao servidor");
             });
