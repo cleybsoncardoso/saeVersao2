@@ -32,8 +32,7 @@ export class PacienteService {
     let link = "http://localhost/saeApi.php";
 
     return this.http.post(link, data, options)
-          .map(res => res.json())
-          .catch(this.handleError);
+          .map(res => res.json());
   }
 
   getUser(idUser){
