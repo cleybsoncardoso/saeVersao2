@@ -4,12 +4,19 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {CadastroPaciente} from '../../model/cadastroPaciente';
 
-/*
-  Generated class for the MyService provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+export class Enfermeira{
+
+  public id : number;
+  public nome : string;
+
+  constructor(identificador:number, name:string){
+    this.id = identificador;
+    this.nome = name;
+  }
+}
+
+
 @Injectable()
 export class PacienteService {
   private pacientes : Array<CadastroPaciente>;
