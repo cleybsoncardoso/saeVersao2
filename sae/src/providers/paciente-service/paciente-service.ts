@@ -22,7 +22,7 @@ export class PacienteService {
   constructor(private http: Http) {
 
   }
-
+/*
   logar(login:string, senha:string){
     let type = "login";
     let data = JSON.stringify({type, login, senha});
@@ -34,7 +34,7 @@ export class PacienteService {
     return this.http.post(link, data, options)
           .map(res => res.json());
   }
-
+*/
   getUser(idUser){
     let url= "http://localhost/saeApi.php?id="+ idUser;
     console.log(url);

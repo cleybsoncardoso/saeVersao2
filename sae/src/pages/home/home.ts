@@ -19,7 +19,7 @@ export class HomePage {
   constructor(private nav: NavController, private http : Http, private alert :AlertController, private loading : LoadingController, private service : PacienteService) {
   }
 
-
+/*
   entrar (){
     let username = this.coren;
     let password = this.senha;
@@ -34,8 +34,8 @@ export class HomePage {
         () => console.log("Job Done Post !")//run this code in all cases
         );
     }
+    */
 
-  /*
   entrar(){
     let username = this.coren;
     let password = this.senha;
@@ -67,7 +67,7 @@ export class HomePage {
             alert.present();
         });
   }
-  */
+
 
   esqueci(){
     this.nav.setRoot(EsqueciSenhaPage);
