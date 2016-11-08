@@ -27,7 +27,7 @@ export class PacientesPage {
     this.menu.enable(true);
     this.searchQuery = '';
     this.carregarPacientes();
-    this.nomeUser=this.getNomeUser;
+    this.getNomeUser();
 
   }
 
@@ -40,7 +40,7 @@ export class PacientesPage {
     this.service.getUser(this.id)
     .subscribe(user=>{
       console.log(user);
-      return user[0].nome;
+      this.nomeUser = user[0].nome;
     },error => {
       console.log("Não foi possível se conectar ao servidor");
     });
