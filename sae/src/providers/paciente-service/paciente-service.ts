@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {CadastroPaciente} from '../../model/cadastroPaciente';
+import { Storage } from '@ionic/storage';
 
 
 export class Enfermeira{
@@ -10,9 +11,9 @@ export class Enfermeira{
   public id : number;
   public nome : string;
 
-  constructor(identificador:number, name:string){
-    this.id = identificador;
-    this.nome = name;
+  constructor(){
+    this.id = 0;
+    this.nome = "";
   }
 }
 
@@ -20,22 +21,19 @@ export class Enfermeira{
 @Injectable()
 export class PacienteService {
   private pacientes : Array<CadastroPaciente>;
-  constructor(private http: Http) {
+  constructor(private http: Http, public storage : Storage) {
 
   }
-/*
-  logar(login:string, senha:string){
-    let type = "login";
-    let data = JSON.stringify({type, login, senha});
-    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    let options = new RequestOptions({ headers: headers, method: "post" });
 
-    let link = "http://localhost/saeApi.php";
-
-    return this.http.post(link, data, options)
-          .map(res => res.json());
+  public getEnfermeira(){
+    return this.storage.get('data').then(dados=>{
+      return dados;
+    });
   }
-*/
+
+  public setEnfermeira(dados: Enfermeira){
+    return this.storage.set('data', dados);
+  }
 
   getIdEnfermeiro(inputLogin){
       let url= "http://localhost/saeApi.php?login="+ inputLogin;

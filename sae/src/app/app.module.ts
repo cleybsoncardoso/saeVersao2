@@ -17,7 +17,7 @@ import {AspectosCutaneoMucosa} from '../pages/aspectos-cutaneo-mucosa/aspectos-c
 import {SegurancaFisica} from '../pages/seguranca-fisica/seguranca-fisica';
 import {Observacoes} from '../pages/observacoes/observacoes';
 import {Save} from '../pages/save/save';
-
+import { Storage } from '@ionic/storage';
 
 
 
@@ -66,7 +66,8 @@ import {Save} from '../pages/save/save';
 
   ],
   providers: [
-    PacienteService
+    PacienteService,
+    Storage
   ]
 })
 export class AppModule {}

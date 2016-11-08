@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
 import {IdentificacaoPage} from '../identificacao/identificacao';
 import 'rxjs/add/operator/map';
 import {CadastroPaciente} from '../../model/cadastroPaciente';
-import {UsuarioDados} from '../../model/usuario';
-import {PacienteService} from "../../providers/paciente-service/paciente-service";
+import {PacienteService, Enfermeira} from "../../providers/paciente-service/paciente-service";
 
 
 @Component({
@@ -18,16 +17,24 @@ export class PacientesPage {
   private listaPacientes : any;
   private listaPacientesAtualizada : any;
   private paciente : CadastroPaciente;
-  private usuario:UsuarioDados;
+  private enfermeira: Enfermeira = new Enfermeira();
 
-  constructor(private nav: NavController, private menu:MenuController, public modalCtrl: ModalController, private service : PacienteService,private params:NavParams) {
-    this.usuario = params.get("parametro");
+  constructor(private nav: NavController, private menu:MenuController, public modalCtrl: ModalController, private service : PacienteService) {
     this.nav = nav;
     this.menu = menu;
     this.menu.enable(true);
     this.searchQuery = '';
     this.carregarPacientes();
 
+  }
+
+  private getDadosEnfermeira(){
+      this.service.getEnfermeira().then(user=>{
+      this.enfermeira = user;
+      console.log("Dados da Enfermeira:");
+      console.log(this.enfermeira.id);
+      console.log(this.enfermeira.nome);
+    });
   }
 
   ionViewWillEnter(){

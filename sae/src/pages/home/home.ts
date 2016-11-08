@@ -3,40 +3,21 @@ import {PacientesPage} from '../pacientes/pacientes';
 import {Http} from "@angular/http";
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha';
 import { Component } from '@angular/core';
-import {PacienteService} from "../../providers/paciente-service/paciente-service";
-import {UsuarioDados} from '../../model/usuario';
+import {PacienteService, Enfermeira} from "../../providers/paciente-service/paciente-service";
+//import {UsuarioDados} from '../../model/usuario';
 import 'rxjs/add/operator/map';
 
 @Component({
-  templateUrl: 'home.html',
-  providers: [PacienteService]
+  templateUrl: 'home.html'
 })
 export class HomePage {
 
   private coren : string;
   private senha : string;
-  private usuario:UsuarioDados=new UsuarioDados();
-
+  //private usuario:UsuarioDados=new UsuarioDados();
 
   constructor(private nav: NavController, private http : Http, private alert :AlertController, private loading : LoadingController, private service : PacienteService) {
   }
-
-/*
-  entrar (){
-    let username = this.coren;
-    let password = this.senha;
-
-    this.service.logar(username, password)
-      .subscribe(         //call the post
-        data =>{
-          let teste = JSON.stringify(data);
-          console.log(teste);
-        }, // put the data returned from the server in our variable
-        error => console.log("Error HTTP Post Service"), // in case of failure show this message
-        () => console.log("Job Done Post !")//run this code in all cases
-        );
-    }
-    */
 
   entrar(){
     let username = this.coren;
@@ -55,9 +36,11 @@ export class HomePage {
             loader.present();
             this.service.getIdEnfermeiro(username)
             .subscribe(respostaID=>{
-              this.usuario.id = respostaID[0].id;
-              this.usuario.nome = respostaID[0].nome;
-              this.nav.setRoot(PacientesPage, {parametro: this.usuario});
+              let enfermeira = new Enfermeira();
+              enfermeira.id = respostaID[0].id;
+              enfermeira.nome = respostaID[0].nome;
+              this.service.setEnfermeira(enfermeira);
+              this.nav.setRoot(PacientesPage);
             },error => {
               console.log("Não foi possível se conectar ao servidor");
             });
