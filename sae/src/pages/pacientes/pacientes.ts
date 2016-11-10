@@ -1,10 +1,11 @@
-
-import {NavController, ModalController , MenuController, NavParams} from 'ionic-angular';
+import {NavController, MenuController, NavParams,ActionSheetController,Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
 import {IdentificacaoPage} from '../identificacao/identificacao';
 import 'rxjs/add/operator/map';
 import {CadastroPaciente} from '../../model/cadastroPaciente';
 import {PacienteService, Enfermeira} from "../../providers/paciente-service/paciente-service";
+import {GerarSaePage} from '../gerar-sae/gerar-sae';
+
 
 
 @Component({
@@ -19,13 +20,12 @@ export class PacientesPage {
   private paciente : CadastroPaciente;
   private enfermeira: Enfermeira = new Enfermeira();
 
-  constructor(private nav: NavController, private menu:MenuController, public modalCtrl: ModalController, private service : PacienteService) {
+  constructor(public platform: Platform, private nav: NavController, private menu:MenuController, private service : PacienteService,public actionsheetCtrl: ActionSheetController) {
     this.nav = nav;
     this.menu = menu;
     this.menu.enable(true);
     this.searchQuery = '';
     this.carregarPacientes();
-    this.getDadosEnfermeira();
     this.getDadosEnfermeira();
   }
 
@@ -80,4 +80,53 @@ export class PacientesPage {
       })
     }
   }
-}
+
+  openPaciente(paciente){
+    let actionSheet = this.actionsheetCtrl.create({
+      title: paciente.nome,
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+
+        {
+          text: 'Histórico',
+          icon: !this.platform.is('ios') ? 'book' : null,
+          handler: () => {
+            console.log('Play clicked');
+          }
+        },
+        {
+          text: 'Plano de cuidados',
+          icon: !this.platform.is('ios') ? 'checkbox' : null,
+          handler: () => {
+            console.log('Favorite clicked');
+          }
+        },
+        {
+          text: 'Gerar SAE',
+          icon: !this.platform.is('ios') ? 'done-all' : null,
+          handler: () => {
+            this.nav.push(GerarSaePage,{paciente: paciente});
+          }
+        },
+        {
+          text: 'Delete',
+          role: 'destructive',
+          icon: !this.platform.is('ios') ? 'trash' : null,
+          handler: () => {
+            console.log('Delete clicked');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: !this.platform.is('ios') ? 'close' : null,
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  }

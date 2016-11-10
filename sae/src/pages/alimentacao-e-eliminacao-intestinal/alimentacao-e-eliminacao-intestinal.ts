@@ -2,7 +2,6 @@ import {NavController, NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
 import {HidratacaoEEliminacaoVesical} from '../hidratacao-e-eliminacao-vesical/hidratacao-e-eliminacao-vesical';
 import {AspectosCutaneoMucosa} from '../aspectos-cutaneo-mucosa/aspectos-cutaneo-mucosa';
-import {PacientesPage} from '../pacientes/pacientes';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 /*
   Generated class for the AlimentacaoEEliminacaoIntestinal page.

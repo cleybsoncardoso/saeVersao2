@@ -1,6 +1,5 @@
 import {NavController, NavParams,LoadingController,AlertController} from 'ionic-angular';
 import { Component } from '@angular/core';
-import {PacientesPage} from '../pacientes/pacientes';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 import {Observacoes} from '../observacoes/observacoes';
 import 'rxjs/add/operator/map';

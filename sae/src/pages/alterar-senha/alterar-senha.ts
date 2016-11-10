@@ -33,27 +33,33 @@ export class AlterarSenhaPage {
     //this.getDadosEnfermeira();
   }
 
-  getDadosEnfermeira(){
+  private getDadosEnfermeira(){
       this.service.getEnfermeira().then(user=>{
       this.enfermeira = user;
       console.log("Dados da Enfermeira:");
       console.log(this.enfermeira.id);
       console.log(this.enfermeira.nome);
     });
+
   }
 
   conferir(){
-    let link = "http://localhost/saeApi.php";
-    let type = "senha";
-    let senhaAntiga = this.senhaAntiga;
-    let senhanova = this.senha2;
-    let id = 5;
+
     if(this.senha1!=this.senha2){
 
-    }else if(this.senha1==""||this.senha2==""){
+    }else if(this.senha1==""||this.senha2==""||this.senhaAntiga==""){
 
     }else if(this.senha1==this.senha2){
-      this.http.put(link, JSON.stringify({type, id, senhaAntiga, senhanova}));
+      let link = "http://localhost/saeApi.php";
+      let type = "senha";
+      let senhaAntiga = this.senhaAntiga;
+      let senhanova = this.senha2;
+      let id = 5;
+      let data = JSON.stringify({type,id, senhaAntiga, senhanova});
+
+      this.http.post(link, data)
+          .subscribe(data=>{
+          },error => {});
       this.redirecionar();
     }
   }

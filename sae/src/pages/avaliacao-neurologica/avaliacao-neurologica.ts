@@ -2,7 +2,6 @@ import {NavController, NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
 import {Entrevista} from '../entrevista/entrevista';
 import {Oxigenacao} from '../oxigenacao/oxigenacao';
-import {PacientesPage} from '../pacientes/pacientes';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 /*
   Generated class for the AvaliacaoNeurologicaPage page.

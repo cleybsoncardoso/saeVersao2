@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import {Oxigenacao} from '../oxigenacao/oxigenacao';
 import {HidratacaoEEliminacaoVesical} from '../hidratacao-e-eliminacao-vesical/hidratacao-e-eliminacao-vesical';
 import {SegurancaFisica} from '../seguranca-fisica/seguranca-fisica';
-import {PacientesPage} from '../pacientes/pacientes';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 
 /*

@@ -2,7 +2,6 @@ import {NavController, NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
 import {AlimentacaoEEliminacaoIntestinal} from '../alimentacao-e-eliminacao-intestinal/alimentacao-e-eliminacao-intestinal';
 import {SegurancaFisica} from '../seguranca-fisica/seguranca-fisica';
-import {PacientesPage} from '../pacientes/pacientes';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 
 /*

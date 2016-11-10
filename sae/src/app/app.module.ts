@@ -18,6 +18,8 @@ import {SegurancaFisica} from '../pages/seguranca-fisica/seguranca-fisica';
 import {Observacoes} from '../pages/observacoes/observacoes';
 import {Save} from '../pages/save/save';
 import { Storage } from '@ionic/storage';
+import {GerarSaePage} from '../pages/gerar-sae/gerar-sae';
+
 
 
 
@@ -39,7 +41,8 @@ import { Storage } from '@ionic/storage';
     AspectosCutaneoMucosa,
     SegurancaFisica,
     Observacoes,
-    Save
+    Save,
+    GerarSaePage
 
   ],
   imports: [
@@ -62,7 +65,8 @@ import { Storage } from '@ionic/storage';
     AspectosCutaneoMucosa,
     SegurancaFisica,
     Observacoes,
-    Save
+    Save,
+    GerarSaePage
 
   ],
   providers: [

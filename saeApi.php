@@ -26,6 +26,13 @@ switch($_SERVER['REQUEST_METHOD']){
 				$pacientes = $_GET["pacientes"];
 				$st = "SELECT * FROM tb_pacientes WHERE nome = '$pacientes'";//retorna os pacientes por nome
 			}
+		}elseif(isset($_GET["caracteristicas"])){
+			if($_GET["caracteristicas"]==""){
+				$st = "SELECT * FROM caracteristicas_definidoras";//retorna todas as caracteristicas	
+			}else{ //se for especificado o nome, ex: http://localhost/saeApi.php?pacientes=joao
+				$id = $_GET["caracteristicas"];
+				$st = "SELECT * FROM caracteristicas_definidoras WHERE id = '$id'";//retorna a caracteristica pela id
+			}
 		}else{
 			header('HTTP/1.1 401 Unauthorized', true, 401);//se nao for nada, retorna acesso negado
 		}
@@ -75,51 +82,32 @@ switch($_SERVER['REQUEST_METHOD']){
 					$password = $request->password;
 					if ($password != "" && $username != "") {
 						$sel = "SELECT id FROM tb_cadastros WHERE login='$username' AND senha='$password'";
-				    		$result = $conn->query($sel);
-					    	$numrow = $result->num_rows;
-					    	if($numrow !== 1){
-					      		header('HTTP/1.1 401 Unauthorized', true, 401);
-							}else{
-								//insere os dados num array
-								$qr=$conn->query($sel);
-								while($row=$qr->fetch_assoc()){
-									$arr[]=$row;
-								}
-								//retorna o array json
-								echo json_encode($arr);						
+				    	$result = $conn->query($sel);
+					    $numrow = $result->num_rows;
+					    if($numrow !== 1){
+					    	header('HTTP/1.1 401 Unauthorized', true, 401);
+						}else{
+							//insere os dados num array
+							$qr=$conn->query($sel);
+							while($row=$qr->fetch_assoc()){
+								$arr[]=$row;
 							}
+							//retorna o array json
+							echo json_encode($arr);						
+						}
 					}else {
 						header('HTTP/1.1 401 Unauthorized', true, 401);
-					}			
-			}			
+					}
+					break;					
+			}					
 		}else {
 			echo "Not called properly with username parameter!";
 		}
-	break;
+				
 
 	default:
+	break;
+}
 
-		$request = json_decode($putdata);
-		$type = $request->type;
-		switch($type){
-			case 'senha':
-				$id = $request->id;
-				$senhaAntiga = $request->senhaAntiga;
-				$senhanova = $request->senhanova;
-				$sel = "SELECT senha FROM tb_cadastros WHERE id='$id'";
-				if($sel !== $senhaAntiga)
-					"UPDATE tb_cadastros SET = '$senhanova' WHERE id='$id'";
-			    	$result = $conn->query($sel);
-				    $numrow = $result->num_rows;
-				}else {
-					header('HTTP/1.1 401 Unauthorized', true, 401);
-				}
-				break;
-			
-			default:
-			break;
-		}
-		
 
-break
 ?>
