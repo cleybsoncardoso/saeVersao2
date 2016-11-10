@@ -1,46 +1,37 @@
-import {NavController} from 'ionic-angular';
-import {PacientesPage} from '../pacientes/pacientes';
+import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import {Http} from "@angular/http";
-import {PacienteService, Enfermeira} from "../../providers/paciente-service/paciente-service";
+import { Http } from "@angular/http";
+
+import { PacientesPage } from '../pacientes/pacientes';
+import {EnfermeiroService, Enfermeira} from "../../providers/enfermeiro-service/enfermeiro-service";
 import 'rxjs/add/operator/map';
 
 
-/*
-  Generated class for the AlterarSenhaPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'alterar-senha.html',
 })
 export class AlterarSenhaPage {
-  static get parameters() {
-    return [[NavController]];
-  }
 
   private senha1: string;
   private senha2: string;
   private senhaAntiga:string;
   private enfermeira: Enfermeira = new Enfermeira();
 
-  constructor(private nav: NavController, private http : Http, private service : PacienteService) {
+  constructor(private nav: NavController, private http : Http, private eService : EnfermeiroService) {
     this.nav = nav;
     this.senha1 = "";
     this.senha2 = "";
     this.senhaAntiga = "";
-    //this.getDadosEnfermeira();
+    this.getDadosEnfermeira();
   }
 
   private getDadosEnfermeira(){
-      this.service.getEnfermeira().then(user=>{
+    this.eService.getEnfermeira().then(user=>{
       this.enfermeira = user;
-      console.log("Dados da Enfermeira:");
+      console.log("Dados da Enfermeira em alterar senha:");
       console.log(this.enfermeira.id);
       console.log(this.enfermeira.nome);
     });
-
   }
 
   conferir(){

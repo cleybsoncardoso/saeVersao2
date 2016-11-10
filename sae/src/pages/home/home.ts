@@ -3,7 +3,7 @@ import {PacientesPage} from '../pacientes/pacientes';
 import {Http} from "@angular/http";
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha';
 import { Component } from '@angular/core';
-import {PacienteService, Enfermeira} from "../../providers/paciente-service/paciente-service";
+import {EnfermeiroService, Enfermeira} from "../../providers/enfermeiro-service/enfermeiro-service";
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -14,10 +14,16 @@ export class HomePage {
   private coren : string;
   private senha : string;
 
-  constructor(private nav: NavController, private http : Http, private alert :AlertController, private loading : LoadingController, private service : PacienteService) {
-  }
+  constructor(
+      private nav: NavController,
+      private http : Http,
+      private alert :AlertController,
+      private loading : LoadingController,
+      private eService : EnfermeiroService
+    ) {}
 
   entrar(){
+
     let username = this.coren;
     let password = this.senha;
     let type = "login";
@@ -32,12 +38,12 @@ export class HomePage {
 
             });
             loader.present();
-            this.service.getIdEnfermeiro(username)
+            this.eService.getDadosEnfermeira(username)
             .subscribe(respostaID=>{
               let enfermeira = new Enfermeira();
               enfermeira.id = respostaID[0].id;
               enfermeira.nome = respostaID[0].nome;
-              this.service.setEnfermeira(enfermeira);
+              this.eService.setEnfermeira(enfermeira).then();
               this.nav.setRoot(PacientesPage);
             },error => {
               console.log("Não foi possível se conectar ao servidor");
@@ -50,6 +56,22 @@ export class HomePage {
             });
             alert.present();
         });
+
+        /*
+        let enfermeira = new Enfermeira();
+        enfermeira.id = 1;
+        enfermeira.nome = 'Mariana';
+        this.eService.setEnfermeira(enfermeira).then(
+          res=>{
+              this.eService.getEnfermeira().then(user=>{
+              console.log("enfermeira obtida no home:");
+              console.log(user.id);
+              console.log(user.nome);
+              this.nav.setRoot(PacientesPage);
+            });
+        });
+        */
+
   }
 
 

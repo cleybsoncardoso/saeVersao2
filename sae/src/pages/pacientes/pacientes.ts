@@ -3,14 +3,14 @@ import { Component } from '@angular/core';
 import {IdentificacaoPage} from '../identificacao/identificacao';
 import 'rxjs/add/operator/map';
 import {CadastroPaciente} from '../../model/cadastroPaciente';
-import {PacienteService, Enfermeira} from "../../providers/paciente-service/paciente-service";
+import {PacienteService} from "../../providers/paciente-service/paciente-service";
+import {EnfermeiroService, Enfermeira} from "../../providers/enfermeiro-service/enfermeiro-service";
 import {GerarSaePage} from '../gerar-sae/gerar-sae';
 
 
 
 @Component({
-  templateUrl: 'pacientes.html',
-  providers: [PacienteService]
+  templateUrl: 'pacientes.html'
 })
 export class PacientesPage {
 
@@ -20,19 +20,26 @@ export class PacientesPage {
   private paciente : CadastroPaciente;
   private enfermeira: Enfermeira = new Enfermeira();
 
-  constructor(public platform: Platform, private nav: NavController, private menu:MenuController, private service : PacienteService,public actionsheetCtrl: ActionSheetController) {
-    this.nav = nav;
-    this.menu = menu;
-    this.menu.enable(true);
-    this.searchQuery = '';
-    this.carregarPacientes();
-    this.getDadosEnfermeira();
+    constructor(
+      public platform: Platform,
+      private nav: NavController,
+      private menu: MenuController,
+      private pService: PacienteService,
+      public actionsheetCtrl: ActionSheetController,
+      private eService: EnfermeiroService
+    ) {
+        this.nav = nav;
+        this.menu = menu;
+        this.menu.enable(true);
+        this.searchQuery = '';
+        this.carregarPacientes();
+        this.getDadosEnfermeira();
   }
 
   private getDadosEnfermeira(){
-      this.service.getEnfermeira().then(user=>{
+      this.eService.getEnfermeira().then(user=>{
       this.enfermeira = user;
-      console.log("Dados da Enfermeira:");
+      console.log("Dados da Enfermeira em pacientes:");
       console.log(this.enfermeira.id);
       console.log(this.enfermeira.nome);
     });
@@ -43,7 +50,7 @@ export class PacientesPage {
   }
   carregarPacientes(){
 
-    this.service.carregar()
+    this.pService.carregar()
     .subscribe(data=>{
       this.listaPacientes = data;
       this.listaPacientesAtualizada = data;
@@ -53,6 +60,7 @@ export class PacientesPage {
       console.log("Não foi possível se conectar ao servidor");
     });
     this.searchQuery = '';
+
   }
 
   pesquisarPacientes(){
@@ -67,6 +75,7 @@ export class PacientesPage {
   }
 
   getPacientes(searchbar:any){
+
     // Reset items back to all of the items
     this.pesquisarPacientes();
 
@@ -79,6 +88,7 @@ export class PacientesPage {
         return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+
   }
 
   openPaciente(paciente){
