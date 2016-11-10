@@ -57,9 +57,6 @@ export class GerarSaePage {
         document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#ffffff';
         this.caracteristicasSelecionada.splice(index,1);
       }
-      console.log(this.caracteristicasSelecionada);
-
-
     }
 
 
