@@ -4,7 +4,6 @@ import {Http} from "@angular/http";
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha';
 import { Component } from '@angular/core';
 import {PacienteService, Enfermeira} from "../../providers/paciente-service/paciente-service";
-//import {UsuarioDados} from '../../model/usuario';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -14,7 +13,6 @@ export class HomePage {
 
   private coren : string;
   private senha : string;
-  //private usuario:UsuarioDados=new UsuarioDados();
 
   constructor(private nav: NavController, private http : Http, private alert :AlertController, private loading : LoadingController, private service : PacienteService) {
   }

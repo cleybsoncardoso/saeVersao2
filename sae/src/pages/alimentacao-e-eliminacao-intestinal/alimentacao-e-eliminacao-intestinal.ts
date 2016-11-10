@@ -23,8 +23,8 @@ export class AlimentacaoEEliminacaoIntestinal {
     }
 
     toggleGroup(id){
-      let grupo = document.getElementById("dados"+id);
-      let icone = document.getElementById("icone"+id);
+      let grupo = document.getElementById("dadosIntestinal"+id);
+      let icone = document.getElementById("iconeIntestinal"+id);
       if(id==2){
         this.verificaVomito();
       }
@@ -57,16 +57,16 @@ export class AlimentacaoEEliminacaoIntestinal {
     }
     toggleClose(id){
       var i=0;
-      let grupo = document.getElementById("dados"+i);
-      let icone = document.getElementById("icone"+i);
+      let grupo = document.getElementById("dadosIntestinal"+i);
+      let icone = document.getElementById("iconeIntestinal"+i);
       while(grupo!=null){
         if(i!=id){
           grupo.style.display = "none";
           icone.innerHTML = '+';
         }
         i++;
-        icone = document.getElementById("icone"+i);
-        grupo = document.getElementById("dados"+i);
+        icone = document.getElementById("iconeIntestinal"+i);
+        grupo = document.getElementById("dadosIntestinal"+i);
       }
     }
 

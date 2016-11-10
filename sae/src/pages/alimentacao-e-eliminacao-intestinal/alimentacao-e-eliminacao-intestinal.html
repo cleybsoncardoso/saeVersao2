@@ -4,7 +4,7 @@
      Novo Paciente
    </ion-title>
    <ion-buttons start>
-     <button round (click)="cancel()">Cancelar</button>
+     <button ion-button (click)="cancel()">Cancelar</button>
    </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -24,8 +24,8 @@
       <ion-label floating>Glicemia</ion-label>
       <ion-input class="inputgrupo" [(ngModel)]="paciente.glicemia" type="text"></ion-input>
     </ion-item>
-    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Apetite <p class="icone" id="icone0" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines radio-group class="lista" [(ngModel)]="paciente.apetite" id="dados0">
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Apetite <p class="icone" id="iconeIntestinal0" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines radio-group class="lista" [(ngModel)]="paciente.apetite" id="dadosIntestinal0">
       <ion-item>
         <ion-label class="label">Normal </ion-label>
         <ion-radio value="normal"></ion-radio>
@@ -44,8 +44,8 @@
       </ion-item>
     </ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Vias de administração <p class="icone" id="icone1" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados1">
+    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Vias de administração <p class="icone" id="iconeIntestinal1" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosIntestinal1">
       <ion-item>
         <ion-label class="label">Oral </ion-label>
         <ion-checkbox [(ngModel)]="paciente.viasDeAdministracaoOral"></ion-checkbox>
@@ -68,8 +68,8 @@
       </ion-item>
     </ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Presenção de <p class="icone" id="icone2" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados2">
+    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Presenção de <p class="icone" id="iconeIntestinal2" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosIntestinal2">
       <ion-item>
         <ion-label class="label">Náusea</ion-label>
         <ion-checkbox [(ngModel)]="paciente.presencaoDeNausea"></ion-checkbox>
@@ -96,8 +96,8 @@
       </ion-list>
     </ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(3)">Abdome <p class="icone" id="icone3" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados3">
+    <ion-list-header class="titulolista" (click)="toggleGroup(3)">Abdome <p class="icone" id="iconeIntestinal3" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosIntestinal3">
       <ion-item>
         <ion-label class="label">Plano </ion-label>
         <ion-checkbox [(ngModel)]="paciente.abdomePlano"></ion-checkbox>
@@ -120,8 +120,8 @@
       </ion-item>
     </ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(4)">RHA <p class="icone" id="icone4" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados4">
+    <ion-list-header class="titulolista" (click)="toggleGroup(4)">RHA <p class="icone" id="iconeIntestinal4" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosIntestinal4">
       <ion-item>
         <ion-label class="label">Presentes </ion-label>
         <ion-checkbox [(ngModel)]="paciente.rhaPresentes"></ion-checkbox>
@@ -140,8 +140,8 @@
       </ion-item>
     </ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(5)">Ostomia <p class="icone" id="icone5" style="float: right">+</p></ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.ostomia" class="lista" id="dados5">
+    <ion-list-header class="titulolista" (click)="toggleGroup(5)">Ostomia <p class="icone" id="iconeIntestinal5" style="float: right">+</p></ion-list-header>
+    <ion-list radio-group [(ngModel)]="paciente.ostomia" class="lista" id="dadosIntestinal5">
       <ion-row>
         <ion-col>
           <ion-item>
@@ -174,8 +174,8 @@
       </ion-row>
     </ion-list>
 
-<ion-list-header class="titulolista" (click)="toggleGroup(6)">Eliminação intestinal <p class="icone" id="icone6" style="float: right">+</p></ion-list-header>
-<ion-list no-lines radio-group [(ngModel)]="paciente.eliminacaoIntestinal" class="lista" id="dados6">
+<ion-list-header class="titulolista" (click)="toggleGroup(6)">Eliminação intestinal <p class="icone" id="iconeIntestinal6" style="float: right">+</p></ion-list-header>
+<ion-list no-lines radio-group [(ngModel)]="paciente.eliminacaoIntestinal" class="lista" id="dadosIntestinal6">
   <ion-item>
     <ion-label floating>Frequência (vezes;semana)</ion-label>
     <ion-input class="inputgrupo" [(ngModel)]="paciente.eliminacaoIntestinalFrequencia" type="number"></ion-input>

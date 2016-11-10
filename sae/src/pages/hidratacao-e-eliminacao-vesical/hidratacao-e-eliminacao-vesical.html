@@ -4,7 +4,7 @@
      Novo Paciente
    </ion-title>
    <ion-buttons start>
-     <button round (click)="cancel()">Cancelar</button>
+     <button ion-button (click)="cancel()">Cancelar</button>
    </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -12,8 +12,8 @@
 <ion-content padding (swipe)="slide($event)">
   <ion-card class="mycard">
     <ion-card-header class="cardtitulo"> Hidratação e Eliminação Vesical </ion-card-header>
-    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Turgidez da pele <p class="icone" id="icone0" style="float: right">+</p></ion-list-header>
-    <ion-list radio-group no-lines [(ngModel)]="paciente.turgidezDaPele" class="lista" id="dados0" class="subgrupo">
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Turgidez da pele <p class="icone" id="iconeHidratacao0" style="float: right">+</p></ion-list-header>
+    <ion-list radio-group no-lines [(ngModel)]="paciente.turgidezDaPele" class="lista" id="dadosHidratacao0" class="subgrupo">
       <ion-item>
         <ion-label class="label">Preservada </ion-label>
         <ion-radio value="preservada"></ion-radio>
@@ -23,8 +23,8 @@
         <ion-radio value="diminuida"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Eliminação urinária <p class="icone" id="icone1" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados1" class="subgrupo">
+    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Eliminação urinária <p class="icone" id="iconeHidratacao1" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosHidratacao1" class="subgrupo">
       <ion-item>
         <ion-label floating>Volume (ml:h)</ion-label>
         <ion-input class="inputgrupo" [(ngModel)]="paciente.eliminacaoUrinariaVolume" type="number"></ion-input>
@@ -50,8 +50,8 @@
         <ion-checkbox [(ngModel)]="paciente.eliminacaoUrinariaDispositivoUrinario"></ion-checkbox>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Características <p class="icone" id="icone2" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados2" class="subgrupo">
+    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Características <p class="icone" id="iconeHidratacao2" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosHidratacao2" class="subgrupo">
       <ion-item>
         <ion-label class="label">Disúria </ion-label>
         <ion-checkbox [(ngModel)]="paciente.caracteristicasDisuria"></ion-checkbox>

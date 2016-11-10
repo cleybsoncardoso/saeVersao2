@@ -18,8 +18,8 @@
   <ion-content padding (swipe)="slide($event)">
     <ion-card class="mycard">
       <ion-card-header class="cardtitulo"> Avaliação Neurológica </ion-card-header>
-      <ion-list-header class="titulolista" (click)="toggleGroup(0)">Consciência <p class="icone" id="icone0" style="float: right">+</p></ion-list-header>
-        <ion-list no-lines class="lista" id="dados0" class="subgrupo">
+      <ion-list-header class="titulolista" (click)="toggleGroup(0)">Consciência <p class="iconeNeurologicaNeurologica" id="iconeNeurologica0" style="float: right">+</p></ion-list-header>
+        <ion-list no-lines class="lista" id="dadosNeurologica0" class="subgrupo">
           <ion-item>
             <ion-label class="label">Alerta</ion-label>
             <ion-checkbox [(ngModel)]="paciente.alerta"></ion-checkbox>
@@ -72,8 +72,8 @@
           </ion-grid>
         </ion-list>
         </ion-list>
-        <ion-list-header class="titulolista" (click)="toggleGroup(1)">Pupilas <p class="icone" id="icone1" style="float: right">+</p></ion-list-header>
-          <ion-list no-lines class="lista" id="dados1" class="subgrupo">
+        <ion-list-header class="titulolista" (click)="toggleGroup(1)">Pupilas <p class="iconeNeurologica" id="iconeNeurologica1" style="float: right">+</p></ion-list-header>
+          <ion-list no-lines class="lista" id="dadosNeurologica1" class="subgrupo">
         <ion-item>
           <ion-label class="label">Isocórica</ion-label>
           <ion-checkbox [(ngModel)]="paciente.isocorica"></ion-checkbox>
@@ -96,8 +96,8 @@
         </ion-item>
       </ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Mobilidade Física <p class="icone" id="icone2" style="float: right">+</p></ion-list-header>
-      <ion-list no-lines radio-group class="lista" [(ngModel)]="paciente.mmss" id="dados2" class="subgrupo">
+    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Mobilidade Física <p class="iconeNeurologica" id="iconeNeurologica2" style="float: right">+</p></ion-list-header>
+      <ion-list no-lines radio-group class="lista" [(ngModel)]="paciente.mmss" id="dadosNeurologica2" class="subgrupo">
       <ion-item-divider light style="text-align: left; border-radius: 5px;">MMSS</ion-item-divider>
       <ion-item>
         <ion-label class="label">Preservada</ion-label>

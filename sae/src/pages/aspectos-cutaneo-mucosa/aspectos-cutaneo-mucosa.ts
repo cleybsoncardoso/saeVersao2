@@ -36,8 +36,8 @@ export class AspectosCutaneoMucosa {
     }
 
     toggleGroup(id){
-      let grupo = document.getElementById("dados"+id);
-      let icone = document.getElementById("icone"+id);
+      let grupo = document.getElementById("dadosCutaneo"+id);
+      let icone = document.getElementById("iconeCutaneo"+id);
       if(id==2 && this.paciente.avp=="sim"){
           let grupo = document.getElementById("listRadio0");
           grupo.style.display = "block";
@@ -65,16 +65,16 @@ export class AspectosCutaneoMucosa {
 
     toggleClose(id){
       var i=0;
-      let grupo = document.getElementById("dados"+i);
-      let icone = document.getElementById("icone"+i);
+      let grupo = document.getElementById("dadosCutaneo"+i);
+      let icone = document.getElementById("iconeCutaneo"+i);
       while(grupo!=null){
         if(i!=id){
           grupo.style.display = "none";
           icone.innerHTML = '+';
         }
         i++;
-        icone = document.getElementById("icone"+i);
-        grupo = document.getElementById("dados"+i);
+        icone = document.getElementById("iconeCutaneo"+i);
+        grupo = document.getElementById("dadosCutaneo"+i);
       }
     }
 

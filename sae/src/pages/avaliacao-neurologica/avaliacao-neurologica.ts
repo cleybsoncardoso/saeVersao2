@@ -37,18 +37,18 @@ export class AvaliacaoNeurologica {
         }
     }
     toggleGroup(id){
-      let grupo = document.getElementById("dados"+id);
-      let icone = document.getElementById("icone"+id);
+      let grupo = document.getElementById("dadosNeurologica"+id);
+      let iconeNeurologica = document.getElementById("iconeNeurologica"+id);
       this.toggleClose(id);
       if(id==0){
         this.verificaGlasgow();
       }
       if(grupo.style.display == "block"){
         grupo.style.display = "none";
-        icone.innerHTML = '+';
+        iconeNeurologica.innerHTML = '+';
       }else{
         grupo.style.display = "block";
-        icone.innerHTML = '-';
+        iconeNeurologica.innerHTML = '-';
       }
     }
 
@@ -62,16 +62,16 @@ export class AvaliacaoNeurologica {
     }
     toggleClose(id){
       var i=0;
-      let grupo = document.getElementById("dados"+i);
-      let icone = document.getElementById("icone"+i);
+      let grupo = document.getElementById("dadosNeurologica"+i);
+      let iconeNeurologica = document.getElementById("iconeNeurologica"+i);
       while(grupo!=null){
         if(i!=id){
           grupo.style.display = "none";
-          icone.innerHTML = '+';
+          iconeNeurologica.innerHTML = '+';
         }
         i++;
-        icone = document.getElementById("icone"+i);
-        grupo = document.getElementById("dados"+i);
+        iconeNeurologica = document.getElementById("iconeNeurologica"+i);
+        grupo = document.getElementById("dadosNeurologica"+i);
       }
     }
 

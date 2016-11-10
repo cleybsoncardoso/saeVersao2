@@ -1,6 +1,9 @@
-import {NavController, AlertController, NavParams} from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 import {PacientesPage} from '../pacientes/pacientes';
 import { Component } from '@angular/core';
+import {Http} from "@angular/http";
+import {PacienteService, Enfermeira} from "../../providers/paciente-service/paciente-service";
+import 'rxjs/add/operator/map';
 
 
 /*
@@ -17,49 +20,45 @@ export class AlterarSenhaPage {
     return [[NavController]];
   }
 
-private id:number;
   private senha1: string;
   private senha2: string;
+  private senhaAntiga:string;
+  private enfermeira: Enfermeira = new Enfermeira();
 
-  constructor(private nav: NavController, private alertController: AlertController,private params:NavParams) {
+  constructor(private nav: NavController, private http : Http, private service : PacienteService) {
     this.nav = nav;
     this.senha1 = "";
     this.senha2 = "";
-    this.id = params.get("parametro");
+    this.senhaAntiga = "";
+    //this.getDadosEnfermeira();
   }
 
-  showAlert() {
-      let alert = this.alertController.create({
-        title: 'New Friend!',
-        subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
-        buttons: ['OK']
-      });
-      alert.present();
-    }
-
+  getDadosEnfermeira(){
+      this.service.getEnfermeira().then(user=>{
+      this.enfermeira = user;
+      console.log("Dados da Enfermeira:");
+      console.log(this.enfermeira.id);
+      console.log(this.enfermeira.nome);
+    });
+  }
 
   conferir(){
-
+    let link = "http://localhost/saeApi.php";
+    let type = "senha";
+    let senhaAntiga = this.senhaAntiga;
+    let senhanova = this.senha2;
+    let id = 5;
     if(this.senha1!=this.senha2){
-      let alert = this.alertController.create({
-        title: 'Não foi possivel alterar senha',
-        subTitle: 'Senhas não correspondem',
-        buttons: ['OK']
-      });
-      alert.present();
+
     }else if(this.senha1==""||this.senha2==""){
-      let alert = this.alertController.create({
-        title: 'Não foi possivel alterar senha',
-        subTitle: 'Coloque algum caracter no campo de nova senha',
-        buttons: ['OK']
-      });
-      alert.present(alert);
+
     }else if(this.senha1==this.senha2){
+      this.http.put(link, JSON.stringify({type, id, senhaAntiga, senhanova}));
       this.redirecionar();
     }
-
   }
+
   redirecionar(){
-    this.nav.setRoot(PacientesPage, {parametro: this.id});
+    this.nav.setRoot(PacientesPage);
   }
 }

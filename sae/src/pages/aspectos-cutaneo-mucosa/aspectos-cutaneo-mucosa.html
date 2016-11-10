@@ -4,7 +4,7 @@
      Novo Paciente
    </ion-title>
    <ion-buttons start>
-     <button round (click)="cancel()">Cancelar</button>
+     <button ion-button (click)="cancel()">Cancelar</button>
    </ion-buttons>
 </ion-toolbar>
 </ion-header>
@@ -12,8 +12,8 @@
 <ion-content padding class="aspectos-cutaneo-mucosa" (swipe)="slide($event)">
   <ion-card class="mycard">
     <ion-card-header class="cardtitulo">Aspectos cutâneo-mucosa </ion-card-header>
-    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Pele <p class="icone" id="icone0" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados0">
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Pele <p class="icone" id="iconeCutaneo0" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosCutaneo0">
       <ion-item>
         <ion-label class="label">Cianose </ion-label>
         <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaCianose"></ion-checkbox>
@@ -67,8 +67,8 @@
         <ion-input class="inputgrupo" [(ngModel)]="paciente.aspectosCutaneoMucosaTemperatura" type="number"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Olhos <p class="icone" id="icone1" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados1">
+    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Olhos <p class="icone" id="iconeCutaneo1" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosCutaneo1">
       <ion-item>
         <ion-label class="label">Icterícia </ion-label>
         <ion-checkbox [(ngModel)]="paciente.olhosIctericia"></ion-checkbox>
@@ -82,8 +82,8 @@
         <ion-input class="inputgrupo" [(ngModel)]="paciente.olhosOutros" type="text"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(2)">AVP <p class="icone" id="icone2" style="float: right">+</p></ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.avp" class="lista" id="dados2">
+    <ion-list-header class="titulolista" (click)="toggleGroup(2)">AVP <p class="icone" id="iconeCutaneo2" style="float: right">+</p></ion-list-header>
+    <ion-list radio-group [(ngModel)]="paciente.avp" class="lista" id="dadosCutaneo2">
       <ion-row>
         <ion-col>
           <ion-item>
@@ -110,8 +110,8 @@
       </ion-item>
     </ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(3)">CVC <p class="icone" id="icone3" style="float: right">+</p></ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.cvc" class="lista" id="dados3">
+    <ion-list-header class="titulolista" (click)="toggleGroup(3)">CVC <p class="icone" id="iconeCutaneo3" style="float: right">+</p></ion-list-header>
+    <ion-list radio-group [(ngModel)]="paciente.cvc" class="lista" id="dadosCutaneo3">
     <ion-grid >
       <ion-row>
         <ion-col>
@@ -140,8 +140,8 @@
       </ion-item>
     </ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(4)">Dreno <p class="icone" id="icone4" style="float: right">+</p></ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.dreno" class="lista" id="dados4">
+    <ion-list-header class="titulolista" (click)="toggleGroup(4)">Dreno <p class="icone" id="iconeCutaneo4" style="float: right">+</p></ion-list-header>
+    <ion-list radio-group [(ngModel)]="paciente.dreno" class="lista" id="dadosCutaneo4">
     <ion-row>
       <ion-col width-50>
         <ion-item>
@@ -167,8 +167,8 @@
         <ion-input class="inputgrupo" [(ngModel)]="paciente.drenoTipoDeDreno" type="text"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(5)">Genitália <p class="icone" id="icone5" style="float: right">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dados5">
+    <ion-list-header class="titulolista" (click)="toggleGroup(5)">Genitália <p class="icone" id="iconeCutaneo5" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dadosCutaneo5">
       <ion-item>
         <ion-label class="label">Sem anormalidades </ion-label>
         <ion-checkbox [(ngModel)]="paciente.genitaliaSemAnormalidades"></ion-checkbox>

@@ -26,6 +26,7 @@ export class PacientesPage {
     this.searchQuery = '';
     this.carregarPacientes();
     this.getDadosEnfermeira();
+    this.getDadosEnfermeira();
   }
 
   private getDadosEnfermeira(){

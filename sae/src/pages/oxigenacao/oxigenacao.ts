@@ -28,8 +28,8 @@ export class Oxigenacao {
   }
 
   toggleGroup(id){
-    let grupo = document.getElementById("dados"+id);
-    let icone = document.getElementById("icone"+id);
+    let grupo = document.getElementById("dadosOxigenacao"+id);
+    let icone = document.getElementById("iconeOxigenacao"+id);
     if(id==2){
       this.verificaExpetoracao();
     }
@@ -53,16 +53,16 @@ export class Oxigenacao {
 
   toggleClose(id){
     var i=0;
-    let grupo = document.getElementById("dados"+i);
-    let icone = document.getElementById("icone"+i);
+    let grupo = document.getElementById("dadosOxigenacao"+i);
+    let icone = document.getElementById("iconeOxigenacao"+i);
     while(grupo!=null){
       if(i!=id){
         grupo.style.display = "none";
         icone.innerHTML = '+';
       }
       i++;
-      icone = document.getElementById("icone"+i);
-      grupo = document.getElementById("dados"+i);
+      icone = document.getElementById("iconeOxigenacao"+i);
+      grupo = document.getElementById("dadosOxigenacao"+i);
     }
   }
   verificaExpetoracao(){

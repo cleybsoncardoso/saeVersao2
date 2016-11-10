@@ -11,7 +11,7 @@
 <ion-content padding class="alterar-senha">
   <ion-item>
     <ion-label floating>Senha atual</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" [(ngModel)]="senhaAntiga"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label floating>Nova Senha</ion-label>
@@ -21,6 +21,6 @@
     <ion-label floating>Repita Senha</ion-label>
     <ion-input type="password" [(ngModel)]="senha2"></ion-input>
   </ion-item>
-  <button ion-button block full (click)="showAlert()">Confirmar</button>
+  <button ion-button block full (click)="conferir()">Confirmar</button>
   <button ion-button clear full (click)="redirecionar()">Cancelar</button>
 </ion-content>
