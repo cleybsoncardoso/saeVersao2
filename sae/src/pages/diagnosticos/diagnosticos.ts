@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
-import {Caracteristica}from '../../model/caracteristica';
 import 'rxjs/add/operator/map';
 import {PacienteService} from "../../providers/paciente-service/paciente-service";
 
@@ -18,7 +17,6 @@ import {PacienteService} from "../../providers/paciente-service/paciente-service
 export class DiagnosticosPage {
 
   private paciente : CadastroPaciente;
-  private caracteristica : Caracteristica;
   private listaCaracteristicas : any;
   private caracteristicasSelecionada:number[];
   private diagnosticos:any;

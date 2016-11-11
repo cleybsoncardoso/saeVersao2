@@ -1,4 +1,4 @@
-import {NavController, MenuController, NavParams,ActionSheetController,Platform } from 'ionic-angular';
+import {NavController, MenuController, ActionSheetController,Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
 import {IdentificacaoPage} from '../identificacao/identificacao';
 import 'rxjs/add/operator/map';

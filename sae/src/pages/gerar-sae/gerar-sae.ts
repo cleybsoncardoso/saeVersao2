@@ -19,7 +19,6 @@ import { DiagnosticosPage } from '../diagnosticos/diagnosticos';
 export class GerarSaePage {
 
   private paciente : CadastroPaciente;
-  private caracteristica : Caracteristica;
   private listaCaracteristicas : any;
   private caracteristicasSelecionada:number[];
 
