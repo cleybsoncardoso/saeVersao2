@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 import 'rxjs/add/operator/map';
 import {Http} from "@angular/http";
+import {GerarSaePage} from '../gerar-sae/gerar-sae';
+
 
 
 
@@ -47,6 +49,12 @@ export class Save {
                 duration: 1000
             });
             loader.present();
+            let alert = this.alert.create({
+                title: 'Sucesso',
+                subTitle: 'Paciente cadastrado !',
+                buttons: ['OK']
+            });
+            alert.present();
         },error => {
             let alert = this.alert.create({
                 title: 'Warning',
@@ -72,6 +80,12 @@ export class Save {
 
             });
             loader.present();
+            let alert = this.alert.create({
+                title: 'Sucesso',
+                subTitle: 'Paciente cadastrado !',
+                buttons: ['OK']
+            });
+            alert.present();
         },error => {
             let alert = this.alert.create({
                 title: 'Warning',
@@ -80,7 +94,7 @@ export class Save {
             });
             alert.present();
         });
-  this.nav.popToRoot();
+        this.nav.push(GerarSaePage,{paciente: this.paciente});
   }
 
 }

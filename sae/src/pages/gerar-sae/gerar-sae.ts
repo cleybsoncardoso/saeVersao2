@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController,NavParams } from 'ionic-angular';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
-import {Caracteristica}from '../../model/caracteristica';
 import 'rxjs/add/operator/map';
 import {PacienteService} from "../../providers/paciente-service/paciente-service";
 import { DiagnosticosPage } from '../diagnosticos/diagnosticos';

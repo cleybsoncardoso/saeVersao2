@@ -31,7 +31,7 @@ switch($_SERVER['REQUEST_METHOD']){
 		//se for um get paciente sem especificar o nome, ex: http://localhost/saeApi.php?pacientes
 		}elseif(isset($_GET["pacientes"])){
 			if($_GET["pacientes"]==""){
-				$st = "SELECT * FROM tb_pacientes";//retorna todos os pacientes		
+				$st = "SELECT * FROM tb_pacientes  order by nome asc";//retorna todos os pacientes		
 				
 			}else{ //se for especificado o nome, ex: http://localhost/saeApi.php?pacientes=joao
 				$pacientes = $_GET["pacientes"];
@@ -71,15 +71,19 @@ switch($_SERVER['REQUEST_METHOD']){
 					}
 				}
 				$idUtilizadas = array();//vetor criar para saber se o diagnostico ja esta na lista que será enviada ao software
+				$idUtilizadas2 = array();
 				for($i = 0; $i < count($auxiliar);$i++){
 					if(!in_array($auxiliar[$i]['diagnostico'],$idUtilizadas)){
 						$idUtilizadas[] = $auxiliar[$i]['diagnostico'];
 					}else{
-						$j = $auxiliar[$i]['diagnostico'];
-						$st = "SELECT * FROM tb_definicoes WHERE id = '$j'";//retorna a caracteristica pela id
-						$qr=$conn->query($st);
-						while($row=$qr->fetch_assoc()){
-							$arr[]=$row;
+						if(!in_array($auxiliar[$i]['diagnostico'],$idUtilizadas2)){
+							$idUtilizadas2[] = $auxiliar[$i]['diagnostico'];
+							$j = $auxiliar[$i]['diagnostico'];
+							$st = "SELECT * FROM tb_definicoes WHERE id = '$j'";//retorna a caracteristica pela id
+							$qr=$conn->query($st);
+							while($row=$qr->fetch_assoc()){
+								$arr[]=$row;
+							}
 						}
 					}
 				}
@@ -89,7 +93,6 @@ switch($_SERVER['REQUEST_METHOD']){
 		}else{
 			header('HTTP/1.1 401 Unauthorized', true, 401);//se nao for nada, retorna acesso negado
 		}
-		
 		//retorna o array json
 		echo json_encode($arr);
 
