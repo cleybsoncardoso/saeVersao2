@@ -21,7 +21,7 @@ import { SegurancaFisica } from '../pages/seguranca-fisica/seguranca-fisica';
 import { Observacoes } from '../pages/observacoes/observacoes';
 import { Save } from '../pages/save/save';
 import { GerarSaePage } from '../pages/gerar-sae/gerar-sae';
-
+import { DiagnosticosPage } from '../pages/diagnosticos/diagnosticos';
 
 
 
@@ -44,7 +44,8 @@ import { GerarSaePage } from '../pages/gerar-sae/gerar-sae';
     SegurancaFisica,
     Observacoes,
     Save,
-    GerarSaePage
+    GerarSaePage,
+    DiagnosticosPage
 
   ],
   imports: [
@@ -68,7 +69,8 @@ import { GerarSaePage } from '../pages/gerar-sae/gerar-sae';
     SegurancaFisica,
     Observacoes,
     Save,
-    GerarSaePage
+    GerarSaePage,
+    DiagnosticosPage
 
   ],
   providers: [

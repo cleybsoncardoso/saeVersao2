@@ -1,6 +1,5 @@
 import {NavController, NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
-import {AvaliacaoNeurologica} from '../avaliacao-neurologica/avaliacao-neurologica';
 import {AvaliacaoCardiovascular} from '../avaliacao-cardiovascular/avaliacao-cardiovascular';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 

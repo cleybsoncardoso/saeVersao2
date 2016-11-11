@@ -1,10 +1,8 @@
 import {NavController, NavParams,LoadingController,AlertController} from 'ionic-angular';
 import { Component } from '@angular/core';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
-import {Observacoes} from '../observacoes/observacoes';
 import 'rxjs/add/operator/map';
 import {Http} from "@angular/http";
-import {PacienteService} from "../../providers/paciente-service/paciente-service";
 
 
 
@@ -23,7 +21,7 @@ export class Save {
 
   private paciente: CadastroPaciente;
 
-  constructor(private params: NavParams,private alert :AlertController, private nav: NavController,private service : PacienteService, private http : Http,private loading : LoadingController) {
+  constructor(private params: NavParams,private alert :AlertController, private nav: NavController, private http : Http,private loading : LoadingController) {
     this.paciente = params.get("parametro");
     this.nav = nav;
   }
@@ -47,7 +45,6 @@ export class Save {
             let loader = this.loading.create({
                 content: "Checking ! Please wait...",
                 duration: 1000
-
             });
             loader.present();
         },error => {

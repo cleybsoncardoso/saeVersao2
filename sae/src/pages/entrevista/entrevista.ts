@@ -1,6 +1,5 @@
 import {NavController, NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
-import {IdentificacaoPage} from '../identificacao/identificacao';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 import {AvaliacaoNeurologica} from '../avaliacao-neurologica/avaliacao-neurologica';
 /*
@@ -121,8 +120,6 @@ export class Entrevista {
         //Guardando o ultimo div filho criado
         let divFilho = document.getElementById(text);
         //guardando valor do input
-        let text2 = "campoVacina"+this.paciente.qtdeVacinas;
-        let input = document.getElementById(text2);
         //Removendo o ultimo DIV do nó-pai:
         divPai.removeChild(divFilho);
         this.paciente.qtdeVacinas--;

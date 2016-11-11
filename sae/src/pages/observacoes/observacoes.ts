@@ -1,6 +1,5 @@
 import {NavController, NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
-import {SegurancaFisica} from '../seguranca-fisica/seguranca-fisica';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 import {Save} from '../save/save';
 
@@ -54,8 +53,6 @@ export class Observacoes {
           //Guardando o ultimo div filho criado
           let divFilho = document.getElementById(text);
           //Removendo o ultimo DIV do nó-pai:
-          let text2 = "campoObservacao"+this.paciente.qtdeObservacoes;
-          let input = document.getElementById(text2);
           //removendo o ultimo div do no-pai
           divPai.removeChild(divFilho);
           this.paciente.qtdeObservacoes--;

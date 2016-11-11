@@ -4,6 +4,7 @@ import {CadastroPaciente}from '../../model/cadastroPaciente';
 import {Caracteristica}from '../../model/caracteristica';
 import 'rxjs/add/operator/map';
 import {PacienteService} from "../../providers/paciente-service/paciente-service";
+import { DiagnosticosPage } from '../diagnosticos/diagnosticos';
 
 /*
   Generated class for the GerarSae page.
@@ -28,17 +29,22 @@ export class GerarSaePage {
     this.carregarCaracteristicas();
   }
 
-
-
   cancel(){
     this.nav.popToRoot();
   }
+
+  //funcao realizada quando o usuario desliza o dedo na tela
+  slide(passar){
+    if(passar.deltaX<0){
+      this.nav.push(DiagnosticosPage,{caracteristicas: this.caracteristicasSelecionada, paciente: this.paciente});
+    }
+  }
+
   carregarCaracteristicas(){
 
     this.service.carregarCaracteristicas()
     .subscribe(data=>{
       this.listaCaracteristicas = data;
-      console.log(this.listaCaracteristicas);
 
     },error => {
       console.log(this.listaCaracteristicas);
@@ -48,7 +54,6 @@ export class GerarSaePage {
 
 
     itemSelected(caracteristicaClicada){
-
       let index = this.caracteristicasSelecionada.indexOf(caracteristicaClicada.id);
       if(index==-1){
         document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#98FB98';
@@ -57,7 +62,11 @@ export class GerarSaePage {
         document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#ffffff';
         this.caracteristicasSelecionada.splice(index,1);
       }
+      console.log(this.caracteristicasSelecionada);
     }
+
+
+
 
 
 }

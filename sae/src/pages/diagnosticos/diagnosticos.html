@@ -1,5 +1,5 @@
 <!--
-  Generated template for the GerarSae page.
+  Generated template for the Diagnosticos page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
@@ -17,13 +17,13 @@
 
 
 <ion-content padding (swipe)="slide($event)">
-<ion-card-header class="cardtitulo"> Caracteristicas Definidoras </ion-card-header>
+  <ion-card-header class="cardtitulo"> Diagnosticos </ion-card-header>
   <ion-list>
-  <ion-item *ngFor="let item of listaCaracteristicas" (click)="itemSelected(item)">
-  <ion-item id = '{{item.titulo}}'>
-    {{item.titulo}}
-  </ion-item>
-  </ion-item>
-</ion-list>
+    <ion-item *ngFor="let item of diagnosticos" (click)="itemSelected(item)">
+      <ion-item id = '{{item.titulo}}'>
+        {{item.titulo}}
+      </ion-item>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

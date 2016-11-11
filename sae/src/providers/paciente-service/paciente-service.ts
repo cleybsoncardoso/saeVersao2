@@ -23,6 +23,12 @@ export class PacienteService {
       return this.http.get(url).map(res => res.json());
   }
 
+  carregarDiagnosticos(ids){
+      console.log(ids);
+      let url= "http://localhost/saeApi.php?diagnosticos=" + ids;
+      return this.http.get(url).map(res => res.json());
+  }
+
   getPacientes(){
     return new Promise(resolve => {
       let url= "http://localhost/getusers.php?pacientes";

@@ -14,17 +14,33 @@ switch($_SERVER['REQUEST_METHOD']){
 		if(isset($_GET["id"])){
 			$id=$_GET["id"];
 			$st="SELECT * FROM tb_cadastros WHERE id = $id";//retorna os cadastros por id
+			//insere os dados num array
+			$qr=$conn->query($st);
+			while($row=$qr->fetch_assoc()){
+				$arr[]=$row;
+			}
 		//se for um get login ex: http://localhost/saeApi.php?login=lucas
 		}elseif(isset($_GET["login"])){
 			$login = $_GET["login"];
 			$st = "SELECT * FROM tb_cadastros WHERE login = '$login'";//retorna os cadastros por login
+			//insere os dados num array
+			$qr=$conn->query($st);
+			while($row=$qr->fetch_assoc()){
+				$arr[]=$row;
+			}
 		//se for um get paciente sem especificar o nome, ex: http://localhost/saeApi.php?pacientes
 		}elseif(isset($_GET["pacientes"])){
 			if($_GET["pacientes"]==""){
 				$st = "SELECT * FROM tb_pacientes";//retorna todos os pacientes		
+				
 			}else{ //se for especificado o nome, ex: http://localhost/saeApi.php?pacientes=joao
 				$pacientes = $_GET["pacientes"];
 				$st = "SELECT * FROM tb_pacientes WHERE nome = '$pacientes'";//retorna os pacientes por nome
+			}
+			//insere os dados num array
+			$qr=$conn->query($st);
+			while($row=$qr->fetch_assoc()){
+				$arr[]=$row;
 			}
 		}elseif(isset($_GET["caracteristicas"])){
 			if($_GET["caracteristicas"]==""){
@@ -33,14 +49,46 @@ switch($_SERVER['REQUEST_METHOD']){
 				$id = $_GET["caracteristicas"];
 				$st = "SELECT * FROM caracteristicas_definidoras WHERE id = '$id'";//retorna a caracteristica pela id
 			}
+			//insere os dados num array
+			$qr=$conn->query($st);
+			while($row=$qr->fetch_assoc()){
+				$arr[]=$row;
+			}
+		}elseif(isset($_GET["diagnosticos"])){
+			if($_GET["diagnosticos"]==""){
+				$st = "SELECT * FROM caracteristicas_definidoras";//retorna todas as caracteristicas	
+			}else{ //se for especificado as caracteristica, ex: http://localhost/saeApi.php?diagnosticos=1;3
+				$auxiliar=array();//vetor auxiliar que armazena as relacoes entre caracteristicas e diagnosticos
+				$ids = $_GET["diagnosticos"]; //pega todas as ids das caracteristicas que foram selecionadas
+				$idsSeparados = array(); //vetor que armazena as ids separadas uma por cada elemento
+				$idsSeparados = explode(";", $ids); //separa ids
+				
+				for($i = 0; $i < count($idsSeparados);$i++){//percorre todas ids armazenando todas as relacoes no vetor auxiliar
+					$st = "SELECT diagnostico FROM tb_relacao WHERE caracteristica = '$idsSeparados[$i]'";//retorna a caracteristica pela id
+					$qr=$conn->query($st);
+					while($row=$qr->fetch_assoc()){
+						$auxiliar[]=$row;
+					}
+				}
+				$idUtilizadas = array();//vetor criar para saber se o diagnostico ja esta na lista que será enviada ao software
+				for($i = 0; $i < count($auxiliar);$i++){
+					if(!in_array($auxiliar[$i]['diagnostico'],$idUtilizadas)){
+						$idUtilizadas[] = $auxiliar[$i]['diagnostico'];
+						$j = $auxiliar[$i]['diagnostico'];
+						$st = "SELECT * FROM tb_definicoes WHERE id = '$j'";//retorna a caracteristica pela id
+						$qr=$conn->query($st);
+						while($row=$qr->fetch_assoc()){
+							$arr[]=$row;
+						}
+					}
+				}
+					
+				
+			}
 		}else{
 			header('HTTP/1.1 401 Unauthorized', true, 401);//se nao for nada, retorna acesso negado
 		}
-		//insere os dados num array
-		$qr=$conn->query($st);
-		while($row=$qr->fetch_assoc()){
-			$arr[]=$row;
-		}
+		
 		//retorna o array json
 		echo json_encode($arr);
 

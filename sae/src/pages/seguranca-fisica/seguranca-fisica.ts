@@ -1,6 +1,5 @@
 import {NavController, NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
-import {AspectosCutaneoMucosa} from '../aspectos-cutaneo-mucosa/aspectos-cutaneo-mucosa';
 import {Observacoes} from '../observacoes/observacoes';
 import {CadastroPaciente}from '../../model/cadastroPaciente';
 
