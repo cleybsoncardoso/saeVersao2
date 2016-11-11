@@ -1,4 +1,4 @@
-import { NavController } from 'ionic-angular';
+import { NavController , AlertController, LoadingController} from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Http } from "@angular/http";
 
@@ -17,7 +17,7 @@ export class AlterarSenhaPage {
   private senhaAntiga:string;
   private enfermeira: Enfermeira = new Enfermeira();
 
-  constructor(private nav: NavController, private http : Http, private eService : EnfermeiroService) {
+  constructor(private nav: NavController, private http : Http, private eService : EnfermeiroService, private alert :AlertController, private loading : LoadingController) {
     this.nav = nav;
     this.senha1 = "";
     this.senha2 = "";
@@ -37,9 +37,19 @@ export class AlterarSenhaPage {
   conferir(){
 
     if(this.senha1!=this.senha2){
-
+      let alert = this.alert.create({
+          title: 'Erro ao trocar senha',
+          subTitle: 'Senhas estão diferentes !',
+          buttons: ['OK']
+      });
+      alert.present();
     }else if(this.senha1==""||this.senha2==""||this.senhaAntiga==""){
-
+      let alert = this.alert.create({
+          title: 'Erro ao troca senha',
+          subTitle: 'Está faltando dados !',
+          buttons: ['OK']
+      });
+      alert.present();
     }else if(this.senha1==this.senha2){
       let link = "http://localhost/saeApi.php";
       let type = "senha";
@@ -50,7 +60,20 @@ export class AlterarSenhaPage {
 
       this.http.post(link, data)
           .subscribe(data=>{
-          },error => {});
+              let loader = this.loading.create({
+                  content: "Checking ! Please wait...",
+                  duration: 500
+
+              });
+              loader.present();
+          },error => {
+              let alert = this.alert.create({
+                  title: 'Erro senha',
+                  subTitle: 'Senha incorreta !',
+                  buttons: ['OK']
+              });
+              alert.present();
+          });
       this.redirecionar();
     }
   }

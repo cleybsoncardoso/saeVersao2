@@ -132,9 +132,9 @@ switch($_SERVER['REQUEST_METHOD']){
 					$senhaAntiga = $request->senhaAntiga;
 					$senhanova = $request->senhanova;
 					if ($senhaAntiga != "" && $senhanova != "") {
-						$st = "SELECT * FROM tb_cadastros WHERE id = '$id'";//retorna a caracteristica pela id
+						$st = "SELECT * FROM tb_cadastros WHERE id = '$id'";//retorna o usuario que quer trocar de senha
 						$qr=$conn->query($st);
-						$senhaTeste = $qr->fetch_assoc();
+						$senhaTeste = $qr->fetch_assoc();  //recebe o valor do usuario
 						if($senhaTeste['senha']==$senhaAntiga){
 							$st = "UPDATE tb_cadastros SET senha = '$senhanova' WHERE id ='$id'";
 							$buscaSenha = $conn->query($st);
