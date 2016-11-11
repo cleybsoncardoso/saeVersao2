@@ -44,7 +44,7 @@ switch($_SERVER['REQUEST_METHOD']){
 			}
 		}elseif(isset($_GET["caracteristicas"])){
 			if($_GET["caracteristicas"]==""){
-				$st = "SELECT * FROM caracteristicas_definidoras";//retorna todas as caracteristicas	
+				$st = "SELECT * FROM caracteristicas_definidoras order by titulo asc";//retorna todas as caracteristicas	
 			}else{ //se for especificado o nome, ex: http://localhost/saeApi.php?pacientes=joao
 				$id = $_GET["caracteristicas"];
 				$st = "SELECT * FROM caracteristicas_definidoras WHERE id = '$id'";//retorna a caracteristica pela id
@@ -74,6 +74,7 @@ switch($_SERVER['REQUEST_METHOD']){
 				for($i = 0; $i < count($auxiliar);$i++){
 					if(!in_array($auxiliar[$i]['diagnostico'],$idUtilizadas)){
 						$idUtilizadas[] = $auxiliar[$i]['diagnostico'];
+					}else{
 						$j = $auxiliar[$i]['diagnostico'];
 						$st = "SELECT * FROM tb_definicoes WHERE id = '$j'";//retorna a caracteristica pela id
 						$qr=$conn->query($st);
@@ -123,7 +124,27 @@ switch($_SERVER['REQUEST_METHOD']){
 					}else {
 						header('HTTP/1.1 401 Unauthorized', true, 401);
 					}
-					break;
+				break;
+				
+				case 'senha':
+					
+					$id = $request->id;
+					$senhaAntiga = $request->senhaAntiga;
+					$senhanova = $request->senhanova;
+					if ($senhaAntiga != "" && $senhanova != "") {
+						$st = "SELECT * FROM tb_cadastros WHERE id = '$id'";//retorna a caracteristica pela id
+						$qr=$conn->query($st);
+						$senhaTeste = $qr->fetch_assoc();
+						if($senhaTeste['senha']==$senhaAntiga){
+							$st = "UPDATE tb_cadastros SET senha = '$senhanova' WHERE id ='$id'";
+							$buscaSenha = $conn->query($st);
+						}else{
+							header('HTTP/1.1 401 Unauthorized', true, 401);
+						}
+					}else {
+						header('HTTP/1.1 401 Unauthorized', true, 401);
+					}
+				break;
 				
 				default:
 					$username = $request->username;
@@ -146,7 +167,7 @@ switch($_SERVER['REQUEST_METHOD']){
 					}else {
 						header('HTTP/1.1 401 Unauthorized', true, 401);
 					}
-					break;					
+				break;					
 			}					
 		}else {
 			echo "Not called properly with username parameter!";
