@@ -56,32 +56,10 @@ export class HomePage {
             });
             alert.present();
         });
-
-        /*
-        let enfermeira = new Enfermeira();
-        enfermeira.id = 1;
-        enfermeira.nome = 'Mariana';
-        this.eService.setEnfermeira(enfermeira).then(
-          res=>{
-              this.eService.getEnfermeira().then(user=>{
-              console.log("enfermeira obtida no home:");
-              console.log(user.id);
-              console.log(user.nome);
-              this.nav.setRoot(PacientesPage);
-            });
-        });
-        */
-
   }
-
 
   esqueci(){
     this.nav.setRoot(EsqueciSenhaPage);
   }
 
-  /*
-    pushPage(){
-      this._navController.push(SomeImportedPage, { userId: "12345"});
-    }
-  */
   }
