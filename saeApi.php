@@ -149,6 +149,27 @@ switch($_SERVER['REQUEST_METHOD']){
 					}
 				break;
 				
+				case 'alta':
+					
+					$id = $request->id;
+					$senha = $request->senha;
+					$pacienteNome = $request->pacienteNome;
+					
+					if ($senha != "" && $pacienteNome != "") {
+						$st = "SELECT * FROM tb_cadastros WHERE id = '$id'";//retorna o usuario que quer trocar de senha
+						$qr=$conn->query($st);
+						$senhaBd = $qr->fetch_assoc();  //recebe o valor do usuario
+						if($senhaBd['senha']==$senha){
+							$st = "DELETE FROM tb_pacientes WHERE nome = '$pacienteNome'";
+							$buscaSenha = $conn->query($st);
+						}else{
+							header('HTTP/1.1 401 Unauthorized', true, 401);
+						}	
+					}else {
+						header('HTTP/1.1 401 Unauthorized', true, 401);
+					}
+				break;
+				
 				default:
 					$username = $request->username;
 					$password = $request->password;
