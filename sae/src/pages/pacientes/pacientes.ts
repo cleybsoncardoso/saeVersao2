@@ -1,5 +1,6 @@
-import {NavController, MenuController, ActionSheetController,Platform } from 'ionic-angular';
+import {NavController, MenuController, ActionSheetController,Platform,AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
+import {Http} from "@angular/http";
 import {IdentificacaoPage} from '../identificacao/identificacao';
 import 'rxjs/add/operator/map';
 import {CadastroPaciente} from '../../model/cadastroPaciente';
@@ -25,6 +26,8 @@ export class PacientesPage {
       private nav: NavController,
       private menu: MenuController,
       private pService: PacienteService,
+      private http : Http,
+      private alert :AlertController,
       public actionsheetCtrl: ActionSheetController,
       private eService: EnfermeiroService
     ) {
@@ -91,52 +94,109 @@ export class PacientesPage {
 
   }
 
-  openPaciente(paciente){
-    let actionSheet = this.actionsheetCtrl.create({
-      title: paciente.nome,
-      cssClass: 'action-sheets-basic-page',
-      buttons: [
+    openPaciente(paciente){
+      let actionSheet = this.actionsheetCtrl.create({
+        title: paciente.nome,
+        cssClass: 'action-sheets-basic-page',
+        buttons: [
 
-        {
-          text: 'Histórico',
-          icon: !this.platform.is('ios') ? 'book' : null,
-          handler: () => {
-            console.log('Play clicked');
+          {
+            text: 'Histórico',
+            icon: !this.platform.is('ios') ? 'book' : null,
+            handler: () => {
+              console.log('Play clicked');
+            }
+          },
+          {
+            text: 'Plano de cuidados',
+            icon: !this.platform.is('ios') ? 'checkbox' : null,
+            handler: () => {
+              console.log('Favorite clicked');
+            }
+          },
+          {
+            text: 'Gerar SAE',
+            icon: !this.platform.is('ios') ? 'done-all' : null,
+            handler: () => {
+              this.nav.push(GerarSaePage,{paciente: paciente});
+            }
+          },
+          {
+            text: 'Dar alta a paciente',
+            role: 'destructive',
+            icon: !this.platform.is('ios') ? 'trash' : null,
+            handler: () => {
+              this.alta(paciente.nome);
+            }
+          },
+          {
+            text: 'Cancel',
+            role: 'cancel', // will always sort to be on the bottom
+            icon: !this.platform.is('ios') ? 'close' : null,
+            handler: () => {
+              console.log('Cancel clicked');
+            }
           }
-        },
+        ]
+      });
+      actionSheet.present();
+    }
+
+    alta(paciente){
+      let alert = this.alert.create({
+      title: 'Confirmar alta de paciente' ,
+      inputs: [
         {
-          text: 'Plano de cuidados',
-          icon: !this.platform.is('ios') ? 'checkbox' : null,
-          handler: () => {
-            console.log('Favorite clicked');
-          }
-        },
+          name: 'password',
+          placeholder: 'Sua senha',
+          type: 'password'
+        }
+      ],
+      buttons: [
         {
-          text: 'Gerar SAE',
-          icon: !this.platform.is('ios') ? 'done-all' : null,
-          handler: () => {
-            this.nav.push(GerarSaePage,{paciente: paciente});
+          text: 'Confirmar Alta',
+          handler: data => {
+            this.confirmarDados(paciente, data.password);
           }
-        },
-        {
-          text: 'Delete',
-          role: 'destructive',
-          icon: !this.platform.is('ios') ? 'trash' : null,
-          handler: () => {
-            console.log('Delete clicked');
-          }
+
         },
         {
           text: 'Cancel',
-          role: 'cancel', // will always sort to be on the bottom
-          icon: !this.platform.is('ios') ? 'close' : null,
-          handler: () => {
-            console.log('Cancel clicked');
+          role: 'cancel',
+          handler: data => {
           }
         }
       ]
     });
-    actionSheet.present();
-  }
+    alert.present();
+
+    }
+
+    confirmarDados(pacienteNome, senha){
+      console.log(senha);
+      console.log(pacienteNome);
+      let id = this.enfermeira.id;
+      let type = "alta";
+      let data = JSON.stringify({type, id, senha,pacienteNome});
+      let link = "http://localhost/saeApi.php";
+
+      this.http.post(link, data)
+          .subscribe(data=>{
+            let alert = this.alert.create({
+                title: 'sucesso',
+                subTitle: 'Paciente foi liberado do sistema com sucesso !',
+                buttons: ['OK']
+            });
+            alert.present();
+
+          },error => {
+              let alert = this.alert.create({
+                  title: 'Erro',
+                  subTitle: 'Erro em operaçao !',
+                  buttons: ['OK']
+              });
+              alert.present();
+          });
+    }
 
   }
