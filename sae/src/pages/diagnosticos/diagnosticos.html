@@ -20,12 +20,18 @@
   <ion-card class="mycard">
     <ion-card-header class="cardtitulo"> Diagnosticos </ion-card-header>
   </ion-card>
-  <ion-list>
-    <div *ngFor="let item of diagnosticos" (click)="itemSelected(item)">
-      <div class="margemLimitada" id = '{{item.titulo}}'>
-          {{item.titulo}}
+    <div *ngFor="let item of diagnosticos" >
+      <div class="margemLimitada" class="tituloDiagnostico">
+          {{item.diagnostico.titulo}}
       </div>
+      <ion-list>
+        <div *ngFor="let itervencoes of item.intervencao" (click)="itemSelected(itervencoes)">
+          <div class="margemLimitada" [style.background-color]="selecionado(itervencoes.id)?'#98FB98':'#ffffff'">
+              {{itervencoes.intervencao}}
+          </div>
+        </div>
+      </ion-list>
     </div>
-  </ion-list>
+
 
 </ion-content>

@@ -21,7 +21,7 @@ export class DiagnosticosPage {
   private listaCaracteristicas : any;
   private caracteristicasSelecionada:number[];
   private diagnosticos:any;
-  private diagnosticosSelecionados:any;
+  private intervencaoSelecioanda:any;
 
   constructor(
     private params : NavParams,
@@ -35,7 +35,7 @@ export class DiagnosticosPage {
       this.caracteristicasSelecionada = params.get('caracteristicas');
       this.calcularDiagnosticos();
       this.diagnosticos = [];
-      this.diagnosticosSelecionados=[];
+      this.intervencaoSelecioanda=[];
   }
 
   cancel(){
@@ -72,22 +72,34 @@ export class DiagnosticosPage {
     console.log('Hello DiagnosticosPage Page');
   }
 
-  itemSelected(diagnosticoaClicado){
-    let index = this.diagnosticosSelecionados.indexOf(diagnosticoaClicado.id);
+  itemSelected(intervencaoSelecioanda){
+    console.log(intervencaoSelecioanda);
+    console.log(intervencaoSelecioanda.intervencao);
+    let index = this.intervencaoSelecioanda.indexOf(intervencaoSelecioanda.id);
     if(index==-1){
-      document.getElementById(diagnosticoaClicado.titulo).style.backgroundColor = '#98FB98';
-      this.diagnosticosSelecionados.push(diagnosticoaClicado.id);
+    //  document.getElementById(intervencaoSelecioanda.intervencao).style.backgroundColor = '#98FB98';
+      this.intervencaoSelecioanda.push(intervencaoSelecioanda.id);
     }else{
-      document.getElementById(diagnosticoaClicado.titulo).style.backgroundColor = '#ffffff';
-      this.diagnosticosSelecionados.splice(index,1);
+    //  document.getElementById(intervencaoSelecioanda.intervencao).style.backgroundColor = '#ffffff';
+      this.intervencaoSelecioanda.splice(index,1);
     }
-    console.log(this.diagnosticosSelecionados);
+    console.log(this.intervencaoSelecioanda);
+  }
+
+  selecionado(intervencaoSelecioanda){
+    console.log("chegou " + intervencaoSelecioanda);
+    let index = this.intervencaoSelecioanda.indexOf(intervencaoSelecioanda);
+    if(index==-1){
+      return false;
+    }else{
+      return true;
+    }
   }
 
   enviarDiagnosticos(){
     let diagnosticoEscolhido = [];
-    for(let  i = 0 ; i<this.diagnosticosSelecionados.length;i++){
-      diagnosticoEscolhido.push(this.diagnosticosSelecionados[i].id);
+    for(let  i = 0 ; i<this.intervencaoSelecioanda.length;i++){
+      diagnosticoEscolhido.push(this.intervencaoSelecioanda[i].id);
     }
     console.log(diagnosticoEscolhido);
     let nomePaciente = this.paciente.nome;
