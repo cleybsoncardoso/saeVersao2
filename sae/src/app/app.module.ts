@@ -22,6 +22,7 @@ import { Observacoes } from '../pages/observacoes/observacoes';
 import { Save } from '../pages/save/save';
 import { GerarSaePage } from '../pages/gerar-sae/gerar-sae';
 import { DiagnosticosPage } from '../pages/diagnosticos/diagnosticos';
+import { AprazamentoPage } from '../pages/aprazamento/aprazamento';
 
 
 
@@ -45,7 +46,8 @@ import { DiagnosticosPage } from '../pages/diagnosticos/diagnosticos';
     Observacoes,
     Save,
     GerarSaePage,
-    DiagnosticosPage
+    DiagnosticosPage,
+    AprazamentoPage
 
   ],
   imports: [
@@ -70,7 +72,8 @@ import { DiagnosticosPage } from '../pages/diagnosticos/diagnosticos';
     Observacoes,
     Save,
     GerarSaePage,
-    DiagnosticosPage
+    DiagnosticosPage,
+    AprazamentoPage
 
   ],
   providers: [

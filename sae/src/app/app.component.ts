@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { PacientesPage } from '../pages/pacientes/pacientes';
 import { AlterarSenhaPage } from '../pages/alterar-senha/alterar-senha';
+import {AprazamentoPage}from '../pages/aprazamento/aprazamento';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ export class MyApp {
   private alterarsenha:any = AlterarSenhaPage;
   private home:any = HomePage;
   private pacientes:any = PacientesPage;
-  rootPage: any = HomePage;
+  rootPage: any = AprazamentoPage;
 
   constructor(public platform: Platform, public menu: MenuController) {
     this.initializeApp();

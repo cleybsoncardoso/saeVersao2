@@ -1,0 +1,96 @@
+<!--
+  Generated template for the Aprazamento page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+   <ion-title>
+     Aprazamento
+   </ion-title>
+   <ion-buttons start>
+     <button ion-button (click)="cancel()">Cancelar SAE</button>
+   </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+
+<div>
+  titulo da intervenção
+
+    <p>
+      tempo
+    </p>
+    <form >
+        <ion-segment  color="secondary" >
+          <ion-segment-button value="dias">
+            <button ion-button color="light" block>Escolher Dia</button>
+          </ion-segment-button>
+          <ion-segment-button value="diariamente">
+            <button ion-button color="light" block>DIARIAMENTE</button>
+          </ion-segment-button>
+          <ion-segment-button value="agora">
+            <button ion-button color="light" block>AGORA</button>
+          </ion-segment-button>
+        </ion-segment>
+    </form>
+
+    <form (click)="itemSelected('r','dia')">
+        <ion-segment  color="secondary" >
+          <ion-segment-button >
+            D
+          </ion-segment-button>
+          <ion-segment-button >
+            S
+          </ion-segment-button>
+          <ion-segment-button >
+            T
+          </ion-segment-button>
+          <ion-segment-button >
+            Q
+          </ion-segment-button>
+          <ion-segment-button >
+            Q
+          </ion-segment-button>
+          <ion-segment-button >
+            S
+          </ion-segment-button>
+          <ion-segment-button >
+            S
+          </ion-segment-button>
+        </ion-segment>
+    </form>
+
+    <form>
+      <ion-item>
+    <ion-label fixed>Inicio</ion-label>
+    <ion-input type="time" value=""></ion-input>
+  </ion-item>
+  <ion-item>
+<ion-label fixed>intervalo</ion-label>
+<ion-input type="number" value=""></ion-input>
+<ion-select>
+      <ion-option value="nes">min</ion-option>
+      <ion-option value="n64">Hrs</ion-option>
+    </ion-select>
+</ion-item>
+<ion-item>
+<ion-label fixed>Fim</ion-label>
+<ion-input type="time" value=""></ion-input>
+</ion-item>
+<ion-item>
+<ion-label fixed>Inicio</ion-label>
+<ion-input type="date" value=""></ion-input>
+</ion-item>
+<ion-item>
+<ion-label fixed>Fim</ion-label>
+<ion-input type="date" value=""></ion-input>
+</ion-item>
+    </form>
+</div>
+
+</ion-content>

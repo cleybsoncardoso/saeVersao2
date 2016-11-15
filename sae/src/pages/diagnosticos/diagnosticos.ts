@@ -4,6 +4,8 @@ import {CadastroPaciente}from '../../model/cadastroPaciente';
 import 'rxjs/add/operator/map';
 import {Http} from "@angular/http";
 import {PacienteService} from "../../providers/paciente-service/paciente-service";
+import {AprazamentoPage}from '../aprazamento/aprazamento';
+
 
 /*
   Generated class for the Diagnosticos page.
@@ -30,6 +32,7 @@ export class DiagnosticosPage {
     private service : PacienteService,
     private alert :AlertController,
     private loading : LoadingController
+
   ) {
       this.paciente = params.get('paciente');
       this.caracteristicasSelecionada = params.get('caracteristicas');
@@ -87,7 +90,6 @@ export class DiagnosticosPage {
   }
 
   selecionado(intervencaoSelecioanda){
-    console.log("chegou " + intervencaoSelecioanda);
     let index = this.intervencaoSelecioanda.indexOf(intervencaoSelecioanda);
     if(index==-1){
       return false;
@@ -97,39 +99,31 @@ export class DiagnosticosPage {
   }
 
   enviarDiagnosticos(){
-    let diagnosticoEscolhido = [];
-    for(let  i = 0 ; i<this.intervencaoSelecioanda.length;i++){
-      diagnosticoEscolhido.push(this.intervencaoSelecioanda[i].id);
-    }
-    console.log(diagnosticoEscolhido);
-    let nomePaciente = this.paciente.nome;
-    let type = "diagnostico";
-    let data = JSON.stringify({type, nomePaciente, diagnosticoEscolhido});
-    let link = "http://localhost/saeApi.php";
 
-    this.http.post(link, data)
-        .subscribe(data=>{
-            let loader = this.loading.create({
-                content: "Checking ! Please wait...",
-                duration: 1000
+    let confirm = this.alert.create({
+          title: 'Cadastrar intervenção',
+          message: 'Deseja cadstrar as intervenções?',
+          buttons: [
+            {
+              text: 'Confirmar',
+              handler: () => {
+                this.enviarServidor();
+                this.nav.push(AprazamentoPage);
+              }
+            },
+            {
+              text: 'Cancelar',
+              handler: () => {
 
-            });
-            loader.present();
-            let alert = this.alert.create({
-                title: 'Sucesso',
-                subTitle: 'Diagnosticos cadastrado no paciente !',
-                buttons: ['OK']
-            });
-            alert.present();
-
-        },error => {
-            let alert = this.alert.create({
-                title: 'Warning',
-                subTitle: 'Wrong Username or Password! Please Try Again !',
-                buttons: ['OK']
-            });
-            alert.present();
+              }
+            }
+          ]
         });
+        confirm.present();
+  }
+
+  enviarServidor(){
+
   }
 
 }
