@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {AprazamentoDados} from '../../model/aprazamento';
-
 
 /*
   Generated class for the Aprazamento page.
@@ -15,30 +13,56 @@ import {AprazamentoDados} from '../../model/aprazamento';
 })
 export class AprazamentoPage {
 
-private aprazamentos: AprazamentoDados[];
+private aprazamentos: string[];
+private dias:any[];
+private momento:any[]
 
   constructor(public nav: NavController) {
     this.aprazamentos = [];
-
-
+    this.aprazamentos.push('teste');
+    this.dias = [];
+    this.dias.push([]);
+    this.momento = [];
 
 
   }
 
-  ionViewDidLoad() {
-    console.log('Hello AprazamentoPage Page');
-  }
 
   cancel(){
     this.nav.popToRoot();
   }
 
-  itemSelected(intervencaoSelecioanda,dia){
+  eventItemSelected(intervencaoSelecioanda,dia){
 
-    let index = -1;
-    this.aprazamentos[0] =new AprazamentoDados();
-    this.aprazamentos[0].id=2;
-    console.log(this.aprazamentos[0].id);
+    let index = this.aprazamentos.indexOf(intervencaoSelecioanda);
+    let index2 = this.dias[index].indexOf(dia);
+    if(index2 == -1){
+      this.dias[index].push(dia);
+      this.itemSelected(intervencaoSelecioanda,dia,"add");
+    }else{
+      this.dias[index].splice(index2,1);
+      this.itemSelected(intervencaoSelecioanda,dia,"rem");
+    }
+
+  }
+
+  itemSelected(intervencaoSelecioanda,dia,operacao){
+
+    console.log(dia+intervencaoSelecioanda);
+    if(operacao=="add"){
+      document.getElementById(dia+intervencaoSelecioanda).style.backgroundColor = '#98FB98';
+      document.getElementById(dia+intervencaoSelecioanda).style.color = '#ffffff';
+    }else{
+      document.getElementById(dia+intervencaoSelecioanda).style.backgroundColor = '#ffffff';
+      document.getElementById(dia+intervencaoSelecioanda).style.color = '#98FB98';
+    }
+  }
+
+  tempo(intervencaoSelecioanda,periodo){
+    let index = this.aprazamentos.indexOf(intervencaoSelecioanda);
+    this.momento[index]=periodo;
+    console.log(this.momento);
+
   }
 
 

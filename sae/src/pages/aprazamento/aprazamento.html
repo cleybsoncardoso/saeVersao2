@@ -26,66 +26,77 @@
       tempo
     </p>
     <form >
-        <ion-segment  color="secondary" >
-          <ion-segment-button value="dias">
-            <button ion-button color="light" block>Escolher Dia</button>
+        <ion-segment  color="secondary" id="tesstevamo">
+          <ion-segment-button value="DIAS" (click)="tempo('teste','dias')">
+            ESCOLHER DIAS
+          </ion-segment-button >
+          <ion-segment-button value="DIARIAMENTE" (click)="tempo('teste','DIARIAMENTE')">
+            DIARIAMENTE
           </ion-segment-button>
-          <ion-segment-button value="diariamente">
-            <button ion-button color="light" block>DIARIAMENTE</button>
-          </ion-segment-button>
-          <ion-segment-button value="agora">
-            <button ion-button color="light" block>AGORA</button>
+          <ion-segment-button value="AGORA" (click)="tempo('teste','AGORA')" >
+            AGORA
           </ion-segment-button>
         </ion-segment>
     </form>
 
-    <form (click)="itemSelected('r','dia')">
+<br />
+
+    <form >
         <ion-segment  color="secondary" >
-          <ion-segment-button >
+          <ion-segment-button id="Domteste" (click)="eventItemSelected('teste', 'Dom')"  >
             D
           </ion-segment-button>
-          <ion-segment-button >
+          <ion-segment-button id="Segteste" (click)="eventItemSelected('teste', 'Seg')" >
             S
           </ion-segment-button>
-          <ion-segment-button >
+          <ion-segment-button id="Terteste" (click)="eventItemSelected('teste', 'Ter')" >
             T
           </ion-segment-button>
-          <ion-segment-button >
+          <ion-segment-button  id="Quateste" (click)="eventItemSelected('teste', 'Qua')" >
             Q
           </ion-segment-button>
-          <ion-segment-button >
+          <ion-segment-button id="Quiteste" (click)="eventItemSelected('teste', 'Qui')"  >
             Q
           </ion-segment-button>
-          <ion-segment-button >
+          <ion-segment-button id="Sexteste" (click)="eventItemSelected('teste', 'Sex')"  >
             S
           </ion-segment-button>
-          <ion-segment-button >
+          <ion-segment-button  id="Sabteste"  (click)="eventItemSelected('teste', 'Sab')">
             S
           </ion-segment-button>
         </ion-segment>
     </form>
 
+
+
     <form>
+      <ion-row baseline>
+      <ion-col width-20><div>
+        <ion-item>
+          <ion-label fixed>Inicio</ion-label>
+          <ion-input type="time" value=""></ion-input>
+          </ion-item>
+      </div></ion-col>
+
+      <ion-col width-30><div>
+        <ion-item>
+        <ion-label fixed>intervalo</ion-label>
+        <ion-input type="number" value=""></ion-input>
+        </ion-item>
+</div></ion-col>
+
+      <ion-col width-30><div>
+        <ion-item>
+        <ion-label fixed>Fim</ion-label>
+        <ion-input type="time" value=""></ion-input>
+      </ion-item>
+      </div></ion-col>
+    </ion-row>
+
       <ion-item>
-    <ion-label fixed>Inicio</ion-label>
-    <ion-input type="time" value=""></ion-input>
-  </ion-item>
-  <ion-item>
-<ion-label fixed>intervalo</ion-label>
-<ion-input type="number" value=""></ion-input>
-<ion-select>
-      <ion-option value="nes">min</ion-option>
-      <ion-option value="n64">Hrs</ion-option>
-    </ion-select>
-</ion-item>
-<ion-item>
-<ion-label fixed>Fim</ion-label>
-<ion-input type="time" value=""></ion-input>
-</ion-item>
-<ion-item>
-<ion-label fixed>Inicio</ion-label>
-<ion-input type="date" value=""></ion-input>
-</ion-item>
+      <ion-label fixed>Inicio</ion-label>
+      <ion-input type="date" value=""></ion-input>
+      </ion-item>
 <ion-item>
 <ion-label fixed>Fim</ion-label>
 <ion-input type="date" value=""></ion-input>

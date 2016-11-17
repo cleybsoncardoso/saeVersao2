@@ -76,17 +76,13 @@ export class DiagnosticosPage {
   }
 
   itemSelected(intervencaoSelecioanda){
-    console.log(intervencaoSelecioanda);
-    console.log(intervencaoSelecioanda.intervencao);
+
     let index = this.intervencaoSelecioanda.indexOf(intervencaoSelecioanda.id);
     if(index==-1){
-    //  document.getElementById(intervencaoSelecioanda.intervencao).style.backgroundColor = '#98FB98';
       this.intervencaoSelecioanda.push(intervencaoSelecioanda.id);
     }else{
-    //  document.getElementById(intervencaoSelecioanda.intervencao).style.backgroundColor = '#ffffff';
       this.intervencaoSelecioanda.splice(index,1);
     }
-    console.log(this.intervencaoSelecioanda);
   }
 
   selecionado(intervencaoSelecioanda){
