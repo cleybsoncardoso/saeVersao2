@@ -6,12 +6,12 @@
 -->
 <ion-header>
   <ion-toolbar>
-   <ion-title>
-     Aprazamento
-   </ion-title>
-   <ion-buttons start>
-     <button ion-button (click)="cancel()">Cancelar SAE</button>
-   </ion-buttons>
+    <ion-title>
+      Aprazamento
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancelar SAE</button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -19,89 +19,84 @@
 
 <ion-content padding>
 
-<div>
-  titulo da intervenção
+  <div>
+    titulo da intervenção
 
     <p>
       tempo
     </p>
-    <form >
-        <ion-segment  color="secondary" id="tesstevamo">
-          <ion-segment-button value="DIAS" (click)="tempo('teste','dias')">
-            ESCOLHER DIAS
-          </ion-segment-button >
-          <ion-segment-button value="DIARIAMENTE" (click)="tempo('teste','DIARIAMENTE')">
-            DIARIAMENTE
-          </ion-segment-button>
-          <ion-segment-button value="AGORA" (click)="tempo('teste','AGORA')" >
-            AGORA
-          </ion-segment-button>
-        </ion-segment>
+    <form>
+      <ion-segment color="secondary" id="tesstevamo">
+        <ion-segment-button value="DIAS" (click)="tempo('teste','dias')">
+          ESCOLHER DIAS
+        </ion-segment-button>
+        <ion-segment-button value="DIARIAMENTE" (click)="tempo('teste','DIARIAMENTE')">
+          DIARIAMENTE
+        </ion-segment-button>
+        <ion-segment-button value="AGORA" (click)="tempo('teste','AGORA')">
+          AGORA
+        </ion-segment-button>
+      </ion-segment>
     </form>
 
-<br />
+    <br />
 
-    <form >
-        <ion-segment  color="secondary" >
-          <ion-segment-button id="Domteste" (click)="eventItemSelected('teste', 'Dom')"  >
-            D
-          </ion-segment-button>
-          <ion-segment-button id="Segteste" (click)="eventItemSelected('teste', 'Seg')" >
-            S
-          </ion-segment-button>
-          <ion-segment-button id="Terteste" (click)="eventItemSelected('teste', 'Ter')" >
-            T
-          </ion-segment-button>
-          <ion-segment-button  id="Quateste" (click)="eventItemSelected('teste', 'Qua')" >
-            Q
-          </ion-segment-button>
-          <ion-segment-button id="Quiteste" (click)="eventItemSelected('teste', 'Qui')"  >
-            Q
-          </ion-segment-button>
-          <ion-segment-button id="Sexteste" (click)="eventItemSelected('teste', 'Sex')"  >
-            S
-          </ion-segment-button>
-          <ion-segment-button  id="Sabteste"  (click)="eventItemSelected('teste', 'Sab')">
-            S
-          </ion-segment-button>
-        </ion-segment>
+    <form>
+      <ion-segment color="secondary">
+        <ion-segment-button id="Domteste" (click)="eventItemSelected('teste', 'Dom')">
+          D
+        </ion-segment-button>
+        <ion-segment-button id="Segteste" (click)="eventItemSelected('teste', 'Seg')">
+          S
+        </ion-segment-button>
+        <ion-segment-button id="Terteste" (click)="eventItemSelected('teste', 'Ter')">
+          T
+        </ion-segment-button>
+        <ion-segment-button id="Quateste" (click)="eventItemSelected('teste', 'Qua')">
+          Q
+        </ion-segment-button>
+        <ion-segment-button id="Quiteste" (click)="eventItemSelected('teste', 'Qui')">
+          Q
+        </ion-segment-button>
+        <ion-segment-button id="Sexteste" (click)="eventItemSelected('teste', 'Sex')">
+          S
+        </ion-segment-button>
+        <ion-segment-button id="Sabteste" (click)="eventItemSelected('teste', 'Sab')">
+          S
+        </ion-segment-button>
+      </ion-segment>
     </form>
-
 
 
     <form>
-      <ion-row baseline>
-      <ion-col width-20><div>
-        <ion-item>
-          <ion-label fixed>Inicio</ion-label>
-          <ion-input type="time" value=""></ion-input>
-          </ion-item>
-      </div></ion-col>
 
-      <ion-col width-30><div>
-        <ion-item>
+      <ion-item width-30>
+        <ion-label fixed>Inicio</ion-label>
+        <ion-input type="time" value=""></ion-input>
+      </ion-item>
+
+      <ion-item>
         <ion-label fixed>intervalo</ion-label>
         <ion-input type="number" value=""></ion-input>
-        </ion-item>
-</div></ion-col>
+      </ion-item>
 
-      <ion-col width-30><div>
-        <ion-item>
+      <ion-item>
         <ion-label fixed>Fim</ion-label>
         <ion-input type="time" value=""></ion-input>
       </ion-item>
-      </div></ion-col>
-    </ion-row>
+
 
       <ion-item>
-      <ion-label fixed>Inicio</ion-label>
-      <ion-input type="date" value=""></ion-input>
+        <ion-label fixed>Inicio</ion-label>
+        <ion-input type="date" value=""></ion-input>
       </ion-item>
-<ion-item>
-<ion-label fixed>Fim</ion-label>
-<ion-input type="date" value=""></ion-input>
-</ion-item>
-    </form>
-</div>
 
+      <ion-item>
+        <ion-label fixed>Fim</ion-label>
+        <ion-input type="date" value=""></ion-input>
+      </ion-item>
+
+    </form>
+
+  </div>
 </ion-content>
