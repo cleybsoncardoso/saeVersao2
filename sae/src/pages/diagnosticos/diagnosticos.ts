@@ -23,7 +23,7 @@ export class DiagnosticosPage {
   private listaCaracteristicas : any;
   private caracteristicasSelecionada:number[];
   private diagnosticos:any;
-  private intervencaoSelecioanda:any;
+  private intervencaoSelecioandas:any;
 
   constructor(
     private params : NavParams,
@@ -38,7 +38,7 @@ export class DiagnosticosPage {
       this.caracteristicasSelecionada = params.get('caracteristicas');
       this.calcularDiagnosticos();
       this.diagnosticos = [];
-      this.intervencaoSelecioanda=[];
+      this.intervencaoSelecioandas=[];
   }
 
   cancel(){
@@ -64,7 +64,7 @@ export class DiagnosticosPage {
     this.service.carregarDiagnosticos(ids)
     .subscribe(data=>{
       this.diagnosticos = data;
-
+      console.log("teste" + data[0].intervencao[0].titulo);
     },error => {
       console.log(this.listaCaracteristicas);
       console.log("Não foi possível se conectar ao servidor");
@@ -76,17 +76,16 @@ export class DiagnosticosPage {
   }
 
   itemSelected(intervencaoSelecioanda){
-
-    let index = this.intervencaoSelecioanda.indexOf(intervencaoSelecioanda.id);
+    let index = this.intervencaoSelecioandas.indexOf(intervencaoSelecioanda);
     if(index==-1){
-      this.intervencaoSelecioanda.push(intervencaoSelecioanda.id);
+      this.intervencaoSelecioandas.push(intervencaoSelecioanda);
     }else{
-      this.intervencaoSelecioanda.splice(index,1);
+      this.intervencaoSelecioandas.splice(index,1);
     }
   }
 
   selecionado(intervencaoSelecioanda){
-    let index = this.intervencaoSelecioanda.indexOf(intervencaoSelecioanda);
+    let index = this.intervencaoSelecioandas.indexOf(intervencaoSelecioanda);
     if(index==-1){
       return false;
     }else{
@@ -104,7 +103,7 @@ export class DiagnosticosPage {
               text: 'Confirmar',
               handler: () => {
                 this.enviarServidor();
-                this.nav.push(AprazamentoPage);
+                this.nav.push(AprazamentoPage, {intervencoes: this.intervencaoSelecioandas, paciente: this.paciente});
               }
             },
             {

@@ -5,6 +5,7 @@ export class CadastroPaciente{
   public sexo: string;
   public estadoCivil: string;
   public religiao: string;
+  public profissao: string;
   public naturalidade: string;
   public procedencia: string;
   public leito: string;
@@ -194,6 +195,7 @@ export class CadastroPaciente{
     this.estadoCivil = "";
     this.religiao = "";
     this.naturalidade = "";
+    this.profissao = "";
     this.procedencia = "";
     this.leito = "";
     this.dataInternacao = "";

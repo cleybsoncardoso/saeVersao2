@@ -1,4 +1,4 @@
-import {NavController, MenuController, ActionSheetController,Platform,AlertController } from 'ionic-angular';
+import {NavController, ActionSheetController,Platform,AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import {Http} from "@angular/http";
 import {IdentificacaoPage} from '../identificacao/identificacao';
@@ -24,7 +24,6 @@ export class PacientesPage {
     constructor(
       public platform: Platform,
       private nav: NavController,
-      private menu: MenuController,
       private pService: PacienteService,
       private http : Http,
       private alert :AlertController,
@@ -32,8 +31,6 @@ export class PacientesPage {
       private eService: EnfermeiroService
     ) {
         this.nav = nav;
-        this.menu = menu;
-        this.menu.enable(true);
         this.searchQuery = '';
         this.carregarPacientes();
         this.getDadosEnfermeira();
@@ -71,7 +68,6 @@ export class PacientesPage {
   }
 
   novoPaciente(){
-    this.menu.enable(false);
     this.paciente = new CadastroPaciente();
     this.nav.push(IdentificacaoPage,{paciente: this.paciente} );
 
@@ -88,7 +84,7 @@ export class PacientesPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.listaPacientes = this.listaPacientes.filter((item) => {
-        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.Nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
 
@@ -96,7 +92,7 @@ export class PacientesPage {
 
     openPaciente(paciente){
       let actionSheet = this.actionsheetCtrl.create({
-        title: paciente.nome,
+        title: paciente.Nome,
         cssClass: 'action-sheets-basic-page',
         buttons: [
 
@@ -126,7 +122,7 @@ export class PacientesPage {
             role: 'destructive',
             icon: !this.platform.is('ios') ? 'trash' : null,
             handler: () => {
-              this.alta(paciente.nome);
+              this.alta(paciente.Nome);
             }
           },
           {

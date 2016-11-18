@@ -55,7 +55,7 @@ export class AlterarSenhaPage {
       let type = "senha";
       let senhaAntiga = this.senhaAntiga;
       let senhanova = this.senha2;
-      let id = 5;
+      let id = this.enfermeira.id;
       let data = JSON.stringify({type,id, senhaAntiga, senhanova});
 
       this.http.post(link, data)

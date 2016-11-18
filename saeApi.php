@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$conn = new mysqli("localhost", "root", "cley", "myTest");
+$conn = new mysqli("localhost", "root", "cley", "saedb");
 
 //Switch case que identifica qual método de acesso ao servidor GET, POST, PUT...
 switch($_SERVER['REQUEST_METHOD']){
@@ -22,7 +22,7 @@ switch($_SERVER['REQUEST_METHOD']){
 		//se for um get login ex: http://localhost/saeApi.php?login=lucas
 		}elseif(isset($_GET["login"])){
 			$login = $_GET["login"];
-			$st = "SELECT * FROM tb_cadastros WHERE login = '$login'";//retorna os cadastros por login
+			$st = "SELECT * FROM `auth_user` WHERE username = '$login'";//retorna os cadastros por login
 			//insere os dados num array
 			$qr=$conn->query($st);
 			while($row=$qr->fetch_assoc()){
@@ -31,7 +31,7 @@ switch($_SERVER['REQUEST_METHOD']){
 		//se for um get paciente sem especificar o nome, ex: http://localhost/saeApi.php?pacientes
 		}elseif(isset($_GET["pacientes"])){
 			if($_GET["pacientes"]==""){
-				$st = "SELECT * FROM tb_pacientes  order by nome asc";//retorna todos os pacientes		
+				$st = "SELECT * FROM `saeapp_paciente` order by nome asc";//retorna todos os pacientes		
 				
 			}else{ //se for especificado o nome, ex: http://localhost/saeApi.php?pacientes=joao
 				$pacientes = $_GET["pacientes"];
@@ -44,10 +44,10 @@ switch($_SERVER['REQUEST_METHOD']){
 			}
 		}elseif(isset($_GET["caracteristicas"])){
 			if($_GET["caracteristicas"]==""){
-				$st = "SELECT * FROM caracteristicas_definidoras order by titulo asc";//retorna todas as caracteristicas	
+				$st = "SELECT * FROM saeapp_caracteristica order by titulo asc";//retorna todas as caracteristicas	
 			}else{ //se for especificado o nome, ex: http://localhost/saeApi.php?pacientes=joao
 				$id = $_GET["caracteristicas"];
-				$st = "SELECT * FROM caracteristicas_definidoras WHERE id = '$id'";//retorna a caracteristica pela id
+				$st = "SELECT * FROM 'saeapp_caracteristica' WHERE id = '$id'";//retorna a caracteristica pela id
 			}
 			//insere os dados num array
 			$qr=$conn->query($st);
@@ -56,7 +56,7 @@ switch($_SERVER['REQUEST_METHOD']){
 			}
 		}elseif(isset($_GET["diagnosticos"])){
 			if($_GET["diagnosticos"]==""){
-				$st = "SELECT * FROM caracteristicas_definidoras";//retorna todas as caracteristicas	
+				$st = "SELECT * FROM saeapp_caracteristica";//retorna todas as caracteristicas	
 			}else{ //se for especificado as caracteristica, ex: http://localhost/saeApi.php?diagnosticos=1;3
 				$auxiliar=array();//vetor auxiliar que armazena as relacoes entre caracteristicas e diagnosticos
 				$ids = $_GET["diagnosticos"]; //pega todas as ids das caracteristicas que foram selecionadas
@@ -64,7 +64,7 @@ switch($_SERVER['REQUEST_METHOD']){
 				$idsSeparados = explode(";", $ids); //separa ids
 				
 				for($i = 0; $i < count($idsSeparados);$i++){//percorre todas ids armazenando todas as relacoes no vetor auxiliar
-					$st = "SELECT diagnostico FROM tb_relacao WHERE caracteristica = '$idsSeparados[$i]'";//retorna a caracteristica pela id
+					$st = "SELECT diagnostico_id FROM saeapp_diagnostico_caracteristicas WHERE caracteristica_id = '$idsSeparados[$i]'";//retorna a caracteristica pela id
 					$qr=$conn->query($st);
 					while($row=$qr->fetch_assoc()){
 						$auxiliar[]=$row;
@@ -73,20 +73,45 @@ switch($_SERVER['REQUEST_METHOD']){
 				$idUtilizadas = array();//vetor criar para saber se o diagnostico ja esta na lista que será enviada ao software
 				$idUtilizadas2 = array();
 				for($i = 0; $i < count($auxiliar);$i++){
-					if(!in_array($auxiliar[$i]['diagnostico'],$idUtilizadas)){
-						$idUtilizadas[] = $auxiliar[$i]['diagnostico'];
+					if(!in_array($auxiliar[$i]['diagnostico_id'],$idUtilizadas)){
+						$idUtilizadas[] = $auxiliar[$i]['diagnostico_id'];
 					}else{
-						if(!in_array($auxiliar[$i]['diagnostico'],$idUtilizadas2)){
-							$idUtilizadas2[] = $auxiliar[$i]['diagnostico'];
-							$j = $auxiliar[$i]['diagnostico'];
-							$st = "SELECT * FROM tb_definicoes WHERE id = '$j'";//retorna a caracteristica pela id
+						if(!in_array($auxiliar[$i]['diagnostico_id'],$idUtilizadas2)){
+							$idUtilizadas2[] = $auxiliar[$i]['diagnostico_id'];
+							$j = $auxiliar[$i]['diagnostico_id'];
+							$st = "SELECT * FROM saeapp_diagnostico WHERE id = '$j'";//retorna a caracteristica pela id
 							$qr=$conn->query($st);
 							while($row=$qr->fetch_assoc()){
-								$arr[]=$row;
+								$diagnosticosCertos[]=$row;
 							}
 						}
 					}
+				} 
+
+				for($i = 0; $i < count($diagnosticosCertos);$i++){
+					$elemento = array();
+					$idintervencoes = array();
+					$elemento['diagnostico'] = $diagnosticosCertos[$i];
+					$j = $diagnosticosCertos[$i]['id'];
+					$st = "SELECT * FROM saeapp_diagnostico_intervencoes WHERE diagnostico_id = '$j'";//retorna a caracteristica pela id
+					$qr=$conn->query($st);
+					while($row=$qr->fetch_assoc()){
+						$idintervencoes[] = $row;
+					}
+					
+					for($k = 0; $k < count($idintervencoes);$k++ ){
+						$l = $idintervencoes[$k]['intervencao_id'];
+						$st = "SELECT * FROM saeapp_intervencao WHERE id = '$l'";//retorna a caracteristica pela id
+						$qr=$conn->query($st);
+						while($row=$qr->fetch_assoc()){
+							$elemento['intervencao'][] = $row;
+						}
+					}
+					$arr[] = $elemento;
+					
 				}
+						
+				
 					
 				
 			}
@@ -119,9 +144,26 @@ switch($_SERVER['REQUEST_METHOD']){
 					
 				case 'cadastroPaciente':
 					$nome = $request->nome;
+					$idade = $request->idade;
+					$sexo = $request->sexo;
+					$estado_Civil = $request->estado_Civil;
+					$religiao = $request->religiao;
+					$profissao = $request->profissao;
+					$naturalidade = $request->naturalidade;
+					$procedencia = $request->procedencia;
+					$dataInternacao = $request->dataInternacao;
+					$registro = $request->registro;
+					$setorDeProcedencia = $request->setorDeProcedencia;
+					$diagnosticoMedico = $request->diagnosticoMedico;
+					$internacaoAnterior = $request->internacaoAnterior;
+					$alergias = $request->alergias;
+					$vacinas = $request->vacinas;
 					$leito = $request->leito;
-					if ($nome != "" && $leito != "") {
-						$sel = "INSERT INTO tb_pacientes (nome, leito) VALUES ('$nome', '$leito')";
+					date_default_timezone_set('America/Sao_Paulo');
+					$today = date('Y-m-d H:i:s');
+					if ($nome != "") {
+						$sel = "INSERT INTO `saeapp_paciente` ( Data, Nome, Idade, Sexo, Estado_Civil, Religiao, Profissao, Naturalidade, Procedencia, Data_de_internacao, Registro, Setor_de_Procedencia, Leito, Diagnostico_Medico, Internacao_Anterior, Alergias, Vacinas) 
+						VALUES ('$today','$nome', '$idade', '$sexo', '$estado_Civil', '$religiao', '$profissao', '$naturalidade', '$procedencia', '$dataInternacao', '$registro', '$setorDeProcedencia', '$leito', '$diagnosticoMedico', '$internacaoAnterior', '$alergias', '$vacinas')";
 				    		$result = $conn->query($sel);
 					    	$numrow = $result->num_rows;
 					}else {
@@ -135,11 +177,12 @@ switch($_SERVER['REQUEST_METHOD']){
 					$senhaAntiga = $request->senhaAntiga;
 					$senhanova = $request->senhanova;
 					if ($senhaAntiga != "" && $senhanova != "") {
-						$st = "SELECT * FROM tb_cadastros WHERE id = '$id'";//retorna o usuario que quer trocar de senha
+						$st = "SELECT * FROM `auth_user` WHERE id = '$id'";//retorna o usuario que quer trocar de senha
 						$qr=$conn->query($st);
-						$senhaTeste = $qr->fetch_assoc();  //recebe o valor do usuario
-						if($senhaTeste['senha']==$senhaAntiga){
-							$st = "UPDATE tb_cadastros SET senha = '$senhanova' WHERE id ='$id'";
+						$senhaTeste = $qr->fetch_assoc();  //recebe o valor do usuario,
+						$senha = $senhaTeste['password'];
+						if($senha==$senhaAntiga){
+							$st = "UPDATE `auth_user` SET password = '$senhanova' WHERE id ='$id'";
 							$buscaSenha = $conn->query($st);
 						}else{
 							header('HTTP/1.1 401 Unauthorized', true, 401);
@@ -174,12 +217,13 @@ switch($_SERVER['REQUEST_METHOD']){
 					$username = $request->username;
 					$password = $request->password;
 					if ($password != "" && $username != "") {
-						$sel = "SELECT id FROM tb_cadastros WHERE login='$username' AND senha='$password'";
+						$sel = "SELECT id FROM `auth_user` WHERE username='$username' AND password='$password'";
 				    	$result = $conn->query($sel);
 					    $numrow = $result->num_rows;
 					    if($numrow !== 1){
 					    	header('HTTP/1.1 401 Unauthorized', true, 401);
 						}else{
+							
 							//insere os dados num array
 							$qr=$conn->query($sel);
 							while($row=$qr->fetch_assoc()){

@@ -14,13 +14,20 @@ export class HomePage {
   private coren : string;
   private senha : string;
 
+
   constructor(
       private nav: NavController,
       private http : Http,
       private alert :AlertController,
       private loading : LoadingController,
       private eService : EnfermeiroService
-    ) {}
+    ) {
+
+
+
+
+
+    }
 
   entrar(){
 
@@ -42,7 +49,7 @@ export class HomePage {
             .subscribe(respostaID=>{
               let enfermeira = new Enfermeira();
               enfermeira.id = respostaID[0].id;
-              enfermeira.nome = respostaID[0].nome;
+              enfermeira.nome = respostaID[0].first_name;
               this.eService.setEnfermeira(enfermeira).then();
               this.nav.setRoot(PacientesPage);
             },error => {

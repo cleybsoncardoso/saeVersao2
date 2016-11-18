@@ -7,7 +7,7 @@
 <ion-header>
   <ion-toolbar>
    <ion-title>
-     Paciente: {{paciente.nome}}
+     Paciente: {{paciente.Nome}}
    </ion-title>
    <ion-buttons start>
      <button ion-button (click)="cancel()">Cancelar SAE</button>
@@ -26,8 +26,8 @@
       </div>
       <ion-list>
         <div *ngFor="let itervencoes of item.intervencao" (click)="itemSelected(itervencoes)">
-          <div class="margemLimitada" [style.background-color]="selecionado(itervencoes.id)?'#98FB98':'#ffffff'">
-              {{itervencoes.intervencao}}
+          <div class="margemLimitada" [style.background-color]="selecionado(itervencoes)?'#98FB98':'#ffffff'">
+              {{itervencoes.titulo}}
           </div>
         </div>
       </ion-list>

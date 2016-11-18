@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import {CadastroPaciente}from '../../model/cadastroPaciente';
+import {AprazamentoDados}from '../../model/aprazamento';
 
 /*
   Generated class for the Aprazamento page.
@@ -14,55 +16,26 @@ import { NavController } from 'ionic-angular';
 export class AprazamentoPage {
 
 private aprazamentos: string[];
+private paciente : CadastroPaciente;
+private listaIntervencoes : any;
 private dias:any[];
 private momento:any[]
+private aprazamento : AprazamentoDados;
 
-  constructor(public nav: NavController) {
+  constructor(private params : NavParams, public nav: NavController) {
     this.aprazamentos = [];
+    this.listaIntervencoes = params.get('intervencoes');
+    this.paciente = params.get('paciente');
     this.aprazamentos.push('teste');
-    this.dias = [];
-    this.dias.push([]);
     this.momento = [];
-
+    this.aprazamento = new AprazamentoDados();
 
   }
 
 
   cancel(){
+    console.log(this.aprazamento.intervalo);
     this.nav.popToRoot();
-  }
-
-  eventItemSelected(intervencaoSelecioanda,dia){
-
-    let index = this.aprazamentos.indexOf(intervencaoSelecioanda);
-    let index2 = this.dias[index].indexOf(dia);
-    if(index2 == -1){
-      this.dias[index].push(dia);
-      this.itemSelected(intervencaoSelecioanda,dia,"add");
-    }else{
-      this.dias[index].splice(index2,1);
-      this.itemSelected(intervencaoSelecioanda,dia,"rem");
-    }
-
-  }
-
-  itemSelected(intervencaoSelecioanda,dia,operacao){
-
-    console.log(dia+intervencaoSelecioanda);
-    if(operacao=="add"){
-      document.getElementById(dia+intervencaoSelecioanda).style.backgroundColor = '#98FB98';
-      document.getElementById(dia+intervencaoSelecioanda).style.color = '#ffffff';
-    }else{
-      document.getElementById(dia+intervencaoSelecioanda).style.backgroundColor = '#ffffff';
-      document.getElementById(dia+intervencaoSelecioanda).style.color = '#98FB98';
-    }
-  }
-
-  tempo(intervencaoSelecioanda,periodo){
-    let index = this.aprazamentos.indexOf(intervencaoSelecioanda);
-    this.momento[index]=periodo;
-    console.log(this.momento);
-
   }
 
 

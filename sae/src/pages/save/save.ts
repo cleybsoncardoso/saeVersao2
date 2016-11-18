@@ -39,8 +39,24 @@ export class Save {
   salvar(){
     let type = "cadastroPaciente";
     let nome = this.paciente.nome;
+    let idade = this.paciente.idade;
+    let sexo = this.paciente.sexo;
+    let estado_Civil = this.paciente.estadoCivil;
+    let religiao = this.paciente.religiao;
+    let profissao = this.paciente.profissao;
+    let naturalidade = this.paciente.naturalidade;
+    let procedencia = this.paciente.procedencia;
+    let dataInternacao = this.paciente.dataInternacao;
+    let registro = this.paciente.registro;
+    let setorDeProcedencia = this.paciente.setorDeProcedencia;
     let leito = this.paciente.leito;
-    let data = JSON.stringify({type, nome, leito});
+    let diagnosticoMedico = this.paciente.diagnosticoMedico;
+    let internacaoAnterior = this.paciente.internacaoAnterior;
+    let alergias = this.paciente.alergias.toString();
+    let vacinas = this.paciente.vacinas.toString();
+    let data = JSON.stringify({type, nome, idade, sexo, estado_Civil, religiao,
+      profissao, naturalidade, procedencia, dataInternacao, registro, setorDeProcedencia,
+      leito, diagnosticoMedico, internacaoAnterior, alergias, vacinas});
     let link = "http://localhost/saeApi.php";
     this.http.post(link, data)
         .subscribe(data=>{
@@ -55,6 +71,7 @@ export class Save {
                 buttons: ['OK']
             });
             alert.present();
+            this.nav.popToRoot();
         },error => {
             let alert = this.alert.create({
                 title: 'Warning',
@@ -63,38 +80,12 @@ export class Save {
             });
             alert.present();
         });
-    this.nav.popToRoot();
+
   }
 
   salvar2(){
-    let type = "cadastroPaciente";
-    let nome = this.paciente.nome;
-    let leito = this.paciente.leito;
-    let data = JSON.stringify({type, nome, leito});
-    let link = "http://localhost/saeApi.php";
-    this.http.post(link, data)
-        .subscribe(data=>{
-            let loader = this.loading.create({
-                content: "Checking ! Please wait...",
-                duration: 1000
-
-            });
-            loader.present();
-            let alert = this.alert.create({
-                title: 'Sucesso',
-                subTitle: 'Paciente cadastrado !',
-                buttons: ['OK']
-            });
-            alert.present();
-        },error => {
-            let alert = this.alert.create({
-                title: 'Warning',
-                subTitle: 'Wrong Username or Password! Please Try Again !',
-                buttons: ['OK']
-            });
-            alert.present();
-        });
-        this.nav.push(GerarSaePage,{paciente: this.paciente});
+    this.salvar();
+    this.nav.push(GerarSaePage,{paciente: this.paciente});
   }
 
 }

@@ -7,7 +7,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Aprazamento
+      Aprazamento: {{paciente.Nome}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="cancel()">Cancelar SAE</button>
@@ -19,13 +19,15 @@
 
 <ion-content padding>
 
-  <div>
-    titulo da intervenção
-
-    <p>
-      tempo
-    </p>
-    <form>
+  <div *ngFor="let item of listaIntervencoes">
+    <ion-card>
+      <ion-card-header><h2 style="text-align:center;">
+          {{item.titulo}}
+      </h2>
+    </ion-card-header>
+    <ion-card-content>
+      <!--
+      <form>
       <ion-segment color="secondary" id="tesstevamo">
         <ion-segment-button value="DIAS" (click)="tempo('teste','dias')">
           ESCOLHER DIAS
@@ -43,29 +45,30 @@
 
     <form>
       <ion-segment color="secondary">
-        <ion-segment-button id="Domteste" (click)="eventItemSelected('teste', 'Dom')">
+        <ion-segment-button id="'Dom' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Dom')">
           D
         </ion-segment-button>
-        <ion-segment-button id="Segteste" (click)="eventItemSelected('teste', 'Seg')">
+        <ion-segment-button id="'Seg' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Seg')">
           S
         </ion-segment-button>
-        <ion-segment-button id="Terteste" (click)="eventItemSelected('teste', 'Ter')">
+        <ion-segment-button id="'Ter' +  '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Ter')">
           T
         </ion-segment-button>
-        <ion-segment-button id="Quateste" (click)="eventItemSelected('teste', 'Qua')">
+        <ion-segment-button id="'Qua' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Qua')">
           Q
         </ion-segment-button>
-        <ion-segment-button id="Quiteste" (click)="eventItemSelected('teste', 'Qui')">
+        <ion-segment-button id="'Qui' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Qui')">
           Q
         </ion-segment-button>
-        <ion-segment-button id="Sexteste" (click)="eventItemSelected('teste', 'Sex')">
+        <ion-segment-button id="'Sex' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Sex')">
           S
         </ion-segment-button>
-        <ion-segment-button id="Sabteste" (click)="eventItemSelected('teste', 'Sab')">
+        <ion-segment-button id="'Sab' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Sab')">
           S
         </ion-segment-button>
       </ion-segment>
     </form>
+-->
 
 
     <form>
@@ -76,7 +79,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label fixed>intervalo</ion-label>
+        <ion-label fixed>intervalo (Hr)</ion-label>
         <ion-input type="number" value=""></ion-input>
       </ion-item>
 
@@ -97,6 +100,7 @@
       </ion-item>
 
     </form>
-
+    </ion-card-content>
+  </ion-card>
   </div>
 </ion-content>
