@@ -74,8 +74,13 @@
     <form>
 
       <ion-item width-30>
+        <ion-label fixed>teste</ion-label>
+        <ion-input type="text" [(ngModel)]="item.titulo" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+      <ion-item width-30>
         <ion-label fixed>Inicio</ion-label>
-        <ion-input type="time" value=""></ion-input>
+        <ion-input type="time" ></ion-input>
       </ion-item>
 
       <ion-item>
