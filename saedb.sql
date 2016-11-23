@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 18/11/2016 às 15:29
+-- Tempo de Geração: 23/11/2016 às 01:44
 -- Versão do servidor: 5.5.28
 -- Versão do PHP: 5.3.19
 
@@ -618,8 +618,8 @@ INSERT INTO `saeapp_planodecuidados` (`id`, `Data`, `dataInicio`, `intervalo`, `
 -- Restrições para tabelas `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
-  ADD CONSTRAINT `auth_group_permissi_permission_id_20d382b3_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
-  ADD CONSTRAINT `auth_group_permissions_group_id_418e1be1_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
+  ADD CONSTRAINT `auth_group_permissions_group_id_418e1be1_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  ADD CONSTRAINT `auth_group_permissi_permission_id_20d382b3_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`);
 
 --
 -- Restrições para tabelas `auth_permission`
@@ -638,36 +638,36 @@ ALTER TABLE `auth_user_groups`
 -- Restrições para tabelas `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
-  ADD CONSTRAINT `auth_user_user_perm_permission_id_7b979bb0_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
-  ADD CONSTRAINT `auth_user_user_permissions_user_id_5c11067c_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+  ADD CONSTRAINT `auth_user_user_permissions_user_id_5c11067c_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  ADD CONSTRAINT `auth_user_user_perm_permission_id_7b979bb0_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`);
 
 --
 -- Restrições para tabelas `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  ADD CONSTRAINT `django_admin__content_type_id_3e0ca9d2_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
-  ADD CONSTRAINT `django_admin_log_user_id_514655d1_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+  ADD CONSTRAINT `django_admin_log_user_id_514655d1_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  ADD CONSTRAINT `django_admin__content_type_id_3e0ca9d2_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
 
 --
 -- Restrições para tabelas `saeapp_caracteristicasdefinidora_caracteristicas`
 --
 ALTER TABLE `saeapp_caracteristicasdefinidora_caracteristicas`
-  ADD CONSTRAINT `SaeApp_ca_caracteristica_id_3bc418f7_fk_SaeApp_caracteristica_id` FOREIGN KEY (`caracteristica_id`) REFERENCES `saeapp_caracteristica` (`id`),
-  ADD CONSTRAINT `a5a03d58e01d69454927489467d3731e` FOREIGN KEY (`caracteristicasdefinidora_id`) REFERENCES `saeapp_caracteristicasdefinidora` (`id`);
+  ADD CONSTRAINT `a5a03d58e01d69454927489467d3731e` FOREIGN KEY (`caracteristicasdefinidora_id`) REFERENCES `saeapp_caracteristicasdefinidora` (`id`),
+  ADD CONSTRAINT `SaeApp_ca_caracteristica_id_3bc418f7_fk_SaeApp_caracteristica_id` FOREIGN KEY (`caracteristica_id`) REFERENCES `saeapp_caracteristica` (`id`);
 
 --
 -- Restrições para tabelas `saeapp_diagnostico_caracteristicas`
 --
 ALTER TABLE `saeapp_diagnostico_caracteristicas`
-  ADD CONSTRAINT `SaeApp_di_caracteristica_id_3648ac92_fk_SaeApp_caracteristica_id` FOREIGN KEY (`caracteristica_id`) REFERENCES `saeapp_caracteristica` (`id`),
-  ADD CONSTRAINT `SaeApp_diagnost_diagnostico_id_7d6d6f69_fk_SaeApp_diagnostico_id` FOREIGN KEY (`diagnostico_id`) REFERENCES `saeapp_diagnostico` (`id`);
+  ADD CONSTRAINT `SaeApp_diagnost_diagnostico_id_7d6d6f69_fk_SaeApp_diagnostico_id` FOREIGN KEY (`diagnostico_id`) REFERENCES `saeapp_diagnostico` (`id`),
+  ADD CONSTRAINT `SaeApp_di_caracteristica_id_3648ac92_fk_SaeApp_caracteristica_id` FOREIGN KEY (`caracteristica_id`) REFERENCES `saeapp_caracteristica` (`id`);
 
 --
 -- Restrições para tabelas `saeapp_diagnostico_intervencoes`
 --
 ALTER TABLE `saeapp_diagnostico_intervencoes`
-  ADD CONSTRAINT `SaeApp_diagnost_intervencao_id_29d69524_fk_SaeApp_intervencao_id` FOREIGN KEY (`intervencao_id`) REFERENCES `saeapp_intervencao` (`id`),
-  ADD CONSTRAINT `SaeApp_diagnosti_diagnostico_id_34b69a6_fk_SaeApp_diagnostico_id` FOREIGN KEY (`diagnostico_id`) REFERENCES `saeapp_diagnostico` (`id`);
+  ADD CONSTRAINT `SaeApp_diagnosti_diagnostico_id_34b69a6_fk_SaeApp_diagnostico_id` FOREIGN KEY (`diagnostico_id`) REFERENCES `saeapp_diagnostico` (`id`),
+  ADD CONSTRAINT `SaeApp_diagnost_intervencao_id_29d69524_fk_SaeApp_intervencao_id` FOREIGN KEY (`intervencao_id`) REFERENCES `saeapp_intervencao` (`id`);
 
 --
 -- Restrições para tabelas `saeapp_escalabraden`
@@ -679,8 +679,8 @@ ALTER TABLE `saeapp_escalabraden`
 -- Restrições para tabelas `saeapp_paciente_antecedentes`
 --
 ALTER TABLE `saeapp_paciente_antecedentes`
-  ADD CONSTRAINT `SaeApp_paciente_antec_paciente_id_6178c108_fk_SaeApp_paciente_id` FOREIGN KEY (`paciente_id`) REFERENCES `saeapp_paciente` (`id`),
-  ADD CONSTRAINT `SaeApp_paciente_antecedente_id_7b56f820_fk_SaeApp_antecedente_id` FOREIGN KEY (`antecedente_id`) REFERENCES `saeapp_antecedente` (`id`);
+  ADD CONSTRAINT `SaeApp_paciente_antecedente_id_7b56f820_fk_SaeApp_antecedente_id` FOREIGN KEY (`antecedente_id`) REFERENCES `saeapp_antecedente` (`id`),
+  ADD CONSTRAINT `SaeApp_paciente_antec_paciente_id_6178c108_fk_SaeApp_paciente_id` FOREIGN KEY (`paciente_id`) REFERENCES `saeapp_paciente` (`id`);
 
 --
 -- Restrições para tabelas `saeapp_planodecuidados`

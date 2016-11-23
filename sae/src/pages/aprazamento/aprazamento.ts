@@ -18,23 +18,17 @@ export class AprazamentoPage {
 private aprazamentos: string[];
 private paciente : CadastroPaciente;
 private listaIntervencoes : any;
-private dias:any[];
-private momento:any[]
-private aprazamento : AprazamentoDados;
 
   constructor(private params : NavParams, public nav: NavController) {
-    this.aprazamentos = [];
     this.listaIntervencoes = params.get('intervencoes');
     this.paciente = params.get('paciente');
-    this.aprazamentos.push('teste');
-    this.momento = [];
-    this.aprazamento = new AprazamentoDados();
 
   }
 
+  
+
 
   cancel(){
-    console.log(this.aprazamento.intervalo);
     this.nav.popToRoot();
   }
 

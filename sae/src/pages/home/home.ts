@@ -14,7 +14,6 @@ export class HomePage {
   private coren : string;
   private senha : string;
 
-
   constructor(
       private nav: NavController,
       private http : Http,
@@ -22,7 +21,6 @@ export class HomePage {
       private loading : LoadingController,
       private eService : EnfermeiroService
     ) {
-
 
 
 

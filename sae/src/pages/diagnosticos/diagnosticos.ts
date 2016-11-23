@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {Http} from "@angular/http";
 import {PacienteService} from "../../providers/paciente-service/paciente-service";
 import {AprazamentoPage}from '../aprazamento/aprazamento';
+import {AprazamentoDados}from '../../model/aprazamento';
 
 
 /*
@@ -24,6 +25,8 @@ export class DiagnosticosPage {
   private caracteristicasSelecionada:number[];
   private diagnosticos:any;
   private intervencaoSelecioandas:any;
+  private intervencaoAtual : AprazamentoDados;
+  private intervencoesEnviar:AprazamentoDados[];
 
   constructor(
     private params : NavParams,
@@ -33,12 +36,14 @@ export class DiagnosticosPage {
     private alert :AlertController,
     private loading : LoadingController
 
+
   ) {
       this.paciente = params.get('paciente');
       this.caracteristicasSelecionada = params.get('caracteristicas');
       this.calcularDiagnosticos();
       this.diagnosticos = [];
       this.intervencaoSelecioandas=[];
+      this.intervencoesEnviar = [];
   }
 
   cancel(){
@@ -103,7 +108,14 @@ export class DiagnosticosPage {
               text: 'Confirmar',
               handler: () => {
                 this.enviarServidor();
-                this.nav.push(AprazamentoPage, {intervencoes: this.intervencaoSelecioandas, paciente: this.paciente});
+                for(let i = 0;i<this.intervencaoSelecioandas.length;i++){
+                  this.intervencaoAtual = new AprazamentoDados();
+                  this.intervencaoAtual.intervencao = this.intervencaoSelecioandas[i].titulo;
+                  this.intervencaoAtual.id = this.intervencaoSelecioandas[i].id;
+                  this.intervencoesEnviar.push(this.intervencaoAtual);
+                }
+
+                this.nav.push(AprazamentoPage, {intervencoes: this.intervencoesEnviar, paciente: this.paciente});
               }
             },
             {
