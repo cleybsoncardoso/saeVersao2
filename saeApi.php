@@ -164,12 +164,38 @@ switch($_SERVER['REQUEST_METHOD']){
 					if ($nome != "") {
 						$sel = "INSERT INTO `saeapp_paciente` ( Data, Nome, Idade, Sexo, Estado_Civil, Religiao, Profissao, Naturalidade, Procedencia, Data_de_internacao, Registro, Setor_de_Procedencia, Leito, Diagnostico_Medico, Internacao_Anterior, Alergias, Vacinas) 
 						VALUES ('$today','$nome', '$idade', '$sexo', '$estado_Civil', '$religiao', '$profissao', '$naturalidade', '$procedencia', '$dataInternacao', '$registro', '$setorDeProcedencia', '$leito', '$diagnosticoMedico', '$internacaoAnterior', '$alergias', '$vacinas')";
-				    		$result = $conn->query($sel);
-					    	$numrow = $result->num_rows;
+				    	$result = $conn->query($sel);
 					}else {
 						header('HTTP/1.1 401 Unauthorized', true, 401);
 					}
 				break;
+				
+				case 'aprazar':
+				
+					$intervencoes = $request->intervencoes;
+					$idPaciente = $request->idPaciente;
+					
+					if ($idPaciente != "") {
+						for($i = 0; $i < count($intervencoes);$i++){
+							
+							$dataInicio = $intervencoes[$i]->dataInicio;
+							$intervalo = $intervencoes[$i]->intervalo;
+							$intervencao = $intervencoes[$i]->intervencao;
+							$ultimoHorario = $intervencoes[$i]->fim;
+							$horarioInicio = $intervencoes[$i]->inicio;
+							date_default_timezone_set('America/Sao_Paulo');
+							$today = date('Y-m-d H:i:s');
+							$testes = "INSERT INTO saeapp_planodecuidados (`Data`, `dataInicio`, `intervalo`, `intervencao`, `ultimoHorario`, `horarioInicio`, `paciente_id`) 
+							VALUES ('$today', '$dataInicio', '$intervalo', '$intervencao', '$ultimoHorario', '$horarioInicio', '$idPaciente')";
+							$result = $conn->query($testes);
+						}
+						
+					}else {
+						header('HTTP/1.1 401 Unauthorized', true, 401);
+					}
+					
+				break;
+				
 				
 				case 'senha':
 					
@@ -226,11 +252,14 @@ switch($_SERVER['REQUEST_METHOD']){
 							
 							//insere os dados num array
 							$qr=$conn->query($sel);
-							while($row=$qr->fetch_assoc()){
-								$arr[]=$row;
-							}
+							$row=$qr->fetch_assoc();
+							$id = $row['id'];
+							date_default_timezone_set('America/Sao_Paulo'); //atualizar hr que entrou
+							$today = date('Y-m-d H:i:s');
+							$st = "UPDATE `auth_user` SET last_login = '$today' WHERE id ='$id'";
+							$atualizarHr = $conn->query($st);
 							//retorna o array json
-							echo json_encode($arr);						
+							echo json_encode($row);						
 						}
 					}else {
 						header('HTTP/1.1 401 Unauthorized', true, 401);

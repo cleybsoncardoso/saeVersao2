@@ -14,7 +14,7 @@ export class AprazamentoDados{
     this.data = new Date();
     this.inicio = this.data.toLocaleTimeString();
     this.fim = "";
-    this.intervencao  = 0;
+    this.intervalo  = 0;
     this.id = "";
     let dataAtual = this.data.toISOString().split('T');
     this.dataInicio = dataAtual[0];

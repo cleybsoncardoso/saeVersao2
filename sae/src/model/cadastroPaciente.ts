@@ -1,5 +1,6 @@
 export class CadastroPaciente{
 
+  public id:string;
   public nome:string;
   public idade: string;
   public sexo: string;
