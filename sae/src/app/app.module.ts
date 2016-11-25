@@ -23,9 +23,7 @@ import { Save } from '../pages/save/save';
 import { GerarSaePage } from '../pages/gerar-sae/gerar-sae';
 import { DiagnosticosPage } from '../pages/diagnosticos/diagnosticos';
 import { AprazamentoPage } from '../pages/aprazamento/aprazamento';
-
-
-
+import { PlanoDeCuidadosPage } from "../pages/plano-de-cuidados/plano-de-cuidados"
 
 @NgModule({
   declarations: [
@@ -47,7 +45,8 @@ import { AprazamentoPage } from '../pages/aprazamento/aprazamento';
     Save,
     GerarSaePage,
     DiagnosticosPage,
-    AprazamentoPage
+    AprazamentoPage,
+    PlanoDeCuidadosPage
 
   ],
   imports: [
@@ -73,7 +72,8 @@ import { AprazamentoPage } from '../pages/aprazamento/aprazamento';
     Save,
     GerarSaePage,
     DiagnosticosPage,
-    AprazamentoPage
+    AprazamentoPage,
+    PlanoDeCuidadosPage
 
   ],
   providers: [

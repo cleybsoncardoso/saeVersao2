@@ -6,8 +6,8 @@ export class AprazamentoDados{
   public inicio:string;
   public intervalo: number;
   public fim:any;
-  public dataInicio:string;
-  public dataFim:string;
+  public dataInicio:Date;
+  public dataFim:Date;
 
 
   constructor(){
@@ -16,9 +16,8 @@ export class AprazamentoDados{
     this.fim = "";
     this.intervalo  = 0;
     this.id = "";
-    let dataAtual = this.data.toISOString().split('T');
-    this.dataInicio = dataAtual[0];
-    this.dataFim = "";
+    this.dataInicio = new Date();
+    this.dataFim = new Date();
 
 
   }

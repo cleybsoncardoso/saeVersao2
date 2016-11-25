@@ -54,6 +54,19 @@ switch($_SERVER['REQUEST_METHOD']){
 			while($row=$qr->fetch_assoc()){
 				$arr[]=$row;
 			}
+		}elseif(isset($_GET["plano"])){
+			if($_GET["plano"]==""){
+				$st = "SELECT * FROM saeapp_planodecuidados order by intervencao asc";//retorna todos os planos	
+			}else{ //se for especificado o nome, ex: http://localhost/saeApi.php?pacientes=joao
+				$id = $_GET["plano"];
+				$st = "SELECT * FROM saeapp_planodecuidados WHERE paciente_id = '$id' order by dataInicio asc";//retorna a caracteristica pela id
+			}
+			//insere os dados num array
+			$qr=$conn->query($st);
+			while($row=$qr->fetch_assoc()){
+				$arr[]=$row;
+			}
+			
 		}elseif(isset($_GET["diagnosticos"])){
 			if($_GET["diagnosticos"]==""){
 				$st = "SELECT * FROM saeapp_caracteristica";//retorna todas as caracteristicas	

@@ -23,7 +23,6 @@ export class PacienteService {
   }
 
   carregarDiagnosticos(ids){
-      console.log(ids);
       let url= "http://localhost/saeApi.php?diagnosticos=" + ids;
       return this.http.get(url).map(res => res.json());
   }
@@ -42,6 +41,11 @@ export class PacienteService {
 
   addPaciente(){
 
+  }
+
+  getPlanos(id){
+    let url= "http://localhost/saeApi.php?plano=" + id;
+    return this.http.get(url).map(res => res.json());
   }
 
   deletePaciente(){

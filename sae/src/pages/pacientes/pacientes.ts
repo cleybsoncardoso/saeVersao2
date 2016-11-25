@@ -7,6 +7,7 @@ import {CadastroPaciente} from '../../model/cadastroPaciente';
 import {PacienteService} from "../../providers/paciente-service/paciente-service";
 import {EnfermeiroService, Enfermeira} from "../../providers/enfermeiro-service/enfermeiro-service";
 import {GerarSaePage} from '../gerar-sae/gerar-sae';
+import { PlanoDeCuidadosPage } from '../plano-de-cuidados/plano-de-cuidados';
 
 
 
@@ -107,7 +108,7 @@ export class PacientesPage {
             text: 'Plano de cuidados',
             icon: !this.platform.is('ios') ? 'checkbox' : null,
             handler: () => {
-              console.log('Favorite clicked');
+              this.nav.push(PlanoDeCuidadosPage,{paciente:paciente});
             }
           },
           {

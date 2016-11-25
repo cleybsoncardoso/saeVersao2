@@ -69,7 +69,6 @@ export class DiagnosticosPage {
     this.service.carregarDiagnosticos(ids)
     .subscribe(data=>{
       this.diagnosticos = data;
-      console.log("teste" + data[0].intervencao[0].titulo);
     },error => {
       console.log(this.listaCaracteristicas);
       console.log("Não foi possível se conectar ao servidor");
