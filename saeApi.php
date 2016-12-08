@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$conn = new mysqli("localhost", "root", "cley", "saedb");
+$conn = new mysqli("localhost:3307", "root", "cley", "saedb");
 
 //Switch case que identifica qual método de acesso ao servidor GET, POST, PUT...
 switch($_SERVER['REQUEST_METHOD']){
@@ -156,22 +156,22 @@ switch($_SERVER['REQUEST_METHOD']){
 					break;
 					
 				case 'cadastroPaciente':
-					$nome = $request->nome;
-					$idade = $request->idade;
-					$sexo = $request->sexo;
-					$estado_Civil = $request->estado_Civil;
-					$religiao = $request->religiao;
-					$profissao = $request->profissao;
-					$naturalidade = $request->naturalidade;
-					$procedencia = $request->procedencia;
-					$dataInternacao = $request->dataInternacao;
-					$registro = $request->registro;
-					$setorDeProcedencia = $request->setorDeProcedencia;
-					$diagnosticoMedico = $request->diagnosticoMedico;
-					$internacaoAnterior = $request->internacaoAnterior;
-					$alergias = $request->alergias;
-					$vacinas = $request->vacinas;
-					$leito = $request->leito;
+					$nome = $request->paciente->nome;
+					$idade = $request->paciente->idade;
+					$sexo = $request->paciente->sexo;
+					$estado_Civil = $request->paciente->estadoCivil;
+					$religiao = $request->paciente->religiao;
+					$profissao = $request->paciente->profissao;
+					$naturalidade = $request->paciente->naturalidade;
+					$procedencia = $request->paciente->procedencia;
+					$dataInternacao = $request->paciente->dataInternacao;
+					$registro = $request->paciente->registro;
+					$setorDeProcedencia = $request->paciente->setorDeProcedencia;
+					$diagnosticoMedico = $request->paciente->diagnosticoMedico;
+					$internacaoAnterior = $request->paciente->internacaoAnterior;
+					$alergias = implode(",",$request->paciente->alergias);
+					$vacinas = implode(",",$request->paciente->vacinas);
+					$leito = $request->paciente->leito;
 					date_default_timezone_set('America/Sao_Paulo');
 					$today = date('Y-m-d H:i:s');
 					if ($nome != "") {
