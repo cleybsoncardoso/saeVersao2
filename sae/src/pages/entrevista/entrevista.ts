@@ -23,7 +23,7 @@ export class Entrevista {
     this.myIcons = ["md-add"];
   }
 
-  ionViewLoaded() {
+  ionViewDidLoad() {
     this.setAntecedentes();
     this.setAlergias();
     this.setVacinas();
