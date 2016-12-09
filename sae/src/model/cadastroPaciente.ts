@@ -9,6 +9,7 @@ export class CadastroPaciente{
   public profissao: string;
   public naturalidade: string;
   public procedencia: string;
+  public motivo: Array<string>;
   public leito: string;
   public dataInternacao: string;
   public registro: string;
@@ -24,6 +25,7 @@ export class CadastroPaciente{
   public diabetesMellitus: boolean;
   public alcoolismo: boolean;
   public qtdeAntecedentes: number;
+  public qtdeMotivos:number;
   public antecedentes: Array<string>;
   public qtdeAlergias: number;
   public alergias: Array<string>;
@@ -214,6 +216,8 @@ export class CadastroPaciente{
     this.alcoolismo = false;
     this.qtdeAntecedentes = 0;
     this.antecedentes = [];
+    this.motivo = [];
+    this.qtdeMotivos = 0;
     this.qtdeAlergias = 0;
     this.alergias = [];
     this.qtdeVacinas = 0;

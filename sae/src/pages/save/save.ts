@@ -54,7 +54,7 @@ export class Save {
                 buttons: ['OK']
             });
             alert.present();
-            this.nav.popToRoot();
+            //this.nav.popToRoot();
         },error => {
             let alert = this.alert.create({
                 title: 'Warning',

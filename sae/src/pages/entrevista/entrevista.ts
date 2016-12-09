@@ -27,6 +27,7 @@ export class Entrevista {
     this.setAntecedentes();
     this.setAlergias();
     this.setVacinas();
+    this.setMotivos();
   }
 
   addAntecedente() {
@@ -57,6 +58,37 @@ export class Entrevista {
         //Removendo o ultimo DIV do nó-pai:
         divPai.removeChild(divFilho);
         this.paciente.qtdeAntecedentes--;
+      }
+  }
+
+  addMotivos() {
+    //incrementando a quantidade de antecedentes
+    this.paciente.qtdeMotivos++;
+    //guardando o div pai
+    let divPai = document.getElementById("outrosMotivos");
+    //Criando o elemento DIV filho;
+    let divFilho = document.createElement("div");
+    //Definindo atributos ao campoFilho:
+    divFilho.setAttribute("id","motivo"+this.paciente.qtdeMotivos);
+    divFilho.setAttribute("class", "divitem4");
+    //Inserindo o elemento filho no pai:
+    divPai.appendChild(divFilho);
+    //Escrevendo algo no filho recém-criado:
+    document.getElementById("motivo"+this.paciente.qtdeMotivos).innerHTML = "<input class='divitem2' type='text' id='campoMotivo"+this.paciente.qtdeMotivos+"' placeholder=' Outro Motivos "+ this.paciente.qtdeMotivos+"'></input>";
+  }
+
+  /**Função que Remove um campo na relação de antecedentes*/
+  removerMotivos() {
+      //só remove se já ouver um campo adicionado
+      if(this.paciente.qtdeMotivos > 0){
+        //Guardando o div pai
+        let divPai = document.getElementById("outrosMotivos");
+        let text = "motivo"+this.paciente.qtdeMotivos;
+        //Guardando o ultimo div filho criado
+        let divFilho = document.getElementById(text);
+        //Removendo o ultimo DIV do nó-pai:
+        divPai.removeChild(divFilho);
+        this.paciente.qtdeMotivos--;
       }
   }
 
@@ -141,6 +173,21 @@ export class Entrevista {
     this.paciente.qtdeAntecedentes=cont;
   }
 
+    getMotivos(){
+    let x=0;
+    let cont = 0;
+    this.paciente.motivo = [];
+    while(x<this.paciente.qtdeMotivos){
+      x++;
+      let motivo = <HTMLInputElement>document.getElementById("campoMotivo"+x);
+      if(motivo.value!=""){
+        this.paciente.motivo.push(motivo.value);
+        cont++;
+      }
+    }
+    this.paciente.qtdeMotivos=cont;
+  }
+
   getAlergias(){
     let x=0;
     let cont = 0;
@@ -187,6 +234,26 @@ export class Entrevista {
         divPai.appendChild(divFilho);
         //Escrevendo algo no filho recém-criado:
         document.getElementById("antecedente"+x).innerHTML = "<input class='divitem2' type='text' id='campoAntecedente"+x+"' value='"+this.paciente.antecedentes[x-1]+"'></input>";
+      }
+    }
+  }
+
+  setMotivos(){
+    if(this.paciente.qtdeMotivos>0){
+      let x = 0;
+      while(x<this.paciente.qtdeMotivos){
+        x++;
+        //guardando o div pai
+        let divPai = document.getElementById("outrosMotivos");
+        //Criando o elemento DIV filho;
+        let divFilho = document.createElement("div");
+        //Definindo atributos ao campoFilho:
+        divFilho.setAttribute("id","motivo"+x);
+        divFilho.setAttribute("class", "divitem4");
+        //Inserindo o elemento filho no pai:
+        divPai.appendChild(divFilho);
+        //Escrevendo algo no filho recém-criado:
+        document.getElementById("motivo"+x).innerHTML = "<input class='divitem2' type='text' id='campoMotivo"+x+"' value='"+this.paciente.motivo[x-1]+"'></input>";
       }
     }
   }
@@ -269,11 +336,13 @@ export class Entrevista {
       this.getAntecedentes();
       this.getAlergias();
       this.getVacinas();
+      this.getMotivos();
       this.nav.pop();
     }else if(passar.deltaX<0){
       this.getAntecedentes();
       this.getAlergias();
       this.getVacinas();
+      this.getMotivos();
       this.nav.push(AvaliacaoNeurologica,{parametro: this.paciente});
     }
   }

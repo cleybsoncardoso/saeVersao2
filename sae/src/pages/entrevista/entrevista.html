@@ -24,7 +24,7 @@
         <ion-input type="number" [(ngModel)]="paciente.internacaoAnterior"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Antecedentes <p class="icone" id="icone0" style="float: right">+</p></ion-list-header>
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Motivo de Internação <p class="icone" id="icone0" style="float: right">+</p></ion-list-header>
     <ion-list no-lines class="lista" id="dados0">
           <ion-item>
             <ion-label class="label">Cardiopatia</ion-label>
@@ -42,6 +42,20 @@
             <ion-label class="label">Drogas</ion-label>
             <ion-checkbox [(ngModel)]="paciente.drogas"></ion-checkbox>
           </ion-item>
+      <ion-item>
+        <ion-label class="label">Outros</ion-label>
+      </ion-item>
+      <ion-list no-lines id="outrosAntecetendes">
+      </ion-list>
+      <ion-list no-lines class="listitem">
+        <ion-item>
+          <button ion-button class="buttons" (click)="addMotivos()">Adicionar</button>
+          <button ion-button class="buttons" (click)="removerMotivos()">Remover</button>
+        </ion-item>
+      </ion-list>
+  </ion-list>
+      <ion-list-header class="titulolista" (click)="toggleGroup(1)">Antecedentes <p class="icone" id="icone1" style="float: right">+</p></ion-list-header>
+    <ion-list no-lines class="lista" id="dados1">
           <ion-item>
             <ion-label class="label">HAS</ion-label>
             <ion-checkbox [(ngModel)]="paciente.has"></ion-checkbox>
@@ -70,8 +84,8 @@
         </ion-item>
       </ion-list>
   </ion-list>
-  <ion-list-header class="titulolista" (click)="toggleGroup(1)">Alergia <p class="icone" id="icone1" style="float: right">+</p></ion-list-header>
-  <ion-list no-lines class="lista" id="dados1">
+  <ion-list-header class="titulolista" (click)="toggleGroup(2)">Alergia <p class="icone" id="icone2" style="float: right">+</p></ion-list-header>
+  <ion-list no-lines class="lista" id="dados2">
     <ion-list no-lines id="alergias" >
     </ion-list>
     <ion-list no-lines class="listitem">
