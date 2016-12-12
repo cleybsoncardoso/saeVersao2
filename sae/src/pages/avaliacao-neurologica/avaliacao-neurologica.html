@@ -6,139 +6,220 @@
 -->
 <ion-header>
   <ion-toolbar>
-   <ion-title>
-     Novo Paciente
-   </ion-title>
-   <ion-buttons start>
-     <button ion-button (click)="cancel()">Cancelar</button>
-   </ion-buttons>
+    <ion-title>
+      Novo Paciente
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancelar</button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-  <ion-content padding (swipe)="slide($event)">
-    <ion-card class="mycard">
-      <ion-card-header class="cardtitulo"> Avaliação Neurológica </ion-card-header>
-      <ion-list-header class="titulolista" (click)="toggleGroup(0)">Consciência <p class="iconeNeurologicaNeurologica" id="iconeNeurologica0" style="float: right">+</p></ion-list-header>
-        <ion-list no-lines class="lista" id="dadosNeurologica0" class="subgrupo">
+<ion-content padding (swipe)="slide($event)">
+  <ion-card class="mycard">
+    <ion-card-header class="cardtitulo"> Avaliação Neurológica </ion-card-header>
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Consciência
+      <p class="iconeNeurologicaNeurologica" id="iconeNeurologica0" style="float: right">+</p>
+    </ion-list-header>
+    <ion-list no-lines class="lista" id="dadosNeurologica0" class="subgrupo">
+      <ion-item>
+        <ion-label class="label">Alerta</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.alerta"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Letárgico</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.letargico"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Obnubilado</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.obnubilado"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Torporoso</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.torporoso"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Comatoso</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.comatoso"></ion-checkbox>
+      </ion-item>
+      <ion-row>
+        <ion-col style="margin: 0px; padding: 0px">
           <ion-item>
-            <ion-label class="label">Alerta</ion-label>
-            <ion-checkbox [(ngModel)]="paciente.alerta"></ion-checkbox>
+            <ion-label class="label">Glasgow</ion-label>
+            <ion-checkbox [(ngModel)]="paciente.glasgowMenu" (click)="toggleGlasgow()"></ion-checkbox>
           </ion-item>
+        </ion-col>
+        <ion-col style="margin: 0px; padding: 0px">
           <ion-item>
-            <ion-label class="label">Letárgico</ion-label>
-            <ion-checkbox [(ngModel)]="paciente.letargico"></ion-checkbox>
+            <ion-input class="inputgrupo" disabled [(ngModel)]="paciente.glasgow" type="number"></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-label class="label">Obnubilado</ion-label>
-            <ion-checkbox [(ngModel)]="paciente.obnubilado"></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-label class="label">Torporoso</ion-label>
-            <ion-checkbox [(ngModel)]="paciente.torporoso"></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-label class="label">Comatoso</ion-label>
-            <ion-checkbox [(ngModel)]="paciente.comatoso"></ion-checkbox>
-          </ion-item>
-              <ion-row>
-                <ion-col style="margin: 0px; padding: 0px">
-                  <ion-item>
-                    <ion-label class="label">Glasgow</ion-label>
-                    <ion-checkbox [(ngModel)]="paciente.glasgowMenu" (click)="toggleGlasgow()"></ion-checkbox>
-                  </ion-item>
-                </ion-col>
-                <ion-col style="margin: 0px; padding: 0px">
-                <ion-item>
-                  <ion-input class="inputgrupo" disabled [(ngModel)]="paciente.glasgow" type="number"></ion-input>
-                </ion-item>
-                </ion-col>
-              </ion-row>
-            <ion-list no-lines class="lista" id="glasgow" class="subgrupo">
-            <ion-grid>
-              <ion-row>
-                <ion-col width-30><ion-item>
-                  <ion-input class="inputgrupo" [(ngModel)]="paciente.glasgowOcular" placeholder="Ocular" (keydown)="somarGlasgow()" type="number"></ion-input>
-                </ion-item>
-                </ion-col>
-                <ion-col width-30><ion-item>
-                  <ion-input class="inputgrupo" [(ngModel)]="paciente.glasgowVerbal" placeholder="Verbal" (keypress)="somarGlasgow()" type="number"></ion-input>
-                </ion-item>
-                </ion-col>
-                <ion-col width-30><ion-item>
-                  <ion-input class="inputgrupo" [(ngModel)]="paciente.glasgowMotor" placeholder="Motor" (keyup)="somarGlasgow()" type="number"></ion-input>
-                </ion-item>
-                </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-list>
-        </ion-list>
-        <ion-list-header class="titulolista" (click)="toggleGroup(1)">Pupilas <p class="iconeNeurologica" id="iconeNeurologica1" style="float: right">+</p></ion-list-header>
-          <ion-list no-lines class="lista" id="dadosNeurologica1" class="subgrupo">
+        </ion-col>
+      </ion-row>
+      <ion-list no-lines class="lista" id="glasgow" class="subgrupo">
+        <ion-grid>
+          <ion-row>
+            <ion-col width-30>
+              <ion-item>
+                <ion-input class="inputgrupo" [(ngModel)]="paciente.glasgowOcular" placeholder="Ocular" (keyup)="somarGlasgow()" type="number"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-30>
+              <ion-item>
+                <ion-input class="inputgrupo" [(ngModel)]="paciente.glasgowVerbal" placeholder="Verbal" (keyup)="somarGlasgow()" type="number"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-30>
+              <ion-item>
+                <ion-input class="inputgrupo" [(ngModel)]="paciente.glasgowMotor" placeholder="Motor" (keyup)="somarGlasgow()" type="number"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </ion-list>
+    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Pupilas
+      <p class="iconeNeurologica" id="iconeNeurologica1" style="float: right">+</p>
+    </ion-list-header>
+    <ion-list no-lines class="lista" id="dadosNeurologica1" class="subgrupo">
+      <ion-item>
+        <ion-label class="label">Isocórica</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.isocorica"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Anisocórica</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.anisocorica"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Miose</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.miose"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Midríase</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.midriase"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">RFM</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.rfm"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Mobilidade Física
+      <p class="iconeNeurologica" id="iconeNeurologica2" style="float: right">+</p>
+    </ion-list-header>
+    <ion-list no-lines class="lista" id="dadosNeurologica2" class="subgrupo">
+      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMSS Direita</ion-item-divider>
+      <ion-list radio-group [(ngModel)]="paciente.mmssDireita">
         <ion-item>
-          <ion-label class="label">Isocórica</ion-label>
-          <ion-checkbox [(ngModel)]="paciente.isocorica"></ion-checkbox>
+          <ion-label class="label">Preservada</ion-label>
+          <ion-radio value="preservada"></ion-radio>
         </ion-item>
         <ion-item>
-          <ion-label class="label">Anisocórica</ion-label>
-          <ion-checkbox [(ngModel)]="paciente.anisocorica"></ion-checkbox>
+          <ion-label class="label">Paresia</ion-label>
+          <ion-radio value="paresia"></ion-radio>
         </ion-item>
         <ion-item>
-          <ion-label class="label">Miose</ion-label>
-          <ion-checkbox [(ngModel)]="paciente.miose"></ion-checkbox>
+          <ion-label class="label">Plegia</ion-label>
+          <ion-radio value="plegia"></ion-radio>
         </ion-item>
         <ion-item>
-          <ion-label class="label">Midríase</ion-label>
-          <ion-checkbox [(ngModel)]="paciente.midriase"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label class="label">RFM</ion-label>
-          <ion-checkbox [(ngModel)]="paciente.rfm"></ion-checkbox>
+          <ion-label class="label">Parestesia</ion-label>
+          <ion-radio value="parestesia"></ion-radio>
         </ion-item>
       </ion-list>
-
-    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Mobilidade Física <p class="iconeNeurologica" id="iconeNeurologica2" style="float: right">+</p></ion-list-header>
-      <ion-list no-lines radio-group class="lista" [(ngModel)]="paciente.mmss" id="dadosNeurologica2" class="subgrupo">
-      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMSS</ion-item-divider>
+      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMSS Esquerda</ion-item-divider>
+      <ion-list radio-group [(ngModel)]="paciente.mmssEsquerda">
+        <ion-item>
+          <ion-label class="label">Preservada</ion-label>
+          <ion-radio value="preservada"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Paresia</ion-label>
+          <ion-radio value="paresia"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Plegia</ion-label>
+          <ion-radio value="plegia"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Parestesia</ion-label>
+          <ion-radio value="parestesia"></ion-radio>
+        </ion-item>
+      </ion-list>
+      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMII Direita</ion-item-divider>
       <ion-item>
         <ion-label class="label">Preservada</ion-label>
-        <ion-radio value="preservada"></ion-radio>
+        <ion-checkbox [(ngModel)]="paciente.preservadaDireita"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Paresia</ion-label>
-        <ion-radio value="paresia"></ion-radio>
+        <ion-checkbox [(ngModel)]="paciente.paresiaDireita"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Plegia</ion-label>
-        <ion-radio value="plegia"></ion-radio>
+        <ion-checkbox [(ngModel)]="paciente.plegiaDireita"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Parestesia</ion-label>
-        <ion-radio value="parestesia"></ion-radio>
-      </ion-item>
-      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMII</ion-item-divider>
-      <ion-item>
-        <ion-label class="label">Preservada</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.preservada"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Paresia</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.paresia"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Plegia</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.plegia"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Parestesia</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.parestesia"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="paciente.parestesiaDireita"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Movimentos Lentos</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.movimentosLentos"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="paciente.movimentosLentosDireita"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Movimentos Involuntários</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.movimentosInvoluntariosDireita"></ion-checkbox>
+      </ion-item>
+      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMII Esquerda</ion-item-divider>
+      <ion-item>
+        <ion-label class="label">Preservada</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.preservadaEsquerda"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Paresia</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.paresiaEsquerda"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Plegia</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.plegiaEsquerda"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Parestesia</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.parestesiaEsquerda"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Movimentos Lentos</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.movimentosLentosEsquerda"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Movimentos Involuntários</ion-label>
         <ion-checkbox [(ngModel)]="paciente.movimentosInvoluntarios"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+    <ion-list-header class="titulolista" (click)="toggleGroup(3)">Fala e Linguagem
+      <p class="iconeNeurologica" id="iconeNeurologica3" style="float: right">+</p>
+    </ion-list-header>
+    <ion-list no-lines class="lista" id="dadosNeurologica3" class="subgrupo">
+      <ion-item>
+        <ion-label class="label">Afonia</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.afonia"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Dislalia</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.dislalia"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Disartria</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.disartria"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Disfasia</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.disfasia"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Afania</ion-label>
+        <ion-checkbox [(ngModel)]="paciente.afania"></ion-checkbox>
       </ion-item>
     </ion-list>
   </ion-card>

@@ -1,7 +1,7 @@
-export class CadastroPaciente{
+export class CadastroPaciente {
 
-  public id:string;
-  public nome:string;
+  public id: string;
+  public nome: string;
   public idade: string;
   public sexo: string;
   public estadoCivil: string;
@@ -14,7 +14,7 @@ export class CadastroPaciente{
   public dataInternacao: string;
   public registro: string;
   public setorDeProcedencia: string;
-  public diagnosticoMedico:  string;
+  public diagnosticoMedico: string;
   public internacaoAnterior: string;
   public cardiopatia: boolean;
   public convulsao: boolean;
@@ -25,7 +25,7 @@ export class CadastroPaciente{
   public diabetesMellitus: boolean;
   public alcoolismo: boolean;
   public qtdeAntecedentes: number;
-  public qtdeMotivos:number;
+  public qtdeMotivos: number;
   public antecedentes: Array<string>;
   public qtdeAlergias: number;
   public alergias: Array<string>;
@@ -45,13 +45,25 @@ export class CadastroPaciente{
   public miose: boolean;
   public midriase: boolean;
   public rfm: boolean;
-  public mmss ;
-  public preservada: boolean;
-  public paresia: boolean;
-  public plegia: boolean;
-  public parestesia: boolean;
-  public movimentosLentos: boolean;
-  public movimentosInvoluntarios: boolean;
+  public mmssDireita;
+  public mmssEsquerda;
+  public preservadaDireita: boolean;
+  public preservadaEsquerda: boolean;
+  public paresiaEsquerda: boolean;
+  public paresiaDireita: boolean;
+  public plegiaDireita: boolean;
+  public plegiaEsquerda: boolean;
+  public parestesiaEsquerda: boolean;
+  public parestesiaDireita: boolean;
+  public movimentosLentosEsquerda: boolean;
+  public movimentosLentosDireita: boolean;
+  public movimentosInvoluntariosEsquerda: boolean;
+  public movimentosInvoluntariosDireita: boolean;
+  public afonia: boolean;
+  public dislalia: boolean;
+  public disartria: boolean;
+  public disfasia: boolean;
+  public afania: boolean;
   public obsRespiracao: number;
   public respiracoes: Array<string>;
   public espontanea: boolean;
@@ -85,11 +97,13 @@ export class CadastroPaciente{
   public presencaoDeTosseSeca: boolean;
   public presencaoDeTosseProdutiva: boolean;
   public presencaoDeTosseExpectoracao: boolean;
+  public presencaoDeTosseExpectoracaoQtd: string;
+  public presencaoDeTosseExpectoracaoCarc: string;
   public glasgowMenu: boolean;
-  public aspiracao ;
+  public aspiracao;
   public aspiracaoQuantidade: string;
   public aspiracaoCaracteristica: string;
-  public drenagemToracica ;
+  public drenagemToracica;
   public drenagemToracicaDTE: boolean;
   public drenagemToracicaDTD: boolean;
   public drenagemToracicaQuantidade: string;
@@ -191,8 +205,8 @@ export class CadastroPaciente{
   public observacoes: Array<string>;
   public qtdeObservacoes: number;
 
-  constructor(){
-    this.nome  = "";
+  constructor() {
+    this.nome = "";
     this.idade = "";
     this.sexo = "";
     this.estadoCivil = "";
@@ -236,15 +250,27 @@ export class CadastroPaciente{
     this.miose = false;
     this.midriase = false;
     this.rfm = false;
-    this.mmss ;
-    this.preservada = false;
-    this.paresia = false;
-    this.plegia = false;
-    this.parestesia = false;
-    this.movimentosLentos = false;
-    this.movimentosInvoluntarios = false;
+    this.mmssEsquerda;
+    this.mmssDireita;
+    this.preservadaDireita = false;
+    this.preservadaEsquerda = false;
+    this.paresiaDireita = false;
+    this.paresiaEsquerda = false;
+    this.plegiaDireita = false;
+    this.plegiaEsquerda = false;
+    this.parestesiaDireita = false;
+    this.parestesiaEsquerda = false;
+    this.movimentosLentosDireita = false;
+    this.movimentosLentosEsquerda = false;
+    this.movimentosInvoluntariosDireita = false;
+    this.movimentosInvoluntariosEsquerda = false;
+    this.afonia = false;
+    this.dislalia = false;
+    this.disartria = false;
+    this.disfasia = false;
+    this.afania = false;
     this.obsRespiracao = 0;
-    this.respiracoes= [];
+    this.respiracoes = [];
     this.espontanea = false;
     this.cateter = false;
     this.mascara = false;
@@ -276,11 +302,13 @@ export class CadastroPaciente{
     this.presencaoDeTosseSeca = false;
     this.presencaoDeTosseProdutiva = false;
     this.presencaoDeTosseExpectoracao = false;
+    this.presencaoDeTosseExpectoracaoQtd = "";
+    this.presencaoDeTosseExpectoracaoCarc = "";    
     this.glasgowMenu = false;
-    this.aspiracao ;
+    this.aspiracao;
     this.aspiracaoQuantidade = "";
     this.aspiracaoCaracteristica = "";
-    this.drenagemToracica ;
+    this.drenagemToracica;
     this.drenagemToracicaDTE = false;
     this.drenagemToracicaDTD = false;
     this.drenagemToracicaQuantidade = "";
@@ -306,7 +334,7 @@ export class CadastroPaciente{
     this.presencaDeEdemaMMII = false;
     this.presencaDeEdemaMMSS = false;
     this.presencaDeEdemaAnasarca = false;
-    this.turgidezDaPele ;
+    this.turgidezDaPele;
     this.eliminacaoUrinariaVolume = "";
     this.eliminacaoUrinariaEspontanea = false;
     this.eliminacaoUrinariaRetencao = false;
@@ -340,10 +368,10 @@ export class CadastroPaciente{
     this.rhaAusentes = false;
     this.rhaDiminuido = false;
     this.rhaAumentado = false;
-    this.ostomia ;
+    this.ostomia;
     this.ostomiaLocal = "";
     this.ostomiaCaracteristica = "";
-    this.eliminacaoIntestinal ;
+    this.eliminacaoIntestinal;
     this.eliminacaoIntestinalFrequencia = "";
     this.eliminacaoIntestinalOutros = "";
     this.aspectosCutaneoMucosaCianose = false;

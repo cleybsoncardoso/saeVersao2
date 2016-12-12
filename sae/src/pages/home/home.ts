@@ -33,7 +33,7 @@ export class HomePage {
     let password = this.senha;
     let type = "login";
     let data = JSON.stringify({type, username, password});
-    let link = "http://localhost/saeApi.php";
+    let link = "http://192.168.0.5/saeApi.php";
 
     this.http.post(link, data)
         .subscribe(data=>{

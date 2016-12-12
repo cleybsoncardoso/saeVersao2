@@ -51,7 +51,7 @@ export class AlterarSenhaPage {
       });
       alert.present();
     }else if(this.senha1==this.senha2){
-      let link = "http://localhost/saeApi.php";
+      let link = "http://192.168.0.5/saeApi.php";
       let type = "senha";
       let senhaAntiga = this.senhaAntiga;
       let senhanova = this.senha2;

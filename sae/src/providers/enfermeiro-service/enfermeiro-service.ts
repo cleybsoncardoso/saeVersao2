@@ -22,7 +22,7 @@ export class EnfermeiroService {
   }
 
   getDadosEnfermeira(inputLogin){
-      let url= "http://localhost/saeApi.php?login="+ inputLogin;
+      let url= "http://192.168.0.5/saeApi.php?login="+ inputLogin;
       return this.http.get(url).map(res => res.json());
   }
 

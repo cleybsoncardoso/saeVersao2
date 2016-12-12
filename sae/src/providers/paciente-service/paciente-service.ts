@@ -13,23 +13,23 @@ export class PacienteService {
   }
 
   carregar(){
-      let url= "http://localhost/saeApi.php?pacientes";
+      let url= "http://192.168.0.5/saeApi.php?pacientes";
       return this.http.get(url).map(res => res.json());
   }
 
   carregarCaracteristicas(){
-      let url= "http://localhost/saeApi.php?caracteristicas";
+      let url= "http://192.168.0.5/saeApi.php?caracteristicas";
       return this.http.get(url).map(res => res.json());
   }
 
   carregarDiagnosticos(ids){
-      let url= "http://localhost/saeApi.php?diagnosticos=" + ids;
+      let url= "http://192.168.0.5/saeApi.php?diagnosticos=" + ids;
       return this.http.get(url).map(res => res.json());
   }
 
   getPacientes(){
     return new Promise(resolve => {
-      let url= "http://localhost/getusers.php?pacientes";
+      let url= "http://192.168.0.5/getusers.php?pacientes";
       this.http.get(url)
       .map(res=>res.json())
       .subscribe(data=>{
@@ -44,7 +44,7 @@ export class PacienteService {
   }
 
   getPlanos(id){
-    let url= "http://localhost/saeApi.php?plano=" + id;
+    let url= "http://192.168.0.5/saeApi.php?plano=" + id;
     return this.http.get(url).map(res => res.json());
   }
 
