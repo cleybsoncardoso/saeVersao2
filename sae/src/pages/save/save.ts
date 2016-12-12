@@ -40,7 +40,7 @@ export class Save {
     let type = "cadastroPaciente";
     let paciente = this.paciente;
     let data = JSON.stringify({type, paciente});
-    let link = "http://192.168.0.5/saeApi.php";
+    let link = "http://localhost/saeApi.php";
     this.http.post(link, data)
         .subscribe(data=>{
             let loader = this.loading.create({

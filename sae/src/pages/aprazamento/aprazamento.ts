@@ -52,7 +52,7 @@ private listaIntervencoes : any;
     let intervencoes = this.listaIntervencoes;
     let idPaciente = this.paciente.id;
     let data = JSON.stringify({type,idPaciente,intervencoes});
-    let link = "http://192.168.0.5/saeApi.php";
+    let link = "http://localhost/saeApi.php";
 
     this.http.post(link, data)
         .subscribe(data=>{
