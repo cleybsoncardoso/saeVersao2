@@ -20,10 +20,6 @@ export class AvaliacaoNeurologica {
       this.nav = nav;
     }
 
-    somarGlasgow(){
-      this.paciente.glasgow = parseInt(this.paciente.glasgowOcular) + parseInt(this.paciente.glasgowVerbal) + parseInt(this.paciente.glasgowMotor);
-    }
-
       cancel(){
         this.nav.popToRoot();
       }
@@ -38,9 +34,6 @@ export class AvaliacaoNeurologica {
       let grupo = document.getElementById("dadosNeurologica"+id);
       let iconeNeurologica = document.getElementById("iconeNeurologica"+id);
       this.toggleClose(id);
-      if(id==0){
-        this.verificaGlasgow();
-      }
       if(grupo.style.display == "block"){
         grupo.style.display = "none";
         iconeNeurologica.innerHTML = '+';
@@ -50,14 +43,6 @@ export class AvaliacaoNeurologica {
       }
     }
 
-    verificaGlasgow(){
-      let grupo = document.getElementById("glasgow");
-      if(this.paciente.glasgowMenu == true){
-        grupo.style.display = "block";
-      }else{
-        grupo.style.display = "none";
-      }
-    }
     toggleClose(id){
       var i=0;
       let grupo = document.getElementById("dadosNeurologica"+i);
