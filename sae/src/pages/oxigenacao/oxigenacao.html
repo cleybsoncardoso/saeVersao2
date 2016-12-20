@@ -149,18 +149,18 @@
 <ion-list-header class="titulolista" (click)="toggleGroup(2)">Presenção de tosse
   <p class="icone" id="iconeOxigenacao2" style="float: right">+</p>
 </ion-list-header>
-<ion-list no-lines class="lista" id="dadosOxigenacao2" style="margin: 0px">
+<ion-list no-lines radio-group class="lista" id="dadosOxigenacao2" [(ngModel)]="presencaoDeTosse" style="margin: 0px">
 <ion-item>
   <ion-label class="label">Não</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaoDeTosseNao"></ion-checkbox>
+  <ion-radio value="nao"></ion-radio>
 </ion-item>
 <ion-item>
   <ion-label class="label">Seca</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaoDeTosseSeca"></ion-checkbox>
+  <ion-radio value="seca"></ion-radio>
 </ion-item>
 <ion-item>
   <ion-label class="label">Produtiva</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaoDeTosseProdutiva"></ion-checkbox>
+  <ion-radio value="produtiva"></ion-radio>
 </ion-item>
 </ion-list>
 <ion-list-header class="titulolista" (click)="toggleGroup(3)">Aspiração
