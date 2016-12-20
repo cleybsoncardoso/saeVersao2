@@ -252,26 +252,22 @@
 <ion-list-header class="titulolista" (click)="toggleGroup(5)">Mamas
   <p class="icone" id="iconeOxigenacao5" style="float: right; color: white">+</p>
 </ion-list-header>
-<ion-list no-lines class="lista" id="dadosOxigenacao5">
+<ion-list no-lines radio-group [(ngModel)]="paciente.mamas" class="lista" id="dadosOxigenacao5">
   <ion-item>
     <ion-label class="label">Sem alterações</ion-label>
-    <ion-checkbox [(ngModel)]="paciente.mamaSemAltecacoes"></ion-checkbox>
+    <ion-radio value="Sem Altecacoes"></ion-radio>
   </ion-item>
   <ion-item>
     <ion-label class="label">Nódulos</ion-label>
-    <ion-checkbox [(ngModel)]="paciente.mamaNodulos"></ion-checkbox>
+    <ion-radio value="nodulos"></ion-radio>
   </ion-item>
   <ion-item>
     <ion-label class="label">Dor</ion-label>
-    <ion-checkbox [(ngModel)]="paciente.mamaDor"></ion-checkbox>
+    <ion-radio value="dor"></ion-radio>
   </ion-item>
   <ion-item>
     <ion-label class="label">Assimétrica</ion-label>
-    <ion-checkbox [(ngModel)]="paciente.mamaAssimetrica"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label floating>Outros</ion-label>
-    <ion-input class="inputgrupo" [(ngModel)]="paciente.mamaOutros" type="text"></ion-input>
+    <ion-radio value="assimétrica"></ion-radio>
   </ion-item>
 </ion-list>
 </ion-card>
