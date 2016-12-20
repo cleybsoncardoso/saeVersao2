@@ -23,13 +23,7 @@ export class AlimentacaoEEliminacaoIntestinal {
     toggleGroup(id){
       let grupo = document.getElementById("dadosIntestinal"+id);
       let icone = document.getElementById("iconeIntestinal"+id);
-      if(id==2){
-        this.verificaVomito();
-      }
-      if(id==5 && this.paciente.ostomia=="sim"){
-        let grupo = document.getElementById("listRadio0");
-        grupo.style.display = "block";
-      }
+      
       this.toggleClose(id);
       if(grupo.style.display == "block"){
         grupo.style.display = "none";
@@ -40,17 +34,19 @@ export class AlimentacaoEEliminacaoIntestinal {
       }
     }
 
+    /*
     verificaVomito(){
       let grupo = document.getElementById("vomito");
       if(this.paciente.presencaoDeVomito == true){
         grupo.style.display = "block";
       }
     }
+    */
 
     toggleGroup2(id,status){
 
-      let grupo = document.getElementById("listRadio"+id);
-      grupo.style.display = status;
+    //  let grupo = document.getElementById("listRadio"+id);
+      //grupo.style.display = status;
 
     }
     toggleClose(id){
@@ -68,6 +64,7 @@ export class AlimentacaoEEliminacaoIntestinal {
       }
     }
 
+/*
     toggleVomito(){
       let grupo = document.getElementById("vomito");
       if(grupo.style.display == "block"){
@@ -76,6 +73,7 @@ export class AlimentacaoEEliminacaoIntestinal {
         grupo.style.display = "block";
       }
     }
+    */
 
     slide(passar){
       if(passar.deltaX>0){
