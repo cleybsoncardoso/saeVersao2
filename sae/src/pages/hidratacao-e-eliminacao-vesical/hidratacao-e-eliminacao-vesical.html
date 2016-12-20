@@ -12,7 +12,7 @@
 <ion-content padding (swipe)="slide($event)">
   <ion-card class="mycard">
     <ion-card-header class="cardtitulo"> Hidratação e Eliminação Vesical </ion-card-header>
-    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Turgidez da pele <p class="icone" id="iconeHidratacao0" style="float: right">+</p></ion-list-header>
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Turgidez da pele <p class="icone" id="iconeHidratacao0" style="float: right; color: white">+</p></ion-list-header>
     <ion-list radio-group no-lines [(ngModel)]="paciente.turgidezDaPele" class="lista" id="dadosHidratacao0" class="subgrupo">
       <ion-item>
         <ion-label class="label">Preservada </ion-label>
@@ -23,7 +23,7 @@
         <ion-radio value="diminuida"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Eliminação urinária <p class="icone" id="iconeHidratacao1" style="float: right">+</p></ion-list-header>
+    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Eliminação urinária <p class="icone" id="iconeHidratacao1" style="float: right; color: white">+</p></ion-list-header>
     <ion-list no-lines class="lista" id="dadosHidratacao1" class="subgrupo">
       <ion-item>
         <ion-label class="label">Espontânea </ion-label>
@@ -46,7 +46,7 @@
         <ion-checkbox [(ngModel)]="paciente.eliminacaoUrinariaDispositivoUrinario"></ion-checkbox>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Características <p class="icone" id="iconeHidratacao2" style="float: right">+</p></ion-list-header>
+    <ion-list-header class="titulolista" (click)="toggleGroup(2)">Características <p class="icone" id="iconeHidratacao2" style="float: right; color: white">+</p></ion-list-header>
     <ion-list no-lines class="lista" id="dadosHidratacao2" class="subgrupo">
       <ion-item>
         <ion-label class="label">Disúria </ion-label>
