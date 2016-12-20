@@ -112,27 +112,39 @@
 </ion-list-header>
 <ion-list no-lines class="lista" id="dadosOxigenacao1">
   <ion-item-divider light style="text-align: left; border-radius: 5px;">MV presentes</ion-item-divider>
-<ion-item>
-  <ion-label class="label">Bilateralmente</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.bilateralmente"></ion-checkbox>
-</ion-item>
-<ion-item>
-  <ion-label class="label">Diminuídos</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.diminuidos"></ion-checkbox>
-</ion-item>
+<ion-list radio-group [(ngModel)]="paciente.MvPresentes">
+  <ion-item>
+    <ion-label class="label">Bilateralmente</ion-label>
+    <ion-radio value="bilateralmente"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Diminuídos</ion-label>
+    <ion-radio value="diminuídos"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Ausente</ion-label>
+    <ion-radio value="ausente"></ion-radio>
+  </ion-item>
+</ion-list>
 <ion-item-divider light style="text-align: left; border-radius: 5px;">Ruídos adventícios</ion-item-divider>
-<ion-item>
-  <ion-label class="label">Roncos</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.roncos"></ion-checkbox>
-</ion-item>
-<ion-item>
-  <ion-label class="label">Sibilos</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.sibilos"></ion-checkbox>
-</ion-item>
-<ion-item>
-  <ion-label class="label">Estertores</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.estertores"></ion-checkbox>
-</ion-item>
+<ion-list radio-group [(ngModel)]="paciente.RuidosAdventicios">
+  <ion-item>
+    <ion-label class="label">Roncos</ion-label>
+    <ion-radio value="roncos"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Sibilos</ion-label>
+    <ion-radio value="sibilos"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Estertores</ion-label>
+    <ion-radio value="estertores"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Creptos</ion-label>
+    <ion-radio value="creptos"></ion-radio>
+  </ion-item>
+</ion-list>
 </ion-list>
 <ion-list-header class="titulolista" (click)="toggleGroup(2)">Presenção de tosse
   <p class="icone" id="iconeOxigenacao2" style="float: right; color: white">+</p>
@@ -150,12 +162,7 @@
   <ion-label class="label">Produtiva</ion-label>
   <ion-checkbox [(ngModel)]="paciente.presencaoDeTosseProdutiva"></ion-checkbox>
 </ion-item>
-<ion-item style="margin-bottom: 0px">
-<ion-label style="margin-bottom: 0px" class="label">Creptos</ion-label>
-<ion-checkbox (click)="toggleExpetoracao()" [(ngModel)]="paciente.presencaoDeTosseExpectoracao"></ion-checkbox>
-</ion-item>
 </ion-list>
-
 <ion-list-header class="titulolista" (click)="toggleGroup(3)">Aspiração
   <p class="icone" id="iconeOxigenacao3" style="float: right; color: white">+</p>
 </ion-list-header>
