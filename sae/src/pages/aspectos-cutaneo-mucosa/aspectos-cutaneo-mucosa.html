@@ -1,188 +1,195 @@
 <ion-header>
   <ion-toolbar>
-   <ion-title>
-     Novo Paciente
-   </ion-title>
-   <ion-buttons start>
-     <button ion-button (click)="cancel()">Cancelar</button>
-   </ion-buttons>
-</ion-toolbar>
+    <ion-title>
+      Novo Paciente
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancelar</button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="aspectos-cutaneo-mucosa" (swipe)="slide($event)">
   <ion-card class="mycard">
+
     <ion-card-header class="cardtitulo">Aspectos cutâneo-mucosa </ion-card-header>
-    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Pele <p class="icone" id="iconeCutaneo0" style="float: right; color: white">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dadosCutaneo0">
+    <ion-item>
+      <ion-label class="label" floating>Lesões </ion-label>
+      <ion-input [(ngModel)]="paciente.genitaliaLesoesCaracteristicas" type="text"></ion-input>
+    </ion-item>
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Pele
+      <p class="icone" id="iconeCutaneo0" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list no-lines class="lista" id="dadosCutaneo0">
+  <ion-item>
+    <ion-label class="label">Cianose </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaCianose"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Icterícia </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaIctericia"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Petéquias </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaPetequias"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Corado </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaCorado"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Hipocorado </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHipocorado"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Hipercorado </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHipercorado"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Equimoses </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaEquimoses"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Hematomas </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHematomas"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Escoriações </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaEscoriacoes"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Outros</ion-label>
+    <ion-input class="inputgrupo" [(ngModel)]="paciente.aspectosCutaneoMucosaOutros" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Temperatura (ºC)</ion-label>
+    <ion-input class="inputgrupo" [(ngModel)]="paciente.aspectosCutaneoMucosaTemperatura" type="number"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-list-header class="titulolista" (click)="toggleGroup(1)">Olhos
+  <p class="icone" id="iconeCutaneo1" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list no-lines class="lista" id="dadosCutaneo1">
+  <ion-item>
+    <ion-label class="label">Icterícia </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.olhosIctericia"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Edema de conjuntiva </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.olhosEdemaDeConjuntiva"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Outros</ion-label>
+    <ion-input class="inputgrupo" [(ngModel)]="paciente.olhosOutros" type="text"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-list-header class="titulolista" (click)="toggleGroup(2)">AVP
+  <p class="icone" id="iconeCutaneo2" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list radio-group [(ngModel)]="paciente.avp" class="lista" id="dadosCutaneo2">
+  <ion-row>
+    <ion-col>
       <ion-item>
-        <ion-label class="label">Cianose </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaCianose"></ion-checkbox>
+        <ion-label class="label">Sim</ion-label>
+        <ion-radio name="aspiracao" value="sim" (click)="toggleGroup2(0,'block')"></ion-radio>
       </ion-item>
+    </ion-col>
+    <ion-col>
       <ion-item>
-        <ion-label class="label">Icterícia </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaIctericia"></ion-checkbox>
+        <ion-label class="label">Não</ion-label>
+        <ion-radio name="aspiracao" value="nao" (click)="toggleGroup2(0,'none')"></ion-radio>
       </ion-item>
-      <ion-item>
-        <ion-label class="label">Petéquias </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaPetequias"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Corado </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaCorado"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Hipocorado </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHipocorado"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Hipercorado </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHipercorado"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Equimoses </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaEquimoses"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Hematomas </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHematomas"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Escoriações </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaEscoriacoes"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Outros</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.aspectosCutaneoMucosaOutros" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Temperatura (ºC)</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.aspectosCutaneoMucosaTemperatura" type="number"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Olhos <p class="icone" id="iconeCutaneo1" style="float: right; color: white">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dadosCutaneo1">
-      <ion-item>
-        <ion-label class="label">Icterícia </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.olhosIctericia"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Edema de conjuntiva </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.olhosEdemaDeConjuntiva"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Outros</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.olhosOutros" type="text"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(2)">AVP <p class="icone" id="iconeCutaneo2" style="float: right; color: white">+</p></ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.avp" class="lista" id="dadosCutaneo2">
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label class="label">Sim</ion-label>
-            <ion-radio name="aspiracao" value="sim" (click)="toggleGroup2(0,'block')"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label class="label">Não</ion-label>
-            <ion-radio name="aspiracao" value="nao" (click)="toggleGroup2(0,'none')"></ion-radio>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-list>
-    <ion-list no-lines id="listRadio0" style="display: none; padding: 0px; margin: 0px" >
-      <ion-item>
-        <ion-label style="margin: 0px" floating>Local</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.avpLocal" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.avpTempoDePermanencia" type="text"></ion-input>
-      </ion-item>
-    </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-list>
+<ion-list no-lines id="listRadio0" style="display: none; padding: 0px; margin: 0px" >
+<ion-item>
+  <ion-label style="margin: 0px" floating>Local</ion-label>
+<ion-input class="inputgrupo" [(ngModel)]="paciente.avpLocal" type="text"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
+<ion-input class="inputgrupo" [(ngModel)]="paciente.avpTempoDePermanencia" type="text"></ion-input>
+</ion-item>
+</ion-list>
 
-    <ion-list-header class="titulolista" (click)="toggleGroup(3)">CVC <p class="icone" id="iconeCutaneo3" style="float: right; color: white">+</p></ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.cvc" class="lista" id="dadosCutaneo3">
-    <ion-grid >
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label class="label">Sim</ion-label>
-            <ion-radio name="aspiracao" value="sim" (click)="toggleGroup2(1,'block')"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label class="label">Não</ion-label>
-            <ion-radio name="aspiracao" value="nao" (click)="toggleGroup2(1,'none')"></ion-radio>
-          </ion-item>
-      </ion-col>
-    </ion-row>
-    </ion-grid>
-    </ion-list>
-    <ion-list no-lines id="listRadio1" style="display: none; padding: 0px; margin: 0px">
-      <ion-item>
-        <ion-label style="margin: 0px" floating>Local</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.cvcLocal" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.cvcTempoDePermanencia" type="text"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <ion-list-header class="titulolista" (click)="toggleGroup(4)">Dreno <p class="icone" id="iconeCutaneo4" style="float: right; color: white">+</p></ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.dreno" class="lista" id="dadosCutaneo4">
+<ion-list-header class="titulolista" (click)="toggleGroup(3)">CVC
+  <p class="icone" id="iconeCutaneo3" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list radio-group [(ngModel)]="paciente.cvc" class="lista" id="dadosCutaneo3">
+  <ion-grid>
     <ion-row>
-      <ion-col width-50>
+      <ion-col>
         <ion-item>
           <ion-label class="label">Sim</ion-label>
-          <ion-radio name="dreno" value="sim" (click)="toggleGroup2(2,'block')"></ion-radio>
+          <ion-radio name="aspiracao" value="sim" (click)="toggleGroup2(1,'block')"></ion-radio>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label class="label">Não</ion-label>
-          <ion-radio name="dreno" value="nao" (click)="toggleGroup2(2,'none')"></ion-radio>
+          <ion-radio name="aspiracao" value="nao" (click)="toggleGroup2(1,'none')"></ion-radio>
         </ion-item>
       </ion-col>
     </ion-row>
-    </ion-list>
-    <ion-list no-lines id="listRadio2" style="display: none; padding: 0px; margin: 0px">
+  </ion-grid>
+</ion-list>
+<ion-list no-lines id="listRadio1" style="display: none; padding: 0px; margin: 0px">
+<ion-item>
+  <ion-label style="margin: 0px" floating>Local</ion-label>
+<ion-input class="inputgrupo" [(ngModel)]="paciente.cvcLocal" type="text"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
+<ion-input class="inputgrupo" [(ngModel)]="paciente.cvcTempoDePermanencia" type="text"></ion-input>
+</ion-item>
+</ion-list>
+
+<ion-list-header class="titulolista" (click)="toggleGroup(4)">Dreno
+  <p class="icone" id="iconeCutaneo4" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list radio-group [(ngModel)]="paciente.dreno" class="lista" id="dadosCutaneo4">
+  <ion-row>
+    <ion-col width-50>
       <ion-item>
-        <ion-label style="margin: 0px" floating>Local</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.drenoCaracteristicas" type="text"></ion-input>
+        <ion-label class="label">Sim</ion-label>
+        <ion-radio name="dreno" value="sim" (click)="toggleGroup2(2,'block')"></ion-radio>
       </ion-item>
+    </ion-col>
+    <ion-col>
       <ion-item>
-        <ion-label style="margin: 0px" floating>Tipo de Dreno</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.drenoTipoDeDreno" type="text"></ion-input>
+        <ion-label class="label">Não</ion-label>
+        <ion-radio name="dreno" value="nao" (click)="toggleGroup2(2,'none')"></ion-radio>
       </ion-item>
-    </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(5)">Genitália <p class="icone" id="iconeCutaneo5" style="float: right; color: white">+</p></ion-list-header>
-    <ion-list no-lines class="lista" id="dadosCutaneo5">
-      <ion-item>
-        <ion-label class="label">Sem anormalidades </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.genitaliaSemAnormalidades"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Secreção </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.genitaliaSecrecao"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Lesões </ion-label>
-        <ion-checkbox (click)="toggleLesoes()" [(ngModel)]="paciente.genitaliaLesoes"></ion-checkbox>
-      </ion-item>
-      <ion-list no-lines class="lista" id="lesoes">
-        <ion-item>
-          <ion-label style="margin: 0px" floating>Características</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="paciente.genitaliaLesoesCaracteristicas" type="text"></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-item>
-        <ion-label floating>Outros</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.genitaliaOutros" type="text"></ion-input>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-list>
+<ion-list no-lines id="listRadio2" style="display: none; padding: 0px; margin: 0px">
+<ion-item>
+  <ion-label style="margin: 0px" floating>Local</ion-label>
+<ion-input class="inputgrupo" [(ngModel)]="paciente.drenoCaracteristicas" type="text"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label style="margin: 0px" floating>Tipo de Dreno</ion-label>
+<ion-input class="inputgrupo" [(ngModel)]="paciente.drenoTipoDeDreno" type="text"></ion-input>
+</ion-item>
+</ion-list>
+<ion-list-header class="titulolista" (click)="toggleGroup(5)">Genitália
+  <p class="icone" id="iconeCutaneo5" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list no-lines class="lista" id="dadosCutaneo5">
+  <ion-item>
+    <ion-label class="label">Sem anormalidades </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.genitaliaSemAnormalidades"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Secreção </ion-label>
+    <ion-checkbox [(ngModel)]="paciente.genitaliaSecrecao"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Outros</ion-label>
+    <ion-input class="inputgrupo" [(ngModel)]="paciente.genitaliaOutros" type="text"></ion-input>
+  </ion-item>
+</ion-list>
+</ion-card>
 </ion-content>
