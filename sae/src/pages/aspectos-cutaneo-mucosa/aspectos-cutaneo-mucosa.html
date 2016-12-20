@@ -23,14 +23,6 @@
         <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaIctericia"></ion-checkbox>
       </ion-item>
       <ion-item>
-        <ion-label class="label">Palidez </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaPalidez"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Prurido </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaPrurido"></ion-checkbox>
-      </ion-item>
-      <ion-item>
         <ion-label class="label">Petéquias </ion-label>
         <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaPetequias"></ion-checkbox>
       </ion-item>
@@ -159,7 +151,7 @@
     </ion-list>
     <ion-list no-lines id="listRadio2" style="display: none; padding: 0px; margin: 0px">
       <ion-item>
-        <ion-label style="margin: 0px" floating>Características</ion-label>
+        <ion-label style="margin: 0px" floating>Local</ion-label>
         <ion-input class="inputgrupo" [(ngModel)]="paciente.drenoCaracteristicas" type="text"></ion-input>
       </ion-item>
       <ion-item>

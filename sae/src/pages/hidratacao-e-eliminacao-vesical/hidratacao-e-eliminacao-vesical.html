@@ -26,10 +26,6 @@
     <ion-list-header class="titulolista" (click)="toggleGroup(1)">Eliminação urinária <p class="icone" id="iconeHidratacao1" style="float: right">+</p></ion-list-header>
     <ion-list no-lines class="lista" id="dadosHidratacao1" class="subgrupo">
       <ion-item>
-        <ion-label floating>Volume (ml:h)</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.eliminacaoUrinariaVolume" type="number"></ion-input>
-      </ion-item>
-      <ion-item>
         <ion-label class="label">Espontânea </ion-label>
         <ion-checkbox [(ngModel)]="paciente.eliminacaoUrinariaEspontanea"></ion-checkbox>
       </ion-item>

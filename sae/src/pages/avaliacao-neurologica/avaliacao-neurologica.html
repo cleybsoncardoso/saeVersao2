@@ -107,7 +107,7 @@
       <p class="iconeNeurologica" id="iconeNeurologica2" style="float: right">+</p>
     </ion-list-header>
     <ion-list no-lines class="lista" id="dadosNeurologica2" class="subgrupo">
-      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMSS Direita</ion-item-divider>
+      <ion-item-divider light style="text-align: left; border-radius: 5px;">MSD</ion-item-divider>
       <ion-list radio-group [(ngModel)]="paciente.mmssDireita">
         <ion-item>
           <ion-label class="label">Preservada</ion-label>
@@ -126,7 +126,7 @@
           <ion-radio value="parestesia"></ion-radio>
         </ion-item>
       </ion-list>
-      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMSS Esquerda</ion-item-divider>
+      <ion-item-divider light style="text-align: left; border-radius: 5px;">MSE</ion-item-divider>
       <ion-list radio-group [(ngModel)]="paciente.mmssEsquerda">
         <ion-item>
           <ion-label class="label">Preservada</ion-label>
@@ -145,7 +145,7 @@
           <ion-radio value="parestesia"></ion-radio>
         </ion-item>
       </ion-list>
-      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMII Direita</ion-item-divider>
+      <ion-item-divider light style="text-align: left; border-radius: 5px;">MID</ion-item-divider>
       <ion-item>
         <ion-label class="label">Preservada</ion-label>
         <ion-checkbox [(ngModel)]="paciente.preservadaDireita"></ion-checkbox>
@@ -162,15 +162,7 @@
         <ion-label class="label">Parestesia</ion-label>
         <ion-checkbox [(ngModel)]="paciente.parestesiaDireita"></ion-checkbox>
       </ion-item>
-      <ion-item>
-        <ion-label class="label">Movimentos Lentos</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.movimentosLentosDireita"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Movimentos Involuntários</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.movimentosInvoluntariosDireita"></ion-checkbox>
-      </ion-item>
-      <ion-item-divider light style="text-align: left; border-radius: 5px;">MMII Esquerda</ion-item-divider>
+      <ion-item-divider light style="text-align: left; border-radius: 5px;">MIE</ion-item-divider>
       <ion-item>
         <ion-label class="label">Preservada</ion-label>
         <ion-checkbox [(ngModel)]="paciente.preservadaEsquerda"></ion-checkbox>
@@ -186,14 +178,6 @@
       <ion-item>
         <ion-label class="label">Parestesia</ion-label>
         <ion-checkbox [(ngModel)]="paciente.parestesiaEsquerda"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Movimentos Lentos</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.movimentosLentosEsquerda"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Movimentos Involuntários</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.movimentosInvoluntarios"></ion-checkbox>
       </ion-item>
     </ion-list>
 
