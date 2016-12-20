@@ -22,14 +22,14 @@
 
 <ion-content padding>
 <ion-card>
-  <ion-list-header class="titulolista" (click)="toggleGroup(0)">A fazer <p class="iconePlano" id="iconePlano0" style="float: right">+</p></ion-list-header>
+  <ion-list-header class="titulolista" (click)="toggleGroup(0)">A fazer <p class="iconePlano" id="iconePlano0" style="float: right; color: white">+</p></ion-list-header>
     <ion-list no-lines class="lista" id="dadosPlano0" class="subgrupo">
       <ion-item *ngFor="let item of planoAFazer" (click)="itemSelected(item)">
         {{item.intervencao}}
       </ion-item>
     </ion-list>
 
-  <ion-list-header class="titulolista" (click)="toggleGroup(1)">Feitos <p class="iconePlano" id="iconePlano1" style="float: right">+</p></ion-list-header>
+  <ion-list-header class="titulolista" (click)="toggleGroup(1)">Feitos <p class="iconePlano" id="iconePlano1" style="float: right; color: white">+</p></ion-list-header>
     <ion-list no-lines class="lista" id="dadosPlano1" class="subgrupo">
       <ion-item *ngFor="let item of planoFeito" (click)="itemSelected(item)">
         {{item.intervencao}}
