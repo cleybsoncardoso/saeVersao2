@@ -36,20 +36,8 @@ export class AspectosCutaneoMucosa {
     toggleGroup(id){
       let grupo = document.getElementById("dadosCutaneo"+id);
       let icone = document.getElementById("iconeCutaneo"+id);
-      if(id==2 && this.paciente.avp=="sim"){
-          let grupo = document.getElementById("listRadio0");
-          grupo.style.display = "block";
-      }
       if(id==5){
         this.verificaLesoes();
-      }
-      if(id==3 && this.paciente.cvc=="sim"){
-          let grupo = document.getElementById("listRadio1");
-          grupo.style.display = "block";
-      }
-      if(id==4 && this.paciente.dreno=="sim"){
-          let grupo = document.getElementById("listRadio2");
-          grupo.style.display = "block";
       }
       this.toggleClose(id);
       if(grupo.style.display == "block"){

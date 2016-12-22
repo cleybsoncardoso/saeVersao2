@@ -91,18 +91,17 @@
     <ion-col>
       <ion-item>
         <ion-label class="label">Sim</ion-label>
-        <ion-radio name="aspiracao" value="sim" (click)="toggleGroup2(0,'block')"></ion-radio>
+        <ion-radio name="aspiracao" value="sim"></ion-radio>
       </ion-item>
     </ion-col>
     <ion-col>
       <ion-item>
         <ion-label class="label">Não</ion-label>
-        <ion-radio name="aspiracao" value="nao" (click)="toggleGroup2(0,'none')"></ion-radio>
+        <ion-radio name="aspiracao" value="nao"></ion-radio>
       </ion-item>
     </ion-col>
   </ion-row>
-</ion-list>
-<ion-list no-lines id="listRadio0" style="display: none; padding: 0px; margin: 0px" >
+<ion-list *ngIf="this.paciente.avp=='sim'" no-lines id="listRadio0" style="padding: 0px; margin: 0px" >
 <ion-item>
   <ion-label style="margin: 0px" floating>Local</ion-label>
 <ion-input class="inputgrupo" [(ngModel)]="paciente.avpLocal" type="text"></ion-input>
@@ -111,6 +110,7 @@
   <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
 <ion-input class="inputgrupo" [(ngModel)]="paciente.avpTempoDePermanencia" type="text"></ion-input>
 </ion-item>
+</ion-list>
 </ion-list>
 
 <ion-list-header class="titulolista" (click)="toggleGroup(3)">CVC
@@ -122,19 +122,18 @@
       <ion-col>
         <ion-item>
           <ion-label class="label">Sim</ion-label>
-          <ion-radio name="aspiracao" value="sim" (click)="toggleGroup2(1,'block')"></ion-radio>
+          <ion-radio name="aspiracao" value="sim"></ion-radio>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label class="label">Não</ion-label>
-          <ion-radio name="aspiracao" value="nao" (click)="toggleGroup2(1,'none')"></ion-radio>
+          <ion-radio name="aspiracao" value="nao"></ion-radio>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-list>
-<ion-list no-lines id="listRadio1" style="display: none; padding: 0px; margin: 0px">
+<ion-list *ngIf="this.paciente.cvc=='sim'" no-lines id="listRadio1" style="padding: 0px; margin: 0px">
 <ion-item>
   <ion-label style="margin: 0px" floating>Local</ion-label>
 <ion-input class="inputgrupo" [(ngModel)]="paciente.cvcLocal" type="text"></ion-input>
@@ -143,6 +142,7 @@
   <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
 <ion-input class="inputgrupo" [(ngModel)]="paciente.cvcTempoDePermanencia" type="text"></ion-input>
 </ion-item>
+</ion-list>
 </ion-list>
 
 <ion-list-header class="titulolista" (click)="toggleGroup(4)">Dreno
@@ -153,18 +153,17 @@
     <ion-col width-50>
       <ion-item>
         <ion-label class="label">Sim</ion-label>
-        <ion-radio name="dreno" value="sim" (click)="toggleGroup2(2,'block')"></ion-radio>
+        <ion-radio name="dreno" value="sim"></ion-radio>
       </ion-item>
     </ion-col>
     <ion-col>
       <ion-item>
         <ion-label class="label">Não</ion-label>
-        <ion-radio name="dreno" value="nao" (click)="toggleGroup2(2,'none')"></ion-radio>
+        <ion-radio name="dreno" value="nao"></ion-radio>
       </ion-item>
     </ion-col>
   </ion-row>
-</ion-list>
-<ion-list no-lines id="listRadio2" style="display: none; padding: 0px; margin: 0px">
+<ion-list *ngIf="this.paciente.dreno=='sim'" no-lines id="listRadio2" style="padding: 0px; margin: 0px">
 <ion-item>
   <ion-label style="margin: 0px" floating>Local</ion-label>
 <ion-input class="inputgrupo" [(ngModel)]="paciente.drenoCaracteristicas" type="text"></ion-input>
@@ -174,6 +173,9 @@
 <ion-input class="inputgrupo" [(ngModel)]="paciente.drenoTipoDeDreno" type="text"></ion-input>
 </ion-item>
 </ion-list>
+</ion-list>
+
+
 <ion-list-header class="titulolista" (click)="toggleGroup(5)">Genitália
   <p class="icone" id="iconeCutaneo5" style="float: right; color: white">+</p>
 </ion-list-header>
