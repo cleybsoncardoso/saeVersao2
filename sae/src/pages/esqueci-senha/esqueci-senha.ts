@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
   Ionic pages and navigation.
 */
 @Component({
+  moduleId: module.id,
   templateUrl: 'esqueci-senha.html',
 })
 export class EsqueciSenhaPage {

@@ -1,0 +1,35 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage(pacientes)" menuClose>
+        <button ion-button item-left>
+          <ion-icon name="md-people"></ion-icon>
+        </button>
+          Pacientes
+      </button>
+      <!-- Botao Menu 1 Alterar Senha -->
+      <button ion-item (click)="openPage(alterarsenha)" menuClose>
+        <button ion-button item-left>
+          <ion-icon name="md-construct"></ion-icon>
+        </button>
+          Alterar Senha
+      </button>
+      <!-- Botao Menu 1 Sair -->
+      <button ion-item menuClose (click)="openPage(home)">
+        <button ion-button item-left>
+          <ion-icon name="md-exit"></ion-icon>
+        </button>
+          Sair
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

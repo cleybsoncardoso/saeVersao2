@@ -7,6 +7,7 @@ import {EnfermeiroService, Enfermeira} from "../../providers/enfermeiro-service/
 import 'rxjs/add/operator/map';
 
 @Component({
+  moduleId: module.id,
   templateUrl: 'home.html'
 })
 export class HomePage {
