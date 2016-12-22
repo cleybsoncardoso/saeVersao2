@@ -4,15 +4,188 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<!--
+  Generated template for the AvaliacaoNeurologica page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>avaliacaoNeurologica</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar>
+    <ion-title>
+      Novo Paciente
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancelar</button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
+<ion-content padding (swipe)="slide($event)">
+  <ion-card class="mycard">
+    <ion-card-header class="cardtitulo"> Avaliação Neurológica </ion-card-header>
+    <ion-list-header class="titulolista" (click)="toggleGroup(0)">Consciência
+      <p class="iconeNeurologicaNeurologica" id="iconeNeurologica0" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list no-lines radio-group [(ngModel)]="paciente.concienciaAvaliacaoNeurologica" class="lista" id="dadosNeurologica0"
+  class="subgrupo">
+  <ion-item>
+    <ion-label class="label">Alerta</ion-label>
+    <ion-radio value="alerta"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Letárgico</ion-label>
+    <ion-radio value="letargico"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Obnubilado</ion-label>
+    <ion-radio value="obnubilado"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Torporoso</ion-label>
+    <ion-radio value="torporoso"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Comatoso</ion-label>
+    <ion-radio value="comatoso"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Glasgow</ion-label>
+    <ion-input class="inputgrupo" [(ngModel)]="paciente.glasgow" type="number"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-list-header class="titulolista" (click)="toggleGroup(1)">Pupilas
+  <p class="iconeNeurologica" id="iconeNeurologica1" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list no-lines radio-group class="lista" id="dadosNeurologica1" [(ngModel)]="paciente.pupilasAvaliacaoNeurologica" class="subgrupo">
+  <ion-item>
+    <ion-label class="label">Isocórica</ion-label>
+    <ion-radio value="isocorica"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Anisocórica</ion-label>
+    <ion-radio value="anisocorica"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Miose</ion-label>
+    <ion-radio value="miose"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Midríase</ion-label>
+    <ion-radio value="midriase"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">RFM</ion-label>
+    <ion-radio value="rfm"></ion-radio>
+  </ion-item>
+</ion-list>
 
-<ion-content padding>
+<ion-list-header class="titulolista" (click)="toggleGroup(2)">Mobilidade Física
+  <p class="iconeNeurologica" id="iconeNeurologica2" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list no-lines class="lista" id="dadosNeurologica2" class="subgrupo">
+  <ion-item-divider light style="text-align: left; border-radius: 5px;">MSD</ion-item-divider>
+<ion-list radio-group [(ngModel)]="paciente.msDireita">
+  <ion-item>
+    <ion-label class="label">Preservada</ion-label>
+    <ion-radio value="preservada"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Paresia</ion-label>
+    <ion-radio value="paresia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Plegia</ion-label>
+    <ion-radio value="plegia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Parestesia</ion-label>
+    <ion-radio value="parestesia"></ion-radio>
+  </ion-item>
+</ion-list>
+<ion-item-divider light style="text-align: left; border-radius: 5px;">MSE</ion-item-divider>
+<ion-list radio-group [(ngModel)]="paciente.msEsquerda">
+  <ion-item>
+    <ion-label class="label">Preservada</ion-label>
+    <ion-radio value="preservada"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Paresia</ion-label>
+    <ion-radio value="paresia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Plegia</ion-label>
+    <ion-radio value="plegia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Parestesia</ion-label>
+    <ion-radio value="parestesia"></ion-radio>
+  </ion-item>
+</ion-list>
+<ion-item-divider light style="text-align: left; border-radius: 5px;">MID</ion-item-divider>
+<ion-list radio-group [(ngModel)]="paciente.midireita">
+  <ion-item>
+    <ion-label class="label">Preservada</ion-label>
+    <ion-radio value="preservada"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Paresia</ion-label>
+    <ion-radio value="paresia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Plegia</ion-label>
+    <ion-radio value="plegia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Parestesia</ion-label>
+    <ion-radio value="parestesia"></ion-radio>
+  </ion-item>
+</ion-list>
+<ion-item-divider light style="text-align: left; border-radius: 5px;">MIE</ion-item-divider>
+<ion-list radio-group [(ngModel)]="paciente.miEsquerda">
+  <ion-item>
+    <ion-label class="label">Preservada</ion-label>
+    <ion-radio value="preservada"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Paresia</ion-label>
+    <ion-radio value="paresia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Plegia</ion-label>
+    <ion-radio value="plegia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Parestesia</ion-label>
+    <ion-radio value="parestesia"></ion-radio>
+  </ion-item>
+</ion-list>
+</ion-list>
 
+<ion-list-header class="titulolista" (click)="toggleGroup(3)">Fala e Linguagem
+  <p class="iconeNeurologica" id="iconeNeurologica3" style="float: right; color: white">+</p>
+</ion-list-header>
+<ion-list no-lines radio-group [(ngModel)]="paciente.falaELingagem" class="lista" id="dadosNeurologica3" class="subgrupo">
+  <ion-item>
+    <ion-label class="label">Afonia</ion-label>
+    <ion-radio value="afonia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Dislalia</ion-label>
+    <ion-radio value="dislalia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Disartria</ion-label>
+    <ion-radio value="disartria"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Disfasia</ion-label>
+    <ion-radio value="disfasia"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label class="label">Afania</ion-label>
+    <ion-radio value="afania"></ion-radio>
+  </ion-item>
+</ion-list>
+</ion-card>
 </ion-content>

@@ -1,10 +1,10 @@
 import {NavController, ActionSheetController,Platform,AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import {Http} from "@angular/http";
-import {IdentificacaoPage} from '../identificacao/identificacao';
+import { IdentificacaoPage } from '../identificacao/identificacao';
 import 'rxjs/add/operator/map';
-import {CadastroPaciente} from '../../model/cadastroPaciente';
-import {PacienteService} from "../../providers/paciente-service/paciente-service";
+import { CadastroPaciente } from '../../model/cadastroPaciente';
+import { PacienteService } from "../../providers/paciente-service/paciente-service";
 import {EnfermeiroService, Enfermeira} from "../../providers/enfermeiro-service/enfermeiro-service";
 import {GerarSaePage} from '../gerar-sae/gerar-sae';
 import { PlanoDeCuidadosPage } from '../plano-de-cuidados/plano-de-cuidados';

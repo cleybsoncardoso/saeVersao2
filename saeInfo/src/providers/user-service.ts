@@ -22,8 +22,8 @@ export class UserService {
 
 
 
-  confirmarDados(type, id, pacienteNome, senha) {
-    return this.http.post(this.link, JSON.stringify({ type, id, senha, pacienteNome }));
+  confirmarDados(type, id, pacienteid, senha) {
+    return this.http.post(this.link, JSON.stringify({ type, id, senha, pacienteid }));
   }
 
 }

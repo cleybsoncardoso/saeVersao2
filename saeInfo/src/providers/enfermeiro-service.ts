@@ -23,12 +23,15 @@ export class Enfermeira {
 
 @Injectable()
 export class EnfermeiroService {
+
+  private link: string = "http://localhost/saeApi.php";
+
   constructor(private http: Http, public storage: Storage) {
 
   }
 
   getDadosEnfermeira(inputLogin) {
-    let url = "http://localhost/saeApi.php?login=" + inputLogin;
+    let url = this.link + "?login=" + inputLogin;
     return this.http.get(url).map(res => res.json());
   }
 
@@ -40,6 +43,10 @@ export class EnfermeiroService {
 
   public setEnfermeira(user: Enfermeira) {
     return this.storage.set('data', user);
+  }
+
+  cadastrarPaciente(type, paciente) {
+    return this.http.post(this.link, JSON.stringify({ type, paciente }));
   }
 
 }

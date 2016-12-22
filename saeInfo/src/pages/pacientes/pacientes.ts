@@ -153,7 +153,7 @@ export class PacientesPage {
         {
           text: 'Confirmar Alta',
           handler: data => {
-            this.confirmarDados(paciente, data.password);
+            this.confirmarDados(paciente.id, data.password);
           }
 
         },
@@ -169,10 +169,10 @@ export class PacientesPage {
 
   }
 
-  confirmarDados(pacienteNome, senha) {
+  confirmarDados(pacienteid, senha) {
     console.log(senha);
-    console.log(pacienteNome);
-    this.userService.confirmarDados("alta", this.enfermeira.id, senha, pacienteNome)
+    console.log(pacienteid);
+    this.userService.confirmarDados("alta", this.enfermeira.id, senha, pacienteid)
       .subscribe(data => {
         let alert = this.alert.create({
           title: 'sucesso',
