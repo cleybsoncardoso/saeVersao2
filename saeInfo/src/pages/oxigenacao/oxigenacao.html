@@ -85,7 +85,7 @@
     <ion-label class="label">Ventilação mecânica</ion-label>
     <ion-radio value="ventilação mecânica"></ion-radio>
   </ion-item>
-  <ion-list radio-group *ngIf="paciente.respitacaoOxigenacao=='ventilação mecânica'" [(ngModel)]="paciente.ventilacaoMecanicaOxigenacao">
+  <ion-list radio-group [(ngModel)]="paciente.ventilacaoMecanicaOxigenacao">
     <ion-item>
       <ion-label class="label">Espontânea</ion-label>
       <ion-radio value="espontânea"></ion-radio>

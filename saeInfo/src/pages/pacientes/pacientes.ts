@@ -171,7 +171,6 @@ export class PacientesPage {
 
   confirmarDados(pacienteid, senha) {
     console.log(senha);
-    console.log(pacienteid);
     this.userService.confirmarDados("alta", this.enfermeira.id, senha, pacienteid)
       .subscribe(data => {
         let alert = this.alert.create({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -11,19 +11,23 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService {
 
-  private link: string = "http://localhost/saeApi.php";
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+
+  private link: string = "http://localhost/saeApi/user.php";
   constructor(public http: Http) {
     console.log('Hello UserService Provider');
   }
 
   login(type, username, password) {
-    return this.http.post(this.link, JSON.stringify({ type, username, password }));
+    return this.http.post(this.link, JSON.stringify({ type, username, password }), { headers: this.headers });
   }
 
-
-
   confirmarDados(type, id, pacienteid, senha) {
-    return this.http.post(this.link, JSON.stringify({ type, id, senha, pacienteid }));
+    return this.http.post(this.link, JSON.stringify({ type, id, senha, pacienteid }), { headers: this.headers });
+  }
+
+  alterarSenha(type:string, id:number, senhaAntiga:string, senhanova:string){
+    return this.http.post(this.link, JSON.stringify({ type,id, senhaAntiga, senhanova }), { headers: this.headers });
   }
 
 }

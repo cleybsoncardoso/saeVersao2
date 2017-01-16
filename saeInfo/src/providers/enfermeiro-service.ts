@@ -24,7 +24,7 @@ export class Enfermeira {
 @Injectable()
 export class EnfermeiroService {
 
-  private link: string = "http://localhost/saeApi.php";
+  private link: string = "http://localhost/saeApi/enfermeiro.php";
 
   constructor(private http: Http, public storage: Storage) {
 

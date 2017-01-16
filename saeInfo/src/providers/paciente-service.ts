@@ -1,24 +1,62 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http  } from '@angular/http';
+
 import 'rxjs/add/operator/map';
+import { CadastroPaciente } from '../model/cadastroPaciente';
 
-/*
-  Generated class for the PacienteService provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class PacienteService {
 
-  constructor(public http: Http) {
-    console.log('Hello PacienteService Provider');
+  private pacientes : Array<CadastroPaciente>;
+  private link:string = "http://localhost/saeApi/saeApi.php?";
+
+  constructor(private http: Http) {
+
   }
 
-//pega lista de pacientes
-  carregar() {
-    let url = "http://localhost/saeApi.php?pacientes";
+  carregar(){
+      let url= this.link + "pacientes";
+      return this.http.get(url).map(res => res.json());
+  }
+
+  carregarCaracteristicas(){
+      let url= this.link + "caracteristicas";
+      return this.http.get(url).map(res => res.json());
+  }
+
+  carregarDiagnosticos(ids){
+      let url= this.link + "diagnosticos=" + ids;
+      return this.http.get(url).map(res => res.json());
+  }
+
+  getPacientes(){
+    return new Promise(resolve => {
+      let url= "http://localhost/getusers.php?pacientes";
+      this.http.get(url)
+      .map(res=>res.json())
+      .subscribe(data=>{
+        this.pacientes = data;
+        resolve(this.pacientes);
+      });
+    });
+  }
+
+  addPaciente(){
+
+  }
+
+  getPlanos(id){
+    let url= this.link + "plano=" + id;
     return this.http.get(url).map(res => res.json());
+  }
+
+  deletePaciente(){
+
+  }
+
+  editPaciente(){
+
   }
 
 }
