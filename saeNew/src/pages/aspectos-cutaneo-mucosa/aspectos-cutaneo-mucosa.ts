@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { SegurancaFisicaPage } from '../seguranca-fisica/seguranca-fisica';
+import { CadastroPaciente } from '../../model/cadastroPaciente';
 
 /*
   Generated class for the AspectosCutaneoMucosa page.
@@ -13,10 +15,67 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AspectosCutaneoMucosaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  private paciente: CadastroPaciente;
+  constructor(private params: NavParams, private nav: NavController) {
+    this.paciente = params.get("parametro");
+    this.nav = nav;
+  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AspectosCutaneoMucosaPage');
+  cancel() {
+    this.nav.popToRoot();
+  }
+
+  slide(passar) {
+    if (passar.deltaX > 0) {
+      this.nav.pop();
+    } else if (passar.deltaX < 0) {
+      this.nav.push(SegurancaFisicaPage, { parametro: this.paciente });
+    }
+  }
+
+  toggleGroup(id) {
+    let grupo = document.getElementById("dadosCutaneo" + id);
+    let icone = document.getElementById("iconeCutaneo" + id);
+    this.toggleClose(id);
+    if (grupo.style.display == "block") {
+      grupo.style.display = "none";
+      icone.innerHTML = '+';
+    } else {
+      grupo.style.display = "block";
+      icone.innerHTML = '-';
+    }
+  }
+
+  toggleClose(id) {
+    var i = 0;
+    let grupo = document.getElementById("dadosCutaneo" + i);
+    let icone = document.getElementById("iconeCutaneo" + i);
+    while (grupo != null) {
+      if (i != id) {
+        grupo.style.display = "none";
+        icone.innerHTML = '+';
+      }
+      i++;
+      icone = document.getElementById("iconeCutaneo" + i);
+      grupo = document.getElementById("dadosCutaneo" + i);
+    }
+  }
+
+
+
+  toggleLesoes() {
+    let grupo = document.getElementById("lesoes");
+    if (grupo.style.display == "block") {
+      grupo.style.display = "none";
+    } else {
+      grupo.style.display = "block";
+    }
+  }
+
+  toggleGroup2(id, status) {
+    let grupo = document.getElementById("listRadio" + id);
+    grupo.style.display = status;
+
   }
 
 }

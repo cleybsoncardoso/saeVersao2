@@ -1,22 +1,31 @@
+import {NavController,  NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {CadastroPaciente}from '../../model/cadastroPaciente';
+import {EntrevistaPage} from '../entrevista/entrevista';
 
 /*
-  Generated class for the Identificacao page.
+  Generated class for the IdentificacaoPage page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-identificacao',
-  templateUrl: 'identificacao.html'
+  templateUrl: 'identificacao.html',
 })
 export class IdentificacaoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+private paciente : CadastroPaciente;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IdentificacaoPage');
+  constructor(private params : NavParams, private nav : NavController) {
+    this.paciente = params.get('paciente');
+  }
+  cancel(){
+    this.nav.popToRoot();
   }
 
+  slide(passar){
+    if(passar.deltaX<0){
+      this.nav.push(EntrevistaPage,{parametro: this.paciente});
+    }
+  }
 }

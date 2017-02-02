@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { OxigenacaoPage } from '../oxigenacao/oxigenacao';
+import { CadastroPaciente } from '../../model/cadastroPaciente';
 
 /*
   Generated class for the AvaliacaoNeurologica page.
@@ -13,10 +15,57 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AvaliacaoNeurologicaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  private paciente: CadastroPaciente;
+  constructor(private params: NavParams, private nav: NavController) {
+    this.paciente = params.get("parametro");
+    this.nav = nav;
+  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AvaliacaoNeurologicaPage');
+  cancel() {
+    this.nav.popToRoot();
+  }
+  slide(passar) {
+    if (passar.deltaX > 0) {
+      this.nav.pop();
+    } else if (passar.deltaX < 0) {
+      this.nav.push(OxigenacaoPage, { parametro: this.paciente });
+    }
+  }
+  toggleGroup(id) {
+    let grupo = document.getElementById("dadosNeurologica" + id);
+    let iconeNeurologica = document.getElementById("iconeNeurologica" + id);
+    this.toggleClose(id);
+    if (grupo.style.display == "block") {
+      grupo.style.display = "none";
+      iconeNeurologica.innerHTML = '+';
+    } else {
+      grupo.style.display = "block";
+      iconeNeurologica.innerHTML = '-';
+    }
+  }
+
+  toggleClose(id) {
+    var i = 0;
+    let grupo = document.getElementById("dadosNeurologica" + i);
+    let iconeNeurologica = document.getElementById("iconeNeurologica" + i);
+    while (grupo != null) {
+      if (i != id) {
+        grupo.style.display = "none";
+        iconeNeurologica.innerHTML = '+';
+      }
+      i++;
+      iconeNeurologica = document.getElementById("iconeNeurologica" + i);
+      grupo = document.getElementById("dadosNeurologica" + i);
+    }
+  }
+
+  toggleGlasgow() {
+    let grupo = document.getElementById("glasgow");
+    if (this.paciente.glasgowMenu == true) {
+      grupo.style.display = "none";
+    } else {
+      grupo.style.display = "block";
+    }
   }
 
 }

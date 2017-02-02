@@ -5,14 +5,33 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>diagnosticos</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar>
+   <ion-title>
+     Paciente: {{paciente.Nome}}
+   </ion-title>
+   <ion-buttons start>
+     <button ion-button (click)="cancel()">Cancelar SAE</button>
+   </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding (swipe)="slide($event)">
+  <ion-card class="mycard">
+    <ion-card-header class="cardtitulo"> Diagnosticos </ion-card-header>
+  </ion-card>
+    <div *ngFor="let item of diagnosticos" >
+      <div class="margemLimitada" class="tituloDiagnostico">
+          {{item.diagnostico.titulo}}
+      </div>
+      <ion-list>
+        <div *ngFor="let itervencoes of item.intervencao" (click)="itemSelected(itervencoes)">
+          <div class="margemLimitada" [style.background-color]="selecionado(itervencoes)?'#98FB98':'#ffffff'">
+              {{itervencoes.titulo}}
+          </div>
+        </div>
+      </ion-list>
+    </div>
+
 
 </ion-content>

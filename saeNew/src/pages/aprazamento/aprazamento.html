@@ -5,14 +5,92 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>aprazamento</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar>
+    <ion-title>
+      Aprazamento: {{paciente.Nome}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancelar SAE</button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
+
 
 
 <ion-content padding>
 
+  <div *ngFor="let item of listaIntervencoes">
+    <ion-card>
+      <ion-card-header><h2 style="text-align:center;">
+          {{item.intervencao}}
+      </h2>
+    </ion-card-header>
+    <ion-card-content>
+      <!--
+      <form>
+      <ion-segment color="secondary" id="tesstevamo">
+        <ion-segment-button value="DIAS" (click)="tempo('teste','dias')">
+          ESCOLHER DIAS
+        </ion-segment-button>
+        <ion-segment-button value="DIARIAMENTE" (click)="tempo('teste','DIARIAMENTE')">
+          DIARIAMENTE
+        </ion-segment-button>
+        <ion-segment-button value="AGORA" (click)="tempo('teste','AGORA')">
+          AGORA
+        </ion-segment-button>
+      </ion-segment>
+    </form>
+
+    <br />
+
+    <form>
+      <ion-segment color="secondary">
+        <ion-segment-button id="'Dom' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Dom')">
+          D
+        </ion-segment-button>
+        <ion-segment-button id="'Seg' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Seg')">
+          S
+        </ion-segment-button>
+        <ion-segment-button id="'Ter' +  '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Ter')">
+          T
+        </ion-segment-button>
+        <ion-segment-button id="'Qua' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Qua')">
+          Q
+        </ion-segment-button>
+        <ion-segment-button id="'Qui' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Qui')">
+          Q
+        </ion-segment-button>
+        <ion-segment-button id="'Sex' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Sex')">
+          S
+        </ion-segment-button>
+        <ion-segment-button id="'Sab' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Sab')">
+          S
+        </ion-segment-button>
+      </ion-segment>
+    </form>
+-->
+
+
+    <form>
+
+      <ion-item width-30>
+        <ion-label fixed>Inicio</ion-label>
+        <ion-input type="time" [(ngModel)]="item.inicio" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>intervalo (Hr)</ion-label>
+        <ion-input type="number" [(ngModel)]="item.intervalo" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Inicio</ion-label>
+        <ion-input type="date" [(ngModel)]="item.dataInicio" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+    </form>
+    </ion-card-content>
+  </ion-card>
+  </div>
+  <button ion-button color="secondary" full large (click)="enviar()" >Finalizar Aprazamento</button>
 </ion-content>
