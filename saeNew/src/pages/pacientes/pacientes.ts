@@ -33,8 +33,8 @@ export class PacientesPage {
     ) {
         this.nav = nav;
         this.searchQuery = '';
-        this.carregarPacientes();
-        this.getDadosEnfermeira();
+        //this.carregarPacientes();
+        //this.getDadosEnfermeira();
   }
 
   private getDadosEnfermeira(){
