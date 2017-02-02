@@ -4,6 +4,7 @@ import { Http } from "@angular/http";
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha';
 import { Component } from '@angular/core';
 import { EnfermeiroService, Enfermeira } from "../../providers/enfermeiro-service";
+import { LoginService } from "../../providers/login-service";
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -19,53 +20,41 @@ export class HomePage {
     private http: Http,
     private alert: AlertController,
     private loading: LoadingController,
-    private eService: EnfermeiroService
+    private eService: EnfermeiroService,
+    private lService: LoginService
   ) {
 
-
-
-
   }
 
-  entrar() {
-    this.nav.setRoot(PacientesPage);
-    /** 
-        let username = this.coren;
-        let password = this.senha;
-        let type = "login";
-        let data = JSON.stringify({type, username, password});
-        let link = "http://localhost/saeApi.php";
-    
-        this.http.post(link, data)
-            .subscribe(data=>{
-                let loader = this.loading.create({
-                    content: "Checking ! Please wait...",
-                    duration: 1000
-    
-                });
-                loader.present();
-                this.eService.getDadosEnfermeira(username)
-                .subscribe(respostaID=>{
-                  let enfermeira = new Enfermeira();
-                  enfermeira.id = respostaID[0].id;
-                  enfermeira.nome = respostaID[0].first_name;
-                  this.eService.setEnfermeira(enfermeira).then();
-                  this.nav.setRoot(PacientesPage);
-                },error => {
-                  console.log("Não foi possível se conectar ao servidor");
-                });
-            },error => {
-                let alert = this.alert.create({
-                    title: 'Warning',
-                    subTitle: 'Wrong Username or Password! Please Try Again !',
-                    buttons: ['OK']
-                });
-                alert.present();
-            });
-            */
+  private entrar() {
+    if (this.coren !== null && this.senha !== null && this.coren !== '' && this.senha !== '') {
+
+      let loader = this.loading.create({
+        content: "Checando dados...",
+        duration: 1000
+      });
+      loader.present();
+
+      this.lService.logar(this.coren, this.senha).then(res => {
+        if (res.type == true) {
+          let enfermeira = new Enfermeira();
+          enfermeira.id = res.data.id;
+          enfermeira.nome = res.data.first_name;
+          this.eService.setEnfermeira(enfermeira).then();
+          this.nav.setRoot(PacientesPage);
+        } else {
+          let alert = this.alert.create({
+            title: 'Atenção',
+            subTitle: res.message,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+      });
+    }
   }
 
-  esqueci() {
+  private esqueci() {
     this.nav.setRoot(EsqueciSenhaPage);
   }
 
