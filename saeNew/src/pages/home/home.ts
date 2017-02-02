@@ -36,8 +36,7 @@ export class HomePage {
           let enfermeira = new Enfermeira();
           enfermeira.id = res.data.id;
           enfermeira.nome = res.data.first_name;
-          this.eService.setEnfermeira(enfermeira).then();
-          this.nav.setRoot(PacientesPage);
+          this.eService.setEnfermeira(enfermeira).then(()=>this.nav.setRoot(PacientesPage));
         } else {
           let alert = this.alert.create({
             title: 'Atenção',
