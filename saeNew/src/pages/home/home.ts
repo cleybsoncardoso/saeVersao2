@@ -1,12 +1,9 @@
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { PacientesPage } from '../pacientes/pacientes';
-import { Http } from "@angular/http";
 import { EsqueciSenhaPage } from '../esqueci-senha/esqueci-senha';
 import { Component } from '@angular/core';
 import { EnfermeiroService, Enfermeira } from "../../providers/enfermeiro-service";
 import { LoginService } from "../../providers/login-service";
-import 'rxjs/add/operator/map';
-
 @Component({
   templateUrl: 'home.html'
 })
@@ -17,7 +14,6 @@ export class HomePage {
 
   constructor(
     private nav: NavController,
-    private http: Http,
     private alert: AlertController,
     private loading: LoadingController,
     private eService: EnfermeiroService,

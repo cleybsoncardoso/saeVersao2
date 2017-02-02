@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 
 
@@ -17,13 +15,8 @@ export class Enfermeira{
 
 @Injectable()
 export class EnfermeiroService {
-  constructor(private http: Http, public storage : Storage) {
+  constructor(public storage : Storage) {
 
-  }
-
-  getDadosEnfermeira(inputLogin){
-      let url= "http://localhost/saeApi.php?login="+ inputLogin;
-      return this.http.get(url).map(res => res.json());
   }
 
   public getEnfermeira() {
