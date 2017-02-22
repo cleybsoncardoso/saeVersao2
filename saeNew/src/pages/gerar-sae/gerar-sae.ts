@@ -43,6 +43,7 @@ export class GerarSaePage {
     this.service.carregarCaracteristicas()
     .subscribe(data=>{
       this.listaCaracteristicas = data;
+      console.log(this.listaCaracteristicas);
 
     },error => {
       console.log(this.listaCaracteristicas);

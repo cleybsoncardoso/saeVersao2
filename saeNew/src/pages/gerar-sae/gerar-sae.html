@@ -6,26 +6,26 @@
 -->
 <ion-header>
   <ion-toolbar>
-   <ion-title>
-     Paciente: {{paciente.Nome}}
-   </ion-title>
-   <ion-buttons start>
-     <button ion-button (click)="cancel()">Cancelar SAE</button>
-   </ion-buttons>
+    <ion-title>
+      Paciente: {{paciente.Nome}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancelar SAE</button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding (swipe)="slide($event)">
+<ion-content (swipe)="slide($event)">
   <ion-card class="mycard">
     <ion-card-header class="cardtitulo"> Caracteristicas Definidoras </ion-card-header>
+    <ion-list>
+      <div *ngFor="let item of listaCaracteristicas" (click)="itemSelected(item)">
+        <div class="margemLimitada" id='{{item.titulo}}'>
+          {{item.titulo}}
+        </div>
+      </div>
+    </ion-list>
   </ion-card>
-  <ion-list>
-  <div *ngFor="let item of listaCaracteristicas" (click)="itemSelected(item)">
-    <div class="margemLimitada" id = '{{item.titulo}}'>
-        {{item.titulo}}
-    </div>
-  </div>
-</ion-list>
 
 </ion-content>
