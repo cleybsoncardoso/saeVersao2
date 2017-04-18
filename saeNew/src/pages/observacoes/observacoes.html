@@ -6,19 +6,19 @@
 -->
 <ion-header>
   <ion-toolbar>
-   <ion-title>
-     Novo Paciente
-   </ion-title>
-   <ion-buttons start>
-     <button ion-button round (click)="cancel()">Cancelar</button>
-   </ion-buttons>
+    <ion-title>
+      Novo Paciente
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button round (click)="cancel()">Cancelar</button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding (swipe)="slide($event)">
-  <ion-card class="mycard">
-    <ion-card-header class="cardtitulo">Observações </ion-card-header>
-    <ion-list no-lines id="observacoes" >
+<ion-content>
+  <ion-card class="mycard" (swipe)="slide($event)">
+    <ion-card-header class="cardtitulo">Observações</ion-card-header>
+    <ion-list no-lines id="observacoes">
     </ion-list>
     <ion-list no-lines class="listitem">
       <ion-item style="margin: 0px;">
@@ -26,5 +26,5 @@
         <button ion-button class="buttons" (click)="removerObservacao()">Remover</button>
       </ion-item>
     </ion-list>
-    </ion-card>
+  </ion-card>
 </ion-content>

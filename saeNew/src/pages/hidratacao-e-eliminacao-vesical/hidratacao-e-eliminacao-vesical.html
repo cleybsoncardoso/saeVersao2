@@ -9,8 +9,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding (swipe)="slide($event)">
-  <ion-card class="mycard">
+<ion-content>
+  <ion-card class="mycard" (swipe)="slide($event)">
     <ion-card-header class="cardtitulo"> Hidratação e Eliminação Vesical </ion-card-header>
     <ion-list-header class="titulolista" (click)="toggleGroup(0)">Turgidez da pele <p class="icone" id="iconeHidratacao0" style="float: right; color: white">+</p></ion-list-header>
     <ion-list radio-group no-lines [(ngModel)]="paciente.turgidezDaPele" class="lista" id="dadosHidratacao0" class="subgrupo">

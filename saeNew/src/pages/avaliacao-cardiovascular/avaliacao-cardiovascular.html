@@ -9,8 +9,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding (swipe)="slide($event)">
-  <ion-card class="mycard">
+<ion-content>
+  <ion-card class="mycard" (swipe)="slide($event)">
     <ion-card-header class="cardtitulo"> Avaliação Cardiovascular </ion-card-header>
     <ion-grid>
       <ion-row>
@@ -33,92 +33,92 @@
         <ion-col width-50>
           <ion-item>
             <ion-label floating style="overflow: visible">PVC (cmH2O)</ion-label>
-<ion-input class="inputgrupo" [(ngModel)]="paciente.avaliacaoCardiovascularPVC" type="number"></ion-input>
-</ion-item>
-</ion-col>
-<ion-col width-50>
-  <ion-item>
-    <ion-label floating>PAM (mmHg)</ion-label>
-    <ion-input class="inputgrupo" [(ngModel)]="paciente.avaliacaoCardiovascularPAM" type="number"></ion-input>
-  </ion-item>
-</ion-col>
-</ion-row>
-</ion-grid>
-<ion-list-header class="titulolista">Pulso </ion-list-header>
-<ion-grid>
-  <ion-list radio-group [(ngModel)]="paciente.pulsoRegularidade">
-    <ion-row>
-      <ion-col width-50>
-        <ion-item>
-          <ion-label class="label">Regular</ion-label>
-          <ion-radio value="regular"></ion-radio>
-        </ion-item>
-      </ion-col>
-      <ion-col width-50>
-        <ion-item>
-          <ion-label class="label">Irregular </ion-label>
-          <ion-radio value="irregular"></ion-radio>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-list>
-  <ion-list radio-group [(ngModel)]="paciente.pulsoPalpabilidade">
-    <ion-row>
-      <ion-col width-50>
-        <ion-item>
-          <ion-label class="label">Palpável</ion-label>
-          <ion-radio value="palpável"></ion-radio>
-        </ion-item>
-      </ion-col>
-      <ion-col width-50>
-        <ion-item>
-          <ion-label class="label">Impalpável</ion-label>
-          <ion-radio value="impalpável"></ion-radio>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-list>
-  <ion-list radio-group *ngIf="paciente.pulsoPalpabilidade == 'impalpável'" [(ngModel)]="paciente.impalpavel">
-    <ion-row>
-      <ion-col width-50>
-        <ion-item>
-          <ion-label class="label">Cheio</ion-label>
-          <ion-radio value="cheio"></ion-radio>
-        </ion-item>
-      </ion-col>
-      <ion-col width-50>
-        <ion-item>
-          <ion-label class="label">Filiforme</ion-label>
-          <ion-radio value="filiforme"></ion-radio>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-list>
-</ion-grid>
-<ion-list-header class="titulolista">Presença de edema </ion-list-header>
-<ion-item>
-  <ion-label class="label">Não</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaNao"></ion-checkbox>
-</ion-item>
-<ion-item>
-  <ion-label class="label">Sim</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaSim"></ion-checkbox>
-</ion-item>
-<ion-item>
-  <ion-label class="label">Pés</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaPes"></ion-checkbox>
-</ion-item>
-<ion-item>
-  <ion-label class="label">MMII</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaMMII"></ion-checkbox>
-</ion-item>
-<ion-item>
-  <ion-label class="label">MMSS</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaMMSS"></ion-checkbox>
-</ion-item>
-<ion-item>
-  <ion-label class="label">Anasarca</ion-label>
-  <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaAnasarca"></ion-checkbox>
-</ion-item>
-</ion-card>
+            <ion-input class="inputgrupo" [(ngModel)]="paciente.avaliacaoCardiovascularPVC" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col width-50>
+          <ion-item>
+            <ion-label floating>PAM (mmHg)</ion-label>
+            <ion-input class="inputgrupo" [(ngModel)]="paciente.avaliacaoCardiovascularPAM" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list-header class="titulolista">Pulso </ion-list-header>
+    <ion-grid>
+      <ion-list radio-group [(ngModel)]="paciente.pulsoRegularidade">
+        <ion-row>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label class="label">Regular</ion-label>
+              <ion-radio value="regular"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label class="label">Irregular </ion-label>
+              <ion-radio value="irregular"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+      <ion-list radio-group [(ngModel)]="paciente.pulsoPalpabilidade">
+        <ion-row>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label class="label">Palpável</ion-label>
+              <ion-radio value="palpável"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label class="label">Impalpável</ion-label>
+              <ion-radio value="impalpável"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+      <ion-list radio-group *ngIf="paciente.pulsoPalpabilidade == 'impalpável'" [(ngModel)]="paciente.impalpavel">
+        <ion-row>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label class="label">Cheio</ion-label>
+              <ion-radio value="cheio"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col width-50>
+            <ion-item>
+              <ion-label class="label">Filiforme</ion-label>
+              <ion-radio value="filiforme"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </ion-grid>
+    <ion-list-header class="titulolista">Presença de edema </ion-list-header>
+    <ion-item>
+      <ion-label class="label">Não</ion-label>
+      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaNao"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">Sim</ion-label>
+      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaSim"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">Pés</ion-label>
+      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaPes"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">MMII</ion-label>
+      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaMMII"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">MMSS</ion-label>
+      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaMMSS"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">Anasarca</ion-label>
+      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaAnasarca"></ion-checkbox>
+    </ion-item>
+  </ion-card>
 </ion-content>

@@ -55,7 +55,7 @@ export class SavePage {
       }, error => {
         let alert = this.alert.create({
           title: 'Warning',
-          subTitle: 'Wrong Username or Password! Please Try Again !',
+          subTitle: 'Alguns dados essenciais não foram cadastrados!',
           buttons: ['OK']
         });
         alert.present();

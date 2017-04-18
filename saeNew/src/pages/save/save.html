@@ -6,16 +6,17 @@
 -->
 <ion-header>
   <ion-toolbar>
-   <ion-title>
-     Novo Paciente
-   </ion-title>
-   <ion-buttons start>
-     <button ion-button round (click)="cancel()">Cancelar</button>
-   </ion-buttons>
+    <ion-title>
+      Novo Paciente
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button round (click)="cancel()">Cancelar</button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content padding class="seguranca-fisica" (swipe)="slide($event)">
-  <ion-list no-lines>
+
+<ion-content padding class="seguranca-fisica">
+  <ion-list no-lines (swipe)="slide($event)">
     <ion-item>
       <button ion-button block large (click)="salvar()">Salvar</button>
     </ion-item>

@@ -21,9 +21,11 @@ export class SegurancaFisicaPage {
     this.paciente = params.get("parametro");
     this.nav = nav;
   }
+
   cancel() {
     this.nav.popToRoot();
   }
+
   slide(passar) {
     if (passar.deltaX > 0) {
       this.nav.pop();
@@ -33,4 +35,3 @@ export class SegurancaFisicaPage {
   }
 
 }
-
