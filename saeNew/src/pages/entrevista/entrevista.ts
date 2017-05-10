@@ -1,6 +1,6 @@
 import { NavController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { CadastroPaciente } from '../../model/cadastroPaciente';
+import { Historico } from '../../model/historico';
 import { AvaliacaoNeurologicaPage } from '../avaliacao-neurologica/avaliacao-neurologica';
 
 /*
@@ -14,13 +14,19 @@ import { AvaliacaoNeurologicaPage } from '../avaliacao-neurologica/avaliacao-neu
   templateUrl: 'entrevista.html'
 })
 export class EntrevistaPage {
-private paciente: CadastroPaciente;
+  private historico: Historico;
   private myIcons: Array<string>;
 
-  constructor(private params: NavParams, private nav: NavController) {
-    this.paciente = params.get("parametro");
+  constructor(
+    private params: NavParams,
+    private nav: NavController
+  ) {
+    this.historico = params.get("historico");
     this.nav = nav;
     this.myIcons = ["md-add"];
+    if (this.historico.idsaeapp_historico != "0") {
+      this.carregarDados();
+    }
   }
 
   ionViewDidLoad() {
@@ -30,198 +36,255 @@ private paciente: CadastroPaciente;
     this.setMotivos();
   }
 
+  carregarDados() {
+    this.historico.internacoes = "cardiopatia,convulsao,vacilo,vdd";
+    console.log(this.historico);
+    //motivo de internacao
+    this.historico.motivo = this.historico.internacoes.split(",");
+    let index = this.historico.motivo.indexOf("cardiopatia");
+    if (index > -1){
+      this.historico.cardiopatia = true;
+      this.historico.motivo.splice(index, 1);
+    }
+    index = this.historico.motivo.indexOf("convulsao");
+    if (index > -1){
+      this.historico.convulsao = true;
+      this.historico.motivo.splice(index, 1);
+    }
+    index = this.historico.motivo.indexOf("asma");
+    if (index > -1){
+      this.historico.asma = true;
+      this.historico.motivo.splice(index, 1);
+    }
+    index = this.historico.motivo.indexOf("drogas");
+    if (index > -1){
+      this.historico.drogas = true;
+      this.historico.motivo.splice(index, 1);
+    }
+    this.historico.qtdeMotivos = this.historico.motivo.length;
+
+    //antecedentes
+    this.historico.antecedentesArray = this.historico.antecedentes.split(",");
+    index = this.historico.antecedentesArray.indexOf("has");
+    if (index > -1){
+      this.historico.has = true;
+      this.historico.antecedentesArray.splice(index, 1);
+    }
+    index = this.historico.antecedentesArray.indexOf("tabagismo");
+    if (index > -1){
+      this.historico.tabagismo = true;
+      this.historico.antecedentesArray.splice(index, 1);
+    }
+    index = this.historico.antecedentesArray.indexOf("alcoolismo");
+    if (index > -1){
+      this.historico.alcoolismo = true;
+      this.historico.antecedentesArray.splice(index, 1);
+    }
+    index = this.historico.antecedentesArray.indexOf("diabetesMellitus");
+    if (index > -1){
+      this.historico.diabetesMellitus = true;
+      this.historico.antecedentesArray.splice(index, 1);
+    }
+    this.historico.qtdeAntecedentes = this.historico.antecedentesArray.length;
+
+    //alergia e vacina
+    this.historico.alergiasArray = this.historico.alergias.split(",");
+    this.historico.vacinasArray = this.historico.vacinas.split(",");
+    this.ionViewDidLoad();
+  }
+
   addAntecedente() {
     //incrementando a quantidade de antecedentes
-    this.paciente.qtdeAntecedentes++;
+    this.historico.qtdeAntecedentes++;
     //guardando o div pai
     let divPai = document.getElementById("outrosAntecetendes");
     //Criando o elemento DIV filho;
     let divFilho = document.createElement("div");
     //Definindo atributos ao campoFilho:
-    divFilho.setAttribute("id", "antecedente" + this.paciente.qtdeAntecedentes);
+    divFilho.setAttribute("id", "antecedente" + this.historico.qtdeAntecedentes);
     divFilho.setAttribute("class", "divitem4");
     //Inserindo o elemento filho no pai:
     divPai.appendChild(divFilho);
     //Escrevendo algo no filho recém-criado:
-    document.getElementById("antecedente" + this.paciente.qtdeAntecedentes).innerHTML = "<input class='divitem2' type='text' id='campoAntecedente" + this.paciente.qtdeAntecedentes + "' placeholder=' Outro Antecedente " + this.paciente.qtdeAntecedentes + "'></input>";
+    document.getElementById("antecedente" + this.historico.qtdeAntecedentes).innerHTML = "<input class='divitem2' type='text' id='campoAntecedente" + this.historico.qtdeAntecedentes + "' placeholder=' Outro Antecedente " + this.historico.qtdeAntecedentes + "'></input>";
   }
 
   /**Função que Remove um campo na relação de antecedentes*/
   removerAntecedente() {
     //só remove se já ouver um campo adicionado
-    if (this.paciente.qtdeAntecedentes > 0) {
+    if (this.historico.qtdeAntecedentes > 0) {
       //Guardando o div pai
       let divPai = document.getElementById("outrosAntecetendes");
-      let text = "antecedente" + this.paciente.qtdeAntecedentes;
+      let text = "antecedente" + this.historico.qtdeAntecedentes;
       //Guardando o ultimo div filho criado
       let divFilho = document.getElementById(text);
       //Removendo o ultimo DIV do nó-pai:
       divPai.removeChild(divFilho);
-      this.paciente.qtdeAntecedentes--;
+      this.historico.qtdeAntecedentes--;
     }
   }
 
   addMotivos() {
     //incrementando a quantidade de antecedentes
-    this.paciente.qtdeMotivos++;
+    this.historico.qtdeMotivos++;
     //guardando o div pai
     let divPai = document.getElementById("outrosMotivos");
     //Criando o elemento DIV filho;
     let divFilho = document.createElement("div");
     //Definindo atributos ao campoFilho:
-    divFilho.setAttribute("id", "motivo" + this.paciente.qtdeMotivos);
+    divFilho.setAttribute("id", "motivo" + this.historico.qtdeMotivos);
     divFilho.setAttribute("class", "divitem4");
     //Inserindo o elemento filho no pai:
     divPai.appendChild(divFilho);
     //Escrevendo algo no filho recém-criado:
-    document.getElementById("motivo" + this.paciente.qtdeMotivos).innerHTML = "<input class='divitem2' type='text' id='campoMotivo" + this.paciente.qtdeMotivos + "' placeholder=' Outro Motivos " + this.paciente.qtdeMotivos + "'></input>";
+    document.getElementById("motivo" + this.historico.qtdeMotivos).innerHTML = "<input class='divitem2' type='text' id='campoMotivo" + this.historico.qtdeMotivos + "' placeholder=' Outro Motivos " + this.historico.qtdeMotivos + "'></input>";
   }
 
   /**Função que Remove um campo na relação de antecedentes*/
   removerMotivos() {
     //só remove se já ouver um campo adicionado
-    if (this.paciente.qtdeMotivos > 0) {
+    if (this.historico.qtdeMotivos > 0) {
       //Guardando o div pai
       let divPai = document.getElementById("outrosMotivos");
-      let text = "motivo" + this.paciente.qtdeMotivos;
+      let text = "motivo" + this.historico.qtdeMotivos;
       //Guardando o ultimo div filho criado
       let divFilho = document.getElementById(text);
       //Removendo o ultimo DIV do nó-pai:
       divPai.removeChild(divFilho);
-      this.paciente.qtdeMotivos--;
+      this.historico.qtdeMotivos--;
     }
   }
 
   /**Função que adiciona um campo na relação de Alergia*/
   addAlergia() {
     //incrementando a quantidade de antecedentes
-    this.paciente.qtdeAlergias++;
+    this.historico.qtdeAlergias++;
     //guardando o div pai
     let divPai = document.getElementById("alergias");
     //Criando o elemento DIV filho;
     let divFilho = document.createElement("div");
     //Definindo atributos ao campoFilho:
-    divFilho.setAttribute("id", "alergia" + this.paciente.qtdeAlergias);
+    divFilho.setAttribute("id", "alergia" + this.historico.qtdeAlergias);
     divFilho.setAttribute("class", "divitem4");
     //Inserindo o elemento filho no pai:
     divPai.appendChild(divFilho);
     //Escrevendo algo no filho recém-criado:
-    document.getElementById("alergia" + this.paciente.qtdeAlergias).innerHTML = "<input class='divitem2' type='text' id='campoAlergia" + this.paciente.qtdeAlergias + "' placeholder='Alergia " + this.paciente.qtdeAlergias + "'></input>";
+    document.getElementById("alergia" + this.historico.qtdeAlergias).innerHTML = "<input class='divitem2' type='text' id='campoAlergia" + this.historico.qtdeAlergias + "' placeholder='Alergia " + this.historico.qtdeAlergias + "'></input>";
   }
 
   /**Função que Remove um campo na relação de Alergia*/
   removerAlergia() {
     //só remove se já ouver um campo adicionado
-    if (this.paciente.qtdeAlergias > 0) {
+    if (this.historico.qtdeAlergias > 0) {
       //Guardando o div pai
       let divPai = document.getElementById("alergias");
-      let text = "alergia" + this.paciente.qtdeAlergias;
+      let text = "alergia" + this.historico.qtdeAlergias;
       //Guardando o ultimo div filho criado
       let divFilho = document.getElementById(text);
       //Removendo o ultimo DIV do nó-pai:
       divPai.removeChild(divFilho);
-      this.paciente.qtdeAlergias--;
+      this.historico.qtdeAlergias--;
     }
   }
 
   addVacina() {
     //incrementando a quantidade de vacinas
-    this.paciente.qtdeVacinas++;
+    this.historico.qtdeVacinas++;
     //guardando o div pai
     let divPai = document.getElementById("vacinas");
     //Criando o elemento DIV filho;
     let divFilho = document.createElement("div");
     //Definindo atributos ao campoFilho:
 
-    divFilho.setAttribute("id", "vacina" + this.paciente.qtdeVacinas);
+    divFilho.setAttribute("id", "vacina" + this.historico.qtdeVacinas);
     divFilho.setAttribute("class", "divitem4");
     //Inserindo o elemento filho no pai:
     divPai.appendChild(divFilho);
     //Escrevendo algo no filho recém-criado:
 
-    document.getElementById("vacina" + this.paciente.qtdeVacinas).innerHTML = "<input class='divitem2' type='text' id='campoVacina" + this.paciente.qtdeVacinas + "' placeholder='Vacina " + this.paciente.qtdeVacinas + "'></input>";
+    document.getElementById("vacina" + this.historico.qtdeVacinas).innerHTML = "<input class='divitem2' type='text' id='campoVacina" + this.historico.qtdeVacinas + "' placeholder='Vacina " + this.historico.qtdeVacinas + "'></input>";
   }
 
   /**Função que Remove um campo na relação de vacina*/
   removerVacina() {
     //só remove se já ouver um campo adicionado
-    if (this.paciente.qtdeVacinas > 0) {
+    if (this.historico.qtdeVacinas > 0) {
       //Guardando o div pai
       let divPai = document.getElementById("vacinas");
-      let text = "vacina" + this.paciente.qtdeVacinas;
+      let text = "vacina" + this.historico.qtdeVacinas;
       //Guardando o ultimo div filho criado
       let divFilho = document.getElementById(text);
       //guardando valor do input
       //Removendo o ultimo DIV do nó-pai:
       divPai.removeChild(divFilho);
-      this.paciente.qtdeVacinas--;
+      this.historico.qtdeVacinas--;
     }
   }
 
   getAntecedentes() {
     let x = 0;
     let cont = 0;
-    this.paciente.antecedentes = [];
-    while (x < this.paciente.qtdeAntecedentes) {
+    this.historico.antecedentesArray = [];
+    while (x < this.historico.qtdeAntecedentes) {
       x++;
       let antecedentes = <HTMLInputElement>document.getElementById("campoAntecedente" + x);
       if (antecedentes.value != "") {
-        this.paciente.antecedentes.push(antecedentes.value);
+        this.historico.antecedentesArray.push(antecedentes.value);
         cont++;
       }
     }
-    this.paciente.qtdeAntecedentes = cont;
+    this.historico.qtdeAntecedentes = cont;
   }
 
   getMotivos() {
     let x = 0;
     let cont = 0;
-    this.paciente.motivo = [];
-    while (x < this.paciente.qtdeMotivos) {
+    this.historico.motivo = [];
+    while (x < this.historico.qtdeMotivos) {
       x++;
       let motivo = <HTMLInputElement>document.getElementById("campoMotivo" + x);
       if (motivo.value != "") {
-        this.paciente.motivo.push(motivo.value);
+        this.historico.motivo.push(motivo.value);
         cont++;
       }
     }
-    this.paciente.qtdeMotivos = cont;
+    this.historico.qtdeMotivos = cont;
   }
 
   getAlergias() {
     let x = 0;
     let cont = 0;
-    this.paciente.alergias = [];
-    while (x < this.paciente.qtdeAlergias) {
+    this.historico.alergiasArray = [];
+    while (x < this.historico.qtdeAlergias) {
       x++;
       let alergias = <HTMLInputElement>document.getElementById("campoAlergia" + x);
       if (alergias.value != "") {
-        this.paciente.alergias.push(alergias.value);
+        this.historico.alergiasArray.push(alergias.value);
         cont++;
       }
     }
-    this.paciente.qtdeAlergias = cont;
+    this.historico.qtdeAlergias = cont;
   }
 
   getVacinas() {
     let x = 0;
     let cont = 0;
-    this.paciente.vacinas = [];
-    while (x < this.paciente.qtdeVacinas) {
+    this.historico.vacinasArray = [];
+    while (x < this.historico.qtdeVacinas) {
       x++;
       let vacinas = <HTMLInputElement>document.getElementById("campoVacina" + x);
       if (vacinas.value != "") {
-        this.paciente.vacinas.push(vacinas.value);
+        this.historico.vacinasArray.push(vacinas.value);
         cont++;
       }
     }
-    this.paciente.qtdeVacinas = cont;
+    this.historico.qtdeVacinas = cont;
   }
 
   setAntecedentes() {
-    if (this.paciente.qtdeAntecedentes > 0) {
+    if (this.historico.qtdeAntecedentes > 0) {
       let x = 0;
-      while (x < this.paciente.qtdeAntecedentes) {
+      while (x < this.historico.qtdeAntecedentes) {
         x++;
         //guardando o div pai
         let divPai = document.getElementById("outrosAntecetendes");
@@ -233,15 +296,15 @@ private paciente: CadastroPaciente;
         //Inserindo o elemento filho no pai:
         divPai.appendChild(divFilho);
         //Escrevendo algo no filho recém-criado:
-        document.getElementById("antecedente" + x).innerHTML = "<input class='divitem2' type='text' id='campoAntecedente" + x + "' value='" + this.paciente.antecedentes[x - 1] + "'></input>";
+        document.getElementById("antecedente" + x).innerHTML = "<input class='divitem2' type='text' id='campoAntecedente" + x + "' value='" + this.historico.antecedentesArray[x - 1] + "'></input>";
       }
     }
   }
 
   setMotivos() {
-    if (this.paciente.qtdeMotivos > 0) {
+    if (this.historico.qtdeMotivos > 0) {
       let x = 0;
-      while (x < this.paciente.qtdeMotivos) {
+      while (x < this.historico.qtdeMotivos) {
         x++;
         //guardando o div pai
         let divPai = document.getElementById("outrosMotivos");
@@ -253,15 +316,15 @@ private paciente: CadastroPaciente;
         //Inserindo o elemento filho no pai:
         divPai.appendChild(divFilho);
         //Escrevendo algo no filho recém-criado:
-        document.getElementById("motivo" + x).innerHTML = "<input class='divitem2' type='text' id='campoMotivo" + x + "' value='" + this.paciente.motivo[x - 1] + "'></input>";
+        document.getElementById("motivo" + x).innerHTML = "<input class='divitem2' type='text' id='campoMotivo" + x + "' value='" + this.historico.motivo[x - 1] + "'></input>";
       }
     }
   }
 
   setAlergias() {
-    if (this.paciente.qtdeAlergias > 0) {
+    if (this.historico.qtdeAlergias > 0) {
       let x = 0;
-      while (x < this.paciente.qtdeAlergias) {
+      while (x < this.historico.qtdeAlergias) {
         x++;
         //guardando o div pai
         let divPai = document.getElementById("alergias");
@@ -273,15 +336,15 @@ private paciente: CadastroPaciente;
         //Inserindo o elemento filho no pai:
         divPai.appendChild(divFilho);
         //Escrevendo algo no filho recém-criado:
-        document.getElementById("alergia" + x).innerHTML = "<input class='divitem2' type='text' id='campoAlergia" + x + "' value='" + this.paciente.alergias[x - 1] + "'></input>";
+        document.getElementById("alergia" + x).innerHTML = "<input class='divitem2' type='text' id='campoAlergia" + x + "' value='" + this.historico.alergias[x - 1] + "'></input>";
       }
     }
   }
 
   setVacinas() {
-    if (this.paciente.qtdeVacinas > 0) {
+    if (this.historico.qtdeVacinas > 0) {
       let x = 0;
-      while (x < this.paciente.qtdeVacinas) {
+      while (x < this.historico.qtdeVacinas) {
         x++;
         //guardando o div pai
         let divPai = document.getElementById("vacinas");
@@ -293,7 +356,7 @@ private paciente: CadastroPaciente;
         //Inserindo o elemento filho no pai:
         divPai.appendChild(divFilho);
         //Escrevendo algo no filho recém-criado:
-        document.getElementById("vacina" + x).innerHTML = "<input class='divitem2' type='text' id='campoVacina" + x + "' value='" + this.paciente.vacinas[x - 1] + "'></input>";
+        document.getElementById("vacina" + x).innerHTML = "<input class='divitem2' type='text' id='campoVacina" + x + "' value='" + this.historico.vacinas[x - 1] + "'></input>";
       }
     }
   }
@@ -343,7 +406,7 @@ private paciente: CadastroPaciente;
       this.getAlergias();
       this.getVacinas();
       this.getMotivos();
-      this.nav.push(AvaliacaoNeurologicaPage, { parametro: this.paciente });
+      this.nav.push(AvaliacaoNeurologicaPage, { parametro: this.historico });
     }
   }
 

@@ -1,13 +1,15 @@
-import {NavController, ActionSheetController, Platform, AlertController } from 'ionic-angular';
+import { NavController, ActionSheetController, Platform, AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import {Http} from "@angular/http";
+import { Http } from "@angular/http";
 import { IdentificacaoPage } from '../identificacao/identificacao';
 import 'rxjs/add/operator/map';
-import { CadastroPaciente } from '../../model/cadastroPaciente';
+import { Paciente } from '../../model/paciente';
+import { Historico } from '../../model/historico';
 import { PacienteService } from "../../providers/paciente-service";
-import {EnfermeiroService, Enfermeira} from "../../providers/enfermeiro-service";
-import {GerarSaePage} from '../gerar-sae/gerar-sae';
+import { EnfermeiroService, Enfermeira } from "../../providers/enfermeiro-service";
+import { GerarSaePage } from '../gerar-sae/gerar-sae';
 import { PlanoDeCuidadosPage } from '../plano-de-cuidados/plano-de-cuidados';
+import { EntrevistaPage } from '../entrevista/entrevista';
 
 
 
@@ -19,7 +21,7 @@ export class PacientesPage {
   private searchQuery: string;
   private listaPacientes: any[] = [];
   private listaPacientesAtualizada: any[] = [];
-  private paciente: CadastroPaciente;
+  private paciente: Paciente;
   private enfermeira: Enfermeira = new Enfermeira();
 
   constructor(
@@ -40,23 +42,22 @@ export class PacientesPage {
   private getDadosEnfermeira() {
     this.eService.getEnfermeira().then(user => {
       this.enfermeira = user;
-      console.log("Dados da Enfermeira em pacientes:");
-      console.log(this.enfermeira.id);
-      console.log(this.enfermeira.nome);
     });
   }
 
   ionViewWillEnter() {
-    this.carregarPacientes;
+    this.carregarPacientes();
   }
 
   private carregarPacientes() {
 
     this.pService.carregar().then(res => {
-      this.listaPacientes = res;
-      this.listaPacientesAtualizada = res;
-    }).catch(() => {
-      console.log("Não foi possível se conectar ao servidor");
+      if (res.type) {
+        this.listaPacientes = res.value;
+        this.listaPacientesAtualizada = res.value;
+      } else {
+
+      }
     });
 
     this.searchQuery = '';
@@ -68,7 +69,7 @@ export class PacientesPage {
   }
 
   novoPaciente() {
-    this.paciente = new CadastroPaciente();
+    this.paciente = new Paciente();
     this.nav.push(IdentificacaoPage, { paciente: this.paciente });
 
   }
@@ -90,7 +91,7 @@ export class PacientesPage {
 
   }
 
-  openPaciente(paciente) {
+  openPaciente(paciente: Paciente) {
     let actionSheet = this.actionsheetCtrl.create({
       title: paciente.Nome,
       cssClass: 'action-sheets-basic-page',
@@ -100,7 +101,9 @@ export class PacientesPage {
           text: 'Histórico',
           icon: !this.platform.is('ios') ? 'book' : null,
           handler: () => {
-            console.log('Play clicked');
+            let historico = new Historico();
+            historico.idPaciente = paciente.id;
+            this.nav.push(EntrevistaPage, { historico: historico });
           }
         },
         {

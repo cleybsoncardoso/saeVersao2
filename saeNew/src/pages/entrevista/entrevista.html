@@ -16,12 +16,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="mycard" (swipe)="slide($event)">
+  <ion-card (swipe)="slide($event)">
     <ion-card-header class="cardtitulo"> Entrevista </ion-card-header>
     <ion-list>
       <ion-item style="border-bottom-style: none; border-color: #D3D3D3;">
         <ion-label floating>Internação Anterior (nº de vezes)</ion-label>
-        <ion-input type="number" [(ngModel)]="paciente.internacaoAnterior"></ion-input>
+        <ion-input type="number" [(ngModel)]="historico.internacaoAnterior"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list-header class="listaHeader" (click)="toggleGroup(0)">Motivo de Internação
@@ -30,19 +30,19 @@
     <ion-list no-lines class="lista" id="dados0">
       <ion-item>
         <ion-label class="label">Cardiopatia</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.cardiopatia"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.cardiopatia"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Convulsão</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.convulsao"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.convulsao"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Asma</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.asma"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.asma"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Drogas</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.drogas"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.drogas"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Outros</ion-label>
@@ -62,19 +62,19 @@
     <ion-list no-lines class="lista" id="dados1">
       <ion-item>
         <ion-label class="label">HAS</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.has"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.has"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Tabagismo</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.tabagismo"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.tabagismo"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Diabetes Mellitus</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.diabetesMellitus"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.diabetesMellitus"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Alcoolismo</ion-label>
-        <ion-checkbox [(ngModel)]="paciente.alcoolismo"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.alcoolismo"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Outros</ion-label>

@@ -23,7 +23,7 @@ export class PacienteService {
   }
 
   private extractGetData(res: Response) {
-    return res.json();
+    return { type: true, value: res.json() };
   }
 
   private handleErrorMessage(error: any) {
@@ -53,8 +53,10 @@ export class PacienteService {
     });
   }
 
-  addPaciente(){
-
+  addPaciente(paciente): Promise<any>{
+    return this.http.post("http://localhost/sae/adicionarPaciente.php", JSON.stringify(paciente), { headers: this.headers })
+    .toPromise().then(response => this.extractGetData(response))
+    .catch(this.handleErrorMessage);
   }
 
   getPlanos(id){
