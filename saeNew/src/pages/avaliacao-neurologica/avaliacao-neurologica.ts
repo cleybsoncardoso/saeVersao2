@@ -1,7 +1,7 @@
 import { NavController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { OxigenacaoPage } from '../oxigenacao/oxigenacao';
-import { CadastroPaciente } from '../../model/cadastroPaciente';
+import { Historico } from '../../model/historico';
 
 /*
   Generated class for the AvaliacaoNeurologica page.
@@ -15,10 +15,20 @@ import { CadastroPaciente } from '../../model/cadastroPaciente';
 })
 export class AvaliacaoNeurologicaPage {
 
-  private paciente: CadastroPaciente;
+  private historico: Historico;
   constructor(private params: NavParams, private nav: NavController) {
-    this.paciente = params.get("parametro");
-    this.nav = nav;
+    this.historico = params.get("historico");
+    // this.historico = new Historico();
+    // this.historico.consciencia = "alerta";
+    // this.historico.glasgow = 20;
+    // this.historico.pupilas = "rfm";
+    // this.historico.mmii_esquerdo = "plegia";
+    // this.historico.mmii_direito = "preservada";
+    // this.historico.mmss_esquerdo = "parestesia";
+    // this.historico.mmss_direito = "paresia";
+    // this.historico.falaELinguagem = "dislalia";
+
+    // this.nav = nav;
   }
 
   cancel() {
@@ -28,7 +38,7 @@ export class AvaliacaoNeurologicaPage {
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.nav.push(OxigenacaoPage, { parametro: this.paciente });
+      this.nav.push(OxigenacaoPage, { historico: this.historico });
     }
   }
   toggleGroup(id) {
@@ -61,7 +71,7 @@ export class AvaliacaoNeurologicaPage {
 
   toggleGlasgow() {
     let grupo = document.getElementById("glasgow");
-    if (this.paciente.glasgowMenu == true) {
+    if (this.historico.glasgowMenu == true) {
       grupo.style.display = "none";
     } else {
       grupo.style.display = "block";

@@ -7,7 +7,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Novo Paciente
+      Novo historico
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="cancel()">Cancelar</button>
@@ -21,7 +21,8 @@
     <ion-list-header class="titulolista" (click)="toggleGroup(0)">Consciência
       <p class="iconeNeurologicaNeurologica" id="iconeNeurologica0" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list no-lines radio-group [(ngModel)]="paciente.concienciaAvaliacaoNeurologica" class="lista" id="dadosNeurologica0" class="subgrupo">
+
+    <ion-list no-lines radio-group [(ngModel)]="historico.consciencia" class="lista" id="dadosNeurologica0" class="subgrupo">
       <ion-item>
         <ion-label class="label">Alerta</ion-label>
         <ion-radio value="alerta"></ion-radio>
@@ -44,13 +45,14 @@
       </ion-item>
       <ion-item>
         <ion-label color="primary" fixed>Glasgow</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.glasgow" type="number"></ion-input>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.glasgow" type="number"></ion-input>
       </ion-item>
     </ion-list>
+
     <ion-list-header class="titulolista" (click)="toggleGroup(1)">Pupilas
       <p class="iconeNeurologica" id="iconeNeurologica1" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list no-lines radio-group class="lista" id="dadosNeurologica1" [(ngModel)]="paciente.pupilasAvaliacaoNeurologica" class="subgrupo">
+    <ion-list no-lines radio-group class="lista" id="dadosNeurologica1" [(ngModel)]="historico.pupilas" class="subgrupo">
       <ion-item>
         <ion-label class="label">Isocórica</ion-label>
         <ion-radio value="isocorica"></ion-radio>
@@ -78,7 +80,7 @@
     </ion-list-header>
     <ion-list no-lines class="lista" id="dadosNeurologica2" class="subgrupo">
       <ion-item-divider light style="text-align: left; border-radius: 5px;">MSD</ion-item-divider>
-      <ion-list radio-group [(ngModel)]="paciente.msDireita">
+      <ion-list radio-group [(ngModel)]="historico.mmss_direito">
         <ion-item>
           <ion-label class="label">Preservada</ion-label>
           <ion-radio value="preservada"></ion-radio>
@@ -96,8 +98,9 @@
           <ion-radio value="parestesia"></ion-radio>
         </ion-item>
       </ion-list>
+
       <ion-item-divider light style="text-align: left; border-radius: 5px;">MSE</ion-item-divider>
-      <ion-list radio-group [(ngModel)]="paciente.msEsquerda">
+      <ion-list radio-group [(ngModel)]="historico.mmss_esquerdo">
         <ion-item>
           <ion-label class="label">Preservada</ion-label>
           <ion-radio value="preservada"></ion-radio>
@@ -115,8 +118,9 @@
           <ion-radio value="parestesia"></ion-radio>
         </ion-item>
       </ion-list>
+
       <ion-item-divider light style="text-align: left; border-radius: 5px;">MID</ion-item-divider>
-      <ion-list radio-group [(ngModel)]="paciente.midireita">
+      <ion-list radio-group [(ngModel)]="historico.mmii_direito">
         <ion-item>
           <ion-label class="label">Preservada</ion-label>
           <ion-radio value="preservada"></ion-radio>
@@ -134,8 +138,9 @@
           <ion-radio value="parestesia"></ion-radio>
         </ion-item>
       </ion-list>
+
       <ion-item-divider light style="text-align: left; border-radius: 5px;">MIE</ion-item-divider>
-      <ion-list radio-group [(ngModel)]="paciente.miEsquerda">
+      <ion-list radio-group [(ngModel)]="historico.mmii_esquerdo">
         <ion-item>
           <ion-label class="label">Preservada</ion-label>
           <ion-radio value="preservada"></ion-radio>
@@ -158,7 +163,7 @@
     <ion-list-header class="titulolista" (click)="toggleGroup(3)">Fala e Linguagem
       <p class="iconeNeurologica" id="iconeNeurologica3" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list no-lines radio-group [(ngModel)]="paciente.falaELingagem" class="lista" id="dadosNeurologica3" class="subgrupo">
+    <ion-list no-lines radio-group [(ngModel)]="historico.falaELinguagem" class="lista" id="dadosNeurologica3" class="subgrupo">
       <ion-item>
         <ion-label class="label">Afonia</ion-label>
         <ion-radio value="afonia"></ion-radio>

@@ -18,7 +18,7 @@ export class Historico {
   public antecedentes: string;
   public qtdeAntecedentes: number;
   public alergiasArray: Array<string>;
-  public alergias: string;  
+  public alergias: string;
   public qtdeAlergias: number;
   public vacinas: string;
   public vacinasArray: Array<string>;
@@ -28,11 +28,11 @@ export class Historico {
   public glasgow: number;
   public glasgowMenu: boolean;
   public pupilas: string;
-  public msd: string;
-  public mse: string;
-  public mid: string;
-  public mie: string;
-  public fala: string;
+  public mmss_direito: string;
+  public mmss_esquerdo: string;
+  public mmii_direito: string;
+  public mmii_esquerdo: string;
+  public falaELinguagem: string;
   //Oxigenacao
   public o: string;
   public sop: string;
@@ -137,7 +137,7 @@ export class Historico {
   public qtdeObservacoes: number;
 
   constructor() {
-   
+
     //entrevista
     this.idsaeapp_historico = "0";
     this.idPaciente = "0";
@@ -166,11 +166,11 @@ export class Historico {
     this.glasgow = 0;
     this.glasgowMenu = false;
     this.pupilas = "";
-    this.msd = "";
-    this.mse = "";
-    this.mid = "";
-    this.mie = "";
-    this.fala = "";
+    this.mmii_esquerdo = "";
+    this.mmii_direito = "";
+    this.mmss_esquerdo = "";
+    this.mmss_direito = "";
+    this.falaELinguagem = "";
     //Oxigenacao
     this.o = "";
     this.sop = "";
