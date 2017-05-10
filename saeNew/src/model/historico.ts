@@ -73,6 +73,8 @@ export class Historico {
   public turgidezDaPele: string;
   public eliminacaoUrinariaEspontanea: boolean;
   public eliminacaoUrinariaRetencao: boolean;
+  public hidratacao_Caracteristicas: string;
+  public eliminacaoUrinaria: string;
   public eliminacaoUrinariaIncontinencia: boolean;
   public eliminacaoUrinariaSVD: boolean;
   public eliminacaoUrinariaDispositivoUrinario: boolean;
@@ -210,6 +212,8 @@ export class Historico {
     this.presencaDeEdemaAnasarca = false;
     //hidratacao e eliminacao vesical
     this.turgidezDaPele = "";
+    this.eliminacaoUrinaria = "";
+    this.hidratacao_Caracteristicas = "";
     this.eliminacaoUrinariaEspontanea = false;
     this.eliminacaoUrinariaRetencao = false;
     this.eliminacaoUrinariaIncontinencia = false;
@@ -222,6 +226,7 @@ export class Historico {
     this.caracteristicasHematuria = false;
     this.caracteristicasOutros = "";
     //alimentacao e eliminacao
+    this.turgidezDaPele = "";
     this.tipoDeDieta = "";
     this.glicemia = "";
     this.viasDeAdministracaoOral = false;
