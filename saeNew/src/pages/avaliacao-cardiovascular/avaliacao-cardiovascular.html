@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Novo Paciente
+      Novo historico
     </ion-title>
     <ion-buttons start>
       <button ion-button round (click)="cancel()">Cancelar</button>
@@ -17,13 +17,13 @@
         <ion-col>
           <ion-item>
             <ion-label floating>FC (bpm)</ion-label>
-            <ion-input class="inputgrupo" type="number" [(ngModel)]="paciente.avaliacaoCardiovascularFC"></ion-input>
+            <ion-input class="inputgrupo" type="number" [(ngModel)]="historico.avaliacaoCardiovascularFC"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
             <ion-label floating>PA (mmHg)</ion-label>
-            <ion-input class="inputgrupo" [(ngModel)]="paciente.avaliacaoCardiovascularPA" type="number"></ion-input>
+            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascularPA" type="number"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -33,20 +33,20 @@
         <ion-col width-50>
           <ion-item>
             <ion-label floating style="overflow: visible">PVC (cmH2O)</ion-label>
-            <ion-input class="inputgrupo" [(ngModel)]="paciente.avaliacaoCardiovascularPVC" type="number"></ion-input>
+            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascularPVC" type="number"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col width-50>
           <ion-item>
             <ion-label floating>PAM (mmHg)</ion-label>
-            <ion-input class="inputgrupo" [(ngModel)]="paciente.avaliacaoCardiovascularPAM" type="number"></ion-input>
+            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascularPAM" type="number"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>
     <ion-list-header class="titulolista">Pulso </ion-list-header>
     <ion-grid>
-      <ion-list radio-group [(ngModel)]="paciente.pulsoRegularidade">
+      <ion-list radio-group [(ngModel)]="historico.pulsoRegularidade">
         <ion-row>
           <ion-col width-50>
             <ion-item>
@@ -62,7 +62,7 @@
           </ion-col>
         </ion-row>
       </ion-list>
-      <ion-list radio-group [(ngModel)]="paciente.pulsoPalpabilidade">
+      <ion-list radio-group [(ngModel)]="historico.pulsoPalpabilidade">
         <ion-row>
           <ion-col width-50>
             <ion-item>
@@ -78,7 +78,7 @@
           </ion-col>
         </ion-row>
       </ion-list>
-      <ion-list radio-group *ngIf="paciente.pulsoPalpabilidade == 'impalpável'" [(ngModel)]="paciente.impalpavel">
+      <ion-list radio-group *ngIf="historico.pulsoPalpabilidade == 'impalpável'" [(ngModel)]="historico.impalpavel">
         <ion-row>
           <ion-col width-50>
             <ion-item>
@@ -98,27 +98,27 @@
     <ion-list-header class="titulolista">Presença de edema </ion-list-header>
     <ion-item>
       <ion-label class="label">Não</ion-label>
-      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaNao"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="historico.presencaDeEdemaNao"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label class="label">Sim</ion-label>
-      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaSim"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="historico.presencaDeEdemaSim"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label class="label">Pés</ion-label>
-      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaPes"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="historico.presencaDeEdemaPes"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label class="label">MMII</ion-label>
-      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaMMII"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="historico.presencaDeEdemaMMII"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label class="label">MMSS</ion-label>
-      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaMMSS"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="historico.presencaDeEdemaMMSS"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label class="label">Anasarca</ion-label>
-      <ion-checkbox [(ngModel)]="paciente.presencaDeEdemaAnasarca"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="historico.presencaDeEdemaAnasarca"></ion-checkbox>
     </ion-item>
   </ion-card>
 </ion-content>
