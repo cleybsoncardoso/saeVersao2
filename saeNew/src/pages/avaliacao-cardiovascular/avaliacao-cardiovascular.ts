@@ -24,16 +24,16 @@ export class AvaliacaoCardiovascularPage {
 
   private presencaDeEdema() {
     let res = this.historico.presencaDeEdema.split(",");
-    if (res.indexOf("pes") >= -1) {
+    if (res.indexOf("pes") >= 0) {
       this.historico.presencaDeEdemaPes = true;
     }
-    if (res.indexOf("mmii") >= -1) {
+    if (res.indexOf("mmii") >= 0) {
       this.historico.presencaDeEdemaMMII = true;
     }
-    if (res.indexOf("mmss") >= -1) {
+    if (res.indexOf("mmss") >= 0) {
       this.historico.presencaDeEdemaMMSS = true;
     }
-    if (res.indexOf("anasarca") >= -1) {
+    if (res.indexOf("anasarca") >= 0) {
       this.historico.presencaDeEdemaAnasarca = true;
     }
   }
