@@ -39,7 +39,9 @@ export class EntrevistaPage {
   }
 
   carregarDados() {
-    this.historico.internacoes = "cardiopatia,convulsao,vacilo,vdd";
+    this.historico.vacinas = "cardiopatia,convulsao,vacilo,vdd";
+    this.historico.alergias = "cardiopatia,convulsao,vacilo,vdd";
+    this.historico.antecedentes = "cardiopatia,convulsao,vacilo,vdd";
     console.log(this.historico);
     //motivo de internacao
     this.historico.motivo = this.historico.internacoes.split(",");
@@ -91,8 +93,13 @@ export class EntrevistaPage {
 
     //alergia e vacina
     this.historico.alergiasArray = this.historico.alergias.split(",");
+    this.historico.qtdeAlergias = this.historico.alergiasArray.length;
     this.historico.vacinasArray = this.historico.vacinas.split(",");
-    this.ionViewDidLoad();
+    this.historico.qtdeVacinas = this.historico.vacinasArray.length;
+    this.setAntecedentes();
+    this.setAlergias();
+    this.setVacinas();
+    this.setMotivos();
   }
 
   addAntecedente() {
