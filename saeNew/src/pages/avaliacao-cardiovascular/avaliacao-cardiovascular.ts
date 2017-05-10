@@ -1,23 +1,19 @@
 import { NavController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { HidratacaoEEliminacaoVesicalPage } from '../hidratacao-e-eliminacao-vesical/hidratacao-e-eliminacao-vesical';
-import { CadastroPaciente } from '../../model/cadastroPaciente';
-/*
-  Generated class for the AvaliacaoCardiovascular page.
+import { Historico } from '../../model/historico';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   selector: 'page-avaliacao-cardiovascular',
   templateUrl: 'avaliacao-cardiovascular.html'
 })
 export class AvaliacaoCardiovascularPage {
 
-  private paciente: CadastroPaciente;
+  private historico: Historico;
 
   constructor(private params: NavParams, private nav: NavController) {
-    this.paciente = params.get("parametro");
+    this.historico = params.get("historico");
     this.nav = nav;
   }
   cancel() {
@@ -27,7 +23,7 @@ export class AvaliacaoCardiovascularPage {
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.nav.push(HidratacaoEEliminacaoVesicalPage, { parametro: this.paciente });
+      this.nav.push(HidratacaoEEliminacaoVesicalPage, { parametro: this.historico });
     }
   }
 

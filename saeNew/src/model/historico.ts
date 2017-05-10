@@ -57,10 +57,10 @@ export class Historico {
   public drenagemToracicaDTD: boolean;
   public mamas: string;
   //avaliacao Cardiovascular
-  public avaliacaoCardiovascularFC: string;
-  public avaliacaoCardiovascularPA: string;
-  public avaliacaoCardiovascularPVC: string;
-  public avaliacaoCardiovascularPAM: string;
+  public avaliacaoCardiovascular_Fc: string;
+  public avaliacaoCardiovascular_Pa: string;
+  public avaliacaoCardiovascular_PVC: string;
+  public avaliacaoCardiovascular_Pam: string;
   public pulso: string;
   public pulsoImpalpavel: string;
   public presencaDeEdemaNao: boolean;
@@ -196,10 +196,10 @@ export class Historico {
     this.drenagemToracicaDTD = false;
     this.mamas = "";
     //avaliacao Cardiovascular
-    this.avaliacaoCardiovascularFC = "";
-    this.avaliacaoCardiovascularPA = "";
-    this.avaliacaoCardiovascularPVC = "";
-    this.avaliacaoCardiovascularPAM = "";
+    this.avaliacaoCardiovascular_Fc = "";
+    this.avaliacaoCardiovascular_Pa = "";
+    this.avaliacaoCardiovascular_PVC = "";
+    this.avaliacaoCardiovascular_Pam = "";
     this.pulso = "";
     this.pulsoImpalpavel = "";
     this.presencaDeEdemaNao = false;
