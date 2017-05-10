@@ -1,6 +1,6 @@
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { CadastroPaciente } from '../../model/cadastroPaciente';
+import { Historico } from '../../model/historico';
 import 'rxjs/add/operator/map';
 import { Http } from "@angular/http";
 import { GerarSaePage } from '../gerar-sae/gerar-sae';
@@ -18,10 +18,10 @@ import { GerarSaePage } from '../gerar-sae/gerar-sae';
 })
 export class SavePage {
 
-  private paciente: CadastroPaciente;
+  private historico: Historico;
 
   constructor(private params: NavParams, private alert: AlertController, private nav: NavController, private http: Http, private loading: LoadingController) {
-    this.paciente = params.get("parametro");
+    this.historico = params.get("parametro");
     this.nav = nav;
   }
   cancel() {
@@ -35,8 +35,8 @@ export class SavePage {
 
   salvar() {
     let type = "cadastroPaciente";
-    let paciente = this.paciente;
-    let data = JSON.stringify({ type, paciente });
+    let historico = this.historico;
+    let data = JSON.stringify({ type, historico });
     let link = "http://localhost/saeApi.php";
     this.http.post(link, data)
       .subscribe(data => {
@@ -65,7 +65,7 @@ export class SavePage {
 
   salvar2() {
     this.salvar();
-    this.nav.push(GerarSaePage, { paciente: this.paciente });
+    this.nav.push(GerarSaePage, { historico: this.historico });
   }
 
 }

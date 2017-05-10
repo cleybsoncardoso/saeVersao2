@@ -14,7 +14,7 @@
     <ion-card-header class="cardtitulo">Aspectos cutâneo-mucosa </ion-card-header>
     <ion-item>
       <ion-label class="label" floating>Lesões </ion-label>
-      <ion-input [(ngModel)]="paciente.genitaliaLesoesCaracteristicas" type="text"></ion-input>
+      <ion-input [(ngModel)]="historico.lesoes" type="text"></ion-input>
     </ion-item>
     <ion-list-header class="titulolista" (click)="toggleGroup(0)">Pele
       <p class="icone" id="iconeCutaneo0" style="float: right; color: white">+</p>
@@ -22,47 +22,47 @@
     <ion-list no-lines class="lista" id="dadosCutaneo0">
       <ion-item>
         <ion-label class="label">Cianose </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaCianose"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Cianose"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Icterícia </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaIctericia"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Ictericia"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Petéquias </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaPetequias"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Petequias"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Corado </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaCorado"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Corado"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Hipocorado </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHipocorado"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Hipocorado"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Hipercorado </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHipercorado"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Hipercorado"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Equimoses </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaEquimoses"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Equimoses"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Hematomas </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaHematomas"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Hematomas"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Escoriações </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.aspectosCutaneoMucosaEscoriacoes"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.Escoriacoes"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label floating>Outros</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.aspectosCutaneoMucosaOutros" type="text"></ion-input>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.aspectosCutaneoMucosaOutros" type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Temperatura (ºC)</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.aspectosCutaneoMucosaTemperatura" type="number"></ion-input>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.pele_temperatura" type="number"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list-header class="titulolista" (click)="toggleGroup(1)">Olhos
@@ -71,21 +71,21 @@
     <ion-list no-lines class="lista" id="dadosCutaneo1">
       <ion-item>
         <ion-label class="label">Icterícia </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.olhosIctericia"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.ictericia"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Edema de conjuntiva </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.olhosEdemaDeConjuntiva"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.edemaDeConjuntiva"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label floating>Outros</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.olhosOutros" type="text"></ion-input>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.olhosOutros" type="text"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list-header class="titulolista" (click)="toggleGroup(2)">AVP
       <p class="icone" id="iconeCutaneo2" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.avp" class="lista" id="dadosCutaneo2">
+    <ion-list radio-group [(ngModel)]="historico.AVP" class="lista" id="dadosCutaneo2">
       <ion-row>
         <ion-col>
           <ion-item>
@@ -100,14 +100,14 @@
           </ion-item>
         </ion-col>
       </ion-row>
-      <ion-list *ngIf="this.paciente.avp=='sim'" no-lines id="listRadio0" style="padding: 0px; margin: 0px">
+      <ion-list *ngIf="this.historico.avp=='sim'" no-lines id="listRadio0" style="padding: 0px; margin: 0px">
         <ion-item>
           <ion-label style="margin: 0px" floating>Local</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="paciente.avpLocal" type="text"></ion-input>
+          <ion-input class="inputgrupo" [(ngModel)]="historico.avpLocal" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="paciente.avpTempoDePermanencia" type="text"></ion-input>
+          <ion-input class="inputgrupo" [(ngModel)]="historico.avpTempoDePermanencia" type="text"></ion-input>
         </ion-item>
       </ion-list>
     </ion-list>
@@ -115,7 +115,7 @@
     <ion-list-header class="titulolista" (click)="toggleGroup(3)">CVC
       <p class="icone" id="iconeCutaneo3" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.cvc" class="lista" id="dadosCutaneo3">
+    <ion-list radio-group [(ngModel)]="historico.CVC" class="lista" id="dadosCutaneo3">
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -132,14 +132,14 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-list *ngIf="this.paciente.cvc=='sim'" no-lines id="listRadio1" style="padding: 0px; margin: 0px">
+      <ion-list *ngIf="this.historico.cvc=='sim'" no-lines id="listRadio1" style="padding: 0px; margin: 0px">
         <ion-item>
           <ion-label style="margin: 0px" floating>Local</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="paciente.cvcLocal" type="text"></ion-input>
+          <ion-input class="inputgrupo" [(ngModel)]="historico.cvcLocal" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="paciente.cvcTempoDePermanencia" type="text"></ion-input>
+          <ion-input class="inputgrupo" [(ngModel)]="historico.cvcTempoDePermanencia" type="text"></ion-input>
         </ion-item>
       </ion-list>
     </ion-list>
@@ -147,7 +147,7 @@
     <ion-list-header class="titulolista" (click)="toggleGroup(4)">Dreno
       <p class="icone" id="iconeCutaneo4" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.dreno" class="lista" id="dadosCutaneo4">
+    <ion-list radio-group [(ngModel)]="historico.dreno" class="lista" id="dadosCutaneo4">
       <ion-row>
         <ion-col width-50>
           <ion-item>
@@ -162,14 +162,14 @@
           </ion-item>
         </ion-col>
       </ion-row>
-      <ion-list *ngIf="this.paciente.dreno=='sim'" no-lines id="listRadio2" style="padding: 0px; margin: 0px">
+      <ion-list *ngIf="this.historico.dreno=='sim'" no-lines id="listRadio2" style="padding: 0px; margin: 0px">
         <ion-item>
           <ion-label style="margin: 0px" floating>Local</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="paciente.drenoCaracteristicas" type="text"></ion-input>
+          <ion-input class="inputgrupo" [(ngModel)]="historico.dreno_caracteristicas" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label style="margin: 0px" floating>Tipo de Dreno</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="paciente.drenoTipoDeDreno" type="text"></ion-input>
+          <ion-input class="inputgrupo" [(ngModel)]="historico.dreno_tipo" type="text"></ion-input>
         </ion-item>
       </ion-list>
     </ion-list>
@@ -181,15 +181,15 @@
     <ion-list no-lines class="lista" id="dadosCutaneo5">
       <ion-item>
         <ion-label class="label">Sem anormalidades </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.genitaliaSemAnormalidades"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.genitaliaSemAnormalidades"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Secreção </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.genitaliaSecrecao"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.genitaliaSecrecao"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label floating>Outros</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.genitaliaOutros" type="text"></ion-input>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.genitaliaOutros" type="text"></ion-input>
       </ion-item>
     </ion-list>
   </ion-card>

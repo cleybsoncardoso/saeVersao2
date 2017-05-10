@@ -14,11 +14,6 @@ export class AvaliacaoCardiovascularPage {
 
   constructor(private params: NavParams, private nav: NavController) {
     this.historico = params.get("historico");
-    // this.historico.avaliacaoCardiovascular_Fc = "10";
-    // this.historico.avaliacaoCardiovascular_Pa = "20";
-    // this.historico.avaliacaoCardiovascular_Pam = "30";
-    // this.historico.avaliacaoCardiovascular_PVC = "40";
-    // this.historico.presencaDeEdema = "pes,mmii,mmss,anasarca";
     this.presencaDeEdema();
   }
 
@@ -63,7 +58,7 @@ export class AvaliacaoCardiovascularPage {
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.nav.push(HidratacaoEEliminacaoVesicalPage, { parametro: this.historico });
+      this.nav.push(HidratacaoEEliminacaoVesicalPage, { historico: this.historico });
     }
   }
 

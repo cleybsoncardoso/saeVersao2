@@ -13,7 +13,7 @@
   <ion-card class="mycard" (swipe)="slide($event)">
     <ion-card-header class="cardtitulo"> Hidratação e Eliminação Vesical </ion-card-header>
     <ion-list-header class="titulolista" (click)="toggleGroup(0)">Turgidez da pele <p class="icone" id="iconeHidratacao0" style="float: right; color: white">+</p></ion-list-header>
-    <ion-list radio-group no-lines [(ngModel)]="paciente.turgidezDaPele" class="lista" id="dadosHidratacao0" class="subgrupo">
+    <ion-list radio-group no-lines [(ngModel)]="historico.turgidezDaPele" class="lista" id="dadosHidratacao0" class="subgrupo">
       <ion-item>
         <ion-label class="label">Preservada </ion-label>
         <ion-radio value="preservada"></ion-radio>
@@ -27,50 +27,50 @@
     <ion-list no-lines class="lista" id="dadosHidratacao1" class="subgrupo">
       <ion-item>
         <ion-label class="label">Espontânea </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.eliminacaoUrinariaEspontanea"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.eliminacaoUrinariaEspontanea"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Retenção </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.eliminacaoUrinariaRetencao"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.eliminacaoUrinariaRetencao"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Incontinência </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.eliminacaoUrinariaIncontinencia"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.eliminacaoUrinariaIncontinencia"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">SVD </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.eliminacaoUrinariaSVD"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.eliminacaoUrinariaSVD"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Dispositivo urinário </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.eliminacaoUrinariaDispositivoUrinario"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.eliminacaoUrinariaDispositivoUrinario"></ion-checkbox>
       </ion-item>
     </ion-list>
     <ion-list-header class="titulolista" (click)="toggleGroup(2)">Características <p class="icone" id="iconeHidratacao2" style="float: right; color: white">+</p></ion-list-header>
     <ion-list no-lines class="lista" id="dadosHidratacao2" class="subgrupo">
       <ion-item>
         <ion-label class="label">Disúria </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.caracteristicasDisuria"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.caracteristicasDisuria"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Oligúria </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.caracteristicasOliguria"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.caracteristicasOliguria"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Anúria </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.caracteristicasAnuria"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.caracteristicasAnuria"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Poliúria </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.caracteristicasPoliuria"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.caracteristicasPoliuria"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Hematúria </ion-label>
-        <ion-checkbox [(ngModel)]="paciente.caracteristicasHematuria"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="historico.caracteristicasHematuria"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label floating>Outros</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.caracteristicasOutros" type="text"></ion-input>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.caracteristicasOutros" type="text"></ion-input>
       </ion-item>
     </ion-list>
   </ion-card>

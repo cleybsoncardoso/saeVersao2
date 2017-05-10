@@ -1,7 +1,7 @@
 import { NavController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { ObservacoesPage } from '../observacoes/observacoes';
-import { CadastroPaciente } from '../../model/cadastroPaciente';
+import { Historico } from '../../model/historico';
 
 /*
   Generated class for the SegurancaFisica page.
@@ -15,10 +15,10 @@ import { CadastroPaciente } from '../../model/cadastroPaciente';
 })
 export class SegurancaFisicaPage {
 
-  private paciente: CadastroPaciente;
+  private historico: Historico;
 
   constructor(private params: NavParams, private nav: NavController) {
-    this.paciente = params.get("parametro");
+    this.historico = params.get("historico");
     this.nav = nav;
   }
 
@@ -30,7 +30,7 @@ export class SegurancaFisicaPage {
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.nav.push(ObservacoesPage, { parametro: this.paciente });
+      this.nav.push(ObservacoesPage, { historico: this.historico });
     }
   }
 
