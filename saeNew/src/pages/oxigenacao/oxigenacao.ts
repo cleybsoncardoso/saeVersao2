@@ -1,7 +1,7 @@
 import { NavController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { AvaliacaoCardiovascularPage } from '../avaliacao-cardiovascular/avaliacao-cardiovascular';
-import { CadastroPaciente } from '../../model/cadastroPaciente';
+import { Historico } from '../../model/historico';
 
 /*
   Generated class for the Oxigenacao page.
@@ -15,10 +15,10 @@ import { CadastroPaciente } from '../../model/cadastroPaciente';
 })
 export class OxigenacaoPage {
 
-  private paciente: CadastroPaciente;
+  private historico: Historico;
 
   constructor(private params: NavParams, private nav: NavController) {
-    this.paciente = params.get("parametro");
+    this.historico = params.get("historico");
     this.nav = nav;
   }
 
@@ -26,11 +26,11 @@ export class OxigenacaoPage {
     let grupo = document.getElementById("dadosOxigenacao" + id);
     let icone = document.getElementById("iconeOxigenacao" + id);
  
-    if (id == 3 && this.paciente.aspiracao == "sim") {
+    if (id == 3 && this.historico.aspiracao == "sim") {
       let grupo = document.getElementById("listRadio0");
       grupo.style.display = "block";
     }
-    if (id == 4 && this.paciente.drenagemToracica == "sim") {
+    if (id == 4 && this.historico.drenagemToracica == "sim") {
       let grupo = document.getElementById("listRadio1");
       grupo.style.display = "block";
     }
@@ -68,7 +68,7 @@ export class OxigenacaoPage {
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.nav.push(AvaliacaoCardiovascularPage, { parametro: this.paciente });
+      this.nav.push(AvaliacaoCardiovascularPage, { historico: this.historico });
     }
   }
 
