@@ -12,6 +12,7 @@ import { EntrevistaPage } from '../pages/entrevista/entrevista';
 import { AvaliacaoNeurologicaPage } from '../pages/avaliacao-neurologica/avaliacao-neurologica';
 import { PacienteService } from '../providers/paciente-service';
 import { EnfermeiroService } from '../providers/enfermeiro-service';
+import { HistoricoService } from '../providers/historico-service';
 import { SenhaService } from '../providers/senha-service';
 import { LoginService } from '../providers/login-service';
 import { OxigenacaoPage } from '../pages/oxigenacao/oxigenacao';
@@ -76,6 +77,6 @@ import { PlanoDeCuidadosPage } from "../pages/plano-de-cuidados/plano-de-cuidado
     AprazamentoPage,
     PlanoDeCuidadosPage
   ],
-  providers: [EnfermeiroService, SenhaService, PacienteService, LoginService, Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [EnfermeiroService, HistoricoService, SenhaService, PacienteService, LoginService, Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
