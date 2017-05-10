@@ -63,7 +63,7 @@ export class AvaliacaoCardiovascularPage {
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.nav.push(HidratacaoEEliminacaoVesicalPage, { parametro: this.historico });
+      this.nav.push(HidratacaoEEliminacaoVesicalPage, { historico: this.historico });
     }
   }
 
