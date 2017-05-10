@@ -107,6 +107,8 @@ export class PacientesPage {
 
               let historico = res.value == false ? new Historico() : res.value;
 
+              console.log(historico);
+
               this.nav.push(EntrevistaPage, { historico: historico });
             });
           }
