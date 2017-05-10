@@ -39,10 +39,6 @@ export class EntrevistaPage {
   }
 
   carregarDados() {
-    this.historico.vacinas = "cardiopatia,convulsao,vacilo,vdd";
-    this.historico.alergias = "cardiopatia,convulsao,vacilo,vdd";
-    this.historico.antecedentes = "cardiopatia,convulsao,vacilo,vdd";
-    console.log(this.historico);
     //motivo de internacao
     this.historico.motivo = this.historico.internacoes.split(",");
     let index = this.historico.motivo.indexOf("cardiopatia");
@@ -238,6 +234,7 @@ export class EntrevistaPage {
       x++;
       let antecedentes = <HTMLInputElement>document.getElementById("campoAntecedente" + x);
       if (antecedentes.value != "") {
+        console.log(antecedentes.value);
         this.historico.antecedentesArray.push(antecedentes.value);
         cont++;
       }
@@ -345,7 +342,7 @@ export class EntrevistaPage {
         //Inserindo o elemento filho no pai:
         divPai.appendChild(divFilho);
         //Escrevendo algo no filho recém-criado:
-        document.getElementById("alergia" + x).innerHTML = "<input class='divitem2' type='text' id='campoAlergia" + x + "' value='" + this.historico.alergias[x - 1] + "'></input>";
+        document.getElementById("alergia" + x).innerHTML = "<input class='divitem2' type='text' id='campoAlergia" + x + "' value='" + this.historico.alergiasArray[x - 1] + "'></input>";
       }
     }
   }
@@ -365,7 +362,7 @@ export class EntrevistaPage {
         //Inserindo o elemento filho no pai:
         divPai.appendChild(divFilho);
         //Escrevendo algo no filho recém-criado:
-        document.getElementById("vacina" + x).innerHTML = "<input class='divitem2' type='text' id='campoVacina" + x + "' value='" + this.historico.vacinas[x - 1] + "'></input>";
+        document.getElementById("vacina" + x).innerHTML = "<input class='divitem2' type='text' id='campoVacina" + x + "' value='" + this.historico.vacinasArray[x - 1] + "'></input>";
       }
     }
   }
@@ -415,8 +412,54 @@ export class EntrevistaPage {
       this.getAlergias();
       this.getVacinas();
       this.getMotivos();
-      this.nav.push(AvaliacaoNeurologicaPage, { parametro: this.historico });
+      this.converteDados();
+      this.nav.push(AvaliacaoNeurologicaPage, { historico: this.historico });
     }
+  }
+
+  converteDados(){
+    //motivo de internacao
+    let index = this.historico.motivo.indexOf("cardiopatia");
+    if (index < 0 && this.historico.cardiopatia) {
+      this.historico.motivo.push("cardiopatia")
+    }
+    index = this.historico.motivo.indexOf("convulsao");
+    if (index < 0 && this.historico.convulsao) {
+      this.historico.motivo.push("convulsao")
+    }
+    index = this.historico.motivo.indexOf("asma");
+    if (index < 0 && this.historico.asma) {
+      this.historico.motivo.push("asma")
+    }
+    index = this.historico.motivo.indexOf("drogas");
+    if (index < 0 && this.historico.drogas) {
+      this.historico.motivo.push("drogas")
+    }
+    this.historico.internacoes = this.historico.motivo.toString();
+
+    //antecedentes
+    index = this.historico.antecedentesArray.indexOf("has");
+    if (index < 0 && this.historico.has) {
+      this.historico.motivo.push("has")
+    }
+    index = this.historico.antecedentesArray.indexOf("tabagismo");
+    if (index < 0 && this.historico.tabagismo) {
+      this.historico.motivo.push("tabagismo")
+    }
+    index = this.historico.antecedentesArray.indexOf("alcoolismo");
+    if (index < 0 && this.historico.alcoolismo) {
+      this.historico.motivo.push("alcoolismo")
+    }
+    index = this.historico.antecedentesArray.indexOf("diabetesMellitus");
+    if (index < 0 && this.historico.diabetesMellitus) {
+      this.historico.motivo.push("diabetesMellitus")
+    }
+
+    this.historico.antecedentes = this.historico.antecedentesArray.toString();
+    //alergia e vacina
+    this.historico.alergias = this.historico.alergiasArray.toString();
+    this.historico.vacinas = this.historico.vacinasArray.toString();
+
   }
 
 
