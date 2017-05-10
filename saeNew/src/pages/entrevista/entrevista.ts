@@ -24,16 +24,18 @@ export class EntrevistaPage {
     this.historico = params.get("historico");
     this.nav = nav;
     this.myIcons = ["md-add"];
-    if (this.historico.idsaeapp_historico != "0") {
-      this.carregarDados();
-    }
+    
   }
 
   ionViewDidLoad() {
+    this.carregarDados();
     this.setAntecedentes();
     this.setAlergias();
     this.setVacinas();
     this.setMotivos();
+    if (this.historico.idsaeapp_historico != "0") {
+      this.carregarDados();
+    }
   }
 
   carregarDados() {
@@ -42,22 +44,22 @@ export class EntrevistaPage {
     //motivo de internacao
     this.historico.motivo = this.historico.internacoes.split(",");
     let index = this.historico.motivo.indexOf("cardiopatia");
-    if (index > -1){
+    if (index > -1) {
       this.historico.cardiopatia = true;
       this.historico.motivo.splice(index, 1);
     }
     index = this.historico.motivo.indexOf("convulsao");
-    if (index > -1){
+    if (index > -1) {
       this.historico.convulsao = true;
       this.historico.motivo.splice(index, 1);
     }
     index = this.historico.motivo.indexOf("asma");
-    if (index > -1){
+    if (index > -1) {
       this.historico.asma = true;
       this.historico.motivo.splice(index, 1);
     }
     index = this.historico.motivo.indexOf("drogas");
-    if (index > -1){
+    if (index > -1) {
       this.historico.drogas = true;
       this.historico.motivo.splice(index, 1);
     }
@@ -66,22 +68,22 @@ export class EntrevistaPage {
     //antecedentes
     this.historico.antecedentesArray = this.historico.antecedentes.split(",");
     index = this.historico.antecedentesArray.indexOf("has");
-    if (index > -1){
+    if (index > -1) {
       this.historico.has = true;
       this.historico.antecedentesArray.splice(index, 1);
     }
     index = this.historico.antecedentesArray.indexOf("tabagismo");
-    if (index > -1){
+    if (index > -1) {
       this.historico.tabagismo = true;
       this.historico.antecedentesArray.splice(index, 1);
     }
     index = this.historico.antecedentesArray.indexOf("alcoolismo");
-    if (index > -1){
+    if (index > -1) {
       this.historico.alcoolismo = true;
       this.historico.antecedentesArray.splice(index, 1);
     }
     index = this.historico.antecedentesArray.indexOf("diabetesMellitus");
-    if (index > -1){
+    if (index > -1) {
       this.historico.diabetesMellitus = true;
       this.historico.antecedentesArray.splice(index, 1);
     }
