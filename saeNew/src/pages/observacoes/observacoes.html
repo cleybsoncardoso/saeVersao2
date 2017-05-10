@@ -16,14 +16,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="mycard" (swipe)="slide($event)">
+  <ion-card (swipe)="slide($event)">
     <ion-card-header class="cardtitulo">Observações</ion-card-header>
     <ion-list no-lines id="observacoes">
     </ion-list>
     <ion-list no-lines class="listitem">
       <ion-item style="margin: 0px;">
-        <button ion-button class="buttons" (click)="addObservacao()">Adicionar Observações</button>
-        <button ion-button class="buttons" (click)="removerObservacao()">Remover</button>
+        <ion-label floating>Score</ion-label>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.escore" type="text"></ion-input>
       </ion-item>
     </ion-list>
   </ion-card>

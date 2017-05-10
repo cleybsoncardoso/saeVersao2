@@ -14,26 +14,22 @@ export class AvaliacaoCardiovascularPage {
 
   constructor(private params: NavParams, private nav: NavController) {
     this.historico = params.get("historico");
-    // this.historico.avaliacaoCardiovascular_Fc = "10";
-    // this.historico.avaliacaoCardiovascular_Pa = "20";
-    // this.historico.avaliacaoCardiovascular_Pam = "30";
-    // this.historico.avaliacaoCardiovascular_PVC = "40";
-    // this.historico.presencaDeEdema = "pes,mmii,mmss,anasarca";
     this.presencaDeEdema();
   }
 
   private presencaDeEdema() {
+    console.log(this.historico.presencaDeEdema);
     let res = this.historico.presencaDeEdema.split(",");
-    if (res.indexOf("pes") >= -1) {
+    if (res.indexOf("pes") > -1) {
       this.historico.presencaDeEdemaPes = true;
     }
-    if (res.indexOf("mmii") >= -1) {
+    if (res.indexOf("mmii") > -1) {
       this.historico.presencaDeEdemaMMII = true;
     }
-    if (res.indexOf("mmss") >= -1) {
+    if (res.indexOf("mmss") > -1) {
       this.historico.presencaDeEdemaMMSS = true;
     }
-    if (res.indexOf("anasarca") >= -1) {
+    if (res.indexOf("anasarca") > -1) {
       this.historico.presencaDeEdemaAnasarca = true;
     }
   }

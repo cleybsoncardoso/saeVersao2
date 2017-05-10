@@ -9,11 +9,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="seguranca-fisica" (swipe)="slide($event)">
+<ion-content class="seguranca-fisica" >
   <ion-card class="mycard" (swipe)="slide($event)">
     <ion-card-header class="cardtitulo">Segurança Física </ion-card-header>
     <ion-list-header class="titulolista" style="overflow: visible; font-size: 11px;">Necessidade de contenção no leito </ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.segurancaFisica">
+    <ion-list radio-group [(ngModel)]="historico.necessidadeDeContencao">
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -32,7 +32,7 @@
       </ion-grid>
     </ion-list>
     <ion-list-header class="titulolista">Risco para queda </ion-list-header>
-    <ion-list radio-group [(ngModel)]="paciente.riscoParaQueda">
+    <ion-list radio-group [(ngModel)]="historico.riscoParaQueda">
       <ion-row>
         <ion-col>
           <ion-item>
@@ -52,7 +52,7 @@
     <ion-list no-lines>
       <ion-item class="itemgrupo">
         <ion-label floating>Score</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="paciente.score" type="number"></ion-input>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.escore" type="number"></ion-input>
       </ion-item>
     </ion-list>
   </ion-card>
