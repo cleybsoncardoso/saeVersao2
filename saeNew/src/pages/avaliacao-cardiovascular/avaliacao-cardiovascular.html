@@ -17,13 +17,13 @@
         <ion-col>
           <ion-item>
             <ion-label floating>FC (bpm)</ion-label>
-            <ion-input class="inputgrupo" type="number" [(ngModel)]="historico.avaliacaoCardiovascularFC"></ion-input>
+            <ion-input class="inputgrupo" type="number" [(ngModel)]="historico.avaliacaoCardiovascular_Fc"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
             <ion-label floating>PA (mmHg)</ion-label>
-            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascularPA" type="number"></ion-input>
+            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascular_Pa" type="number"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -33,13 +33,13 @@
         <ion-col width-50>
           <ion-item>
             <ion-label floating style="overflow: visible">PVC (cmH2O)</ion-label>
-            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascularPVC" type="number"></ion-input>
+            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascular_PVC" type="number"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col width-50>
           <ion-item>
             <ion-label floating>PAM (mmHg)</ion-label>
-            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascularPAM" type="number"></ion-input>
+            <ion-input class="inputgrupo" [(ngModel)]="historico.avaliacaoCardiovascular_Pam" type="number"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -96,14 +96,6 @@
       </ion-list>
     </ion-grid>
     <ion-list-header class="titulolista">Presença de edema </ion-list-header>
-    <ion-item>
-      <ion-label class="label">Não</ion-label>
-      <ion-checkbox [(ngModel)]="historico.presencaDeEdemaNao"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label class="label">Sim</ion-label>
-      <ion-checkbox [(ngModel)]="historico.presencaDeEdemaSim"></ion-checkbox>
-    </ion-item>
     <ion-item>
       <ion-label class="label">Pés</ion-label>
       <ion-checkbox [(ngModel)]="historico.presencaDeEdemaPes"></ion-checkbox>
