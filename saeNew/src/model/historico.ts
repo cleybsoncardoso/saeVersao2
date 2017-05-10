@@ -63,6 +63,7 @@ export class Historico {
   public avaliacaoCardiovascular_Pam: string;
   public pulso: string;
   public pulsoImpalpavel: string;
+  public presencaDeEdema: string;
   public presencaDeEdemaNao: boolean;
   public presencaDeEdemaSim: boolean;
   public presencaDeEdemaPes: boolean;
@@ -204,6 +205,7 @@ export class Historico {
     this.avaliacaoCardiovascular_Pam = "";
     this.pulso = "";
     this.pulsoImpalpavel = "";
+    this.presencaDeEdema = "";
     this.presencaDeEdemaNao = false;
     this.presencaDeEdemaSim = false;
     this.presencaDeEdemaPes = false;
