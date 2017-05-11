@@ -1,5 +1,22 @@
 page-aprazamento {
-  ion-card-header{
+  h1 {
     text-align: center;
+    color: white;
+    background-color: #548B54;
+    margin: 0;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: #548B54;
+    border-width: 5px;
   }
+
+  .intervencao {
+    padding: 5px;
+  }
+
+  .background{
+    background-color: #F5F5F5;
+  }
+
+
 }

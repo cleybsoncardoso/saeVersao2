@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
-import { CadastroPaciente } from '../../model/cadastroPaciente';
+import { Paciente } from '../../model/paciente';
 import { Http } from "@angular/http";
 import { AprazamentoDados } from '../../model/aprazamento';
+import { CuidadosService } from '../../providers/cuidados-service';
 
 
 @Component({
@@ -11,16 +12,20 @@ import { AprazamentoDados } from '../../model/aprazamento';
 })
 export class AprazamentoPage {
 
-  private paciente: CadastroPaciente;
+  private paciente: Paciente;
   private listaIntervencoes: any;
 
   constructor(
     private params: NavParams,
     private http: Http,
     public nav: NavController,
-    private alert: AlertController
+    private alert: AlertController,
+    private cuidadosService: CuidadosService
   ) {
     // this.listaIntervencoes = params.get('intervencoes');
+    // this.paciente = params.get('paciente');
+    this.paciente = new Paciente();
+
     let date = new Date();
     let data = "";
     if (date.getMonth() + 1 < 10) {
@@ -28,34 +33,27 @@ export class AprazamentoPage {
     } else {
       data = (date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
     }
-    console.log(data);
-    this.listaIntervencoes = [{ id: 23, titulo: 'teste', inicio: '15:30', intervalo: 3, dataInicio: data }];
-    // this.paciente = params.get('paciente');
-    this.paciente = new CadastroPaciente();
-    this.calcularHora();
-
+    this.listaIntervencoes = [{ id: 23, titulo: 'teste', inicio: '15:30', intervalo: 3, dataInicio: data },{ id: 26, titulo: 'meu teste', inicio: '15:30', intervalo: 3, dataInicio: data }, { id: 22, titulo: 'testando', inicio: '12:30', intervalo: 1, dataInicio: data }];
   }
 
-  calcularHora() {
-    let teste = this.listaIntervencoes[0];
-    let final = parseInt(teste.inicio.split(":")[0]);
-    // console.log(final);
-    while (final + teste.intervalo < 24) {
-      final = final + teste.intervalo;
-      console.log(final + ':' + teste.inicio.split(":")[1]);
+  private calcularHora() {
+    for (let intervencao of this.listaIntervencoes) {
+      let final = parseInt(intervencao.inicio.split(":")[0]);
+      // console.log(final);
+      while (final + intervencao.intervalo < 24) {
+        final = final + intervencao.intervalo;
+      }
+      intervencao.ultimoHorario = (final + ':' + intervencao.inicio.split(":")[1]);
     }
-
   }
 
-  enviar() {
-
+  private enviar() {
     let erro = false;
     for (let i = 0; i < this.listaIntervencoes.length; i++) {
       if (this.listaIntervencoes[i].inicio == "" || this.listaIntervencoes[i].intervalo == 0 || this.listaIntervencoes[i].dataInicio == "" || this.listaIntervencoes[i].dataFim == "") {
         erro = true;
         let alert = this.alert.create({
-          title: 'Warning',
-          subTitle: 'Complente os campos que faltam para o apazamento',
+          subTitle: 'Complete os campos que faltam para aplicar o aprazamento',
           buttons: ['OK']
         });
         alert.present();
@@ -63,36 +61,28 @@ export class AprazamentoPage {
       }
     }
     if (!erro) {
-
-
-      let type = "aprazar";
-      let intervencoes = this.listaIntervencoes;
-      let idPaciente = this.paciente.id;
-      let data = JSON.stringify({ type, idPaciente, intervencoes });
-      let link = "http://localhost/saeApi.php";
-
-      this.http.post(link, data)
-        .subscribe(data => {
+      this.calcularHora();
+      this.cuidadosService.addCuidados(this.listaIntervencoes, 1).then(res => {
+        if (res.type) {
           let alert = this.alert.create({
-            title: 'sucesso',
-            subTitle: 'Aprazamento concluido',
+            subTitle: 'Aprazamento Concluído',
             buttons: ['OK']
           });
           alert.present();
           this.nav.popToRoot();
-        }, error => {
+
+        } else {
           let alert = this.alert.create({
-            title: 'Warning',
-            subTitle: 'erro de comunicacao',
+            subTitle: 'Erro de Comunicação',
             buttons: ['OK']
           });
           alert.present();
-        });
-
+        }
+      });
     }
   }
 
-  cancel() {
+  private cancel() {
     this.nav.popToRoot();
   }
 
