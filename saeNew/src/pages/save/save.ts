@@ -1,4 +1,4 @@
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Historico } from '../../model/historico';
 import 'rxjs/add/operator/map';
@@ -23,7 +23,8 @@ export class SavePage {
     private alert: AlertController,
     private nav: NavController,
     private loading: LoadingController,
-    private hisService: HistoricoService
+    private hisService: HistoricoService,
+    private toastCtrl: ToastController
   ) {
     this.historico = params.get("historico");
     this.nav = nav;
@@ -45,12 +46,23 @@ export class SavePage {
     this.hisService.addHistorico(this.historico).then(resposta => {
       loader.dismiss();
       if (resposta.type) {
+        this.presentToast("historico cadastrado com sucesso");
         this.nav.popToRoot();
       } else {
         this.tentarNovamente(false);
       }
     });
   }
+
+  presentToast(msg) {
+  let toast = this.toastCtrl.create({
+    message: msg,
+    duration: 3000,
+    position: 'top'
+  });
+
+  toast.present();
+}
 
   tentarNovamente(gerarSae) {
     let alert = this.alert.create({

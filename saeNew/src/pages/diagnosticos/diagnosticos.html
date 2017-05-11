@@ -16,13 +16,12 @@
 </ion-header>
 
 
-<ion-content padding (swipe)="slide($event)">
-  <ion-card class="mycard">
+<ion-content padding >
+  <ion-card class="mycard" (swipe)="slide($event)">
     <ion-card-header class="cardtitulo"> Diagnosticos </ion-card-header>
-  </ion-card>
     <div *ngFor="let item of diagnosticos" >
       <div class="margemLimitada" class="tituloDiagnostico">
-          {{item.diagnostico.titulo}}
+          <h1 style="background-color: #2eb82e">{{item.titulo}}</h1>
       </div>
       <ion-list>
         <div *ngFor="let itervencoes of item.intervencao" (click)="itemSelected(itervencoes)">
@@ -32,6 +31,6 @@
         </div>
       </ion-list>
     </div>
-
+  </ion-card>
 
 </ion-content>

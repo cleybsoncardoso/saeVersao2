@@ -107,7 +107,7 @@ export class PacientesPage {
 
               let historico = res.value == false ? new Historico() : res.value;
 
-              console.log(historico);
+              historico.idPaciente = paciente.id;
 
               this.nav.push(EntrevistaPage, { historico: historico });
             });
@@ -179,8 +179,6 @@ export class PacientesPage {
   }
 
   confirmarDados(pacienteNome, senha) {
-    console.log(senha);
-    console.log(pacienteNome);
     let id = this.enfermeira.id;
     let type = "alta";
     let data = JSON.stringify({ type, id, senha, pacienteNome });

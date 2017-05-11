@@ -28,7 +28,6 @@ export class EntrevistaPage {
   }
 
   ionViewDidLoad() {
-    this.carregarDados();
     this.setAntecedentes();
     this.setAlergias();
     this.setVacinas();
@@ -403,16 +402,8 @@ export class EntrevistaPage {
   slide(passar) {
       this.converteDados();
     if (passar.deltaX > 0) {
-      this.getAntecedentes();
-      this.getAlergias();
-      this.getVacinas();
-      this.getMotivos();
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.getAntecedentes();
-      this.getAlergias();
-      this.getVacinas();
-      this.getMotivos();
       this.nav.push(AvaliacaoNeurologicaPage, { historico: this.historico });
     }
   }
@@ -459,7 +450,10 @@ export class EntrevistaPage {
     //alergia e vacina
     this.historico.alergias = this.historico.alergiasArray.toString();
     this.historico.vacinas = this.historico.vacinasArray.toString();
-
+      this.getAntecedentes();
+      this.getAlergias();
+      this.getVacinas();
+      this.getMotivos();
   }
 
 
