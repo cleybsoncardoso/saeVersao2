@@ -30,5 +30,12 @@ export class HistoricoService {
     return retorno;
   }
 
+  public addHistorico(historico): Promise<any> {
+    return this.http.post('http://localhost/sae/addHistorico.php', JSON.stringify(historico), { headers: this.headers })
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleErrorMessage);
+  }
+
 
 }
