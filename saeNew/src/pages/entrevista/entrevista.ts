@@ -40,7 +40,7 @@ export class EntrevistaPage {
 
   carregarDados() {
     //motivo de internacao
-    this.historico.motivo = this.historico.internacoes.split(",");
+    this.historico.motivo = this.historico.motivoInternacao.split(",");
     let index = this.historico.motivo.indexOf("cardiopatia");
     if (index > -1) {
       this.historico.cardiopatia = true;
@@ -401,6 +401,7 @@ export class EntrevistaPage {
 
   //funcao realizada quando o usuario desliza o dedo na tela
   slide(passar) {
+      this.converteDados();
     if (passar.deltaX > 0) {
       this.getAntecedentes();
       this.getAlergias();
@@ -412,7 +413,6 @@ export class EntrevistaPage {
       this.getAlergias();
       this.getVacinas();
       this.getMotivos();
-      this.converteDados();
       this.nav.push(AvaliacaoNeurologicaPage, { historico: this.historico });
     }
   }
@@ -435,24 +435,24 @@ export class EntrevistaPage {
     if (index < 0 && this.historico.drogas) {
       this.historico.motivo.push("drogas")
     }
-    this.historico.internacoes = this.historico.motivo.toString();
+    this.historico.motivoInternacao = this.historico.motivo.toString();
 
     //antecedentes
     index = this.historico.antecedentesArray.indexOf("has");
     if (index < 0 && this.historico.has) {
-      this.historico.motivo.push("has")
+      this.historico.antecedentesArray.push("has")
     }
     index = this.historico.antecedentesArray.indexOf("tabagismo");
     if (index < 0 && this.historico.tabagismo) {
-      this.historico.motivo.push("tabagismo")
+      this.historico.antecedentesArray.push("tabagismo")
     }
     index = this.historico.antecedentesArray.indexOf("alcoolismo");
     if (index < 0 && this.historico.alcoolismo) {
-      this.historico.motivo.push("alcoolismo")
+      this.historico.antecedentesArray.push("alcoolismo")
     }
     index = this.historico.antecedentesArray.indexOf("diabetesMellitus");
     if (index < 0 && this.historico.diabetesMellitus) {
-      this.historico.motivo.push("diabetesMellitus")
+      this.historico.antecedentesArray.push("diabetesMellitus")
     }
 
     this.historico.antecedentes = this.historico.antecedentesArray.toString();

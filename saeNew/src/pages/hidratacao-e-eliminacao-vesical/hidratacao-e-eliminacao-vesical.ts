@@ -28,68 +28,68 @@ export class HidratacaoEEliminacaoVesicalPage {
 
   carregarDados() {
     let aux = this.historico.eliminacaoUrinaria.split(",");
-    let index = aux.indexOf("eliminacaoUrinariaEspontanea");
+    let index = aux.indexOf("Espontanea");
     if (index > -1) {
       this.historico.eliminacaoUrinariaEspontanea = true;
       aux.splice(index, 1);
     }
 
-    index = aux.indexOf("eliminacaoUrinariaRetencao");
+    index = aux.indexOf("Retencao");
     if (index > -1) {
       this.historico.eliminacaoUrinariaRetencao = true;
       aux.splice(index, 1);
       
     }
 
-    index = aux.indexOf("eliminacaoUrinariaIncontinencia");
+    index = aux.indexOf("Incontinencia");
     if (index > -1) {
       this.historico.eliminacaoUrinariaIncontinencia = true;
       aux.splice(index, 1);
       
     }
 
-    index = aux.indexOf("eliminacaoUrinariaSVD");
+    index = aux.indexOf("SVD");
     if (index > -1) {
       this.historico.eliminacaoUrinariaSVD = true;
       aux.splice(index, 1);
       
     }
 
-    index = aux.indexOf("eliminacaoUrinariaDispositivoUrinario");
+    index = aux.indexOf("Dispositivo Urinario");
     if (index > -1) {
       this.historico.eliminacaoUrinariaDispositivoUrinario = true;
       aux.splice(index, 1);      
     }
 
     aux = this.historico.hidratacao_Caracteristicas.split(",");
-    index = aux.indexOf("caracteristicasDisuria");
+    index = aux.indexOf("Disuria");
     if (index > -1) {
       this.historico.caracteristicasDisuria = true;
       aux.splice(index, 1);
     }
 
-    index = aux.indexOf("caracteristicasOliguria");
+    index = aux.indexOf("Oliguria");
     if (index > -1) {
       this.historico.caracteristicasOliguria = true;
       aux.splice(index, 1);
       
     }
 
-    index = aux.indexOf("caracteristicasAnuria");
+    index = aux.indexOf("Anuria");
     if (index > -1) {
       this.historico.caracteristicasAnuria = true;
       aux.splice(index, 1);
       
     }
 
-    index = aux.indexOf("caracteristicasPoliuria");
+    index = aux.indexOf("Poliuria");
     if (index > -1) {
       this.historico.caracteristicasPoliuria = true;
       aux.splice(index, 1);
       
     }
 
-    index = aux.indexOf("caracteristicasHematuria");
+    index = aux.indexOf("Hematuria");
     if (index > -1) {
       this.historico.caracteristicasHematuria = true;
       aux.splice(index, 1);      
@@ -102,19 +102,19 @@ export class HidratacaoEEliminacaoVesicalPage {
     let aux = [];
 
     if (this.historico.eliminacaoUrinariaEspontanea) {
-      aux.push("eliminacaoUrinariaEspontanea");
+      aux.push("Espontanea");
     }
     if (this.historico.eliminacaoUrinariaRetencao) {
-      aux.push("eliminacaoUrinariaRetencao");
+      aux.push("Retencao");
     }
     if (this.historico.eliminacaoUrinariaIncontinencia) {
-      aux.push("eliminacaoUrinariaIncontinencia");
+      aux.push("Incontinencia");
     }
     if (this.historico.eliminacaoUrinariaSVD) {
-      aux.push("eliminacaoUrinariaSVD");
+      aux.push("SVD");
     }
     if (this.historico.eliminacaoUrinariaDispositivoUrinario) {
-      aux.push("eliminacaoUrinariaDispositivoUrinario");
+      aux.push("Dispositivo Urinario");
     }
 
     this.historico.eliminacaoUrinaria = aux.toString();
@@ -122,22 +122,22 @@ export class HidratacaoEEliminacaoVesicalPage {
     let aux2 = [];
 
     if (this.historico.caracteristicasDisuria) {
-      aux2.push("caracteristicasDisuria");
+      aux2.push("Disuria");
     }
     if (this.historico.caracteristicasOliguria) {
-      aux2.push("caracteristicasOliguria");
+      aux2.push("Oliguria");
     }
     
     if (this.historico.caracteristicasAnuria) {
-      aux2.push("caracteristicasAnuria");
+      aux2.push("Anuria");
     }
     
     if (this.historico.caracteristicasPoliuria) {
-      aux2.push("caracteristicasPoliuria");
+      aux2.push("Poliuria");
     }
     
     if (this.historico.caracteristicasHematuria) {
-      aux2.push("caracteristicasHematuria");
+      aux2.push("Hematuria");
     }
     aux2.push(this.historico.caracteristicasOutros);
     this.historico.hidratacao_Caracteristicas = aux2.toString();

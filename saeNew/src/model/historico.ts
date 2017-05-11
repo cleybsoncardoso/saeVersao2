@@ -3,7 +3,8 @@ export class Historico {
   //entrevista
   public idPaciente: string;
   public idsaeapp_historico: string;
-  public internacoes: string;
+  public internacoes: number;
+  public motivoInternacao: string;
   public cardiopatia: boolean;
   public convulsao: boolean;
   public asma: boolean;
@@ -25,8 +26,7 @@ export class Historico {
   public qtdeVacinas: number;
   //avaliacao neurologica
   public consciencia: string;
-  public glasgow: number;
-  public glasgowMenu: boolean;
+  public glasgow: string;
   public pupilas: string;
   public mmss_direito: string;
   public mmss_esquerdo: string;
@@ -64,8 +64,6 @@ export class Historico {
   public pulso: string;
   public pulsoImpalpavel: string;
   public presencaDeEdema: string;
-  public presencaDeEdemaNao: boolean;
-  public presencaDeEdemaSim: boolean;
   public presencaDeEdemaPes: boolean;
   public presencaDeEdemaMMII: boolean;
   public presencaDeEdemaMMSS: boolean;
@@ -76,6 +74,7 @@ export class Historico {
   public eliminacaoUrinariaRetencao: boolean;
   public hidratacao_Caracteristicas: string;
   public eliminacaoUrinaria: string;
+  public eliminacaoUrinaria_Volume: string;  
   public eliminacaoUrinariaIncontinencia: boolean;
   public eliminacaoUrinariaSVD: boolean;
   public eliminacaoUrinariaDispositivoUrinario: boolean;
@@ -155,7 +154,8 @@ export class Historico {
     //entrevista
     this.idsaeapp_historico = "0";
     this.idPaciente = "0";
-    this.internacoes = "";
+    this.internacoes = 0;
+    this.motivoInternacao = ""
     this.cardiopatia = false;
     this.convulsao = false;
     this.asma = false;
@@ -176,9 +176,8 @@ export class Historico {
     this.vacinasArray = [];
     this.qtdeVacinas = 0;
     //avaliacao neurologica
-    this.consciencia = "";
-    this.glasgow = 0;
-    this.glasgowMenu = false;
+    this.consciencia = "alerta";
+    this.glasgow = "0";
     this.pupilas = "";
     this.mmii_esquerdo = "";
     this.mmii_direito = "";
@@ -199,10 +198,10 @@ export class Historico {
     this.auscultaPulmonar_MvPresente = "";
     this.auscultaPulmonar_Ruidos = "";
     this.presencaoDeTosse_xpectoracao = "";
-    this.aspiracao;
+    this.aspiracao="";
     this.aspiracaoQuantidade = "";
     this.aspiracaoCaracteristica = "";
-    this.drenagemToracica;
+    this.drenagemToracica="";
     this.drenagemToracicaQuantidade = "";
     this.drenagemToracicaCaracteristica = "";
     this.drenagemToracicaDTE = false;
@@ -216,8 +215,6 @@ export class Historico {
     this.pulso = "";
     this.pulsoImpalpavel = "";
     this.presencaDeEdema = "";
-    this.presencaDeEdemaNao = false;
-    this.presencaDeEdemaSim = false;
     this.presencaDeEdemaPes = false;
     this.presencaDeEdemaMMII = false;
     this.presencaDeEdemaMMSS = false;
@@ -225,6 +222,7 @@ export class Historico {
     //hidratacao e eliminacao vesical
     this.turgidezDaPele = "";
     this.eliminacaoUrinaria = "";
+    this.eliminacaoUrinaria_Volume = "";
     this.hidratacao_Caracteristicas = "";
     this.eliminacaoUrinariaEspontanea = false;
     this.eliminacaoUrinariaRetencao = false;
@@ -238,7 +236,6 @@ export class Historico {
     this.caracteristicasHematuria = false;
     this.caracteristicasOutros = "";
     //alimentacao e eliminacao
-    this.turgidezDaPele = "";
     this.tipoDeDieta = "";
     this.glicemia = "";
     this.alimentacao_ViasDeAdministracao = "";
@@ -257,7 +254,7 @@ export class Historico {
     this.ausentes = false;
     this.diminuido = false;
     this.aumentado = false;
-    this.ostomia;
+    this.ostomia="";
     this.ostomiaLocal = "";
     this.ostomiaCaracteristica = "";
     this.eliminacaoIntestinal = "";
@@ -276,29 +273,29 @@ export class Historico {
     this.Hematomas = false;
     this.Escoriacoes = false;
     this.aspectosCutaneoMucosaOutros = "";
-    this.genitalia = "";
     this.pele_temperatura = "";
     this.ictericia = false;
     this.edemaDeConjuntiva = false;
     this.olhosOutros = "";
     this.olhos = "";
-    this.AVP;
+    this.AVP="";
     this.avpLocal = "";
     this.avpTempoDePermanencia = "";
     this.AVP_local_tempo = "";
-    this.CVC;
+    this.CVC="";
     this.CVC_local_tempo= "";
     this.cvcLocal = "";
     this.cvcTempoDePermanencia = "";
-    this.dreno;
+    this.dreno="";
     this.dreno_caracteristicas = "";
     this.dreno_tipo = "";
+    this.genitalia = "";
     this.genitaliaSemAnormalidades = false;
     this.genitaliaSecrecao = false;
     this.genitaliaOutros = "";
     //seguranca Fisica
-    this.necessidadeDeContencao;
-    this.riscoParaQueda;
+    this.necessidadeDeContencao="";
+    this.riscoParaQueda="";
     this.escore = "";
     this.observacoes = "";
   }

@@ -19,6 +19,7 @@ export class AspectosCutaneoMucosaPage {
   constructor(private params: NavParams, private nav: NavController) {
     this.historico = params.get("historico");
     this.nav = nav;
+    this.carregarDados();
   }
 
   cancel() {
@@ -26,10 +27,10 @@ export class AspectosCutaneoMucosaPage {
   }
 
   slide(passar) {
+      this.converterDados();
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.converterDados();
       this.nav.push(SegurancaFisicaPage, { historico: this.historico });
     }
   }
@@ -89,7 +90,7 @@ export class AspectosCutaneoMucosaPage {
       aux.splice(index, 1);
       this.historico.ictericia = true;
     }
-    index = aux.indexOf("edemaDeConjuntiva");
+    index = aux.indexOf("edema de conjuntiva");
     if (index > -1) {
       aux.splice(index, 1);
       this.historico.edemaDeConjuntiva = true;
@@ -163,7 +164,7 @@ export class AspectosCutaneoMucosaPage {
       aux.push("ictericia");
     }
     if (this.historico.edemaDeConjuntiva) {
-      aux.push("edemaDeConjuntiva");
+      aux.push("edema de conjuntiva");
     }
     aux.push(this.historico.olhosOutros);
     this.historico.olhos = aux.toString();
@@ -173,7 +174,7 @@ export class AspectosCutaneoMucosaPage {
     this.historico.CVC_local_tempo = `${this.historico.cvcTempoDePermanencia}/${this.historico.cvcLocal}`;
 
     //genitalia
-    aux = this.historico.genitalia.split(",");
+    aux = [];
     if (this.historico.genitaliaSemAnormalidades) {
       aux.push("Sem anormalidades");
     }

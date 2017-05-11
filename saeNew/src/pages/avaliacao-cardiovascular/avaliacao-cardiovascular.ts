@@ -14,11 +14,10 @@ export class AvaliacaoCardiovascularPage {
 
   constructor(private params: NavParams, private nav: NavController) {
     this.historico = params.get("historico");
-    this.presencaDeEdema();
+    this.presencaDeEdemaEpulso();
   }
 
-  private presencaDeEdema() {
-    console.log(this.historico.presencaDeEdema);
+  private presencaDeEdemaEpulso() {
     let res = this.historico.presencaDeEdema.split(",");
     if (res.indexOf("pes") > -1) {
       this.historico.presencaDeEdemaPes = true;

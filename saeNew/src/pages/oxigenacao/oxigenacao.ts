@@ -68,7 +68,7 @@ export class OxigenacaoPage {
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.nav.push(AvaliacaoCardiovascularPage, { historico: this.historico });
+       this.nav.push(AvaliacaoCardiovascularPage, { historico: this.historico });
     }
   }
 

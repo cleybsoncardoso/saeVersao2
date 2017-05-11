@@ -18,17 +18,6 @@ export class AvaliacaoNeurologicaPage {
   private historico: Historico;
   constructor(private params: NavParams, private nav: NavController) {
     this.historico = params.get("historico");
-    // this.historico = new Historico();
-    // this.historico.consciencia = "alerta";
-    // this.historico.glasgow = 20;
-    // this.historico.pupilas = "rfm";
-    // this.historico.mmii_esquerdo = "plegia";
-    // this.historico.mmii_direito = "preservada";
-    // this.historico.mmss_esquerdo = "parestesia";
-    // this.historico.mmss_direito = "paresia";
-    // this.historico.falaELinguagem = "dislalia";
-
-    // this.nav = nav;
   }
 
   cancel() {
@@ -66,15 +55,6 @@ export class AvaliacaoNeurologicaPage {
       i++;
       iconeNeurologica = document.getElementById("iconeNeurologica" + i);
       grupo = document.getElementById("dadosNeurologica" + i);
-    }
-  }
-
-  toggleGlasgow() {
-    let grupo = document.getElementById("glasgow");
-    if (this.historico.glasgowMenu == true) {
-      grupo.style.display = "none";
-    } else {
-      grupo.style.display = "block";
     }
   }
 

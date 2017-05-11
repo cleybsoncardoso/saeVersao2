@@ -28,39 +28,47 @@ export class AlimentacaoEEliminacaoIntestinalPage {
 
   carregarDados() {
     let aux = this.historico.alimentacao_ViasDeAdministracao.split(",");
-    let index = aux.indexOf("viasDeAdministracaoOral");
+    let index = aux.indexOf("Oral");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.viasDeAdministracaoOral = true;
     }
-    index = aux.indexOf("viasDeAdministracaoSNG");
+    index = aux.indexOf("SNG");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.viasDeAdministracaoSNG = true;
     }
-    index = aux.indexOf("viasDeAdministracaoSNE");
+    index = aux.indexOf("SNE");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.viasDeAdministracaoSNE = true;
     }
-    index = aux.indexOf("viasDeAdministracaoParenteral");
+    index = aux.indexOf("Parenteral");
     if (index > -1) {
+      aux.splice(index, 1);      
       this.historico.viasDeAdministracaoParenteral = true;
     }
     this.historico.viasDeAdministracaoOutros = aux.toString();
     //abdome
     aux = this.historico.abdome.split(",");
-    index = aux.indexOf("abdomePlano");
+    index = aux.indexOf("Plano");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.abdomePlano = true;
     }
-    index = aux.indexOf("abdomeGloboso");
+    index = aux.indexOf("Globoso");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.abdomeGloboso = true;
     }
-    index = aux.indexOf("abdomeDistendido");
+    index = aux.indexOf("Distendido");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.abdomeDistendido = true;
     }
-    index = aux.indexOf("abdomeDolorosoAPalpacao");
+    index = aux.indexOf("Doloroso a palpacao");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.abdomeDolorosoAPalpacao = true;
     }
     this.historico.abdomeOutros = aux.toString();
@@ -69,14 +77,17 @@ export class AlimentacaoEEliminacaoIntestinalPage {
     aux = this.historico.RHA.split(",");
     index = aux.indexOf("ausentes");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.ausentes = true;
     }
     index = aux.indexOf("diminuido");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.diminuido = true;
     }
     index = aux.indexOf("aumentado");
     if (index > -1) {
+      aux.splice(index, 1);
       this.historico.aumentado = true;
     }
     this.historico.abdomeOutros = aux.toString();
@@ -86,38 +97,37 @@ export class AlimentacaoEEliminacaoIntestinalPage {
   converterDados() {
     let aux = [];
     if (this.historico.viasDeAdministracaoOral) {
-      aux.push("viasDeAdministracaoOral");
+      aux.push("Oral");
     }
     if (this.historico.viasDeAdministracaoSNG) {
-      aux.push("viasDeAdministracaoSNG");
+      aux.push("SNG");
     }
     if (this.historico.viasDeAdministracaoSNE) {
-    aux.push("viasDeAdministracaoSNE");
+    aux.push("SNE");
     }
     if (this.historico.viasDeAdministracaoParenteral) {
-    aux.push("viasDeAdministracaoParenteral");
+    aux.push("Parenteral");
     }
     aux.push(this.historico.viasDeAdministracaoOutros);
     this.historico.alimentacao_ViasDeAdministracao = aux.toString();
     //abdome
     aux = [];
     if (this.historico.abdomePlano) {
-    aux.push("abdomePlano");
+    aux.push("Plano");
     }
     if (this.historico.abdomeGloboso) {
-    aux.push("abdomeGloboso");
+    aux.push("Globoso");
     }
     if (this.historico.abdomeDistendido) {
-    aux.push("abdomeDistendido");
+    aux.push("Distendido");
     }
     if (this.historico.abdomeDolorosoAPalpacao) {
-    aux.push("abdomeDolorosoAPalpacao");
+    aux.push("Doloroso a palpacao");
     }
     aux.push(this.historico.abdomeOutros);
-
+    this.historico.abdome = aux.toString();
     //rha
     aux = [];    
-    aux = this.historico.RHA.split(",");
     if (this.historico.ausentes) {
     aux.push("ausentes");
     }
@@ -187,10 +197,10 @@ export class AlimentacaoEEliminacaoIntestinalPage {
       */
 
   slide(passar) {
+      this.converterDados();
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.converterDados();
       this.nav.push(AspectosCutaneoMucosaPage, { historico: this.historico });
     }
   }

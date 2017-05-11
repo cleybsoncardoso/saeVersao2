@@ -102,15 +102,15 @@
       </ion-list>
       <ion-item style="margin-bottom:15px;">
         <ion-label floating>FiO2</ion-label>
-        <ion-input type="text" [(ngModel)]="historico.FiO2" class="inputitem"></ion-input>
+        <ion-input type="number" [(ngModel)]="historico.FiO2" class="inputitem"></ion-input>
       </ion-item>
       <ion-item style="margin-bottom:15px;">
         <ion-label floating>PEEP</ion-label>
-        <ion-input type="text" [(ngModel)]="historico.Peep" class="inputitem"></ion-input>
+        <ion-input type="number" [(ngModel)]="historico.Peep" class="inputitem"></ion-input>
       </ion-item>
       <ion-item style="margin-bottom:15px;">
         <ion-label floating>SpO2</ion-label>
-        <ion-input type="text" [(ngModel)]="historico.SpO2" class="inputitem"></ion-input>
+        <ion-input type="number" [(ngModel)]="historico.SpO2" class="inputitem"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list-header class="titulolista" (click)="toggleGroup(1)">Ausculta pulmonar
