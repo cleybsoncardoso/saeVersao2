@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'1','2016-11-22 18:06:19',1,'1','cley','cardoso','cleybsonc@gmail.com',1,1,'2016-11-17 18:06:16');
+INSERT INTO `auth_user` VALUES (1,'1','2016-11-22 18:06:19',1,'1','Maria','cardoso','cleybsonc@gmail.com',1,1,'2016-11-17 18:06:16');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +342,6 @@ CREATE TABLE `saeapp_antecedente` (
 
 LOCK TABLES `saeapp_antecedente` WRITE;
 /*!40000 ALTER TABLE `saeapp_antecedente` DISABLE KEYS */;
-INSERT INTO `saeapp_antecedente` VALUES (1,'teste');
 /*!40000 ALTER TABLE `saeapp_antecedente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,7 +357,7 @@ CREATE TABLE `saeapp_caracteristica` (
   `titulo` varchar(250) NOT NULL,
   `ocorrencias` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,7 +366,7 @@ CREATE TABLE `saeapp_caracteristica` (
 
 LOCK TABLES `saeapp_caracteristica` WRITE;
 /*!40000 ALTER TABLE `saeapp_caracteristica` DISABLE KEYS */;
-INSERT INTO `saeapp_caracteristica` VALUES (1,'toce',0),(2,'espirar',0),(3,'te',0),(4,'tes',0);
+INSERT INTO `saeapp_caracteristica` VALUES (14,'Esquecimento de efetuar uma ação em horário planejado',6),(15,'Experiências de esquecimento',43),(16,'Incapacidade de aprender novas habilidades',41),(17,'Incapacidade de aprender novas informações',40),(18,'Incapacidade de determinar se uma ação foi efetuada',43),(19,'Incapacidade de executar habilidade previamente aprendida',46),(20,'Incapacidade de recordar eventos',34),(21,'Incapacidade de recordar informações reais',4),(22,'Incapacidade de reter novas habilidades',5),(23,'Incapacidade de reter novas informações',0),(24,'Aumento da frequência de pulso',38),(25,'Aumento da temperatura corporal',8),(26,'Aumento da concentração urinária',7),(27,'Diminuição da pressão de pulso',33),(28,'Diminuição da pressão sanguínea',3);
 /*!40000 ALTER TABLE `saeapp_caracteristica` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -381,7 +380,7 @@ DROP TABLE IF EXISTS `saeapp_caracteristicasdefinidora`;
 CREATE TABLE `saeapp_caracteristicasdefinidora` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -390,6 +389,7 @@ CREATE TABLE `saeapp_caracteristicasdefinidora` (
 
 LOCK TABLES `saeapp_caracteristicasdefinidora` WRITE;
 /*!40000 ALTER TABLE `saeapp_caracteristicasdefinidora` DISABLE KEYS */;
+INSERT INTO `saeapp_caracteristicasdefinidora` VALUES (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),(21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),(41),(42),(43),(44),(45),(46),(47),(48),(49),(50),(51),(52),(53),(54),(55),(56),(57),(58),(59),(60),(61),(62),(63),(64),(65),(66),(67),(68),(69),(70),(71),(72),(73),(74),(75),(76),(77),(78),(79),(80),(81),(82),(83),(84),(85),(86),(87),(88),(89),(90),(91),(92),(93),(94),(95);
 /*!40000 ALTER TABLE `saeapp_caracteristicasdefinidora` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,7 +409,7 @@ CREATE TABLE `saeapp_caracteristicasdefinidora_caracteristicas` (
   KEY `SaeApp_ca_caracteristica_id_3bc418f7_fk_SaeApp_caracteristica_id` (`caracteristica_id`),
   CONSTRAINT `SaeApp_ca_caracteristica_id_3bc418f7_fk_SaeApp_caracteristica_id` FOREIGN KEY (`caracteristica_id`) REFERENCES `saeapp_caracteristica` (`id`),
   CONSTRAINT `a5a03d58e01d69454927489467d3731e` FOREIGN KEY (`caracteristicasdefinidora_id`) REFERENCES `saeapp_caracteristicasdefinidora` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=367 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -444,7 +444,7 @@ CREATE TABLE `saeapp_diagnostico` (
 
 LOCK TABLES `saeapp_diagnostico` WRITE;
 /*!40000 ALTER TABLE `saeapp_diagnostico` DISABLE KEYS */;
-INSERT INTO `saeapp_diagnostico` VALUES (1,'a','a','a','a'),(2,'b','b','b','b'),(3,'c','c','c','c');
+INSERT INTO `saeapp_diagnostico` VALUES (1,'Memória prejudicada','Domínio 5: Percepção/cognição','Classe 4: Cognição','Incapacidade de recordar informações ou habilidades comportamentais.'),(2,'Volume de líquido deficiente','Domínio 2: Nutrição','Classe 5: Hidratação','Diminuição do líquido intravascular, intersticial e/ou intracelular. Refere-se à desidratação, perda de água apenas, sem mudança no sódio.');
 /*!40000 ALTER TABLE `saeapp_diagnostico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -464,7 +464,7 @@ CREATE TABLE `saeapp_diagnostico_caracteristicas` (
   KEY `SaeApp_di_caracteristica_id_3648ac92_fk_SaeApp_caracteristica_id` (`caracteristica_id`),
   CONSTRAINT `SaeApp_di_caracteristica_id_3648ac92_fk_SaeApp_caracteristica_id` FOREIGN KEY (`caracteristica_id`) REFERENCES `saeapp_caracteristica` (`id`),
   CONSTRAINT `SaeApp_diagnost_diagnostico_id_7d6d6f69_fk_SaeApp_diagnostico_id` FOREIGN KEY (`diagnostico_id`) REFERENCES `saeapp_diagnostico` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -473,7 +473,7 @@ CREATE TABLE `saeapp_diagnostico_caracteristicas` (
 
 LOCK TABLES `saeapp_diagnostico_caracteristicas` WRITE;
 /*!40000 ALTER TABLE `saeapp_diagnostico_caracteristicas` DISABLE KEYS */;
-INSERT INTO `saeapp_diagnostico_caracteristicas` VALUES (1,1,1),(2,1,2),(3,2,2),(4,2,3),(5,3,3),(6,3,4);
+INSERT INTO `saeapp_diagnostico_caracteristicas` VALUES (1,1,14),(2,1,15),(3,1,16),(4,1,17),(5,1,18),(6,1,19),(7,1,20),(8,1,21),(9,1,22),(10,1,23),(11,2,24),(12,2,25),(13,2,26),(14,2,27),(15,2,28);
 /*!40000 ALTER TABLE `saeapp_diagnostico_caracteristicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,7 +493,7 @@ CREATE TABLE `saeapp_diagnostico_intervencoes` (
   KEY `SaeApp_diagnost_intervencao_id_29d69524_fk_SaeApp_intervencao_id` (`intervencao_id`),
   CONSTRAINT `SaeApp_diagnost_intervencao_id_29d69524_fk_SaeApp_intervencao_id` FOREIGN KEY (`intervencao_id`) REFERENCES `saeapp_intervencao` (`id`),
   CONSTRAINT `SaeApp_diagnosti_diagnostico_id_34b69a6_fk_SaeApp_diagnostico_id` FOREIGN KEY (`diagnostico_id`) REFERENCES `saeapp_diagnostico` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -502,7 +502,7 @@ CREATE TABLE `saeapp_diagnostico_intervencoes` (
 
 LOCK TABLES `saeapp_diagnostico_intervencoes` WRITE;
 /*!40000 ALTER TABLE `saeapp_diagnostico_intervencoes` DISABLE KEYS */;
-INSERT INTO `saeapp_diagnostico_intervencoes` VALUES (1,1,1),(2,1,2),(3,1,3),(4,2,3),(5,2,4),(6,3,1);
+INSERT INTO `saeapp_diagnostico_intervencoes` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6),(7,1,7),(8,1,8),(9,1,9),(10,1,10),(11,1,11),(12,1,12),(13,1,13),(14,1,14),(15,1,15),(16,1,16),(18,2,4),(17,2,17);
 /*!40000 ALTER TABLE `saeapp_diagnostico_intervencoes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -548,13 +548,13 @@ CREATE TABLE `saeapp_historico` (
   `alergias` varchar(80) DEFAULT NULL,
   `vacinas` varchar(50) DEFAULT NULL,
   `consciencia` varchar(200) DEFAULT NULL,
+  `glasgow` varchar(10) DEFAULT NULL,
   `pupilas` varchar(200) DEFAULT NULL,
   `mmii_esquerdo` varchar(200) DEFAULT NULL,
   `mmii_direito` varchar(200) DEFAULT NULL,
   `mmss_esquerdo` varchar(200) DEFAULT NULL,
   `mmss_direito` varchar(200) DEFAULT NULL,
   `falaELinguagem` varchar(20) DEFAULT NULL,
-  `respiracao` varchar(200) DEFAULT NULL,
   `O2` varchar(5) DEFAULT NULL,
   `SpO` varchar(5) DEFAULT NULL,
   `FR` varchar(5) DEFAULT NULL,
@@ -567,6 +567,8 @@ CREATE TABLE `saeapp_historico` (
   `auscultaPulmonar_Ruidos` varchar(300) DEFAULT NULL,
   `prevencaoDeTosse` varchar(200) DEFAULT NULL,
   `presencaoDeTosse_xpectoracao` varchar(45) DEFAULT NULL,
+  `drenagemToracicaDTE` tinyint(4) DEFAULT NULL,
+  `drenagemToracicaDTD` tinyint(4) DEFAULT NULL,
   `aspiracao` varchar(100) DEFAULT NULL,
   `drenagemToracica` varchar(45) DEFAULT NULL,
   `mamas` varchar(200) DEFAULT NULL,
@@ -582,22 +584,21 @@ CREATE TABLE `saeapp_historico` (
   `hidratacao_Caracteristicas` varchar(200) DEFAULT NULL,
   `tipoDeDieta` varchar(100) DEFAULT NULL,
   `glicemia` varchar(45) DEFAULT NULL,
-  `apetite` varchar(100) DEFAULT NULL,
   `alimentacao_ViasDeAdministracao` varchar(100) DEFAULT NULL,
   `presencaoDe` varchar(45) DEFAULT NULL,
   `abdome` varchar(100) DEFAULT NULL,
   `RHA` varchar(100) DEFAULT NULL,
   `ostomia` varchar(3) DEFAULT NULL,
   `eliminacaoIntestinal` varchar(300) DEFAULT NULL,
-  `eliminacaoIntestinal_frequencia` varchar(2) DEFAULT NULL,
+  `eliminacaoIntestinal_frequencia` varchar(20) DEFAULT NULL,
   `pele` varchar(300) DEFAULT NULL,
   `pele_temperatura` varchar(5) DEFAULT NULL,
   `olhos` varchar(200) DEFAULT NULL,
-  `AVP` varchar(3) DEFAULT NULL,
+  `AVP` varchar(30) DEFAULT NULL,
   `AVP_local_tempo` varchar(100) DEFAULT NULL,
-  `CVC` varchar(3) DEFAULT NULL,
+  `CVC` varchar(10) DEFAULT NULL,
   `CVC_local_tempo` varchar(100) DEFAULT NULL,
-  `dreno` varchar(3) DEFAULT NULL,
+  `dreno` varchar(10) DEFAULT NULL,
   `dreno_caracteristicas` varchar(100) DEFAULT NULL,
   `dreno_tipo` varchar(100) DEFAULT NULL,
   `genitalia` varchar(200) DEFAULT NULL,
@@ -607,7 +608,7 @@ CREATE TABLE `saeapp_historico` (
   `escore` varchar(2) DEFAULT NULL,
   `observacoes` varchar(700) DEFAULT NULL,
   PRIMARY KEY (`idsaeapp_historico`,`idPaciente`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -616,7 +617,7 @@ CREATE TABLE `saeapp_historico` (
 
 LOCK TABLES `saeapp_historico` WRITE;
 /*!40000 ALTER TABLE `saeapp_historico` DISABLE KEYS */;
-INSERT INTO `saeapp_historico` VALUES (1,'2',21,'21','21','21','21','212','21','21','21','21','21','21','21','21','21','21','21','21','21','21','21','21','21','2','121','21','21',NULL,'21','21','2','1','1','1','1','1','1','21','21','21','21','21','21','21','21','21','21','2','1','12','2','12','1','21','2','12','1','22','2','2','2','2','2','2'),(2,'1',1,'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','11','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1');
+INSERT INTO `saeapp_historico` VALUES (1,'2',21,'21','21','21','21','212',NULL,'21','21','21','21','21','21','21','21','21','21','21','21','21','21','21','21','2','121',NULL,NULL,'21','21',NULL,'21','21','2','1','1','1','1','1','1','21','21','21','21','21','21','21','21','21','2','1','12','2','12','1','21','2','12','1','22','2','2','2','2','2','2'),(2,'1',1,'1','1','1','1','1',NULL,'1','1','1','1','1','1','1','1','1','1','1','1','11','1','1','1','1','1',NULL,NULL,'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'),(3,'5',5,'$motivoInternacao','$antecedentes','$alergias','$vacinas','$consciencia','22','$pupilas','$mmii_esquerdo','$mmii_direito','$mmss_esquerdo','$mmss_direito','$falaELinguagem','$O2','$SpO','$FR','$oxigenacao','$modalidade','$FiO2','$Peep','$SpO2','$auscultaPulmonar_MvPresente','$auscultaPulmonar_Ruidos','$prevencaoDeTosse','$presencaoDeTosse_xpectoracao',1,1,'$aspiracao','$drenagemToracica','$mamas','2','2','2','2','$pulso','$presencaDeEdema','$turgidezDaPele','1','$eliminacaoUrinaria','$hidratacao_Caracteristicas','$tipoDeDieta','$glicemia','$alimentacao_ViasDeAdministracao','$presencaoDe','$abdome','$RHA','nao','$eliminacaoIntestinal','22','$pele','22','$olhos','$AVP','$AVP_local_tempo','$CVC','$CVC_local_tempo','$dreno','$dreno_caracteristicas','$dreno_tipo','$genitalia','$genitalia_lesoes','sim','nao','20','$observacoes'),(4,'16',2,'convulsao','22,tabagismo,alcoolismo','333','333','alerta','04','anisocorica','preservada','paresia','parestesia','plegia','afonia','3','3','3','em Salvas','','3','3','3','diminuídos','roncos','sim','seca',1,1,'nao','nao','Sem Altecacoes','3','3','3','22','regular','pes,mmii,mmss,','preservada','3','Retencao,Incontinencia','Oliguria,Poliuria,4','4','4','SNG,SNE,','tosse','Globoso,Distendido,','diminuido,aumentado','nao','constipacao','','Ictericia,Petequias,Corado,Hipocorado,Equimoses,3','3','ictericia,edema de conjuntiva,444','nao','/','nao','/','nao','','','Sem anormalidades,','nenhuma','nao','nao','33','ddd'),(5,'14',2,',cardiopatia','','','','','0','','','','','','','','','','','','','','','','','sim','',1,1,'','','','','','','22','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(6,'14',2,',cardiopatia','','','','','0','','','','','','','','','','','','','','','','','sim','',1,1,'','','','','','','22','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(7,'14',2,',cardiopatia','','','','','0','','','','','','','','','','','','','','','','','sim','',1,1,'','','','','','','22','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(8,'10',2,'','','','','','0','','','','','','','','','','','','','','','','','sim','',1,1,'','','','','','','','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(9,'10',2,'','','','','','0','','','','','','','','','','','','','','','','','sim','',1,1,'','','','','','','','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(10,'10',2,'cardiopatia,convulsao,asma,drogas','has,tabagismo,alcoolismo,diabetesMellitus','','','','0','','','','','','','','','','','','','','','','','sim','',1,1,'','','','','','','','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(11,'10',2,'cardiopatia,convulsao,asma,drogas','323232,has,tabagismo,alcoolismo,diabetesMellitus','323232','323232','alerta','03','anisocorica','preservada','plegia','preservada','paresia','preservada','','','','','','','','','','','sim','',1,1,'','','','','','','','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(12,'10',2,'cardiopatia,convulsao,asma,drogas','323232,has,tabagismo,alcoolismo,diabetesMellitus','323232','323232','alerta','03','anisocorica','preservada','plegia','preservada','paresia','preservada','2','2','2','taquipnéia','','2','2','2','diminuídos','roncos','sim','seca',1,1,'nao','nao','nodulos','','','','','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(13,'10',2,'cardiopatia,convulsao,asma,drogas','323232,has,tabagismo,alcoolismo,diabetesMellitus','323232','323232','alerta','03','anisocorica','preservada','plegia','preservada','paresia','preservada','2','2','2','taquipnéia','','2','2','2','diminuídos','roncos','sim','seca',1,0,'nao','nao','nodulos','','','','','','','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(14,'10',2,'cardiopatia,convulsao,asma,drogas','323232,has,tabagismo,alcoolismo,diabetesMellitus','323232','323232','alerta','03','anisocorica','preservada','plegia','preservada','paresia','preservada','2','2','2','taquipnéia','','2','2','2','diminuídos','roncos','sim','seca',1,0,'nao','nao','nodulos','2','2','2','2','irregular','pes,mmii,mmss,anasarca,','','','','','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(15,'10',2,'cardiopatia,convulsao,asma,drogas','323232,has,tabagismo,alcoolismo,diabetesMellitus','323232','323232','alerta','03','anisocorica','preservada','plegia','preservada','paresia','preservada','2','2','2','taquipnéia','','2','2','2','diminuídos','roncos','sim','seca',1,0,'nao','nao','nodulos','2','2','2','2','irregular','pes,mmii,mmss,anasarca,','preservada','22','Espontanea,Retencao,Incontinencia,SVD,Dispositivo Urinario','Disuria,Oliguria,Anuria,Poliuria,33','','','','tosse','','','','','','','','','','/','','/','','','','','nenhuma','','','',''),(16,'10',2,'cardiopatia,convulsao,asma,drogas','323232,has,tabagismo,alcoolismo,diabetesMellitus','323232','323232','alerta','03','anisocorica','preservada','plegia','preservada','paresia','preservada','2','2','2','taquipnéia','','2','2','2','diminuídos','roncos','sim','seca',1,0,'nao','nao','nodulos','2','2','2','2','irregular','pes,mmii,mmss,anasarca,','preservada','22','Espontanea,Retencao,Incontinencia,SVD,Dispositivo Urinario','Disuria,Oliguria,Anuria,Poliuria,33','223','3232','Oral,SNG,SNE,Parenteral,3232','tosse','Plano,Globoso,Distendido,3232','aumentado','nao','constipacao','32323','','','','','/','','/','','','','','nenhuma','','','',''),(17,'10',2,'cardiopatia,convulsao,asma,drogas','323232,has,tabagismo,alcoolismo,diabetesMellitus','323232','323232','alerta','03','anisocorica','preservada','plegia','preservada','paresia','preservada','2','2','2','taquipnéia','','2','2','2','diminuídos','roncos','sim','seca',1,0,'nao','nao','nodulos','2','2','2','2','irregular','pes,mmii,mmss,anasarca,','preservada','22','Espontanea,Retencao,Incontinencia,SVD,Dispositivo Urinario','Disuria,Oliguria,Anuria,Poliuria,33','223','3232','Oral,SNG,SNE,Parenteral,3232','tosse','Plano,Globoso,Distendido,3232','aumentado','nao','constipacao','32323','Cianose,Ictericia,Petequias,Corado,Hipocorado,Hipercorado,Equimoses,Hematomas,Escoriacoes,3232','3232','ictericia,edema de conjuntiva,323','nao','/','nao','/','nao','','','Sem anormalidades,Secreção,3232','nenhuma','nao','nao','33','3323232'),(18,'10',2,'cardiopatia,convulsao,asma,drogas','323232,has,tabagismo,alcoolismo,diabetesMellitus','323232','323232','alerta','03','anisocorica','preservada','plegia','preservada','paresia','preservada','2','2','2','taquipnéia','','2','2','2','diminuídos','roncos','sim','seca',1,0,'nao','nao','nodulos','2','2','2','2','irregular','pes,mmii,mmss,anasarca,','preservada','22','Espontanea,Retencao,Incontinencia,SVD,Dispositivo Urinario','Disuria,Oliguria,Anuria,Poliuria,33','223','3232','Oral,SNG,SNE,Parenteral,3232','tosse','Plano,Globoso,Distendido,3232','aumentado','nao','constipacao','32323','Cianose,Ictericia,Petequias,Corado,Hipocorado,Hipercorado,Equimoses,Hematomas,Escoriacoes,3232','3232','ictericia,edema de conjuntiva,323','nao','/','nao','/','nao','','','Sem anormalidades,Secreção,3232','nenhuma','nao','nao','33','3323232');
 /*!40000 ALTER TABLE `saeapp_historico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -631,7 +632,7 @@ CREATE TABLE `saeapp_intervencao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -640,7 +641,7 @@ CREATE TABLE `saeapp_intervencao` (
 
 LOCK TABLES `saeapp_intervencao` WRITE;
 /*!40000 ALTER TABLE `saeapp_intervencao` DISABLE KEYS */;
-INSERT INTO `saeapp_intervencao` VALUES (1,'lavar'),(2,'cuidar'),(3,'varrer'),(4,'testar'),(5,'funciona');
+INSERT INTO `saeapp_intervencao` VALUES (1,'Redução da ansiedade'),(2,'Controle da demência'),(3,'Controle do ambiente'),(4,'Controle de líquidos/eletrólitos'),(5,'Monitorização de líquidos'),(6,'Treinamento da memória'),(7,'Cuidados cardíacos'),(8,'Monitorização de eletrólitos'),(9,'Controle do ambiente: segurança'),(10,'Controle de medicamentos'),(11,'Controle de líquidos'),(12,'Monitorização neurológica'),(13,'Oxigenoterapia'),(14,'Supervisão'),(15,'Orientação para realidade'),(16,'Supervisão: segurança'),(17,'Redução do sangramento'),(19,'Controle do choque');
 /*!40000 ALTER TABLE `saeapp_intervencao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -670,7 +671,7 @@ CREATE TABLE `saeapp_paciente` (
   `Clinica` varchar(45) DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -679,7 +680,7 @@ CREATE TABLE `saeapp_paciente` (
 
 LOCK TABLES `saeapp_paciente` WRITE;
 /*!40000 ALTER TABLE `saeapp_paciente` DISABLE KEYS */;
-INSERT INTO `saeapp_paciente` VALUES (1,'rick','2016-11-16 00:00:00','19','m','solteiro','ateu','estudante','feirense','d','2016-11-16','2','s','12','s',NULL,1),(2,'joao','2016-11-01 00:00:00','2','m','s','s','s','s','s','2016-11-01','s','s','2','ds',NULL,1),(3,'a','2016-11-02 00:00:00','2','m','ds','ds','ds','ds','ds','2016-11-15','ds','ds','2','ds',NULL,1),(4,'b','2016-11-02 00:00:00','2','m','ds','ds','ds','ds','ds','2016-11-15','ds','ds','2','ds',NULL,1),(5,'teste','2016-11-17 18:13:50','20','Masculino','Solteiro','s','s','s','s','2016-11-17','2','ds','2','dsdsdsds',NULL,1),(6,'te','2016-11-18 10:52:49','1','Masculino','Solteiro','ca','s','s','s','2016-11-02','2','2','2','fdfdfdf',NULL,1),(7,'54','2017-05-03 23:55:50','54','Masculino','Solteiro','54','54','54','54','2017-05-03','54','5454','54','54','54',1),(8,'5423','2017-05-03 23:57:05','54','Masculino','Solteiro','54','54','54','54','2017-05-03','54','5454','54','54','54',1),(9,'5423','2017-05-03 23:58:24','54','Masculino','Solteiro','54','54','54','54','2017-05-03','54','5454','54','54','54',1),(10,'jaoo','2017-05-04 00:09:13','12','Masculino','Solteiro','21','21','21','21','2017-05-12','541','6321','21','615','32',1),(11,'teste','2017-05-05 00:12:02','12','Masculino','Divorciado','21','21','21','21','2017-05-03','21','21','21','21','21',1),(12,'teste','2017-05-05 00:13:05','12','Masculino','Divorciado','21','21','21','21','2017-05-03','21','21','21','21','21',1),(13,'re','2017-05-05 00:13:32','21','Masculino','Casado','321','21','21','21','2017-05-10','21','21','21','21','21',1),(14,'111','2017-05-09 23:20:02','11','Masculino','Divorciado','111','1111','111','111','2017-05-16','111','111','111','11','111',1),(15,'222','2017-05-09 23:21:34','222','Masculino','Divorciado','2222','22','222','222','2017-05-18','2222','222','222','222','222',1),(16,'111','2017-05-09 23:27:40','111','Masculino','Casado','111','2222','22','22','2017-05-04','222','222','222','333','222',1);
+INSERT INTO `saeapp_paciente` VALUES (1,'rick','2016-11-16 00:00:00','19','m','solteiro','ateu','estudante','feirense','d','2016-11-16','2','s','1','s',NULL,1),(2,'joao','2016-11-01 00:00:00','2','m','s','s','s','s','s','2016-11-01','s','s','2','ds',NULL,1),(3,'maria','2016-11-02 00:00:00','2','m','ds','ds','ds','ds','ds','2016-11-15','ds','ds','3','ds',NULL,1),(4,'madalena','2016-11-02 00:00:00','2','m','ds','ds','ds','ds','ds','2016-11-15','ds','ds','4','ds',NULL,1),(5,'Judite','2016-11-17 18:13:50','20','Masculino','Solteiro','s','s','s','s','2016-11-17','2','ds','5','dsdsdsds',NULL,1),(6,'Agroaldo','2016-11-18 10:52:49','1','Masculino','Solteiro','ca','s','s','s','2016-11-02','2','2','6','fdfdfdf',NULL,1),(7,'Fabio','2017-05-03 23:55:50','54','Masculino','Solteiro','54','54','54','54','2017-05-03','54','5454','7','54','54',1),(8,'Fabiola','2017-05-03 23:57:05','54','Masculino','Solteiro','54','54','54','54','2017-05-03','54','5454','8','54','54',1),(9,'Lucas','2017-05-03 23:58:24','54','Masculino','Solteiro','54','54','54','54','2017-05-03','54','5454','9','54','54',1),(10,'João','2017-05-04 00:09:13','12','Masculino','Solteiro','21','21','21','21','2017-05-12','541','6321','10','615','32',1),(11,'Juliana','2017-05-05 00:12:02','12','Masculino','Divorciado','21','21','21','21','2017-05-03','21','21','11','21','21',1),(12,'gabriel','2017-05-05 00:13:05','12','Masculino','Divorciado','21','21','21','21','2017-05-03','21','21','12','21','21',1),(13,'thalita','2017-05-05 00:13:32','21','Masculino','Casado','321','21','21','21','2017-05-10','21','21','13','21','21',1),(14,'ricado','2017-05-09 23:20:02','11','Masculino','Divorciado','111','1111','111','111','2017-05-16','111','111','14','11','111',1),(15,'ze','2017-05-09 23:21:34','222','Masculino','Divorciado','2222','22','222','222','2017-05-18','2222','222','15','222','222',1),(16,'leo','2017-05-09 23:27:40','111','Masculino','Casado','111','2222','22','22','2017-05-04','222','222','16','333','222',1),(17,'Cleybson','2017-05-11 12:26:20','22','Masculino','Casado','Católico','Estudante','Feira de Santana','Emergencia','2016-02-15','110','emergencia','50','dsadsadas','hos',1);
 /*!40000 ALTER TABLE `saeapp_paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -708,7 +709,6 @@ CREATE TABLE `saeapp_paciente_antecedentes` (
 
 LOCK TABLES `saeapp_paciente_antecedentes` WRITE;
 /*!40000 ALTER TABLE `saeapp_paciente_antecedentes` DISABLE KEYS */;
-INSERT INTO `saeapp_paciente_antecedentes` VALUES (1,1,1),(2,2,1);
 /*!40000 ALTER TABLE `saeapp_paciente_antecedentes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -731,7 +731,7 @@ CREATE TABLE `saeapp_planodecuidados` (
   PRIMARY KEY (`id`),
   KEY `SaeApp_planodecuidados_f7989c29` (`paciente_id`),
   CONSTRAINT `SaeApp_planodecuidados_paciente_id_9177d00_fk_SaeApp_paciente_id` FOREIGN KEY (`paciente_id`) REFERENCES `saeapp_paciente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -740,7 +740,7 @@ CREATE TABLE `saeapp_planodecuidados` (
 
 LOCK TABLES `saeapp_planodecuidados` WRITE;
 /*!40000 ALTER TABLE `saeapp_planodecuidados` DISABLE KEYS */;
-INSERT INTO `saeapp_planodecuidados` VALUES (1,'2016-11-12 00:00:00','2016-11-12','15','lavar','20','20',1),(2,'2016-11-10 00:00:00','2016-11-10','15','cx','20','20',1);
+INSERT INTO `saeapp_planodecuidados` VALUES (6,'2017-05-11 15:05:43','2017-05-11','00:30','4','14:00','01:00',1),(7,'2017-05-11 15:05:43','2017-05-11','01:00','17','12:00','12:00',1);
 /*!40000 ALTER TABLE `saeapp_planodecuidados` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -753,4 +753,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10  0:04:05
+-- Dump completed on 2017-05-11 16:20:14

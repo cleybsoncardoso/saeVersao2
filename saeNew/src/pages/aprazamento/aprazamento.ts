@@ -70,7 +70,7 @@ export class AprazamentoPage {
             buttons: ['OK']
           });
           alert.present();
-          this.nav.popToRoot();
+          //this.nav.popToRoot();
 
         } else {
           let alert = this.alert.create({

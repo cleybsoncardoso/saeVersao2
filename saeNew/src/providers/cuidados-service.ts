@@ -29,5 +29,12 @@ export class CuidadosService {
       .catch(this.handleErrorMessage);
   }
 
+  public getPlanos(idpaciente): Promise<any> {
+    return this.http.get('http://localhost/sae/planosCuidados.php')
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleErrorMessage);
+  }
+
 
 }

@@ -61,7 +61,6 @@ export class PlanoDeCuidadosPage {
   }
 
   carregarPlanos() {
-    console.log(this.paciente.id);
     this.service.getPlanos(this.paciente.id)
       .subscribe(data => {
         this.planoAFazer = data;
