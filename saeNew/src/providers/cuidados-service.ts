@@ -35,6 +35,4 @@ export class CuidadosService {
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
-
-
 }
