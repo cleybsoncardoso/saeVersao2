@@ -7,6 +7,7 @@ import { Paciente } from '../../model/paciente';
 import { Historico } from '../../model/historico';
 import { PacienteService } from "../../providers/paciente-service";
 import { EnfermeiroService, Enfermeira } from "../../providers/enfermeiro-service";
+import { HistoricoService } from "../../providers/historico-service";
 import { GerarSaePage } from '../gerar-sae/gerar-sae';
 import { PlanoDeCuidadosPage } from '../plano-de-cuidados/plano-de-cuidados';
 import { EntrevistaPage } from '../entrevista/entrevista';
@@ -28,6 +29,7 @@ export class PacientesPage {
     public platform: Platform,
     private nav: NavController,
     private pService: PacienteService,
+    private hService: HistoricoService,
     private http: Http,
     private alert: AlertController,
     public actionsheetCtrl: ActionSheetController,
@@ -101,9 +103,14 @@ export class PacientesPage {
           text: 'Histórico',
           icon: !this.platform.is('ios') ? 'book' : null,
           handler: () => {
-            let historico = new Historico();
-            historico.idPaciente = paciente.id;
-            this.nav.push(EntrevistaPage, { historico: historico });
+            this.hService.getHistoricoID(paciente.id).then(res => {
+
+              let historico = res.value == false ? new Historico() : res.value;
+
+              console.log(historico);
+
+              this.nav.push(EntrevistaPage, { historico: historico });
+            });
           }
         },
         {

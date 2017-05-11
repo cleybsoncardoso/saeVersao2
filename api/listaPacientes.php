@@ -3,12 +3,11 @@
 	require 'mySQL.php';
 ?>
 <?php 
-
 	$vetor   = array();
 	$the_request = &$_GET;
 	if (isset($_GET["id"])){
 		if ($_GET["id"] == ""){
-			$sql = "SELECT * FROM saeapp_paciente ORDER BY id DESC";
+			$sql = "SELECT * FROM saeapp_historico ORDER BY id DESC";
 			$result = $con->query($sql);
 			while($row=$result->fetch_assoc()){
 				$vetor[] = $row;
