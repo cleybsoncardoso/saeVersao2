@@ -17,16 +17,37 @@
 
 
 
-<ion-content padding>
+<ion-content>
 
-  <div *ngFor="let item of listaIntervencoes">
-    <ion-card>
-      <ion-card-header><h2 style="text-align:center;">
-          {{item.intervencao}}
-      </h2>
-    </ion-card-header>
+  <ion-card *ngFor="let item of listaIntervencoes">
+    <ion-card-header class="cardtitulo"> {{item.titulo}} </ion-card-header>
+
     <ion-card-content>
-      <!--
+      <ion-item>
+        <ion-label fixed>Inicio</ion-label>
+        <ion-input type="time" [(ngModel)]="item.inicio" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>intervalo (Hr)</ion-label>
+        <ion-input type="number" [(ngModel)]="item.intervalo" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Inicio</ion-label>
+        <ion-input type="date" [(ngModel)]="item.dataInicio" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>
+
+<ion-footer>
+  <button ion-button color="secondary" large block (click)="enviar()">Finalizar Aprazamento</button>
+</ion-footer>
+<!--
       <form>
       <ion-segment color="secondary" id="tesstevamo">
         <ion-segment-button value="DIAS" (click)="tempo('teste','dias')">
@@ -69,28 +90,3 @@
       </ion-segment>
     </form>
 -->
-
-
-    <form>
-
-      <ion-item width-30>
-        <ion-label fixed>Inicio</ion-label>
-        <ion-input type="time" [(ngModel)]="item.inicio" [ngModelOptions]="{standalone: true}"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>intervalo (Hr)</ion-label>
-        <ion-input type="number" [(ngModel)]="item.intervalo" [ngModelOptions]="{standalone: true}"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>Inicio</ion-label>
-        <ion-input type="date" [(ngModel)]="item.dataInicio" [ngModelOptions]="{standalone: true}"></ion-input>
-      </ion-item>
-
-    </form>
-    </ion-card-content>
-  </ion-card>
-  </div>
-  <button ion-button color="secondary" full large (click)="enviar()" >Finalizar Aprazamento</button>
-</ion-content>

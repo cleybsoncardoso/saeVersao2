@@ -13,7 +13,7 @@ import { AlterarSenhaPage } from '../pages/alterar-senha/alterar-senha';
 export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
-  
+
   private alterarsenha: any = AlterarSenhaPage;
   private home: any = HomePage;
   private pacientes: any = PacientesPage;

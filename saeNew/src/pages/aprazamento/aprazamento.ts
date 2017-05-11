@@ -4,12 +4,7 @@ import { CadastroPaciente } from '../../model/cadastroPaciente';
 import { Http } from "@angular/http";
 import { AprazamentoDados } from '../../model/aprazamento';
 
-/*
-  Generated class for the Aprazamento page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-aprazamento',
   templateUrl: 'aprazamento.html'
@@ -25,8 +20,30 @@ export class AprazamentoPage {
     public nav: NavController,
     private alert: AlertController
   ) {
-    this.listaIntervencoes = params.get('intervencoes');
-    this.paciente = params.get('paciente');
+    // this.listaIntervencoes = params.get('intervencoes');
+    let date = new Date();
+    let data = "";
+    if (date.getMonth() + 1 < 10) {
+      data = (date.getFullYear() + '-' + 0 + (date.getMonth() + 1) + '-' + date.getDate());
+    } else {
+      data = (date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
+    }
+    console.log(data);
+    this.listaIntervencoes = [{ id: 23, titulo: 'teste', inicio: '15:30', intervalo: 3, dataInicio: data }];
+    // this.paciente = params.get('paciente');
+    this.paciente = new CadastroPaciente();
+    this.calcularHora();
+
+  }
+
+  calcularHora() {
+    let teste = this.listaIntervencoes[0];
+    let final = parseInt(teste.inicio.split(":")[0]);
+    // console.log(final);
+    while (final + teste.intervalo < 24) {
+      final = final + teste.intervalo;
+      console.log(final + ':' + teste.inicio.split(":")[1]);
+    }
 
   }
 
