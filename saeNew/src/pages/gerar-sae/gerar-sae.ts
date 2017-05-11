@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular';
-import {CadastroPaciente}from '../../model/cadastroPaciente';
+import { NavController, NavParams } from 'ionic-angular';
+import { Historico } from '../../model/historico';
 import 'rxjs/add/operator/map';
-import {PacienteService} from "../../providers/paciente-service";
 import { DiagnosticosPage } from '../diagnosticos/diagnosticos';
-
+import { GerarDiagnosticoService } from '../../providers/gerar-diagnostico-service';
 /*
   Generated class for the GerarSae page.
 
@@ -17,52 +16,50 @@ import { DiagnosticosPage } from '../diagnosticos/diagnosticos';
 })
 export class GerarSaePage {
 
-  private paciente : CadastroPaciente;
-  private listaCaracteristicas : any;
-  private caracteristicasSelecionada:number[];
+  private paciente: Historico;
+  private listaCaracteristicas: any;
+  private caracteristicasSelecionada: number[];
 
-  constructor(private params : NavParams, private nav : NavController, private service : PacienteService) {
+  constructor(
+    private params: NavParams,
+    private nav: NavController,
+    private gerarService: GerarDiagnosticoService
+  ) {
     this.paciente = params.get('paciente');
     this.caracteristicasSelecionada = [];
     this.carregarCaracteristicas();
   }
 
-  cancel(){
+  cancel() {
     this.nav.popToRoot();
   }
 
   //funcao realizada quando o usuario desliza o dedo na tela
-  slide(passar){
-    if(passar.deltaX<0){
-      this.nav.push(DiagnosticosPage,{caracteristicas: this.caracteristicasSelecionada, paciente: this.paciente});
+  slide(passar) {
+    if (passar.deltaX < 0) {
+      this.nav.push(DiagnosticosPage, { caracteristicas: this.caracteristicasSelecionada, paciente: this.paciente });
     }
   }
 
-  carregarCaracteristicas(){
-
-    this.service.carregarCaracteristicas()
-    .subscribe(data=>{
-      this.listaCaracteristicas = data;
-      console.log(this.listaCaracteristicas);
-
-    },error => {
-      console.log(this.listaCaracteristicas);
-      console.log("Não foi possível se conectar ao servidor");
+  carregarCaracteristicas() {
+    this.gerarService.getCaracteristicas().then(res => {
+      if (res.type) {
+        this.listaCaracteristicas = res.value;
+      }
     });
   }
 
 
-    itemSelected(caracteristicaClicada){
-      let index = this.caracteristicasSelecionada.indexOf(caracteristicaClicada.id);
-      if(index==-1){
-        document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#98FB98';
-        this.caracteristicasSelecionada.push(caracteristicaClicada.id);
-      }else{
-        document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#ffffff';
-        this.caracteristicasSelecionada.splice(index,1);
-      }
-      console.log(this.caracteristicasSelecionada);
+  itemSelected(caracteristicaClicada) {
+    let index = this.caracteristicasSelecionada.indexOf(caracteristicaClicada.id);
+    if (index == -1) {
+      document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#98FB98';
+      this.caracteristicasSelecionada.push(caracteristicaClicada.id);
+    } else {
+      document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#ffffff';
+      this.caracteristicasSelecionada.splice(index, 1);
     }
+  }
 
 
 

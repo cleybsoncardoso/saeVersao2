@@ -16,8 +16,8 @@
 </ion-header>
 
 
-<ion-content (swipe)="slide($event)">
-  <ion-card class="mycard">
+<ion-content >
+  <ion-card class="mycard" (swipe)="slide($event)">
     <ion-card-header class="cardtitulo"> Caracteristicas Definidoras </ion-card-header>
     <ion-list>
       <div *ngFor="let item of listaCaracteristicas" (click)="itemSelected(item)">

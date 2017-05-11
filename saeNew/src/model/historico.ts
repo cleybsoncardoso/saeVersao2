@@ -60,7 +60,7 @@ export class Historico {
   public avaliacaoCardiovascular_Fc: string;
   public avaliacaoCardiovascular_Pa: string;
   public avaliacaoCardiovascular_PVC: string;
-  public avaliacaoCardiovascular_Pam: string;
+  public avaliacaoCardiovascular_PAM: string;
   public pulso: string;
   public pulsoImpalpavel: string;
   public presencaDeEdema: string;
@@ -176,7 +176,7 @@ export class Historico {
     this.vacinasArray = [];
     this.qtdeVacinas = 0;
     //avaliacao neurologica
-    this.consciencia = "alerta";
+    this.consciencia = "";
     this.glasgow = "0";
     this.pupilas = "";
     this.mmii_esquerdo = "";
@@ -211,7 +211,7 @@ export class Historico {
     this.avaliacaoCardiovascular_Fc = "";
     this.avaliacaoCardiovascular_Pa = "";
     this.avaliacaoCardiovascular_PVC = "";
-    this.avaliacaoCardiovascular_Pam = "";
+    this.avaliacaoCardiovascular_PAM = "";
     this.pulso = "";
     this.pulsoImpalpavel = "";
     this.presencaDeEdema = "";

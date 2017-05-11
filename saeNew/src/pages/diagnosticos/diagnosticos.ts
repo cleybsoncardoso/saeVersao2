@@ -3,9 +3,9 @@ import { NavController, NavParams, AlertController, LoadingController } from 'io
 import { CadastroPaciente } from '../../model/cadastroPaciente';
 import 'rxjs/add/operator/map';
 import { Http } from "@angular/http";
-import { PacienteService } from "../../providers/paciente-service";
 import { AprazamentoPage } from '../aprazamento/aprazamento';
 import { AprazamentoDados } from '../../model/aprazamento';
+import { GerarDiagnosticoService } from '../../providers/gerar-diagnostico-service';
 
 
 /*
@@ -21,29 +21,25 @@ import { AprazamentoDados } from '../../model/aprazamento';
 export class DiagnosticosPage {
 
   private paciente: CadastroPaciente;
-  private listaCaracteristicas: any;
   private caracteristicasSelecionada: number[];
   private diagnosticos: any;
-  private intervencaoSelecioandas: any;
-  private intervencaoAtual: AprazamentoDados;
-  private intervencoesEnviar: AprazamentoDados[];
+  private intervencaoSelecionadas: any;
+  private idsInter: string[];
 
   constructor(
     private params: NavParams,
     private http: Http,
     private nav: NavController,
-    private service: PacienteService,
     private alert: AlertController,
-    private loading: LoadingController
-
-
+    private loading: LoadingController,
+    private gerarService: GerarDiagnosticoService
   ) {
     this.paciente = params.get('paciente');
     this.caracteristicasSelecionada = params.get('caracteristicas');
-    this.calcularDiagnosticos();
     this.diagnosticos = [];
-    this.intervencaoSelecioandas = [];
-    this.intervencoesEnviar = [];
+    this.idsInter = [];
+    this.intervencaoSelecionadas = [];
+    this.calcularDiagnosticos();
   }
 
   cancel() {
@@ -60,36 +56,36 @@ export class DiagnosticosPage {
   }
 
   calcularDiagnosticos() {
-    let ids = "";
-    for (let i = 0; this.caracteristicasSelecionada.length > i; i++) {
-      ids = ids + this.caracteristicasSelecionada[i];
-      if ((1 + i) < this.caracteristicasSelecionada.length && this.caracteristicasSelecionada.length != 1)
-        ids = ids + ";";
-    }
-    this.service.carregarDiagnosticos(ids)
-      .subscribe(data => {
-        this.diagnosticos = data;
-      }, error => {
-        console.log(this.listaCaracteristicas);
-        console.log("Não foi possível se conectar ao servidor");
-      });
-  }
+    let loader = this.loading.create({
+      content: "Salvando informações ..."
+    });
+    loader.present();
+    let ids = this.caracteristicasSelecionada.toString();
 
-  ionViewDidLoad() {
-    console.log('Hello DiagnosticosPage Page');
+    this.gerarService.getDiagnisticos(ids).then(diagnosticosRes => {
+      loader.dismiss();
+      if (diagnosticosRes.type) {
+        this.diagnosticos = diagnosticosRes.value;
+      }
+    });
+
+
   }
 
   itemSelected(intervencaoSelecioanda) {
-    let index = this.intervencaoSelecioandas.indexOf(intervencaoSelecioanda);
-    if (index == -1) {
-      this.intervencaoSelecioandas.push(intervencaoSelecioanda);
+    let index = this.intervencaoSelecionadas.indexOf(intervencaoSelecioanda);
+    let index2 = this.idsInter.indexOf(intervencaoSelecioanda.id);
+    if (index2 == -1) {
+      this.idsInter.push(intervencaoSelecioanda.id);
+      this.intervencaoSelecionadas.push(intervencaoSelecioanda);
     } else {
-      this.intervencaoSelecioandas.splice(index, 1);
+      this.idsInter.splice(index, 1);
+      this.intervencaoSelecionadas.splice(index2, 1);
     }
   }
 
   selecionado(intervencaoSelecioanda) {
-    let index = this.intervencaoSelecioandas.indexOf(intervencaoSelecioanda);
+    let index = this.idsInter.indexOf(intervencaoSelecioanda.id);
     if (index == -1) {
       return false;
     } else {
@@ -106,15 +102,8 @@ export class DiagnosticosPage {
         {
           text: 'Confirmar',
           handler: () => {
-            this.enviarServidor();
-            for (let i = 0; i < this.intervencaoSelecioandas.length; i++) {
-              this.intervencaoAtual = new AprazamentoDados();
-              this.intervencaoAtual.intervencao = this.intervencaoSelecioandas[i].titulo;
-              this.intervencaoAtual.id = this.intervencaoSelecioandas[i].id;
-              this.intervencoesEnviar.push(this.intervencaoAtual);
-            }
-
-            this.nav.push(AprazamentoPage, { intervencoes: this.intervencoesEnviar, paciente: this.paciente });
+            console.log(this.intervencaoSelecionadas);
+            this.nav.push(AprazamentoPage, { intervencoes: this.intervencaoSelecionadas, paciente: this.paciente });
           }
         },
         {
@@ -126,10 +115,6 @@ export class DiagnosticosPage {
       ]
     });
     confirm.present();
-  }
-
-  enviarServidor() {
-
   }
 
 }
