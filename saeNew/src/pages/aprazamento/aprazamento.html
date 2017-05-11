@@ -1,9 +1,3 @@
-<!--
-  Generated template for the Aprazamento page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-toolbar>
     <ion-title>
@@ -17,76 +11,36 @@
 
 
 
-<ion-content>
+<ion-content class="background">
 
-  <ion-card *ngFor="let item of listaIntervencoes">
-    <ion-card-header class="cardtitulo"> {{item.titulo}} </ion-card-header>
+  <div class="intervencao" *ngFor="let item of listaIntervencoes">
 
-    <ion-card-content>
-      <ion-item>
-        <ion-label fixed>Inicio</ion-label>
-        <ion-input type="time" [(ngModel)]="item.inicio" [ngModelOptions]="{standalone: true}"></ion-input>
-      </ion-item>
+    <!-- <ion-card > -->
+    <!-- <ion-card-header class="cardtitulo"> {{item.titulo}} </ion-card-header> -->
+    <h1>{{item.titulo}} </h1>
+    <!-- <ion-card-content> -->
+    <ion-item>
+      <ion-label fixed>Inicio</ion-label>
+      <ion-input type="time" [(ngModel)]="item.inicio" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label fixed>intervalo (Hr)</ion-label>
-        <ion-input type="number" [(ngModel)]="item.intervalo" [ngModelOptions]="{standalone: true}"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label fixed>intervalo (Hr)</ion-label>
+      <ion-input type="number" [(ngModel)]="item.intervalo" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label fixed>Inicio</ion-label>
-        <ion-input type="date" [(ngModel)]="item.dataInicio" [ngModelOptions]="{standalone: true}"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label fixed>Inicio</ion-label>
+      <ion-input type="date" [(ngModel)]="item.dataInicio" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
 
-    </ion-card-content>
-  </ion-card>
+    <!-- </ion-card-content> -->
+    <!-- </ion-card> -->
 
+  </div>
 
 </ion-content>
 
 <ion-footer>
   <button ion-button color="secondary" large block (click)="enviar()">Finalizar Aprazamento</button>
 </ion-footer>
-<!--
-      <form>
-      <ion-segment color="secondary" id="tesstevamo">
-        <ion-segment-button value="DIAS" (click)="tempo('teste','dias')">
-          ESCOLHER DIAS
-        </ion-segment-button>
-        <ion-segment-button value="DIARIAMENTE" (click)="tempo('teste','DIARIAMENTE')">
-          DIARIAMENTE
-        </ion-segment-button>
-        <ion-segment-button value="AGORA" (click)="tempo('teste','AGORA')">
-          AGORA
-        </ion-segment-button>
-      </ion-segment>
-    </form>
-
-    <br />
-
-    <form>
-      <ion-segment color="secondary">
-        <ion-segment-button id="'Dom' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Dom')">
-          D
-        </ion-segment-button>
-        <ion-segment-button id="'Seg' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Seg')">
-          S
-        </ion-segment-button>
-        <ion-segment-button id="'Ter' +  '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Ter')">
-          T
-        </ion-segment-button>
-        <ion-segment-button id="'Qua' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Qua')">
-          Q
-        </ion-segment-button>
-        <ion-segment-button id="'Qui' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Qui')">
-          Q
-        </ion-segment-button>
-        <ion-segment-button id="'Sex' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Sex')">
-          S
-        </ion-segment-button>
-        <ion-segment-button id="'Sab' + '{{item.titulo}}'" (click)="eventItemSelected('item.titulo', 'Sab')">
-          S
-        </ion-segment-button>
-      </ion-segment>
-    </form>
--->

@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { PacientesPage } from '../pages/pacientes/pacientes';
 import { AlterarSenhaPage } from '../pages/alterar-senha/alterar-senha';
+import { AprazamentoPage } from '../pages/aprazamento/aprazamento';
 
 
 
