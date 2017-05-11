@@ -13,7 +13,7 @@ import { CuidadosService } from '../../providers/cuidados-service';
 export class AprazamentoPage {
 
   private paciente: Paciente;
-  private listaIntervencoes: any;
+  private listaIntervencoes: any = [];
 
   constructor(
     private params: NavParams,
@@ -22,9 +22,7 @@ export class AprazamentoPage {
     private alert: AlertController,
     private cuidadosService: CuidadosService
   ) {
-    // this.listaIntervencoes = params.get('intervencoes');
-    // this.paciente = params.get('paciente');
-    this.paciente = new Paciente();
+    this.paciente = this.params.get("paciente");;
 
     let date = new Date();
     let data = "";
@@ -33,7 +31,10 @@ export class AprazamentoPage {
     } else {
       data = (date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
     }
-    this.listaIntervencoes = [{ id: 23, titulo: 'teste', inicio: '15:30', intervalo: 3, dataInicio: data },{ id: 26, titulo: 'meu teste', inicio: '15:30', intervalo: 3, dataInicio: data }, { id: 22, titulo: 'testando', inicio: '12:30', intervalo: 1, dataInicio: data }];
+    let info = this.params.get("intervencoes");
+    info.map(intervencao=>{
+      this.listaIntervencoes.push({ id: intervencao.id, titulo: intervencao.titulo, inicio: "", intervalo: "", dataInicio: data })
+    });
   }
 
   private calcularHora() {
