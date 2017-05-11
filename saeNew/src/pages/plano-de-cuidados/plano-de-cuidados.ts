@@ -17,8 +17,7 @@ import { PacienteService } from "../../providers/paciente-service";
 export class PlanoDeCuidadosPage {
 
   private paciente: CadastroPaciente;
-  private planoFeito: AprazamentoDados[];
-  private planoAFazer: AprazamentoDados[];
+  private planoAFazer: any[];
 
   constructor(
     public nav: NavController,
@@ -27,9 +26,8 @@ export class PlanoDeCuidadosPage {
     private http: Http
   ) {
     this.paciente = params.get('paciente');
-    this.planoFeito = [];
-    this.planoAFazer = [];
-    this.carregarPlanos();
+    this.planoAFazer = [{id:"1",titulo:"Redução da ansiedade",horarioInicio: "12:00",ultimoHorario:"12:00",proximaHora:"13:00"},{id:"1",titulo:"Redução da ansiedade",horarioInicio:"12:00", ultimoHorario:"12:00", proximaHora:"13:00"}];
+    // this.carregarPlanos();
   }
 
   cancel() {
