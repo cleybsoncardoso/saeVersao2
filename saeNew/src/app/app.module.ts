@@ -15,6 +15,7 @@ import { EnfermeiroService } from '../providers/enfermeiro-service';
 import { HistoricoService } from '../providers/historico-service';
 import { SenhaService } from '../providers/senha-service';
 import { LoginService } from '../providers/login-service';
+import { GerarDiagnosticoService } from '../providers/gerar-diagnostico-service';
 import { OxigenacaoPage } from '../pages/oxigenacao/oxigenacao';
 import { AvaliacaoCardiovascularPage } from '../pages/avaliacao-cardiovascular/avaliacao-cardiovascular';
 import { HidratacaoEEliminacaoVesicalPage } from '../pages/hidratacao-e-eliminacao-vesical/hidratacao-e-eliminacao-vesical';
@@ -77,6 +78,6 @@ import { PlanoDeCuidadosPage } from "../pages/plano-de-cuidados/plano-de-cuidado
     AprazamentoPage,
     PlanoDeCuidadosPage
   ],
-  providers: [EnfermeiroService, HistoricoService, SenhaService, PacienteService, LoginService, Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [EnfermeiroService, HistoricoService, GerarDiagnosticoService, SenhaService, PacienteService, LoginService, Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
