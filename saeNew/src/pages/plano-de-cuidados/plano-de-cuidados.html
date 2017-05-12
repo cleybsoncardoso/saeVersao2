@@ -29,7 +29,7 @@
     <p>
       <b>Próximo Horário:</b> {{item.proximaHora}}
     </p>
-
+    <button ion-button full (click)="aprazar(item.id)" [disabled]="desativar">Aprazar</button>
   </div>
 
 </ion-content>

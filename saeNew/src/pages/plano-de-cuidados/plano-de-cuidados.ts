@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CadastroPaciente } from '../../model/cadastroPaciente';
 import { AprazamentoDados } from '../../model/aprazamento';
 import { Http } from '@angular/http';
-import { PacienteService } from "../../providers/paciente-service";
+import { CuidadosService } from "../../providers/cuidados-service";
 /*
   Generated class for the PlanoDeCuidados page.
 
@@ -18,16 +18,17 @@ export class PlanoDeCuidadosPage {
 
   private paciente: CadastroPaciente;
   private planoAFazer: any[];
+  private desativar:boolean = false;
 
   constructor(
     public nav: NavController,
     public params: NavParams,
-    private service: PacienteService,
+    private service: CuidadosService,
     private http: Http
   ) {
     this.paciente = params.get('paciente');
-    this.planoAFazer = [{id:"1",titulo:"Redução da ansiedade",horarioInicio: "12:00",ultimoHorario:"12:00",proximaHora:"13:00"},{id:"1",titulo:"Redução da ansiedade",horarioInicio:"12:00", ultimoHorario:"12:00", proximaHora:"13:00"}];
-    // this.carregarPlanos();
+    //this.planoAFazer = [{id:"1",titulo:"Redução da ansiedade",horarioInicio: "12:00",ultimoHorario:"12:00",proximaHora:"13:00"},{id:"1",titulo:"Redução da ansiedade",horarioInicio:"12:00", ultimoHorario:"12:00", proximaHora:"13:00"}];
+    this.carregarPlanos();
   }
 
   cancel() {
@@ -59,14 +60,23 @@ export class PlanoDeCuidadosPage {
   }
 
   carregarPlanos() {
-    this.service.getPlanos(this.paciente.id)
-      .subscribe(data => {
-        this.planoAFazer = data;
-        console.log(this.planoAFazer);
-      }, erro => {
-        console.log("Não foi possível se conectar ao servidor");
-      });
+    this.service.getPlanos(this.paciente.id).then(resposta => {
+      if (resposta.type) {
+        this.planoAFazer = resposta.value;
+      }
+    });
 
+  }
+
+  aprazar(id){
+    this.desativar = true;
+    this.service.aprazar(this.paciente.id, id).then(resposta => {
+      this.desativar = false;
+    console.log(resposta);
+      if (resposta.type) {
+        this.planoAFazer = resposta.value;
+      }
+    });
   }
 
 }

@@ -121,7 +121,7 @@ export class PacientesPage {
           }
         },
         {
-          text: 'Gerar SAE',
+          text: 'Novo Plano de cuidados',
           icon: !this.platform.is('ios') ? 'done-all' : null,
           handler: () => {
             this.nav.push(GerarSaePage, { paciente: paciente });

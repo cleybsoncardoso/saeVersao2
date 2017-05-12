@@ -18,19 +18,27 @@ export class CuidadosService {
   }
 
   private handleErrorMessage(error: any) {
+    console.log(error);
     let retorno = { type: false, message: 'Erro de conexão!' };
     return retorno;
   }
 
   public addCuidados(cuidados, idpaciente): Promise<any> {
-    return this.http.post('http://localhost/sae/addCuidados.php', JSON.stringify({cuidados: cuidados, idpaciente: idpaciente}), { headers: this.headers })
+    return this.http.post('http://localhost/sae/addCuidados.php', JSON.stringify({ cuidados: cuidados, idpaciente: idpaciente }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
   public getPlanos(idpaciente): Promise<any> {
-    return this.http.get('http://localhost/sae/planosCuidados.php')
+    return this.http.get('http://localhost/sae/planosCuidados.php?id=' + idpaciente)
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleErrorMessage);
+  }
+
+  public aprazar(idpaciente, id): Promise<any> {
+    return this.http.post('http://localhost/sae/aprazarPlano.php', JSON.stringify({ idPaciente: idpaciente, idCuidado: id }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
