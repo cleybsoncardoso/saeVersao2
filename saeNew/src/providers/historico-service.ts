@@ -15,7 +15,7 @@ export class HistoricoService {
   }
 
   public getHistoricoID(id): Promise<any> {
-    return this.http.get('http://localhost/sae/getHistorico.php?id=' + id)
+    return this.http.get('http://localhost:8080/sae/getHistorico.php?id=' + id)
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
@@ -32,7 +32,7 @@ export class HistoricoService {
   }
 
   public addHistorico(historico): Promise<any> {
-    return this.http.post('http://localhost/sae/addHistorico.php', JSON.stringify(historico), { headers: this.headers })
+    return this.http.post('http://localhost:8080/sae/addHistorico.php', JSON.stringify(historico), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
