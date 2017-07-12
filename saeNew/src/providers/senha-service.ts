@@ -13,7 +13,7 @@ import 'rxjs/add/operator/toPromise';
 export class SenhaService {
   
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private link:string = "http://localhost/sae/alterarSenha.php";
+  private link:string = "http://localhost:8080/sae/alterarSenha.php";
 
   constructor(public http: Http) {
     console.log('Hello SenhaService Provider');

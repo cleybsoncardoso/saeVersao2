@@ -24,21 +24,21 @@ export class CuidadosService {
   }
 
   public addCuidados(cuidados, idpaciente): Promise<any> {
-    return this.http.post('http://localhost/sae/addCuidados.php', JSON.stringify({ cuidados: cuidados, idpaciente: idpaciente }), { headers: this.headers })
+    return this.http.post('http://localhost:8080/sae/addCuidados.php', JSON.stringify({ cuidados: cuidados, idpaciente: idpaciente }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
   public getPlanos(idpaciente): Promise<any> {
-    return this.http.get('http://localhost/sae/planosCuidados.php?id=' + idpaciente)
+    return this.http.get('http://localhost:8080/sae/planosCuidados.php?id=' + idpaciente)
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
   public aprazar(idpaciente, id): Promise<any> {
-    return this.http.post('http://localhost/sae/aprazarPlano.php', JSON.stringify({ idPaciente: idpaciente, idCuidado: id }), { headers: this.headers })
+    return this.http.post('http://localhost:8080/sae/aprazarPlano.php', JSON.stringify({ idPaciente: idpaciente, idCuidado: id }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);

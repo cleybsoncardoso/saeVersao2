@@ -182,7 +182,7 @@ export class PacientesPage {
     let id = this.enfermeira.id;
     let type = "alta";
     let data = JSON.stringify({ type, id, senha, pacienteNome });
-    let link = "http://localhost/saeApi.php";
+    let link = "http://localhost:8080/saeApi.php";
 
     this.http.post(link, data)
       .subscribe(data => {

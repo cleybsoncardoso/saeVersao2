@@ -16,14 +16,14 @@ export class GerarDiagnosticoService {
   }
 
    public getCaracteristicas(): Promise<any> {
-    return this.http.get('http://localhost/sae/getCaracteristicas.php?id=')
+    return this.http.get('http://localhost:8080/sae/getCaracteristicas.php?id=')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
   public getDiagnisticos(ids): Promise<any> {
-    return this.http.get('http://localhost/sae/getCaracteristicas.php?id='+ ids)
+    return this.http.get('http://localhost:8080/sae/getCaracteristicas.php?id='+ ids)
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);

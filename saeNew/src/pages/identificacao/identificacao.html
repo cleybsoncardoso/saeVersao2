@@ -6,97 +6,98 @@
 -->
 <ion-header>
   <ion-toolbar>
-   <ion-title>
-     Novo Paciente
-   </ion-title>
-   <ion-buttons start>
-     <button ion-button (click)="cancel()">Cancelar</button>
-   </ion-buttons>
+    <ion-title>
+      Novo Paciente
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancelar</button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="identificacao" >
-  <ion-card >
+<ion-content class="identificacao">
+  <ion-card>
     <ion-card-header class="cardtitulo"> Identificação </ion-card-header>
     <ion-list>
       <ion-item>
-            <ion-label floating>Nome</ion-label>
-            <ion-input type="text" [(ngModel)]="paciente.Nome"></ion-input>
+        <ion-label floating>Registro</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Registro" (blur)="procurarRegistro()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Nome"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col class="col" width-33>
+          <ion-item>
+            <ion-label floating>Idade</ion-label>
+            <ion-input type="number" [(ngModel)]="paciente.Idade"></ion-input>
           </ion-item>
-            <ion-row>
-              <ion-col class="col" width-33>
-                <ion-item>
-                  <ion-label floating>Idade</ion-label>
-                  <ion-input type="number" [(ngModel)]="paciente.Idade"></ion-input>
-                </ion-item>
-              </ion-col>
-              <ion-col class="col">
-                <ion-item>
-                  <ion-label floating>Sexo</ion-label>
-                  <ion-select [(ngModel)]="paciente.Sexo">
-                    <ion-option value="Masculino">Masculino</ion-option>
-                    <ion-option value="Feminino">Feminino</ion-option>
-                </ion-select>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-            <ion-item>
-              <ion-label floating>Estado Civil</ion-label>
-              <ion-select [(ngModel)]="paciente.Estado_Civil">
-                <ion-option value="Solteiro">Solteiro</ion-option>
-                <ion-option value="Casado">Casado</ion-option>
-                <ion-option value="Divorciado">Divorciado</ion-option>
-                <ion-option value="Viúvo">Viúvo</ion-option>
+        </ion-col>
+        <ion-col class="col">
+          <ion-item>
+            <ion-label floating>Sexo</ion-label>
+            <ion-select [(ngModel)]="paciente.Sexo">
+              <ion-option value="m">Masculino</ion-option>
+              <ion-option value="f">Feminino</ion-option>
             </ion-select>
-            </ion-item>
-            <ion-item>
-              <ion-label floating>Religião</ion-label>
-              <ion-input type="text" [(ngModel)]="paciente.Religiao"></ion-input>
-            </ion-item><ion-item>
-              <ion-label floating>Profissão</ion-label>
-              <ion-input type="text" [(ngModel)]="paciente.Profissao"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating>Naturalidade</ion-label>
-              <ion-input type="text"[(ngModel)]="paciente.Naturalidade" ></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating>Procedência</ion-label>
-              <ion-input type="text" [(ngModel)]="paciente.Procedencia" ></ion-input>
-            </ion-item>
-            <ion-row>
-              <ion-col class="col">
-                <ion-item>
-                  <ion-label floating>Leito</ion-label>
-                  <ion-input type="number" [(ngModel)]="paciente.Leito"></ion-input>
-                </ion-item>
-              </ion-col>
-              <ion-col class="col">
-                <ion-item>
-                  <ion-label stacked>Data Internação</ion-label>
-                  <ion-input type="date" [(ngModel)]="paciente.Data_de_internacao"></ion-input>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-            <ion-item>
-              <ion-label floating>Registro</ion-label>
-              <ion-input type="text" [(ngModel)]="paciente.Registro"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating>Setor de Procedência</ion-label>
-              <ion-input type="text" [(ngModel)]="paciente.Setor_de_Procedencia"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating>Clinica</ion-label>
-              <ion-input type="text" [(ngModel)]="paciente.Clinica"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating>Diagnóstico Médico</ion-label>
-              <ion-input type="text" [(ngModel)]="paciente.Diagnostico_Medico"></ion-input>
-            </ion-item>
-            <ion-item>
-              <button ion-button full large (click)= "salvar()">Salvar</button>
-            </ion-item>
-      </ion-list>
-    </ion-card>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-label floating>Estado Civil</ion-label>
+        <ion-select [(ngModel)]="paciente.Estado_Civil">
+          <ion-option value="Solteiro">Solteiro</ion-option>
+          <ion-option value="Casado">Casado</ion-option>
+          <ion-option value="Divorciado">Divorciado</ion-option>
+          <ion-option value="Viúvo">Viúvo</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Religião</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Religiao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Profissão</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Profissao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Naturalidade</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Naturalidade"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Procedência</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Procedencia"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col class="col">
+          <ion-item>
+            <ion-label floating>Leito</ion-label>
+            <ion-input type="number" [(ngModel)]="paciente.Leito"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="col">
+          <ion-item>
+            <ion-label stacked>Data Internação</ion-label>
+            <ion-input type="date" [(ngModel)]="paciente.Data_de_internacao"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-label floating>Setor de Procedência</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Setor_de_Procedencia"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Clinica</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Clinica"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Diagnóstico Médico</ion-label>
+        <ion-input type="text" [(ngModel)]="paciente.Diagnostico_Medico"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button full large (click)="salvar()">Salvar</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

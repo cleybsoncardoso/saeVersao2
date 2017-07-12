@@ -23,7 +23,7 @@
 				$sql = "SELECT * FROM saeapp_diagnostico_caracteristicas WHERE caracteristica_id= '$id'";
 				$result = $con->query($sql);
 				while($caracteristica=$result->fetch_assoc()){
-					if(in_array($caracteristica['diagnostico_id'], $auxdiagnosticos)){
+					if(in_array($caracteristica['diagnostico_id'], $auxdiagnosticos) && !in_array($caracteristica['diagnostico_id'], $diagnosticos)){
 						$diagnosticos[] = $caracteristica['diagnostico_id'];
 					} else {
 						$auxdiagnosticos[] = $caracteristica['diagnostico_id'];

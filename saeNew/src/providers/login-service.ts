@@ -14,7 +14,7 @@ export class LoginService {
 
   logar(login: string, senha: string): Promise<any>{
     return this.http
-      .post('http://localhost/sae/login.php', JSON.stringify({login: login, senha: senha}), { headers: this.headers })
+      .post('http://localhost:8080/sae/login.php', JSON.stringify({login: login, senha: senha}), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
       .catch(this.handleErrorMessage);

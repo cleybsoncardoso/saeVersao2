@@ -8,18 +8,18 @@ import { CadastroPaciente } from '../model/cadastroPaciente';
 @Injectable()
 export class PacienteService {
 
-  private pacientes : Array<CadastroPaciente>;
+  private pacientes: Array<CadastroPaciente>;
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) {
 
   }
 
-  carregar(): Promise<any>{
-    return this.http.get('http://localhost/sae/listaPacientes.php?id')
-    .toPromise()
-    .then(response => this.extractGetData(response))
-    .catch(this.handleErrorMessage);
+  carregar(): Promise<any> {
+    return this.http.get('http://localhost:8080/sae/listaPacientes.php?id')
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleErrorMessage);
   }
 
   private extractGetData(res: Response) {
@@ -31,45 +31,51 @@ export class PacienteService {
     return retorno;
   }
 
-  carregarCaracteristicas(){
-      let url= "http://localhost/saeApi.php?caracteristicas";
-      return this.http.get(url).map(res => res.json());
-  }
-
-  carregarDiagnosticos(ids){
-      let url= "http://localhost/saeApi.php?diagnosticos=" + ids;
-      return this.http.get(url).map(res => res.json());
-  }
-
-  getPacientes(){
-    return new Promise(resolve => {
-      let url= "http://localhost/getusers.php?pacientes";
-      this.http.get(url)
-      .map(res=>res.json())
-      .subscribe(data=>{
-        this.pacientes = data;
-        resolve(this.pacientes);
-      });
-    });
-  }
-
-  addPaciente(paciente): Promise<any>{
-    return this.http.post("http://localhost/sae/adicionarPaciente.php", JSON.stringify(paciente), { headers: this.headers })
-    .toPromise().then(response => this.extractGetData(response))
-    .catch(this.handleErrorMessage);
-  }
-
-  getPlanos(id){
-    let url= "http://localhost/saeApi.php?plano=" + id;
+  carregarCaracteristicas() {
+    let url = "http://localhost:8080/saeApi.php?caracteristicas";
     return this.http.get(url).map(res => res.json());
   }
 
-  deletePaciente(){
+  carregarDiagnosticos(ids) {
+    let url = "http://localhost:8080/saeApi.php?diagnosticos=" + ids;
+    return this.http.get(url).map(res => res.json());
+  }
+
+  getPacientes() {
+    return new Promise(resolve => {
+      let url = "http://localhost:8080/getusers.php?pacientes";
+      this.http.get(url)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.pacientes = data;
+          resolve(this.pacientes);
+        });
+    });
+  }
+
+  addPaciente(paciente): Promise<any> {
+    return this.http.post("http://localhost:8080/sae/adicionarPaciente.php", JSON.stringify(paciente), { headers: this.headers })
+      .toPromise().then(response => this.extractGetData(response))
+      .catch(this.handleErrorMessage);
+  }
+
+  getPlanos(id) {
+    let url = "http://localhost:8080/saeApi.php?plano=" + id;
+    return this.http.get(url).map(res => res.json());
+  }
+
+  deletePaciente() {
 
   }
 
-  editPaciente(){
+  editPaciente() {
 
+  }
+
+  getPacienteByRegistro(registro): Promise<any> {
+    return this.http.get("http://localhost:8080/sae/getPaciente.php?registro="+registro)
+      .toPromise().then(response => this.extractGetData(response))
+      .catch(this.handleErrorMessage);
   }
 
 }

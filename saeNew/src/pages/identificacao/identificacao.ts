@@ -95,4 +95,10 @@ export class IdentificacaoPage {
     });
     alert.present();
   }
+
+  procurarRegistro(){
+    this.pService.getPacienteByRegistro(this.paciente.Registro).then(resp=>{
+      this.paciente = resp.value;
+    });
+  }
 }

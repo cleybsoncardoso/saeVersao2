@@ -22,7 +22,7 @@ if (isset($_GET["id"])) {
 				$interv['horarioInicio'] = $row['horarioInicio'];
 				$interv['ultimoHorario'] = $row['ultimoHorario'];
 				$horas = array();
-				$horarios = soma($horas, $row['horarioInicio'].":00", $row['intervalo'].":00", $row['ultimoHorario'].":00");
+				$horarios = soma($horas, $row['horarioInicio'].":00", $row['intervalo'].":00:00", $row['ultimoHorario'].":00");
 				$interv['proximaHora'] = $horarios[0];
                 $vetor[] = $interv;
             }
