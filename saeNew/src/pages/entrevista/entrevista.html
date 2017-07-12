@@ -23,38 +23,18 @@
         <ion-label floating>Internação Anterior (nº de vezes)</ion-label>
         <ion-input type="number" [(ngModel)]="historico.internacoes"></ion-input>
       </ion-item>
-    </ion-list>
-    <ion-list-header class="listaHeader" (click)="toggleGroup(0)">Motivo de Internação
-      <p id="icone0" style="float: right; color: white">+</p>
-    </ion-list-header>
-    <ion-list no-lines class="lista" id="dados0">
-      <ion-item>
-        <ion-label class="label">Cardiopatia</ion-label>
-        <ion-checkbox [(ngModel)]="historico.cardiopatia"></ion-checkbox>
+      <ion-item style="border-bottom-style: none; border-color: #D3D3D3;">
+        <ion-label floating>Motivo de Internação</ion-label>
+        <ion-input type="text" [(ngModel)]="historico.motivoInternacao"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label class="label">Convulsão</ion-label>
-        <ion-checkbox [(ngModel)]="historico.convulsao"></ion-checkbox>
+      <ion-item style="border-bottom-style: none; border-color: #D3D3D3;">
+        <ion-label floating>Alergia</ion-label>
+        <ion-input type="text" [(ngModel)]="historico.alergias"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label class="label">Asma</ion-label>
-        <ion-checkbox [(ngModel)]="historico.asma"></ion-checkbox>
+      <ion-item style="border-bottom-style: none; border-color: #D3D3D3;">
+        <ion-label floating>Vacinas</ion-label>
+        <ion-input type="text" [(ngModel)]="historico.vacinas"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label class="label">Drogas</ion-label>
-        <ion-checkbox [(ngModel)]="historico.drogas"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Outros</ion-label>
-      </ion-item>
-      <ion-list no-lines id="outrosMotivos">
-      </ion-list>
-      <ion-list no-lines class="listitem">
-        <ion-item>
-          <button ion-button class="buttons" (click)="addMotivos()">Adicionar</button>
-          <button ion-button class="buttons" (click)="removerMotivos()">Remover</button>
-        </ion-item>
-      </ion-list>
     </ion-list>
     <ion-list-header class="listaHeader" (click)="toggleGroup(1)">Antecedentes
       <p id="icone1" style="float: right; color: white">+</p>
@@ -69,50 +49,17 @@
         <ion-checkbox [(ngModel)]="historico.tabagismo"></ion-checkbox>
       </ion-item>
       <ion-item>
-        <ion-label class="label">Diabetes Mellitus</ion-label>
+        <ion-label class="label">Diabete Méllitus</ion-label>
         <ion-checkbox [(ngModel)]="historico.diabetesMellitus"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label class="label">Alcoolismo</ion-label>
         <ion-checkbox [(ngModel)]="historico.alcoolismo"></ion-checkbox>
       </ion-item>
-      <ion-item>
-        <ion-label class="label">Outros</ion-label>
+      <ion-item style="border-bottom-style: none; border-color: #D3D3D3;">
+        <ion-label floating>Outros</ion-label>
+        <ion-input type="text" [(ngModel)]="historico.vacinas"></ion-input>
       </ion-item>
-      <ion-list no-lines id="outrosAntecetendes">
-      </ion-list>
-      <ion-list no-lines class="listitem">
-        <ion-item>
-          <button ion-button class="buttons" (click)="addAntecedente()">Adicionar</button>
-          <button ion-button class="buttons" (click)="removerAntecedente()">Remover</button>
-        </ion-item>
-      </ion-list>
-    </ion-list>
-    <ion-list-header class="listaHeader" (click)="toggleGroup(2)">Alergia
-      <p id="icone2" style="float: right; color: white">+</p>
-    </ion-list-header>
-    <ion-list no-lines class="lista" id="dados2">
-      <ion-list no-lines id="alergias">
-      </ion-list>
-      <ion-list no-lines class="listitem">
-        <ion-item>
-          <button ion-button class="buttons" (click)="addAlergia()">Adicionar Alergia</button>
-          <button ion-button class="buttons" (click)="removerAlergia()">Remover</button>
-        </ion-item>
-      </ion-list>
-    </ion-list>
-    <ion-list-header class="listaHeader" (click)="toggleGroup(3)">Vacinas
-      <p id="icone3" style="float: right; color: white">+</p>
-    </ion-list-header>
-    <ion-list no-lines class="lista" id="dados3">
-      <ion-list no-lines id="vacinas">
-      </ion-list>
-      <ion-list no-lines class="listitem">
-        <ion-item>
-          <button ion-button class="buttons" (click)="addVacina()">Adicionar Vacina</button>
-          <button ion-button class="buttons" (click)="removerVacina()">Remover</button>
-        </ion-item>
-      </ion-list>
     </ion-list>
   </ion-card>
 </ion-content>
