@@ -14,7 +14,8 @@
         $motivoInternacao            = $request->motivoInternacao;
         $antecedentes                = $request->antecedentes;
         $alergias                    = $request->alergias;
-		$aspiracao                   = $request->aspiracao;
+		$aspiracaoQuantidade         = $request->aspiracaoQuantidade;
+		$aspiracaoCaracteristica     = $request->aspiracaoCaracteristica;
         $vacinas                     = $request->vacinas;
         $consciencia                 = $request->consciencia;
         $glasgow                     = $request->glasgow;
@@ -48,7 +49,8 @@
             $drenagemToracicaDTD = 0;            
         }
 		
-        $drenagemToracica				 = $request->drenagemToracica;
+		$drenagemQuantidade  			 = $request->drenagemQuantidade;
+        $drenagemCaracteristica			 = $request->drenagemCaracteristica;
         $mamas							 = $request->mamas;
         $avaliacaoCardiovascular_Fc 	 = $request->avaliacaoCardiovascular_Fc;
         $avaliacaoCardiovascular_Pa 	 = $request->avaliacaoCardiovascular_Pa;
@@ -99,7 +101,8 @@
 		motivoInternacao,
 		antecedentes,
 		alergias,
-		aspiracao, 
+		aspiracaoQuantidade,
+		aspiracaoCaracteristica, 
 		vacinas,
 		consciencia,
 		glasgow,
@@ -123,7 +126,8 @@
         presencaoDeTosse_xpectoracao, 
 		drenagemToracicaDTE, 
 		drenagemToracicaDTD,
-		drenagemToracica, 
+		drenagemQuantidade,
+		drenagemCaracteristica,
         mamas, 
 		avaliacaoCardiovascular_Fc, 
 		avaliacaoCardiovascular_Pa,
@@ -167,7 +171,8 @@
 		'$motivoInternacao',
 		'$antecedentes',
 		'$alergias',
-		'$aspiracao', 
+		'$aspiracaoQuantidade',
+		'$aspiracaoCaracteristica', 
 		'$vacinas',
 		'$consciencia',
 		'$glasgow',
@@ -191,7 +196,8 @@
         '$presencaoDeTosse_xpectoracao', 
 		'$drenagemToracicaDTE', 
 		'$drenagemToracicaDTD',
-		'$drenagemToracica', 
+		'$drenagemQuantidade',
+		'$drenagemCaracteristica', 
         '$mamas', 
 		'$avaliacaoCardiovascular_Fc', 
 		'$avaliacaoCardiovascular_Pa',
