@@ -27,7 +27,7 @@ export class AspectosCutaneoMucosaPage {
   }
 
   slide(passar) {
-      this.converterDados();
+    this.converterDados();
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
@@ -36,95 +36,90 @@ export class AspectosCutaneoMucosaPage {
   }
 
   carregarDados() {
-    let aux = this.historico.pele.split(",");
-    let index = aux.indexOf("Cianose");
-    if (index > -1) {
-      this.historico.Cianose = true;
-      aux.splice(index, 1);
-    }
-    index = aux.indexOf("Ictericia");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.Ictericia = true;
-    }
-    index = aux.indexOf("Petequias");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.Petequias = true;
-    }
-    index = aux.indexOf("Corado");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.Corado = true;
-    }
-    index = aux.indexOf("Hipocorado");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.Hipocorado = true;
-    }
-    index = aux.indexOf("Hipercorado");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.Hipercorado = true;
-    }
-    index = aux.indexOf("Equimoses");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.Equimoses = true;
-    }
-    index = aux.indexOf("Hematomas");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.Hematomas = true;
-    }
-    index = aux.indexOf("Escoriacoes");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.Escoriacoes = true;
-    }
-    this.historico.aspectosCutaneoMucosaOutros = aux.toString();
-    //olhos
-    aux = this.historico.olhos.split(",");
-    index = aux.indexOf("ictericia");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.ictericia = true;
-    }
-    index = aux.indexOf("edema de conjuntiva");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.edemaDeConjuntiva = true;
-    }
-    this.historico.olhosOutros = aux.toString();
-    aux = this.historico.AVP_local_tempo.split("/");
-    if (aux[0] != undefined) {
-      this.historico.avpLocal = aux[0];
-    }
-    if (aux[1] != undefined) {
-      this.historico.avpTempoDePermanencia = aux[1];
-    }
-    //cvc
-    aux = this.historico.CVC_local_tempo.split("/");
-    if (aux[0] != undefined) {
-      this.historico.cvcLocal = aux[0];
-    }
-    if (aux[1] != undefined) {
-      this.historico.cvcTempoDePermanencia = aux[1];
-    }
-    //genitalia
-    aux = this.historico.genitalia.split(",");
-    index = aux.indexOf("Sem anormalidades");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.genitaliaSemAnormalidades = true;
-    }
-    index = aux.indexOf("Secreção");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.genitaliaSecrecao = true;
-    }
-    this.historico.genitaliaOutros = aux.toString();
 
+    if (this.historico.pele != null) {
+
+      let aux = this.historico.pele.split(",");
+      let index = aux.indexOf("Cianose");
+      if (index > -1) {
+        this.historico.Cianose = true;
+        aux.splice(index, 1);
+      }
+      index = aux.indexOf("Icterícia");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.Ictericia = true;
+      }
+      index = aux.indexOf("Petéquias");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.Petequias = true;
+      }
+      index = aux.indexOf("Corado");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.Corado = true;
+      }
+      index = aux.indexOf("Hipocorado");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.Hipocorado = true;
+      }
+      index = aux.indexOf("Hipercorado");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.Hipercorado = true;
+      }
+      index = aux.indexOf("Equimoses");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.Equimoses = true;
+      }
+      index = aux.indexOf("Hematomas");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.Hematomas = true;
+      }
+      index = aux.indexOf("Escoriações");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.Escoriacoes = true;
+      }
+      this.historico.aspectosCutaneoMucosaOutros = aux.toString();
+    }
+
+    if (this.historico.olhos != null) {
+
+      //olhos
+      let aux = this.historico.olhos.split(",");
+      let index = aux.indexOf("Icterícia");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.ictericia = true;
+      }
+      index = aux.indexOf("Edema de conjuntiva");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.edemaDeConjuntiva = true;
+      }
+      this.historico.olhosOutros = aux.toString();
+    }
+
+    if (this.historico.genitalia != null) {
+      //genitalia
+      let aux = this.historico.genitalia.split(",");
+      let index = aux.indexOf("Sem anormalidades");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.genitaliaSemAnormalidades = true;
+      }
+      index = aux.indexOf("Secreção");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.genitaliaSecrecao = true;
+      }
+      this.historico.genitaliaOutros = aux.toString();
+    }
   }
 
   converterDados() {
@@ -133,10 +128,10 @@ export class AspectosCutaneoMucosaPage {
       aux.push("Cianose");
     }
     if (this.historico.Ictericia) {
-      aux.push("Ictericia");
+      aux.push("Icterícia");
     }
     if (this.historico.Petequias) {
-      aux.push("Petequias");
+      aux.push("Petéquias");
     }
     if (this.historico.Corado) {
       aux.push("Corado");
@@ -154,24 +149,21 @@ export class AspectosCutaneoMucosaPage {
       aux.push("Hematomas");
     }
     if (this.historico.Escoriacoes) {
-      aux.push("Escoriacoes");
+      aux.push("Escoriações");
     }
     aux.push(this.historico.aspectosCutaneoMucosaOutros);
     this.historico.pele = aux.toString();
     //olhos
     aux = [];
     if (this.historico.ictericia) {
-      aux.push("ictericia");
+      aux.push("Icterícia");
     }
     if (this.historico.edemaDeConjuntiva) {
-      aux.push("edema de conjuntiva");
+      aux.push("Edema de conjuntiva");
     }
     aux.push(this.historico.olhosOutros);
     this.historico.olhos = aux.toString();
-    //avp
-    this.historico.AVP_local_tempo = `${this.historico.avpLocal}/${this.historico.avpTempoDePermanencia}`;
     //cvc
-    this.historico.CVC_local_tempo = `${this.historico.cvcTempoDePermanencia}/${this.historico.cvcLocal}`;
 
     //genitalia
     aux = [];

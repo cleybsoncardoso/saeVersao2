@@ -85,93 +85,43 @@
     <ion-list-header class="titulolista" (click)="toggleGroup(2)">AVP
       <p class="icone" id="iconeCutaneo2" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list radio-group [(ngModel)]="historico.AVP" class="lista" id="dadosCutaneo2">
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label class="label">Sim</ion-label>
-            <ion-radio name="aspiracao" value="sim"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label class="label">Não</ion-label>
-            <ion-radio name="aspiracao" value="nao"></ion-radio>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-list *ngIf="this.historico.avp=='sim'" no-lines id="listRadio0" style="padding: 0px; margin: 0px">
-        <ion-item>
-          <ion-label style="margin: 0px" floating>Local</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="historico.avpLocal" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="historico.avpTempoDePermanencia" type="text"></ion-input>
-        </ion-item>
-      </ion-list>
+    <ion-list class="lista" id="dadosCutaneo2">
+      <ion-item>
+        <ion-label floating>Local</ion-label>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.AVP_local" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Tempo de permanência</ion-label>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.AVP_tempo" type="text"></ion-input>
+      </ion-item>
     </ion-list>
 
     <ion-list-header class="titulolista" (click)="toggleGroup(3)">CVC
       <p class="icone" id="iconeCutaneo3" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list radio-group [(ngModel)]="historico.CVC" class="lista" id="dadosCutaneo3">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-label class="label">Sim</ion-label>
-              <ion-radio name="aspiracao" value="sim"></ion-radio>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-              <ion-label class="label">Não</ion-label>
-              <ion-radio name="aspiracao" value="nao"></ion-radio>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-list *ngIf="this.historico.cvc=='sim'" no-lines id="listRadio1" style="padding: 0px; margin: 0px">
-        <ion-item>
-          <ion-label style="margin: 0px" floating>Local</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="historico.cvcLocal" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="historico.cvcTempoDePermanencia" type="text"></ion-input>
-        </ion-item>
-      </ion-list>
+    <ion-list class="lista" id="dadosCutaneo3">
+      <ion-item>
+        <ion-label style="margin: 0px" floating>Local</ion-label>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.CVC_local" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label style="margin: 0px" floating>Tempo de permanência</ion-label>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.CVC_tempo" type="text"></ion-input>
+      </ion-item>
     </ion-list>
 
     <ion-list-header class="titulolista" (click)="toggleGroup(4)">Dreno
       <p class="icone" id="iconeCutaneo4" style="float: right; color: white">+</p>
     </ion-list-header>
-    <ion-list radio-group [(ngModel)]="historico.dreno" class="lista" id="dadosCutaneo4">
-      <ion-row>
-        <ion-col width-50>
-          <ion-item>
-            <ion-label class="label">Sim</ion-label>
-            <ion-radio name="dreno" value="sim"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label class="label">Não</ion-label>
-            <ion-radio name="dreno" value="nao"></ion-radio>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-list *ngIf="this.historico.dreno=='sim'" no-lines id="listRadio2" style="padding: 0px; margin: 0px">
-        <ion-item>
-          <ion-label style="margin: 0px" floating>Local</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="historico.dreno_caracteristicas" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label style="margin: 0px" floating>Tipo de Dreno</ion-label>
-          <ion-input class="inputgrupo" [(ngModel)]="historico.dreno_tipo" type="text"></ion-input>
-        </ion-item>
-      </ion-list>
+    <ion-list class="lista" id="dadosCutaneo4">
+      <ion-item>
+        <ion-label style="margin: 0px" floating>Local</ion-label>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.dreno_local" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label style="margin: 0px" floating>Tipo de Dreno</ion-label>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.dreno_tipo" type="text"></ion-input>
+      </ion-item>
     </ion-list>
 
 

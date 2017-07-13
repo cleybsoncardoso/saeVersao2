@@ -22,7 +22,6 @@ export class HistoricoService {
   }
 
   private extractGetData(res: Response) {
-    console.log(res.json());
     return { type: true, value: res.json() };
   }
 

@@ -27,71 +27,78 @@ export class AlimentacaoEEliminacaoIntestinalPage {
   }
 
   carregarDados() {
-    let aux = this.historico.alimentacao_ViasDeAdministracao.split(",");
-    let index = aux.indexOf("Oral");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.viasDeAdministracaoOral = true;
-    }
-    index = aux.indexOf("SNG");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.viasDeAdministracaoSNG = true;
-    }
-    index = aux.indexOf("SNE");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.viasDeAdministracaoSNE = true;
-    }
-    index = aux.indexOf("Parenteral");
-    if (index > -1) {
-      aux.splice(index, 1);      
-      this.historico.viasDeAdministracaoParenteral = true;
-    }
-    this.historico.viasDeAdministracaoOutros = aux.toString();
-    //abdome
-    aux = this.historico.abdome.split(",");
-    index = aux.indexOf("Plano");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.abdomePlano = true;
-    }
-    index = aux.indexOf("Globoso");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.abdomeGloboso = true;
-    }
-    index = aux.indexOf("Distendido");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.abdomeDistendido = true;
-    }
-    index = aux.indexOf("Doloroso a palpacao");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.abdomeDolorosoAPalpacao = true;
-    }
-    this.historico.abdomeOutros = aux.toString();
+    if (this.historico.alimentacao_ViasDeAdministracao != null) {
 
-    //rha
-    aux = this.historico.RHA.split(",");
-    index = aux.indexOf("ausentes");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.ausentes = true;
+      let aux = this.historico.alimentacao_ViasDeAdministracao.split(",");
+      let index = aux.indexOf("Oral");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.viasDeAdministracaoOral = true;
+      }
+      index = aux.indexOf("SNG");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.viasDeAdministracaoSNG = true;
+      }
+      index = aux.indexOf("SNE");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.viasDeAdministracaoSNE = true;
+      }
+      index = aux.indexOf("Parenteral");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.viasDeAdministracaoParenteral = true;
+      }
+      this.historico.viasDeAdministracaoOutros = aux.toString();
     }
-    index = aux.indexOf("diminuido");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.diminuido = true;
-    }
-    index = aux.indexOf("aumentado");
-    if (index > -1) {
-      aux.splice(index, 1);
-      this.historico.aumentado = true;
-    }
-    this.historico.abdomeOutros = aux.toString();
 
+    if (this.historico.abdome != null) {
+      //abdome
+      let aux = this.historico.abdome.split(",");
+      let index = aux.indexOf("Plano");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.abdomePlano = true;
+      }
+      index = aux.indexOf("Globoso");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.abdomeGloboso = true;
+      }
+      index = aux.indexOf("Distendido");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.abdomeDistendido = true;
+      }
+      index = aux.indexOf("Doloroso à palpação");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.abdomeDolorosoAPalpacao = true;
+      }
+      this.historico.abdomeOutros = aux.toString();
+
+    }
+
+    if (this.historico.RHA != null) {
+      //rha
+      let aux = this.historico.RHA.split(",");
+      let index = aux.indexOf("Ausentes");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.ausentes = true;
+      }
+      index = aux.indexOf("Diminuído");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.diminuido = true;
+      }
+      index = aux.indexOf("Aumentado");
+      if (index > -1) {
+        aux.splice(index, 1);
+        this.historico.aumentado = true;
+      }
+    }
   }
 
   converterDados() {
@@ -103,40 +110,40 @@ export class AlimentacaoEEliminacaoIntestinalPage {
       aux.push("SNG");
     }
     if (this.historico.viasDeAdministracaoSNE) {
-    aux.push("SNE");
+      aux.push("SNE");
     }
     if (this.historico.viasDeAdministracaoParenteral) {
-    aux.push("Parenteral");
+      aux.push("Parenteral");
     }
     aux.push(this.historico.viasDeAdministracaoOutros);
     this.historico.alimentacao_ViasDeAdministracao = aux.toString();
     //abdome
     aux = [];
     if (this.historico.abdomePlano) {
-    aux.push("Plano");
+      aux.push("Plano");
     }
     if (this.historico.abdomeGloboso) {
-    aux.push("Globoso");
+      aux.push("Globoso");
     }
     if (this.historico.abdomeDistendido) {
-    aux.push("Distendido");
+      aux.push("Distendido");
     }
     if (this.historico.abdomeDolorosoAPalpacao) {
-    aux.push("Doloroso a palpacao");
+      aux.push("Doloroso à palpação");
     }
     aux.push(this.historico.abdomeOutros);
     this.historico.abdome = aux.toString();
     //rha
-    aux = [];    
+    aux = [];
     if (this.historico.ausentes) {
-    aux.push("ausentes");
+      aux.push("Ausentes");
     }
     if (this.historico.diminuido) {
-    aux.push("diminuido");
+      aux.push("Diminuído");
     }
     if (this.historico.aumentado) {
-    aux.push("aumentado");
-  }
+      aux.push("Aumentado");
+    }
     this.historico.RHA = aux.toString();
 
   }
@@ -155,21 +162,6 @@ export class AlimentacaoEEliminacaoIntestinalPage {
     }
   }
 
-  /*
-  verificaVomito(){
-    let grupo = document.getElementById("vomito");
-    if(this.historico.presencaoDeVomito == true){
-      grupo.style.display = "block";
-    }
-  }
-  */
-
-  toggleGroup2(id, status) {
-
-    //  let grupo = document.getElementById("listRadio"+id);
-    //grupo.style.display = status;
-
-  }
   toggleClose(id) {
     var i = 0;
     let grupo = document.getElementById("dadosIntestinal" + i);
@@ -185,19 +177,8 @@ export class AlimentacaoEEliminacaoIntestinalPage {
     }
   }
 
-  /*
-      toggleVomito(){
-        let grupo = document.getElementById("vomito");
-        if(grupo.style.display == "block"){
-          grupo.style.display = "none";
-        }else{
-          grupo.style.display = "block";
-        }
-      }
-      */
-
   slide(passar) {
-      this.converterDados();
+    this.converterDados();
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {

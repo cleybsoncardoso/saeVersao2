@@ -22,7 +22,11 @@
       <p class="icone" id="iconeOxigenacao0" style="float: right; color: white">+</p>
     </ion-list-header>
     <ion-list no-lines id="dadosOxigenacao0" class="lista">
-      <ion-item style="margin-top: 0px;">
+      <ion-item>
+        <ion-label floating>Modalidade</ion-label>
+        <ion-input type="text" [(ngModel)]="historico.modalidade" class="inputitem"></ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label floating>O² (Litros/Min)</ion-label>
         <ion-input type="number" [(ngModel)]="historico.O2" class="inputitem"></ion-input>
       </ion-item>
@@ -30,42 +34,42 @@
         <ion-label floating>SpO²</ion-label>
         <ion-input type="number" [(ngModel)]="historico.SpO" class="inputitem"></ion-input>
       </ion-item>
-      <ion-item style="margin-bottom:15px;">
+      <ion-item>
         <ion-label floating>FR (mrpm)</ion-label>
         <ion-input type="number" [(ngModel)]="historico.FR" class="inputitem"></ion-input>
       </ion-item>
       <ion-list radio-group [(ngModel)]="historico.oxigenacao">
         <ion-item>
           <ion-label class="label">Dispnéia</ion-label>
-          <ion-radio value="dispnéia"></ion-radio>
+          <ion-radio value="Dispnéia"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Taquipnéia</ion-label>
-          <ion-radio value="taquipnéia"></ion-radio>
+          <ion-radio value="Taquipnéia"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Bradipnéia</ion-label>
-          <ion-radio value="bradipnéia"></ion-radio>
+          <ion-radio value="Bradipnéia"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Hiperventilação neurogênica central</ion-label>
-          <ion-radio value="hiperventilação neurogênica central"></ion-radio>
+          <ion-radio value="Hiperventilação neurogênica central"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Apnêustica</ion-label>
-          <ion-radio value="apnêustica"></ion-radio>
+          <ion-radio value="Apnêustica"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Biot</ion-label>
-          <ion-radio value="biot"></ion-radio>
+          <ion-radio value="Biot"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Cheyne-Stokes</ion-label>
-          <ion-radio value="cheyne-Stokes"></ion-radio>
+          <ion-radio value="Cheyne-Stokes"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Kussmaul</ion-label>
-          <ion-radio value="kussmaul"></ion-radio>
+          <ion-radio value="Kussmaul"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">em Salvas</ion-label>
@@ -73,9 +77,9 @@
         </ion-item>
         <ion-item>
           <ion-label class="label">Traqueostomia</ion-label>
-          <ion-radio value="traqueostomia"></ion-radio>
+          <ion-radio value="Traqueostomia"></ion-radio>
         </ion-item>
-        <ion-list radio-group *ngIf="historico.oxigenacao=='traqueostomia'" [(ngModel)]="historico.traqueostomiaMascara">
+        <ion-list radio-group style="margin-left: 20px" *ngIf="historico.oxigenacao=='Traqueostomia'" [(ngModel)]="historico.traqueostomiaMascara">
           <ion-item>
             <ion-label class="label">Com máscara</ion-label>
             <ion-radio value="Com máscara"></ion-radio>
@@ -87,21 +91,21 @@
         </ion-list>
         <ion-item>
           <ion-label class="label">Ventilação mecânica</ion-label>
-          <ion-radio value="ventilação mecânica"></ion-radio>
+          <ion-radio value="Ventilação mecânica"></ion-radio>
         </ion-item>
-        <ion-list radio-group *ngIf="historico.oxigenacao=='ventilação mecânica'" [(ngModel)]="historico.ventilacaoMecanicaOxigenacao">
+        <ion-list radio-group style="margin-left: 20px" *ngIf="historico.oxigenacao=='Ventilação mecânica'" [(ngModel)]="historico.ventilacaoMecanicaOxigenacao">
           <ion-item>
             <ion-label class="label">Catéter</ion-label>
-            <ion-radio value="catéter"></ion-radio>
+            <ion-radio value="Catéter"></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label class="label">Máscara</ion-label>
-            <ion-radio value="máscara"></ion-radio>
+            <ion-radio value="Máscara"></ion-radio>
           </ion-item>
         </ion-list>
       </ion-list>
       <ion-item style="margin-bottom:15px;">
-        <ion-label floating>FiO2</ion-label>
+        <ion-label floating>FiO²</ion-label>
         <ion-input type="number" [(ngModel)]="historico.FiO2" class="inputitem"></ion-input>
       </ion-item>
       <ion-item style="margin-bottom:15px;">
@@ -121,34 +125,34 @@
       <ion-list radio-group [(ngModel)]="historico.auscultaPulmonar_MvPresente">
         <ion-item>
           <ion-label class="label">Bilateralmente</ion-label>
-          <ion-radio value="bilateralmente"></ion-radio>
+          <ion-radio value="Bilateralmente"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Diminuídos</ion-label>
-          <ion-radio value="diminuídos"></ion-radio>
+          <ion-radio value="Diminuídos"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Ausente</ion-label>
-          <ion-radio value="ausente"></ion-radio>
+          <ion-radio value="Ausente"></ion-radio>
         </ion-item>
       </ion-list>
       <ion-item-divider light style="text-align: left; border-radius: 5px;">Ruídos adventícios</ion-item-divider>
       <ion-list radio-group [(ngModel)]="historico.auscultaPulmonar_Ruidos">
         <ion-item>
           <ion-label class="label">Roncos</ion-label>
-          <ion-radio value="roncos"></ion-radio>
+          <ion-radio value="Roncos"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Sibilos</ion-label>
-          <ion-radio value="sibilos"></ion-radio>
+          <ion-radio value="Sibilos"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Estertores</ion-label>
-          <ion-radio value="estertores"></ion-radio>
+          <ion-radio value="Estertores"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label class="label">Creptos</ion-label>
-          <ion-radio value="creptos"></ion-radio>
+          <ion-radio value="Creptos"></ion-radio>
         </ion-item>
       </ion-list>
     </ion-list>
@@ -158,92 +162,56 @@
     <ion-list no-lines radio-group class="lista" id="dadosOxigenacao2" [(ngModel)]="historico.presencaoDeTosse_xpectoracao" style="margin: 0px">
       <ion-item>
         <ion-label class="label">Não</ion-label>
-        <ion-radio value="nao"></ion-radio>
+        <ion-radio value="Não"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label class="label">Seca</ion-label>
-        <ion-radio value="seca"></ion-radio>
+        <ion-radio value="Seca"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label class="label">Produtiva</ion-label>
-        <ion-radio value="produtiva"></ion-radio>
+        <ion-radio value="Produtiva"></ion-radio>
       </ion-item>
     </ion-list>
     <ion-list-header class="titulolista" (click)="toggleGroup(3)">Aspiração
       <p class="icone" id="iconeOxigenacao3" style="float: right; color: white">+</p>
     </ion-list-header>
     <ion-list class="lista" id="dadosOxigenacao3">
-      <ion-list radio-group [(ngModel)]="historico.aspiracao" id="dadosOxigenacao3">
-        <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-label class="label">Sim</ion-label>
-              <ion-radio value="sim" (click)="toggleGroup2(0,'block')"></ion-radio>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-              <ion-label class="label">Não</ion-label>
-              <ion-radio value="nao" (click)="toggleGroup2(0,'none')"></ion-radio>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-list>
-      <ion-list no-lines id="listRadio0" style="display: none; padding: 0px; margin: 0px">
-        <ion-row style="margin: 0px">
-          <ion-col>
-            <ion-item>
-              <ion-label class="label " style="margin: 0px" floating>quantidade</ion-label>
-              <ion-input class="inputgrupo" [(ngModel)]="historico.aspiracaoQuantidade" type="number"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-              <ion-label class="label" style="margin: 0px" floating>característica</ion-label>
-              <ion-input class="inputgrupo" [(ngModel)]="historico.aspiracaoCaracteristica" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-list>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="label" floating>quantidade</ion-label>
+            <ion-input class="inputgrupo" [(ngModel)]="historico.aspiracaoQuantidade" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label class="label" floating>característica</ion-label>
+            <ion-input class="inputgrupo" [(ngModel)]="historico.aspiracaoCaracteristica" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
     </ion-list>
 
     <ion-list-header class="titulolista" (click)="toggleGroup(4)">Drenagem torácica
       <p class="icone" id="iconeOxigenacao4" style="float: right; color: white">+</p>
     </ion-list-header>
     <ion-list class="lista" id="dadosOxigenacao4">
-      <ion-list radio-group [(ngModel)]="historico.drenagemToracica">
-        <ion-row>
+        <ion-row >
           <ion-col>
-            <ion-item>
-              <ion-label class="label">Sim</ion-label>
-              <ion-radio value="sim" (click)="toggleGroup2(1,'block')"></ion-radio>
+            <ion-item >
+              <ion-label class="label" floating>quantidade</ion-label>
+              <ion-input class="inputgrupo" [(ngModel)]="historico.drenagemQuantidade" type="number"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-label class="label">Não</ion-label>
-              <ion-radio value="nao" (click)="toggleGroup2(1,'none')"></ion-radio>
+              <ion-label class="label"  floating>característica</ion-label>
+              <ion-input class="inputgrupo" [(ngModel)]="historico.drenagemCaracteristica" type="text"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
-      </ion-list>
-      <ion-list no-lines id="listRadio1" style="display: none; padding: 0px; margin: 0px;">
-        <ion-row style="margin: 0px">
-          <ion-col>
-            <ion-item style="margin: 0px">
-              <ion-label class="label" style="margin: 0px" floating>quantidade</ion-label>
-              <ion-input class="inputgrupo" [(ngModel)]="historico.drenagemToracicaQuantidade" type="number"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-              <ion-label class="label" style="margin: 0px" floating>característica</ion-label>
-              <ion-input class="inputgrupo" [(ngModel)]="historico.drenagemToracicaCaracteristica" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-list>
-      <ion-list no-lines style="margin: 0px; padding: 0px;">
+      <ion-list no-lines>
         <ion-item>
           <ion-label class="label">DTE</ion-label>
           <ion-checkbox [(ngModel)]="historico.drenagemToracicaDTE"></ion-checkbox>
@@ -261,19 +229,19 @@
     <ion-list no-lines radio-group [(ngModel)]="historico.mamas" class="lista" id="dadosOxigenacao5">
       <ion-item>
         <ion-label class="label">Sem alterações</ion-label>
-        <ion-radio value="Sem Altecacoes"></ion-radio>
+        <ion-radio value="Sem alterações"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label class="label">Nódulos</ion-label>
-        <ion-radio value="nodulos"></ion-radio>
+        <ion-radio value="Nódulos"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label class="label">Dor</ion-label>
-        <ion-radio value="dor"></ion-radio>
+        <ion-radio value="Dor"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label class="label">Assimétricas</ion-label>
-        <ion-radio value="assimétricas"></ion-radio>
+        <ion-radio value="Assimétricas"></ion-radio>
       </ion-item>
     </ion-list>
   </ion-card>

@@ -16,18 +16,18 @@
     <ion-list radio-group no-lines [(ngModel)]="historico.turgidezDaPele" class="lista" id="dadosHidratacao0" class="subgrupo">
       <ion-item>
         <ion-label class="label">Preservada </ion-label>
-        <ion-radio value="preservada"></ion-radio>
+        <ion-radio value="Preservada"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label class="label">Diminuída </ion-label>
-        <ion-radio value="diminuida"></ion-radio>
+        <ion-radio value="Diminuída"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Eliminação urinária <p class="icone" id="iconeHidratacao1" style="float: right; color: white">+</p></ion-list-header>
+    <ion-list-header class="titulolista" (click)="toggleGroup(1)">Eliminação Urinária <p class="icone" id="iconeHidratacao1" style="float: right; color: white">+</p></ion-list-header>
     <ion-list no-lines class="lista" id="dadosHidratacao1" class="subgrupo">
       <ion-item>
         <ion-label floating>Volume</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="historico.eliminacaoUrinaria_Volume" type="text"></ion-input>
+        <ion-input class="inputgrupo" [(ngModel)]="historico.eliminacaoUrinaria_Volume" type="number"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label class="label">Espontânea </ion-label>
@@ -74,7 +74,7 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Outros</ion-label>
-        <ion-input class="inputgrupo" [(ngModel)]="historico.caracteristicasOutros" type="text"></ion-input>
+        <ion-input [(ngModel)]="historico.caracteristicasOutros" type="text"></ion-input>
       </ion-item>
     </ion-list>
   </ion-card>

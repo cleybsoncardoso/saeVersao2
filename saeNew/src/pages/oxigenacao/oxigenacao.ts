@@ -22,18 +22,23 @@ export class OxigenacaoPage {
     this.nav = nav;
   }
 
+  ionViewWillEnter() {
+    if (this.historico.pulsoPalpabilidade != null && this.historico.oxigenacao.includes("Traqueostomia")) {
+      let aux = this.historico.oxigenacao.split(",");
+      this.historico.oxigenacao = aux[0];
+      this.historico.traqueostomiaMascara = aux[1];
+    }
+    if (this.historico.pulsoPalpabilidade != null && this.historico.oxigenacao.includes("Ventilação mecânica")) {
+      let aux = this.historico.oxigenacao.split(",");      
+      this.historico.oxigenacao = aux[0];
+      this.historico.ventilacaoMecanicaOxigenacao = aux[1];
+    }
+  }
+
   toggleGroup(id) {
     let grupo = document.getElementById("dadosOxigenacao" + id);
     let icone = document.getElementById("iconeOxigenacao" + id);
- 
-    if (id == 3 && this.historico.aspiracao == "sim") {
-      let grupo = document.getElementById("listRadio0");
-      grupo.style.display = "block";
-    }
-    if (id == 4 && this.historico.drenagemToracica == "sim") {
-      let grupo = document.getElementById("listRadio1");
-      grupo.style.display = "block";
-    }
+
     this.toggleClose(id);
     if (grupo.style.display == "block") {
       grupo.style.display = "none";
@@ -65,18 +70,16 @@ export class OxigenacaoPage {
   }
 
   slide(passar) {
+    if (this.historico.pulsoPalpabilidade != null && this.historico.oxigenacao.includes("Traqueostomia")) {
+      this.historico.oxigenacao += "," + this.historico.traqueostomiaMascara;
+    }
+    if (this.historico.pulsoPalpabilidade != null && this.historico.oxigenacao.includes("Ventilação mecânica")) {
+      this.historico.oxigenacao += "," + this.historico.ventilacaoMecanicaOxigenacao;
+    }
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-       this.nav.push(AvaliacaoCardiovascularPage, { historico: this.historico });
+      this.nav.push(AvaliacaoCardiovascularPage, { historico: this.historico });
     }
   }
-
-
-  toggleGroup2(id, status) {
-    let grupo = document.getElementById("listRadio" + id);
-    grupo.style.display = status;
-
-  }
-
 }

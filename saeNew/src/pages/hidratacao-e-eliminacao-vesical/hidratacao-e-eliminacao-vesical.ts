@@ -27,94 +27,99 @@ export class HidratacaoEEliminacaoVesicalPage {
   }
 
   carregarDados() {
-    let aux = this.historico.eliminacaoUrinaria.split(",");
-    let index = aux.indexOf("Espontanea");
-    if (index > -1) {
-      this.historico.eliminacaoUrinariaEspontanea = true;
-      aux.splice(index, 1);
+    if (this.historico.eliminacaoUrinaria != null) {
+      let aux = this.historico.eliminacaoUrinaria.split(",");
+      let index = aux.indexOf("Espontânea");
+      if (index > -1) {
+        this.historico.eliminacaoUrinariaEspontanea = true;
+        aux.splice(index, 1);
+      }
+
+      index = aux.indexOf("Retenção");
+      if (index > -1) {
+        this.historico.eliminacaoUrinariaRetencao = true;
+        aux.splice(index, 1);
+
+      }
+
+      index = aux.indexOf("Incontinência");
+      if (index > -1) {
+        this.historico.eliminacaoUrinariaIncontinencia = true;
+        aux.splice(index, 1);
+
+      }
+
+      index = aux.indexOf("SVD");
+      if (index > -1) {
+        this.historico.eliminacaoUrinariaSVD = true;
+        aux.splice(index, 1);
+
+      }
+
+      index = aux.indexOf("Dispositivo urinário");
+      if (index > -1) {
+        this.historico.eliminacaoUrinariaDispositivoUrinario = true;
+        aux.splice(index, 1);
+      }
     }
 
-    index = aux.indexOf("Retencao");
-    if (index > -1) {
-      this.historico.eliminacaoUrinariaRetencao = true;
-      aux.splice(index, 1);
-      
-    }
+    if (this.historico.hidratacao_Caracteristicas != null) {
 
-    index = aux.indexOf("Incontinencia");
-    if (index > -1) {
-      this.historico.eliminacaoUrinariaIncontinencia = true;
-      aux.splice(index, 1);
-      
-    }
+      let aux = this.historico.hidratacao_Caracteristicas.split(",");
+      let index = aux.indexOf("Disúria");
+      if (index > -1) {
+        this.historico.caracteristicasDisuria = true;
+        aux.splice(index, 1);
+      }
 
-    index = aux.indexOf("SVD");
-    if (index > -1) {
-      this.historico.eliminacaoUrinariaSVD = true;
-      aux.splice(index, 1);
-      
-    }
+      index = aux.indexOf("Oligúria");
+      if (index > -1) {
+        this.historico.caracteristicasOliguria = true;
+        aux.splice(index, 1);
 
-    index = aux.indexOf("Dispositivo Urinario");
-    if (index > -1) {
-      this.historico.eliminacaoUrinariaDispositivoUrinario = true;
-      aux.splice(index, 1);      
-    }
+      }
 
-    aux = this.historico.hidratacao_Caracteristicas.split(",");
-    index = aux.indexOf("Disuria");
-    if (index > -1) {
-      this.historico.caracteristicasDisuria = true;
-      aux.splice(index, 1);
-    }
+      index = aux.indexOf("Anúria");
+      if (index > -1) {
+        this.historico.caracteristicasAnuria = true;
+        aux.splice(index, 1);
 
-    index = aux.indexOf("Oliguria");
-    if (index > -1) {
-      this.historico.caracteristicasOliguria = true;
-      aux.splice(index, 1);
-      
-    }
+      }
 
-    index = aux.indexOf("Anuria");
-    if (index > -1) {
-      this.historico.caracteristicasAnuria = true;
-      aux.splice(index, 1);
-      
-    }
+      index = aux.indexOf("Poliúria");
+      if (index > -1) {
+        this.historico.caracteristicasPoliuria = true;
+        aux.splice(index, 1);
 
-    index = aux.indexOf("Poliuria");
-    if (index > -1) {
-      this.historico.caracteristicasPoliuria = true;
-      aux.splice(index, 1);
-      
-    }
+      }
 
-    index = aux.indexOf("Hematuria");
-    if (index > -1) {
-      this.historico.caracteristicasHematuria = true;
-      aux.splice(index, 1);      
-    }
+      index = aux.indexOf("Hematúria");
+      if (index > -1) {
+        this.historico.caracteristicasHematuria = true;
+        aux.splice(index, 1);
+      }
 
-    this.historico.caracteristicasOutros = aux.toString();
+      this.historico.caracteristicasOutros = aux.toString();
+    }
   }
 
   passarDados() {
     let aux = [];
 
     if (this.historico.eliminacaoUrinariaEspontanea) {
-      aux.push("Espontanea");
+      aux.push("Espontânea");
     }
     if (this.historico.eliminacaoUrinariaRetencao) {
-      aux.push("Retencao");
+      aux.push("Retenção");
     }
     if (this.historico.eliminacaoUrinariaIncontinencia) {
-      aux.push("Incontinencia");
+      aux.push("Incontinência");
     }
     if (this.historico.eliminacaoUrinariaSVD) {
       aux.push("SVD");
     }
     if (this.historico.eliminacaoUrinariaDispositivoUrinario) {
-      aux.push("Dispositivo Urinario");
+      aux.push("Dispositivo urinário");
     }
 
     this.historico.eliminacaoUrinaria = aux.toString();
@@ -122,22 +127,22 @@ export class HidratacaoEEliminacaoVesicalPage {
     let aux2 = [];
 
     if (this.historico.caracteristicasDisuria) {
-      aux2.push("Disuria");
+      aux2.push("Disúria");
     }
     if (this.historico.caracteristicasOliguria) {
-      aux2.push("Oliguria");
+      aux2.push("Oligúria");
     }
-    
+
     if (this.historico.caracteristicasAnuria) {
-      aux2.push("Anuria");
+      aux2.push("Anúria");
     }
-    
+
     if (this.historico.caracteristicasPoliuria) {
-      aux2.push("Poliuria");
+      aux2.push("Poliúria");
     }
-    
+
     if (this.historico.caracteristicasHematuria) {
-      aux2.push("Hematuria");
+      aux2.push("Hematúria");
     }
     aux2.push(this.historico.caracteristicasOutros);
     this.historico.hidratacao_Caracteristicas = aux2.toString();
@@ -147,10 +152,10 @@ export class HidratacaoEEliminacaoVesicalPage {
     this.nav.popToRoot();
   }
   slide(passar) {
+    this.passarDados();
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
-      this.passarDados();
       this.nav.push(AlimentacaoEEliminacaoIntestinalPage, { historico: this.historico });
     }
   }
