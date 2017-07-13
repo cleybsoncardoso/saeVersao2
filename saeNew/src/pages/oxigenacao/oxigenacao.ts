@@ -23,12 +23,12 @@ export class OxigenacaoPage {
   }
 
   ionViewWillEnter() {
-    if (this.historico.pulsoPalpabilidade != null && this.historico.oxigenacao.includes("Traqueostomia")) {
+    if (this.historico.oxigenacao != null && this.historico.oxigenacao.includes("Traqueostomia")) {
       let aux = this.historico.oxigenacao.split(",");
       this.historico.oxigenacao = aux[0];
       this.historico.traqueostomiaMascara = aux[1];
     }
-    if (this.historico.pulsoPalpabilidade != null && this.historico.oxigenacao.includes("Ventilação mecânica")) {
+    if (this.historico.oxigenacao != null && this.historico.oxigenacao.includes("Ventilação mecânica")) {
       let aux = this.historico.oxigenacao.split(",");      
       this.historico.oxigenacao = aux[0];
       this.historico.ventilacaoMecanicaOxigenacao = aux[1];
@@ -70,10 +70,10 @@ export class OxigenacaoPage {
   }
 
   slide(passar) {
-    if (this.historico.pulsoPalpabilidade != null && this.historico.oxigenacao.includes("Traqueostomia")) {
+    if (this.historico.oxigenacao != null && this.historico.oxigenacao.includes("Traqueostomia")) {
       this.historico.oxigenacao += "," + this.historico.traqueostomiaMascara;
     }
-    if (this.historico.pulsoPalpabilidade != null && this.historico.oxigenacao.includes("Ventilação mecânica")) {
+    if (this.historico.oxigenacao != null && this.historico.oxigenacao.includes("Ventilação mecânica")) {
       this.historico.oxigenacao += "," + this.historico.ventilacaoMecanicaOxigenacao;
     }
     if (passar.deltaX > 0) {
