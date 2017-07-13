@@ -57,6 +57,7 @@
         $avaliacaoCardiovascular_PVC	 = $request->avaliacaoCardiovascular_PVC;
         $avaliacaoCardiovascular_PAM	 = $request->avaliacaoCardiovascular_PAM;
         $pulso							 = $request->pulso;
+		$pulsoPalpabilidade				 = $request->pulsoPalpabilidade;
         $presencaDeEdema				 = $request->presencaDeEdema;
         $turgidezDaPele					 = $request->turgidezDaPele;
         $eliminacaoUrinaria_Volume		 = $request->eliminacaoUrinaria_Volume;
@@ -68,19 +69,17 @@
         $presencaoDe					 = $request->presencaoDe;
         $abdome							 = $request->abdome;
         $RHA							 = $request->RHA;
-        $ostomia						 = $request->ostomia;
+		$ostomiaLocal					 = $request->ostomiaLocal;
+        $ostomiaCaracteristica			 = $request->ostomiaCaracteristica;
         $eliminacaoIntestinal			 = $request->eliminacaoIntestinal;
         $eliminacaoIntestinal_frequencia = $request->eliminacaoIntestinal_frequencia;
         $pele							 = $request->pele;
         $pele_temperatura				 = $request->pele_temperatura;
         $olhos							 = $request->olhos;
-        $AVP							 = $request->AVP;
         $AVP_local						 = $request->AVP_local;
 		$AVP_tempo						 = $request->AVP_tempo;
-        $CVC        					 = $request->CVC;
         $CVC_local						 = $request->CVC_local;
 		$CVC_tempo						 = $request->CVC_tempo;
-        $dreno							 = $request->dreno;
         $dreno_local					 = $request->dreno_local;
         $dreno_tipo						 = $request->dreno_tipo;
         $genitalia			 			 = $request->genitalia;
@@ -134,6 +133,7 @@
 		avaliacaoCardiovascular_PVC, 
         avaliacaoCardiovascular_PAM,
 		pulso,
+		pulsoPalpabilidade,
 		presencaDeEdema,
 		turgidezDaPele,
 		eliminacaoUrinaria_Volume, 
@@ -145,19 +145,17 @@
         presencaoDe,
 		abdome,
 		RHA,
-		ostomia,
+		ostomiaLocal,
+		ostomiaCaracteristica,
 		eliminacaoIntestinal, 
 		eliminacaoIntestinal_frequencia, 
 		pele, 
         pele_temperatura,
 		olhos,
-		AVP,
 		AVP_local,
 		AVP_tempo, 
-		CVC,
 		CVC_local,
 		CVC_tempo,
-		dreno,
 		dreno_local, 
         dreno_tipo,
 		genitalia,
@@ -204,6 +202,7 @@
 		'$avaliacaoCardiovascular_PVC', 
         '$avaliacaoCardiovascular_PAM',
 		'$pulso',
+		'$pulsoPalpabilidade',
 		'$presencaDeEdema',
 		'$turgidezDaPele',
 		'$eliminacaoUrinaria_Volume', 
@@ -215,19 +214,17 @@
         '$presencaoDe',
 		'$abdome',
 		'$RHA',
-		'$ostomia',
+		'$ostomiaLocal',
+		'$ostomiaCaracteristica',
 		'$eliminacaoIntestinal', 
 		'$eliminacaoIntestinal_frequencia', 
 		'$pele', 
         '$pele_temperatura',
 		'$olhos',
-		'$AVP',
 		'$AVP_local',
-		'$AVP_tempo', 
-		'$CVC',
+		'$AVP_tempo',
 		'$CVC_local',
 		'$CVC_tempo',
-		'$dreno',
 		'$dreno_local', 
         '$dreno_tipo',
 		'$genitalia',
