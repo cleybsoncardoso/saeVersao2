@@ -167,7 +167,7 @@
 			WHERE idsaeapp_historico = '$idsaeapp_historico'";
 			$con->query($sql);
 			
-			echo json_encode($sql);
+			echo json_encode(true);
 			
 		} else {
 			echo json_encode(false);
