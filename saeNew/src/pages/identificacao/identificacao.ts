@@ -98,8 +98,11 @@ export class IdentificacaoPage {
 
   procurarRegistro() {
     this.pService.getPacienteByRegistro(this.paciente.Registro).then(resp => {
-      if (resp.value) {
-        this.paciente = resp.value;
+      if (resp.value.length) {
+        this.paciente = resp.value[0];
+        this.paciente.Leito = "";
+        this.paciente.Data_de_internacao = "";
+        this.paciente.Diagnostico_Medico = "";
       }
     });
   }

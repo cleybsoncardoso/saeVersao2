@@ -35,11 +35,9 @@ export class DiagnosticosPage {
     private gerarService: GerarDiagnosticoService
   ) {
     this.paciente = params.get('paciente');
-    this.caracteristicasSelecionada = params.get('caracteristicas');
-    this.diagnosticos = [];
+    this.diagnosticos = params.get('diagnostico');
     this.idsInter = [];
     this.intervencaoSelecionadas = [];
-    this.calcularDiagnosticos();
   }
 
   cancel() {
@@ -53,23 +51,6 @@ export class DiagnosticosPage {
     } else {
       this.enviarDiagnosticos();
     }
-  }
-
-  calcularDiagnosticos() {
-    let loader = this.loading.create({
-      content: "Salvando informações ..."
-    });
-    loader.present();
-    let ids = this.caracteristicasSelecionada.toString();
-
-    this.gerarService.getDiagnisticos(ids).then(diagnosticosRes => {
-      loader.dismiss();
-      if (diagnosticosRes.type) {
-        this.diagnosticos = diagnosticosRes.value;
-      }
-    });
-
-
   }
 
   itemSelected(intervencaoSelecioanda) {

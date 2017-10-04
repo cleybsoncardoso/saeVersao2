@@ -19,10 +19,12 @@ export class HomePage {
     private eService: EnfermeiroService,
     private lService: LoginService
   ) {
-
+    this.entrar();
   }
 
   private entrar() {
+    this.coren = '123456';
+    this.senha = "lucas123";
     if (this.coren !== null && this.senha !== null && this.coren !== '' && this.senha !== '') {
 
       let loader = this.loading.create({
@@ -36,7 +38,7 @@ export class HomePage {
           let enfermeira = new Enfermeira();
           enfermeira.id = res.data.id;
           enfermeira.nome = res.data.first_name;
-          this.eService.setEnfermeira(enfermeira).then(()=>this.nav.setRoot(PacientesPage));
+          this.eService.setEnfermeira(enfermeira).then(() => this.nav.setRoot(PacientesPage));
         } else {
           let alert = this.alert.create({
             title: 'Atenção',

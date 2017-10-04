@@ -38,20 +38,15 @@
           <ion-item>
             <ion-label floating>Sexo</ion-label>
             <ion-select [(ngModel)]="paciente.Sexo">
-              <ion-option value="masculino">Masculino</ion-option>
-              <ion-option value="feminino">Feminino</ion-option>
+              <ion-option value="Masculino">Masculino</ion-option>
+              <ion-option value="Feminino">Feminino</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-item>
         <ion-label floating>Estado Civil</ion-label>
-        <ion-select [(ngModel)]="paciente.Estado_Civil">
-          <ion-option value="Solteiro">Solteiro</ion-option>
-          <ion-option value="Casado">Casado</ion-option>
-          <ion-option value="Divorciado">Divorciado</ion-option>
-          <ion-option value="Viúvo">Viúvo</ion-option>
-        </ion-select>
+        <ion-input type="text" [(ngModel)]="paciente.Estado_Civil"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Religião</ion-label>

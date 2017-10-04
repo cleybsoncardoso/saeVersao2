@@ -95,7 +95,7 @@
       <p class="icone" id="iconeIntestinal3" style="float: right; color: white">+</p>
     </ion-list-header>
     <ion-list class="lista" id="dadosIntestinal3">
-      <ion-row >
+      <ion-row>
         <ion-col>
           <ion-item>
             <ion-label floating>Local</ion-label>
@@ -140,6 +140,22 @@
         <ion-input class="inputgrupo" [(ngModel)]="historico.eliminacaoIntestinal_outros" type="text"></ion-input>
       </ion-item>
     </ion-list>
+
+
+    <ion-list-header class="titulolista" (click)="toggleGroup(5)">Presenção de
+      <p class="icone" id="iconeIntestinal5" style="float: right; color: white">+</p>
+    </ion-list-header>
+    <ion-list radio-group [(ngModel)]="historico.presencaoDe" class="lista" id="dadosIntestinal5">
+      <ion-item>
+        <ion-label class="label">Vômito</ion-label>
+        <ion-radio value="Vômito"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">Náusea</ion-label>
+        <ion-radio value="Náusea"></ion-radio>
+      </ion-item>
+    </ion-list>
+
   </ion-card>
 
 </ion-content>

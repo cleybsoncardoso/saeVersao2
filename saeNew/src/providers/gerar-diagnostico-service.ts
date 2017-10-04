@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -10,22 +10,24 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class GerarDiagnosticoService {
+  private headers = new Headers({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
 
   constructor(public http: Http) {
     console.log('Hello GerarDiagnosticoService Provider');
   }
 
-   public getCaracteristicas(): Promise<any> {
-    return this.http.get('http://localhost:8080/sae/getCaracteristicas.php?id=')
+  public getCaracteristicas(): Promise<any> {
+    return this.http.get('http://192.168.15.12:8000/app/caracteristicas')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
-  public getDiagnisticos(ids): Promise<any> {
-    return this.http.get('http://localhost:8080/sae/getCaracteristicas.php?id='+ ids)
+  public getDiagnisticos(ids, idPaciente): Promise<any> {
+    return this.http
+      .post('http://192.168.15.12:8000/app/planodecuidados/diagnosticos', JSON.stringify({ caracteristicas: ids, idPaciente: idPaciente }), { headers: this.headers })
       .toPromise()
-      .then(response => this.extractGetData(response))
+      .then(res => this.extractGetData(res))
       .catch(this.handleErrorMessage);
   }
 

@@ -32,45 +32,27 @@ export class AprazamentoPage {
       data = (date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
     }
     let info = this.params.get("intervencoes");
-    info.map(intervencao=>{
+    info.map(intervencao => {
       this.listaIntervencoes.push({ id: intervencao.id, titulo: intervencao.titulo, inicio: "", intervalo: "", dataInicio: data })
     });
   }
-
-  private calcularHora() {
-    for (let intervencao of this.listaIntervencoes) {
-      let final = parseInt(intervencao.inicio.split(":")[0]);
-      // console.log(final);
-      while (final + intervencao.intervalo < 24) {
-        final = final + intervencao.intervalo;
-      }
-      intervencao.ultimoHorario = (final + ':' + intervencao.inicio.split(":")[1]);
-    }
-  }
-
   private enviar() {
     let erro = false;
-    for (let i = 0; i < this.listaIntervencoes.length; i++) {
-      if (this.listaIntervencoes[i].inicio == "" || this.listaIntervencoes[i].intervalo == 0 || this.listaIntervencoes[i].dataInicio == "" || this.listaIntervencoes[i].dataFim == "") {
+    this.listaIntervencoes.map(intervencaoAtual => {
+      if (!intervencaoAtual.dataInicio || !intervencaoAtual.inicio || !intervencaoAtual.intervalo) {
         erro = true;
-        let alert = this.alert.create({
-          subTitle: 'Complete os campos que faltam para aplicar o aprazamento',
-          buttons: ['OK']
-        });
-        alert.present();
-
       }
-    }
+    });
+
     if (!erro) {
-      this.calcularHora();
-      this.cuidadosService.addCuidados(this.listaIntervencoes, 1).then(res => {
+      this.cuidadosService.addCuidados(this.listaIntervencoes, this.paciente.id).then(res => {
         if (res.type) {
           let alert = this.alert.create({
             subTitle: 'Aprazamento Concluído',
             buttons: ['OK']
           });
           alert.present();
-          //this.nav.popToRoot();
+          this.nav.popToRoot();
 
         } else {
           let alert = this.alert.create({

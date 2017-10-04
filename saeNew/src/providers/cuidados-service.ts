@@ -24,7 +24,7 @@ export class CuidadosService {
   }
 
   public addCuidados(cuidados, idpaciente): Promise<any> {
-    return this.http.post('http://localhost:8080/sae/addCuidados.php', JSON.stringify({ cuidados: cuidados, idpaciente: idpaciente }), { headers: this.headers })
+    return this.http.post('http://192.168.15.12:8000/app/planodecuidados/aprazar', JSON.stringify({ cuidados: cuidados, idpaciente: idpaciente }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Historico } from '../../model/historico';
+import { Paciente } from '../../model/paciente';
 import 'rxjs/add/operator/map';
 import { DiagnosticosPage } from '../diagnosticos/diagnosticos';
 import { GerarDiagnosticoService } from '../../providers/gerar-diagnostico-service';
@@ -16,7 +16,7 @@ import { GerarDiagnosticoService } from '../../providers/gerar-diagnostico-servi
 })
 export class GerarSaePage {
 
-  private paciente: Historico;
+  private paciente: Paciente;
   private listaCaracteristicas: any;
   private caracteristicasSelecionada: number[];
 
@@ -26,6 +26,7 @@ export class GerarSaePage {
     private gerarService: GerarDiagnosticoService
   ) {
     this.paciente = params.get('paciente');
+    console.log(this.paciente);
     this.caracteristicasSelecionada = [];
     this.carregarCaracteristicas();
   }
@@ -37,7 +38,9 @@ export class GerarSaePage {
   //funcao realizada quando o usuario desliza o dedo na tela
   slide(passar) {
     if (passar.deltaX < 0) {
-      this.nav.push(DiagnosticosPage, { caracteristicas: this.caracteristicasSelecionada, paciente: this.paciente });
+      this.gerarService.getDiagnisticos(this.caracteristicasSelecionada, this.paciente.id).then(res => {
+        this.nav.push(DiagnosticosPage, { diagnostico: res.value, paciente: this.paciente });
+      });
     }
   }
 

@@ -5,34 +5,30 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class LoginService {
 
-  private headers = new Headers({ 'Content-Type': 'application/json' });
+  private headers = new Headers({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
 
   constructor(private http: Http) {
 
   }
 
 
-  logar(login: string, senha: string): Promise<any>{
+  logar(login: string, senha: string): Promise<any> {
     return this.http
-      .post('http://localhost:8080/sae/login.php', JSON.stringify({login: login, senha: senha}), { headers: this.headers })
+      .post('http://192.168.15.12:8000/app/login', JSON.stringify({ username: login, password: senha }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
       .catch(this.handleErrorMessage);
   }
 
-  private extractLoginData(res: Response) {
+  private extractLoginData(res) {
     let retorno = { type: false, message: '', data: {} };
     let data = res.json();
-    if (data === 'login') {
+    if (!data) {
       retorno.message = 'Usuário não cadastrado!';
-    }else if(data === 'senha'){
-      retorno.message = 'Senha incorreta!';
-    } else if(data === false){
-      retorno.message = 'Ops, Ocorreu um erro!';
-    }else{
-      retorno.type = true;
-      retorno.message = 'Conectado com sucesso!';
+    } else {
+      retorno.message = 'Logando ...';
       retorno.data = data;
+      retorno.type = true;
     }
     return retorno;
   }

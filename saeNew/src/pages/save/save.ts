@@ -43,26 +43,38 @@ export class SavePage {
       content: "Salvando informações ..."
     });
     loader.present();
-    this.hisService.addHistorico(this.historico).then(resposta => {
-      loader.dismiss();
-      if (resposta.type) {
-        this.presentToast("historico cadastrado com sucesso");
-        this.nav.popToRoot();
-      } else {
-        this.tentarNovamente(false);
-      }
-    });
+    if (this.historico.idsaeapp_historico && this.historico.idsaeapp_historico == "") {
+      this.hisService.addHistorico(this.historico).then(resposta => {
+        loader.dismiss();
+        if (resposta.type) {
+          this.presentToast("historico cadastrado com sucesso");
+          this.nav.popToRoot();
+        } else {
+          this.tentarNovamente(false);
+        }
+      });
+    } else {
+      this.hisService.editHistorico(this.historico).then(resposta => {
+        loader.dismiss();
+        if (resposta.type) {
+          this.presentToast("historico editado com sucesso");
+          this.nav.popToRoot();
+        } else {
+          this.tentarNovamente(false);
+        }
+      });
+    }
   }
 
   presentToast(msg) {
-  let toast = this.toastCtrl.create({
-    message: msg,
-    duration: 3000,
-    position: 'top'
-  });
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'top'
+    });
 
-  toast.present();
-}
+    toast.present();
+  }
 
   tentarNovamente(gerarSae) {
     let alert = this.alert.create({
@@ -94,15 +106,28 @@ export class SavePage {
       content: "Salvando informações ..."
     });
     loader.present();
-    this.hisService.addHistorico(this.historico).then(resposta => {
-      loader.dismiss();
-      if (resposta.type) {
-        this.nav.popToRoot();
-        this.nav.push(GerarSaePage, { paciente: resposta.value });
-      } else {
-        this.tentarNovamente(false);
-      }
-    });
+
+    if (this.historico.idsaeapp_historico && this.historico.idsaeapp_historico == "") {
+      this.hisService.addHistorico(this.historico).then(resposta => {
+        loader.dismiss();
+        if (resposta.type) {
+          this.nav.popToRoot();
+          this.nav.push(GerarSaePage, { paciente: resposta.value });
+        } else {
+          this.tentarNovamente(false);
+        }
+      });
+    } else {
+      this.hisService.editHistorico(this.historico).then(resposta => {
+        loader.dismiss();
+        if (resposta.type) {
+          this.nav.popToRoot();
+          this.nav.push(GerarSaePage, { paciente: resposta.value });
+        } else {
+          this.tentarNovamente(false);
+        }
+      });
+    }
   }
 
 }

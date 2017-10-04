@@ -10,7 +10,7 @@ export class Historico {
   public asma: boolean;
   public drogas: boolean;
   public motivo: Array<string>;
-  public outrosAntecedentes:string;
+  public outrosAntecedentes: string;
   public has: boolean;
   public tabagismo: boolean;
   public diabetesMellitus: boolean;
@@ -44,6 +44,7 @@ export class Historico {
   public auscultaPulmonar_MvPresente: string;
   public auscultaPulmonar_Ruidos: string;
   public presencaoDeTosse_xpectoracao: string;
+  public prevencaoDeTosse: string;
   public aspiracaoQuantidade: string;
   public aspiracaoCaracteristica: string;
   public drenagemQuantidade: string;
@@ -70,7 +71,7 @@ export class Historico {
   public eliminacaoUrinariaRetencao: boolean;
   public hidratacao_Caracteristicas: string;
   public eliminacaoUrinaria: string;
-  public eliminacaoUrinaria_Volume: string;  
+  public eliminacaoUrinaria_Volume: string;
   public eliminacaoUrinariaIncontinencia: boolean;
   public eliminacaoUrinariaSVD: boolean;
   public eliminacaoUrinariaDispositivoUrinario: boolean;
@@ -104,6 +105,7 @@ export class Historico {
   public eliminacaoIntestinal: string;
   public eliminacaoIntestinal_frequencia: string;
   public eliminacaoIntestinal_outros: string;
+  public presencaoDe: string;
   //aspectos cutaneo muscosa
   public lesoes: string;
   public Cianose: boolean;
@@ -129,10 +131,11 @@ export class Historico {
   public CVC_local: string;
   public dreno_local;
   public dreno_tipo: string;
-  public genitalia:string;
+  public genitalia: string;
   public genitaliaSemAnormalidades: boolean;
   public genitaliaSecrecao: boolean;
   public genitaliaOutros: string;
+  public genitalia_lesoes: string;
   //seguranca Fisica
   public necessidadeDeContencao;
   public riscoParaQueda;
@@ -179,13 +182,14 @@ export class Historico {
     this.traqueostomiaMascara = "";
     this.ventilacaoMecanica = false;
     this.ventilacaoMecanicaTipo = "";
-    this.ventilacaoMecanicaOxigenacao = "";    
+    this.ventilacaoMecanicaOxigenacao = "";
     this.FiO2 = "";
     this.Peep = "";
     this.SpO2 = "";
     this.auscultaPulmonar_MvPresente = "";
     this.auscultaPulmonar_Ruidos = "";
     this.presencaoDeTosse_xpectoracao = "";
+    this.prevencaoDeTosse = "";
     this.aspiracaoQuantidade = "";
     this.aspiracaoCaracteristica = "";
     this.drenagemQuantidade = "";
@@ -246,6 +250,7 @@ export class Historico {
     this.eliminacaoIntestinal = "";
     this.eliminacaoIntestinal_frequencia = "";
     this.eliminacaoIntestinal_outros = "";
+    this.presencaoDe = "";
     //aspectos cutaneo muscosa
     this.lesoes = "";
     this.pele = "";
@@ -266,17 +271,18 @@ export class Historico {
     this.olhos = "";
     this.AVP_local = "";
     this.AVP_tempo = "";
-    this.CVC_local="";
-    this.CVC_tempo= "";
+    this.CVC_local = "";
+    this.CVC_tempo = "";
     this.dreno_local = "";
     this.dreno_tipo = "";
     this.genitalia = "";
     this.genitaliaSemAnormalidades = false;
     this.genitaliaSecrecao = false;
     this.genitaliaOutros = "";
+    this.genitalia_lesoes = "";
     //seguranca Fisica
-    this.necessidadeDeContencao="";
-    this.riscoParaQueda="";
+    this.necessidadeDeContencao = "";
+    this.riscoParaQueda = "";
     this.escore = "";
     this.observacoes = "";
   }
