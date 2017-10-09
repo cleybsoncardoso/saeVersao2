@@ -16,20 +16,20 @@
 
 <ion-content class="background">
   <div class="intervencao" *ngFor="let item of planoAFazer">
-    <h3>{{item.titulo}} </h3>
+    <h3>{{item.intervencao}} </h3>
 
     <p>
       <b>Hora de Início:</b> {{item.horarioInicio}}
     </p>
 
     <p>
-      <b>Último Horário:</b> {{item.ultimoHorario}}
+      <b>Último Horário:</b> {{item.ultimoHorario || "--:--:--"}}
     </p>
 
     <p>
       <b>Próximo Horário:</b> {{item.proximaHora}}
     </p>
-    <button ion-button full (click)="aprazar(item.id)" [disabled]="desativar">Aprazar</button>
+    <button ion-button full (click)="aprazar(item)" [disabled]="desativar">Realizar Procedimento</button>
   </div>
 
 </ion-content>

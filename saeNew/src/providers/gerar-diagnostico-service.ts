@@ -16,8 +16,8 @@ export class GerarDiagnosticoService {
     console.log('Hello GerarDiagnosticoService Provider');
   }
 
-  public getCaracteristicas(): Promise<any> {
-    return this.http.get('http://192.168.15.12:8000/app/caracteristicas')
+  public getCaracteristicas(id): Promise<any> {
+    return this.http.get('http://25.8.113.71:8000/app/caracteristicas/'+id)
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
@@ -25,7 +25,7 @@ export class GerarDiagnosticoService {
 
   public getDiagnisticos(ids, idPaciente): Promise<any> {
     return this.http
-      .post('http://192.168.15.12:8000/app/planodecuidados/diagnosticos', JSON.stringify({ caracteristicas: ids, idPaciente: idPaciente }), { headers: this.headers })
+      .post('http://25.8.113.71:8000/app/planodecuidados/diagnosticos', JSON.stringify({ caracteristicas: ids, idPaciente: idPaciente }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractGetData(res))
       .catch(this.handleErrorMessage);

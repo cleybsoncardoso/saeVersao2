@@ -26,9 +26,9 @@ export class GerarSaePage {
     private gerarService: GerarDiagnosticoService
   ) {
     this.paciente = params.get('paciente');
-    console.log(this.paciente);
     this.caracteristicasSelecionada = [];
     this.carregarCaracteristicas();
+    
   }
 
   cancel() {
@@ -45,9 +45,12 @@ export class GerarSaePage {
   }
 
   carregarCaracteristicas() {
-    this.gerarService.getCaracteristicas().then(res => {
+    this.gerarService.getCaracteristicas(this.paciente.id).then(res => {
       if (res.type) {
-        this.listaCaracteristicas = res.value;
+        console.log(res.value);
+        this.listaCaracteristicas = res.value.caracteristicas;
+        
+        this.caracteristicasSelecionada = res.value.selecionadas;
       }
     });
   }
@@ -56,16 +59,14 @@ export class GerarSaePage {
   itemSelected(caracteristicaClicada) {
     let index = this.caracteristicasSelecionada.indexOf(caracteristicaClicada.id);
     if (index == -1) {
-      document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#98FB98';
       this.caracteristicasSelecionada.push(caracteristicaClicada.id);
     } else {
-      document.getElementById(caracteristicaClicada.titulo).style.backgroundColor = '#ffffff';
       this.caracteristicasSelecionada.splice(index, 1);
     }
   }
 
+  selecionado(idCaracteristica) {
+    return this.caracteristicasSelecionada.indexOf(idCaracteristica) > -1;
 
-
-
-
+  }
 }

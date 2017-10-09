@@ -16,7 +16,7 @@ export class PacienteService {
   }
 
   carregar(): Promise<any> {
-    return this.http.get('http://192.168.15.12:8000/app/pacientes')
+    return this.http.get('http://25.8.113.71:8000/app/pacientes')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
@@ -54,7 +54,7 @@ export class PacienteService {
   }
 
   addPaciente(paciente): Promise<any> {
-    return this.http.post("http://192.168.15.12:8000/app/pacientes/cadastrar", JSON.stringify(paciente), { headers: this.headers })
+    return this.http.post("http://25.8.113.71:8000/app/pacientes/cadastrar", JSON.stringify(paciente), { headers: this.headers })
       .toPromise().then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
@@ -73,7 +73,7 @@ export class PacienteService {
   }
 
   getPacienteByRegistro(registro): Promise<any> {
-    return this.http.get("http://192.168.15.12:8000/app/pacientes/"+registro)
+    return this.http.get("http://25.8.113.71:8000/app/pacientes/"+registro)
       .toPromise().then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }

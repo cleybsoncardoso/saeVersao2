@@ -43,7 +43,7 @@ export class SavePage {
       content: "Salvando informações ..."
     });
     loader.present();
-    if (this.historico.idsaeapp_historico && this.historico.idsaeapp_historico == "") {
+    if (this.historico.idsaeapp_historico && this.historico.idsaeapp_historico == "0") {
       this.hisService.addHistorico(this.historico).then(resposta => {
         loader.dismiss();
         if (resposta.type) {
@@ -107,7 +107,7 @@ export class SavePage {
     });
     loader.present();
 
-    if (this.historico.idsaeapp_historico && this.historico.idsaeapp_historico == "") {
+    if (this.historico.idsaeapp_historico && this.historico.idsaeapp_historico == "0") {
       this.hisService.addHistorico(this.historico).then(resposta => {
         loader.dismiss();
         if (resposta.type) {

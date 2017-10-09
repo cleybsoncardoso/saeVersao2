@@ -21,7 +21,7 @@
     <ion-card-header class="cardtitulo"> Caracteristicas Definidoras </ion-card-header>
     <ion-list>
       <div *ngFor="let item of listaCaracteristicas" (click)="itemSelected(item)">
-        <div class="margemLimitada" id='{{item.titulo}}'>
+        <div class="margemLimitada" id='{{item.id}}' [style.background-color]="selecionado(item.id)?'#98FB98':'#ffffff'">
           {{item.titulo}}
         </div>
       </div>
