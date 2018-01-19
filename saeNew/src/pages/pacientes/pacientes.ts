@@ -95,10 +95,17 @@ export class PacientesPage {
 
   openPaciente(paciente: Paciente) {
     let actionSheet = this.actionsheetCtrl.create({
-      title: paciente.Nome,
+      title: paciente.nome,
       cssClass: 'action-sheets-basic-page',
       buttons: [
 
+        {
+          text: 'Editar Paciente',
+          icon: !this.platform.is('ios') ? 'book' : null,
+          handler: () => {
+            this.nav.push(IdentificacaoPage, { paciente });
+          }
+        },
         {
           text: 'Histórico',
           icon: !this.platform.is('ios') ? 'book' : null,
@@ -106,10 +113,10 @@ export class PacientesPage {
             this.hService.getHistoricoID(paciente.id).then(res => {
 
               let historico = res.value == false ? new Historico() : res.value;
+              console.log("Paciente id", paciente.id)
+              historico.paciente_id = paciente.id;
 
-              historico.idPaciente = paciente.id;
-
-              this.nav.push(EntrevistaPage, { historico: historico });
+              this.nav.push(EntrevistaPage, { historico });
             });
           }
         },
@@ -132,7 +139,7 @@ export class PacientesPage {
           role: 'destructive',
           icon: !this.platform.is('ios') ? 'trash' : null,
           handler: () => {
-            this.alta(paciente.Nome);
+            this.alta(paciente.nome);
           }
         },
         {

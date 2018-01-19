@@ -1,7 +1,7 @@
 export class Historico {
 
   //entrevista
-  public idPaciente: string;
+  public paciente_id: string;
   public idsaeapp_historico: string;
   public internacoes: number;
   public motivoInternacao: string;
@@ -18,8 +18,8 @@ export class Historico {
   public antecedentesArray: Array<string>;
   public antecedentes: string;
   public qtdeAntecedentes: number;
-  public alergias: string;
-  public vacinas: string;
+  public alergias;
+  public vacinas;
   //avaliacao neurologica
   public consciencia: string;
   public glasgow: string;
@@ -60,9 +60,7 @@ export class Historico {
   public pulso: string;
   public pulsoImpalpavel: string;
   public pulsoPalpabilidade: string;
-  public presencaDeEdema: string;
-  public presencaDeEdemaPes: boolean;
-  public presencaDeEdemaMMII: boolean;
+  public edemas;
   public presencaDeEdemaMMSS: boolean;
   public presencaDeEdemaAnasarca: boolean;
   //hidratacao e eliminacao vesical
@@ -70,7 +68,7 @@ export class Historico {
   public eliminacaoUrinariaEspontanea: boolean;
   public eliminacaoUrinariaRetencao: boolean;
   public hidratacao_Caracteristicas: string;
-  public eliminacaoUrinaria: string;
+  public eliminacaoUrinaria;
   public eliminacaoUrinaria_Volume: string;
   public eliminacaoUrinariaIncontinencia: boolean;
   public eliminacaoUrinariaSVD: boolean;
@@ -146,7 +144,7 @@ export class Historico {
 
     //entrevista
     this.idsaeapp_historico = "0";
-    this.idPaciente = "0";
+    this.paciente_id = "0";
     this.internacoes = 0;
     this.motivoInternacao = ""
     this.cardiopatia = false;
@@ -161,8 +159,8 @@ export class Historico {
     this.antecedentesArray = [];
     this.antecedentes = "";
     this.qtdeAntecedentes = 0;
-    this.alergias = "";
-    this.vacinas = "";
+    this.alergias = [{ nome: '' }];
+    this.vacinas = [{ nome: '' }];
     this.outrosAntecedentes = "";
     //avaliacao neurologica
     this.consciencia = "";
@@ -205,14 +203,10 @@ export class Historico {
     this.pulso = "";
     this.pulsoImpalpavel = "";
     this.pulsoPalpabilidade = "";
-    this.presencaDeEdema = "";
-    this.presencaDeEdemaPes = false;
-    this.presencaDeEdemaMMII = false;
-    this.presencaDeEdemaMMSS = false;
-    this.presencaDeEdemaAnasarca = false;
+    this.edemas = [];
     //hidratacao e eliminacao vesical
     this.turgidezDaPele = "";
-    this.eliminacaoUrinaria = "";
+    this.eliminacaoUrinaria = [];
     this.eliminacaoUrinaria_Volume = "";
     this.hidratacao_Caracteristicas = "";
     this.eliminacaoUrinariaEspontanea = false;

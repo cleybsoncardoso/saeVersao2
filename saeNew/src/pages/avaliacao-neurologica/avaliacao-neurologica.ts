@@ -27,6 +27,7 @@ export class AvaliacaoNeurologicaPage {
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
+      console.log(JSON.stringify(this.historico))
       this.nav.push(OxigenacaoPage, { historico: this.historico });
     }
   }

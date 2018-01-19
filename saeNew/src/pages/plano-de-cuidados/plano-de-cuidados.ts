@@ -129,8 +129,8 @@ export class PlanoDeCuidadosPage {
           this.presentPrompt(procedimento);
         } else {
           this.presentToast("Procedimento realizado")
-          procedimento.ultimoHorario = resposta.value.ultimoHorario;
-          procedimento.proximaHora = resposta.value.proximoHorario;
+          procedimento.ultimo_horario = resposta.value.ultimo_horario;
+          procedimento.proximo_horario = resposta.value.proximoHorario;
         }
       }
     });

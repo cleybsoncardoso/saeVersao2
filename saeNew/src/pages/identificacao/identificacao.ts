@@ -32,21 +32,35 @@ export class IdentificacaoPage {
   }
 
   salvar() {
+    console.log(JSON.stringify(this.paciente));
     let loading = this.loadingCtrl.create({
       content: 'Salvando paciente'
     });
 
     loading.present();
-    this.pService.addPaciente(this.paciente).then(resposta => {
-      if (resposta.type) {
-        this.paciente = resposta.value;
-        loading.dismiss();
-        this.presentConfirm();
-      } else {
-        loading.dismiss();
-        this.reconectar();
-      }
-    });
+    if (this.paciente.id == "0") {
+      this.pService.addPaciente(this.paciente).then(resposta => {
+        if (resposta.type) {
+          this.paciente = resposta.value;
+          loading.dismiss();
+          this.presentConfirm();
+        } else {
+          loading.dismiss();
+          this.reconectar();
+        }
+      });
+    } else {
+      this.pService.editPaciente(this.paciente).then(resposta => {
+        if (resposta.type) {
+          this.paciente = resposta.value;
+          loading.dismiss();
+          this.presentConfirm();
+        } else {
+          loading.dismiss();
+          this.reconectar();
+        }
+      });
+    }
 
   }
 
@@ -66,7 +80,7 @@ export class IdentificacaoPage {
           handler: () => {
             this.nav.pop();
             let historico = new Historico();
-            historico.idPaciente = this.paciente.id;
+            historico.paciente_id = this.paciente.id;
             this.nav.push(EntrevistaPage, { historico: historico });
           }
         }
@@ -97,12 +111,10 @@ export class IdentificacaoPage {
   }
 
   procurarRegistro() {
-    this.pService.getPacienteByRegistro(this.paciente.Registro).then(resp => {
-      if (resp.value.length) {
-        this.paciente = resp.value[0];
-        this.paciente.Leito = "";
-        this.paciente.Data_de_internacao = "";
-        this.paciente.Diagnostico_Medico = "";
+    this.pService.getPacienteByRegistro(this.paciente.registro).then(resp => {
+      console.log(resp);
+      if (resp.type) {
+        this.paciente = resp.value;
       }
     });
   }

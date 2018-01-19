@@ -28,101 +28,69 @@ export class HidratacaoEEliminacaoVesicalPage {
 
   carregarDados() {
     if (this.historico.eliminacaoUrinaria != null) {
-      let aux = this.historico.eliminacaoUrinaria.split(",");
-      let index = aux.indexOf("Espontânea");
-      if (index > -1) {
-        this.historico.eliminacaoUrinariaEspontanea = true;
-        aux.splice(index, 1);
-      }
-
-      index = aux.indexOf("Retenção");
-      if (index > -1) {
-        this.historico.eliminacaoUrinariaRetencao = true;
-        aux.splice(index, 1);
-
-      }
-
-      index = aux.indexOf("Incontinência");
-      if (index > -1) {
-        this.historico.eliminacaoUrinariaIncontinencia = true;
-        aux.splice(index, 1);
-
-      }
-
-      index = aux.indexOf("SVD");
-      if (index > -1) {
-        this.historico.eliminacaoUrinariaSVD = true;
-        aux.splice(index, 1);
-
-      }
-
-      index = aux.indexOf("Dispositivo urinário");
-      if (index > -1) {
-        this.historico.eliminacaoUrinariaDispositivoUrinario = true;
-        aux.splice(index, 1);
-      }
+      this.historico.eliminacaoUrinaria.map(eliminacao => this.historico['eliminacaoUrinaria' + eliminacao.nome] = true)
     }
 
-    if (this.historico.hidratacao_Caracteristicas != null) {
+    // if (this.historico.hidratacao_Caracteristicas != null) {
 
-      let aux = this.historico.hidratacao_Caracteristicas.split(",");
-      let index = aux.indexOf("Disúria");
-      if (index > -1) {
-        this.historico.caracteristicasDisuria = true;
-        aux.splice(index, 1);
-      }
+    //   let aux = this.historico.hidratacao_Caracteristicas.split(",");
+    //   let index = aux.indexOf("Disúria");
+    //   if (index > -1) {
+    //     this.historico.caracteristicasDisuria = true;
+    //     aux.splice(index, 1);
+    //   }
 
-      index = aux.indexOf("Oligúria");
-      if (index > -1) {
-        this.historico.caracteristicasOliguria = true;
-        aux.splice(index, 1);
+    //   index = aux.indexOf("Oligúria");
+    //   if (index > -1) {
+    //     this.historico.caracteristicasOliguria = true;
+    //     aux.splice(index, 1);
 
-      }
+    //   }
 
-      index = aux.indexOf("Anúria");
-      if (index > -1) {
-        this.historico.caracteristicasAnuria = true;
-        aux.splice(index, 1);
+    //   index = aux.indexOf("Anúria");
+    //   if (index > -1) {
+    //     this.historico.caracteristicasAnuria = true;
+    //     aux.splice(index, 1);
 
-      }
+    //   }
 
-      index = aux.indexOf("Poliúria");
-      if (index > -1) {
-        this.historico.caracteristicasPoliuria = true;
-        aux.splice(index, 1);
+    //   index = aux.indexOf("Poliúria");
+    //   if (index > -1) {
+    //     this.historico.caracteristicasPoliuria = true;
+    //     aux.splice(index, 1);
 
-      }
+    //   }
 
-      index = aux.indexOf("Hematúria");
-      if (index > -1) {
-        this.historico.caracteristicasHematuria = true;
-        aux.splice(index, 1);
-      }
+    //   index = aux.indexOf("Hematúria");
+    //   if (index > -1) {
+    //     this.historico.caracteristicasHematuria = true;
+    //     aux.splice(index, 1);
+    //   }
 
-      this.historico.caracteristicasOutros = aux.toString();
-    }
+    //   this.historico.caracteristicasOutros = aux.toString();
+    // }
   }
 
   passarDados() {
     let aux = [];
 
     if (this.historico.eliminacaoUrinariaEspontanea) {
-      aux.push("Espontânea");
+      aux.push({ nome: "Espontanea" });
     }
     if (this.historico.eliminacaoUrinariaRetencao) {
-      aux.push("Retenção");
+      aux.push({ nome: "Retencao" });
     }
     if (this.historico.eliminacaoUrinariaIncontinencia) {
-      aux.push("Incontinência");
+      aux.push({ nome: "Incontinencia" });
     }
     if (this.historico.eliminacaoUrinariaSVD) {
-      aux.push("SVD");
+      aux.push({ nome: "SVD" });
     }
     if (this.historico.eliminacaoUrinariaDispositivoUrinario) {
-      aux.push("Dispositivo urinário");
+      aux.push({ nome: "DispositivoUrinario" });
     }
 
-    this.historico.eliminacaoUrinaria = aux.toString();
+    this.historico.eliminacaoUrinaria = aux;
 
     let aux2 = [];
 

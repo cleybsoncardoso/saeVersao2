@@ -11,10 +11,41 @@ import { Historico } from '../../model/historico';
 export class AvaliacaoCardiovascularPage {
 
   private historico: Historico;
+  private Pes = false;
+  private MMSS = false;
+  private Anasarca = false;
+  private MMII = false;
 
   constructor(private params: NavParams, private nav: NavController) {
     this.historico = params.get("historico");
-    this.presencaDeEdemaEpulso();
+    if (!this.historico.edemas) {
+      this.historico.edemas = [];
+    }
+
+    this.formartEdemas();
+  }
+
+  formartEdemas() {
+    this.historico.edemas.map(edema => this[edema.nome] = true)
+  }
+
+  convertEdemas() {
+    this.historico.edemas = [];
+    if (this.Pes) {
+      this.historico.edemas.push({ nome: "Pes" });
+    }
+
+    if (this.MMSS) {
+      this.historico.edemas.push({ nome: "MMSS" });
+    }
+
+    if (this.Anasarca) {
+      this.historico.edemas.push({ nome: "Anasarca" });
+    }
+
+    if (this.MMII) {
+      this.historico.edemas.push({ nome: "MMII" });
+    }
   }
 
   ionViewWillEnter() {
@@ -25,53 +56,19 @@ export class AvaliacaoCardiovascularPage {
     }
   }
 
-  private presencaDeEdemaEpulso() {
-    if (this.historico.presencaDeEdema != null) {
-      let res = this.historico.presencaDeEdema.split(",");
-      if (res.indexOf("Pés") >= 0) {
-        this.historico.presencaDeEdemaPes = true;
-      }
-      if (res.indexOf("MMII") >= 0) {
-        this.historico.presencaDeEdemaMMII = true;
-      }
-      if (res.indexOf("MMSS") >= 0) {
-        this.historico.presencaDeEdemaMMSS = true;
-      }
-      if (res.indexOf("Anasarca") >= 0) {
-        this.historico.presencaDeEdemaAnasarca = true;
-      }
-    }
-  }
-
-  private presencaDeEdemaSalvar() {
-    let aux = [];
-    if (this.historico.presencaDeEdemaPes == true) {
-      aux.push("Pés");
-    }
-    if (this.historico.presencaDeEdemaMMII == true) {
-      aux.push("MMII");
-    }
-    if (this.historico.presencaDeEdemaMMSS == true) {
-      aux.push("MMSS");
-    }
-    if (this.historico.presencaDeEdemaAnasarca == true) {
-      aux.push("Anasarca");
-    }
-    this.historico.presencaDeEdema = aux.toString();
-  }
-
   private cancel() {
     this.nav.popToRoot();
   }
 
   private slide(passar) {
+    this.convertEdemas()
     if (this.historico.pulsoPalpabilidade != null && this.historico.pulsoPalpabilidade.includes("Impalpável")) {
       this.historico.pulsoPalpabilidade += "," + this.historico.pulsoImpalpavel;
     }
-    this.presencaDeEdemaSalvar();
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
+      console.log(JSON.stringify(this.historico))
       this.nav.push(HidratacaoEEliminacaoVesicalPage, { historico: this.historico });
     }
   }

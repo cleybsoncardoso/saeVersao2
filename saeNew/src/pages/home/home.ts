@@ -19,12 +19,12 @@ export class HomePage {
     private eService: EnfermeiroService,
     private lService: LoginService
   ) {
-    this.entrar();
+    //this.entrar();
+    this.coren = '0000';
+    this.senha = "admin123";
   }
 
   private entrar() {
-    this.coren = '123456';
-    this.senha = "lucas123";
     if (this.coren !== null && this.senha !== null && this.coren !== '' && this.senha !== '') {
 
       let loader = this.loading.create({

@@ -50,7 +50,8 @@ export class GerarSaePage {
         console.log(res.value);
         this.listaCaracteristicas = res.value.caracteristicas;
         
-        this.caracteristicasSelecionada = res.value.selecionadas;
+        let aux = res.value.selecionadas;
+        aux.map(item => this.itemSelected({id: item.id}));
       }
     });
   }

@@ -4,7 +4,7 @@ import { Paciente } from '../../model/paciente';
 import { Http } from "@angular/http";
 import { AprazamentoDados } from '../../model/aprazamento';
 import { CuidadosService } from '../../providers/cuidados-service';
-
+import { EnfermeiroService } from '../../providers/enfermeiro-service';
 
 @Component({
   selector: 'page-aprazamento',
@@ -13,17 +13,19 @@ import { CuidadosService } from '../../providers/cuidados-service';
 export class AprazamentoPage {
 
   private paciente: Paciente;
+  private idEnfermeira: string;
   private listaIntervencoes: any = [];
 
   constructor(
     private params: NavParams,
     private http: Http,
+    private enfermeiraService: EnfermeiroService,
     public nav: NavController,
     private alert: AlertController,
     private cuidadosService: CuidadosService
   ) {
-    this.paciente = this.params.get("paciente");;
-
+    this.paciente = this.params.get("paciente");
+    this.enfermeiraService.getEnfermeira().then(res => this.idEnfermeira = res.id);
     let date = new Date();
     let data = "";
     if (date.getMonth() + 1 < 10) {
@@ -45,7 +47,7 @@ export class AprazamentoPage {
     });
 
     if (!erro) {
-      this.cuidadosService.addCuidados(this.listaIntervencoes, this.paciente.id).then(res => {
+      this.cuidadosService.addCuidados(this.listaIntervencoes, this.paciente.id, this.idEnfermeira).then(res => {
         if (res.type) {
           let alert = this.alert.create({
             subTitle: 'Aprazamento Concluído',

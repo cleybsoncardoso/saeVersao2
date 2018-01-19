@@ -1,0 +1,161 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Cadastro de Braden
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button>Cancelar</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-list-header style="background-color:#b4d692 !important">
+      Percepção Sensorial
+    </ion-list-header>
+    <ion-list radio-group [(ngModel)]="braden.sensorial">
+      <ion-item>
+        <ion-label class="label">1. Completamente Limitada</ion-label>
+        <ion-radio value="1" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">2. Muito Limitada</ion-label>
+        <ion-radio value="2" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">3. Ligeiramente Limitada</ion-label>
+        <ion-radio value="3" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">4. Nenhuma Limitação</ion-label>
+        <ion-radio value="4" (click)="calcula()"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list-header style="background-color:#b4d692 !important">
+      Umidade
+    </ion-list-header>
+    <ion-list radio-group [(ngModel)]="braden.umidade">
+      <ion-item>
+        <ion-label class="label">1. Pele constantemente úmida</ion-label>
+        <ion-radio value="1" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">2. Pele muito úmida</ion-label>
+        <ion-radio value="2" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">3. Pele ocasionalmente úmida</ion-label>
+        <ion-radio value="3" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">4. Pele raramente úmida</ion-label>
+        <ion-radio value="4" (click)="calcula()"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list-header style="background-color:#b4d692 !important">
+      Atividade
+    </ion-list-header>
+    <ion-list radio-group [(ngModel)]="braden.atividade">
+      <ion-item>
+        <ion-label class="label">1. Acamado</ion-label>
+        <ion-radio value="1" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">2. Sentado</ion-label>
+        <ion-radio value="2" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">3. Anda ocasionalmente</ion-label>
+        <ion-radio value="3" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">4. Anda frequentemente</ion-label>
+        <ion-radio value="4" (click)="calcula()"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list-header style="background-color:#b4d692 !important">
+      Mobilidade
+    </ion-list-header>
+    <ion-list radio-group [(ngModel)]="braden.mobilidade">
+      <ion-item>
+        <ion-label class="label">1. Completamente imobilizado</ion-label>
+        <ion-radio value="1" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">2. Muito limitada</ion-label>
+        <ion-radio value="2" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">3. Ligeiramente limitada</ion-label>
+        <ion-radio value="3" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">4. Nenhuma limitação</ion-label>
+        <ion-radio value="4" (click)="calcula()"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list-header style="background-color:#b4d692 !important">
+      Nutrição
+    </ion-list-header>
+    <ion-list radio-group [(ngModel)]="braden.nutricao">
+      <ion-item>
+        <ion-label class="label">1. Muito pobre</ion-label>
+        <ion-radio value="1" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">2. Provavelmente inadequada</ion-label>
+        <ion-radio value="2" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">3. Adequada</ion-label>
+        <ion-radio value="3" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">4. Excelente</ion-label>
+        <ion-radio value="4" (click)="calcula()"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list-header style="background-color:#b4d692 !important">
+      Fricção e forças de Deslizamento
+    </ion-list-header>
+    <ion-list radio-group [(ngModel)]="braden.friccao">
+      <ion-item>
+        <ion-label class="label">1. Problema</ion-label>
+        <ion-radio value="1" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">2. Problema potencial</ion-label>
+        <ion-radio value="2" (click)="calcula()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label">3. Nenhum problema</ion-label>
+        <ion-radio value="3" (click)="calcula()"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-item>
+    <button ion-button block large (click)="salvar()">Cadastrar</button>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>escore: {{braden.escore}}</ion-title>
+  </ion-toolbar>
+</ion-footer>

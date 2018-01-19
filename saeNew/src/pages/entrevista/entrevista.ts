@@ -22,9 +22,16 @@ export class EntrevistaPage {
     private nav: NavController
   ) {
     this.historico = params.get("historico");
-    this.nav = nav;
-    this.myIcons = ["md-add"];
+    if (!this.historico.vacinas) {
+      this.historico.vacinas = [];
+    }
 
+    if (!this.historico.alergias) {
+      this.historico.alergias = [];
+    }
+    // this.nav = nav;
+    // this.myIcons = ["md-add"];
+    // this.historico = new Historico();
   }
 
   ionViewDidLoad() {
@@ -97,13 +104,23 @@ export class EntrevistaPage {
 
   //funcao realizada quando o usuario desliza o dedo na tela
   slide(passar) {
-    if (this.historico.antecedentes != null) {
-      this.converteDados();
-    }
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
+      console.log(JSON.stringify(this.historico));
       this.nav.push(AvaliacaoNeurologicaPage, { historico: this.historico });
+    }
+  }
+
+  gerenciarAlergia() {
+    if (this.historico.alergias[this.historico.alergias.length - 1].nome != "") {
+      this.historico.alergias.push({ nome: '' });
+    }
+  }
+
+  gerenciarvacina() {
+    if (this.historico.vacinas[this.historico.vacinas.length - 1].nome != "") {
+      this.historico.vacinas.push({ nome: '' });
     }
   }
 

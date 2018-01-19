@@ -28,7 +28,9 @@ import { SavePage } from '../pages/save/save';
 import { GerarSaePage } from '../pages/gerar-sae/gerar-sae';
 import { DiagnosticosPage } from '../pages/diagnosticos/diagnosticos';
 import { AprazamentoPage } from '../pages/aprazamento/aprazamento';
-import { PlanoDeCuidadosPage } from "../pages/plano-de-cuidados/plano-de-cuidados"
+import { PlanoDeCuidadosPage } from "../pages/plano-de-cuidados/plano-de-cuidados";
+import { EscalaBradenPage } from "../pages/escala-braden/escala-braden";
+import { CadastrarBradenPage } from "../pages/cadastrar-braden/cadastrar-braden";
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { PlanoDeCuidadosPage } from "../pages/plano-de-cuidados/plano-de-cuidado
     GerarSaePage,
     DiagnosticosPage,
     AprazamentoPage,
-    PlanoDeCuidadosPage
+    PlanoDeCuidadosPage,
+    EscalaBradenPage,
+    CadastrarBradenPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -77,7 +81,9 @@ import { PlanoDeCuidadosPage } from "../pages/plano-de-cuidados/plano-de-cuidado
     GerarSaePage,
     DiagnosticosPage,
     AprazamentoPage,
-    PlanoDeCuidadosPage
+    PlanoDeCuidadosPage,
+    EscalaBradenPage,
+    CadastrarBradenPage,
   ],
   providers: [EnfermeiroService, HistoricoService, CuidadosService, GerarDiagnosticoService, SenhaService, PacienteService, LoginService, Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

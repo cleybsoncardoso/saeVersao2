@@ -27,16 +27,16 @@
         <ion-label floating>Motivo de Internação</ion-label>
         <ion-input type="text" [(ngModel)]="historico.motivoInternacao"></ion-input>
       </ion-item>
-      <ion-item style="border-bottom-style: none; border-color: #D3D3D3;">
+      <ion-item *ngFor="let alergiaAtual of historico.alergias" style="border-bottom-style: none; border-color: #D3D3D3;">
         <ion-label floating>Alergia</ion-label>
-        <ion-input type="text" [(ngModel)]="historico.alergias"></ion-input>
+        <ion-input (keyup)="gerenciarAlergia()" type="text" [(ngModel)]="alergiaAtual.nome"></ion-input>
       </ion-item>
-      <ion-item style="border-bottom-style: none; border-color: #D3D3D3;">
+      <ion-item *ngFor="let vacinaAtual of historico.vacinas" style="border-bottom-style: none; border-color: #D3D3D3;">
         <ion-label floating>Vacinas</ion-label>
-        <ion-input type="text" [(ngModel)]="historico.vacinas"></ion-input>
+        <ion-input (keyup)="gerenciarvacina()" type="text" [(ngModel)]="vacinaAtual.nome"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-list-header class="listaHeader" (click)="toggleGroup(1)">Antecedentes
+    <!-- <ion-list-header class="listaHeader" (click)="toggleGroup(1)">Antecedentes
       <p id="icone1" style="float: right; color: white">+</p>
     </ion-list-header>
     <ion-list no-lines class="lista" id="dados1">
@@ -60,6 +60,6 @@
         <ion-label floating>Outros</ion-label>
         <ion-input type="text" [(ngModel)]="historico.outrosAntecedentes"></ion-input>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
   </ion-card>
 </ion-content>
