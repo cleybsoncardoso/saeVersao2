@@ -27,124 +27,90 @@ export class AlimentacaoEEliminacaoIntestinalPage {
   }
 
   carregarDados() {
-    if (this.historico.alimentacao_ViasDeAdministracao != null) {
+    if (this.historico.viasAdministracao != null) {
 
-      let aux = this.historico.alimentacao_ViasDeAdministracao.split(",");
-      let index = aux.indexOf("Oral");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.viasDeAdministracaoOral = true;
-      }
-      index = aux.indexOf("SNG");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.viasDeAdministracaoSNG = true;
-      }
-      index = aux.indexOf("SNE");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.viasDeAdministracaoSNE = true;
-      }
-      index = aux.indexOf("Parenteral");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.viasDeAdministracaoParenteral = true;
-      }
-      this.historico.viasDeAdministracaoOutros = aux.toString();
+      let aux = this.historico.viasAdministracao;
+      this.historico.viasAdministracao.map(via => {
+
+        switch (via.nome) {
+          case "Oral":
+            this.historico.viasAdministracaoOral = true;
+            break;
+          case "SNG":
+            this.historico.viasAdministracaoSNG = true;
+            break;
+          case "SNE":
+            this.historico.viasAdministracaoSNE = true;
+            break;
+          case "Parenteral":
+            this.historico.viasAdministracaoParenteral = true;
+            break;
+          default:
+            this.historico.viasAdministracaoOutros = via.nome;
+            break;
+
+        }
+      })
     }
 
     if (this.historico.abdome != null) {
       //abdome
-      let aux = this.historico.abdome.split(",");
-      let index = aux.indexOf("Plano");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.abdomePlano = true;
-      }
-      index = aux.indexOf("Globoso");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.abdomeGloboso = true;
-      }
-      index = aux.indexOf("Distendido");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.abdomeDistendido = true;
-      }
-      index = aux.indexOf("Doloroso à palpação");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.abdomeDolorosoAPalpacao = true;
-      }
-      this.historico.abdomeOutros = aux.toString();
 
+      this.historico.abdome.map(abdome => {
+        switch (abdome.nome) {
+          case "Plano":
+            this.historico.abdomePlano = true;
+            break;
+          case "Globoso":
+            this.historico.abdomeGloboso = true;
+            break;
+          case "Distendido":
+            this.historico.abdomeDistendido = true;
+            break;
+          case "Doloroso à palpação":
+            this.historico.abdomeDolorosoAPalpacao = true;
+            break;
+          default:
+            this.historico.abdomeOutros = abdome.nome;
+            break;
+        }
+      })
     }
 
-    if (this.historico.RHA != null) {
-      //rha
-      let aux = this.historico.RHA.split(",");
-      let index = aux.indexOf("Ausentes");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.ausentes = true;
-      }
-      index = aux.indexOf("Diminuído");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.diminuido = true;
-      }
-      index = aux.indexOf("Aumentado");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.aumentado = true;
-      }
-    }
   }
 
   converterDados() {
     let aux = [];
-    if (this.historico.viasDeAdministracaoOral) {
-      aux.push("Oral");
+    if (this.historico.viasAdministracaoOral) {
+      aux.push({ nome: "Oral" });
     }
-    if (this.historico.viasDeAdministracaoSNG) {
-      aux.push("SNG");
+    if (this.historico.viasAdministracaoSNG) {
+      aux.push({ nome: "SNG" });
     }
-    if (this.historico.viasDeAdministracaoSNE) {
-      aux.push("SNE");
+    if (this.historico.viasAdministracaoSNE) {
+      aux.push({ nome: "SNE" });
     }
-    if (this.historico.viasDeAdministracaoParenteral) {
-      aux.push("Parenteral");
+    if (this.historico.viasAdministracaoParenteral) {
+      aux.push({ nome: "Parenteral" });
     }
-    aux.push(this.historico.viasDeAdministracaoOutros);
-    this.historico.alimentacao_ViasDeAdministracao = aux.toString();
+    aux.push({ nome: this.historico.viasAdministracaoOutros });
+    this.historico.viasAdministracao = aux;
     //abdome
     aux = [];
     if (this.historico.abdomePlano) {
-      aux.push("Plano");
+      aux.push({ nome: "Plano" });
     }
     if (this.historico.abdomeGloboso) {
-      aux.push("Globoso");
+      aux.push({ nome: "Globoso" });
     }
     if (this.historico.abdomeDistendido) {
-      aux.push("Distendido");
+      aux.push({ nome: "Distendido" });
     }
     if (this.historico.abdomeDolorosoAPalpacao) {
-      aux.push("Doloroso à palpação");
+      aux.push({ nome: "Doloroso à palpação" });
     }
-    aux.push(this.historico.abdomeOutros);
-    this.historico.abdome = aux.toString();
-    //rha
-    aux = [];
-    if (this.historico.ausentes) {
-      aux.push("Ausentes");
-    }
-    if (this.historico.diminuido) {
-      aux.push("Diminuído");
-    }
-    if (this.historico.aumentado) {
-      aux.push("Aumentado");
-    }
-    this.historico.RHA = aux.toString();
+    aux.push({ nome: this.historico.abdomeOutros });
+    this.historico.abdome = aux;
 
   }
 

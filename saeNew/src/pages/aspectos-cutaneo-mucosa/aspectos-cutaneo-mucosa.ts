@@ -28,6 +28,7 @@ export class AspectosCutaneoMucosaPage {
 
   slide(passar) {
     this.converterDados();
+    console.log(JSON.stringify(this.historico));
     if (passar.deltaX > 0) {
       this.nav.pop();
     } else if (passar.deltaX < 0) {
@@ -39,142 +40,129 @@ export class AspectosCutaneoMucosaPage {
 
     if (this.historico.pele != null) {
 
-      let aux = this.historico.pele.split(",");
-      let index = aux.indexOf("Cianose");
-      if (index > -1) {
-        this.historico.Cianose = true;
-        aux.splice(index, 1);
-      }
-      index = aux.indexOf("Icterícia");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.Ictericia = true;
-      }
-      index = aux.indexOf("Petéquias");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.Petequias = true;
-      }
-      index = aux.indexOf("Corado");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.Corado = true;
-      }
-      index = aux.indexOf("Hipocorado");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.Hipocorado = true;
-      }
-      index = aux.indexOf("Hipercorado");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.Hipercorado = true;
-      }
-      index = aux.indexOf("Equimoses");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.Equimoses = true;
-      }
-      index = aux.indexOf("Hematomas");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.Hematomas = true;
-      }
-      index = aux.indexOf("Escoriações");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.Escoriacoes = true;
-      }
-      this.historico.aspectosCutaneoMucosaOutros = aux.toString();
+      this.historico.pele.map(pele => {
+        switch (pele.nome) {
+          case "Cianose":
+            this.historico.Cianose = true;
+            break;
+          case "Icterícia":
+            this.historico.Ictericia = true;
+            break;
+          case "Petéquias":
+            this.historico.Petequias = true;
+            break;
+          case "Corado":
+            this.historico.Corado = true;
+            break;
+          case "Hipocorado":
+            this.historico.Hipocorado = true;
+            break;
+          case "Hipercorado":
+            this.historico.Hipercorado = true;
+            break;
+          case "Equimoses":
+            this.historico.Equimoses = true;
+            break;
+          case "Hematomas":
+            this.historico.Hematomas = true;
+            break;
+          case "Escoriações":
+            this.historico.Escoriacoes = true;
+            break;
+          default:
+            this.historico.aspectosCutaneoMucosaOutros = pele.nome;
+            break;
+        }
+      });
     }
 
     if (this.historico.olhos != null) {
 
-      //olhos
-      let aux = this.historico.olhos.split(",");
-      let index = aux.indexOf("Icterícia");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.ictericia = true;
-      }
-      index = aux.indexOf("Edema de conjuntiva");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.edemaDeConjuntiva = true;
-      }
-      this.historico.olhosOutros = aux.toString();
+      this.historico.olhos.map(olho => {
+        switch (olho.nome) {
+          case "Icterícia":
+            this.historico.ictericia = true;
+            break;
+          case "Edema de conjuntiva":
+            this.historico.edemaDeConjuntiva = true;
+            break;
+          default:
+            this.historico.olhosOutros = olho.nome;
+            break;
+        }
+      });
     }
 
     if (this.historico.genitalia != null) {
       //genitalia
-      let aux = this.historico.genitalia.split(",");
-      let index = aux.indexOf("Sem anormalidades");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.genitaliaSemAnormalidades = true;
-      }
-      index = aux.indexOf("Secreção");
-      if (index > -1) {
-        aux.splice(index, 1);
-        this.historico.genitaliaSecrecao = true;
-      }
-      this.historico.genitaliaOutros = aux.toString();
+      this.historico.genitalia.map(genitalia => {
+        switch (genitalia.nome) {
+          case "Sem anormalidades":
+            this.historico.genitaliaSemAnormalidades = true;
+            break;
+          case "Secreção":
+            this.historico.genitaliaSecrecao = true;
+            break;
+          default:
+            this.historico.genitaliaOutros = genitalia.nome;
+            break;
+        }
+      })
     }
   }
 
   converterDados() {
     let aux = [];
     if (this.historico.Cianose) {
-      aux.push("Cianose");
+      aux.push({ nome: "Cianose" });
     }
     if (this.historico.Ictericia) {
-      aux.push("Icterícia");
+      aux.push({ nome: "Icterícia" });
     }
     if (this.historico.Petequias) {
-      aux.push("Petéquias");
+      aux.push({ nome: "Petéquias" });
     }
     if (this.historico.Corado) {
-      aux.push("Corado");
+      aux.push({ nome: "Corado" });
     }
     if (this.historico.Hipocorado) {
-      aux.push("Hipocorado");
+      aux.push({ nome: "Hipocorado" });
     }
     if (this.historico.Hipercorado) {
-      aux.push("Hipercorado");
+      aux.push({ nome: "Hipercorado" });
     }
     if (this.historico.Equimoses) {
-      aux.push("Equimoses");
+      aux.push({ nome: "Equimoses" });
     }
     if (this.historico.Hematomas) {
-      aux.push("Hematomas");
+      aux.push({ nome: "Hematomas" });
     }
     if (this.historico.Escoriacoes) {
-      aux.push("Escoriações");
+      aux.push({ nome: "Escoriações" });
     }
-    aux.push(this.historico.aspectosCutaneoMucosaOutros);
-    this.historico.pele = aux.toString();
+    aux.push({ nome: this.historico.aspectosCutaneoMucosaOutros });
+    this.historico.pele = aux;
     //olhos
     aux = [];
     if (this.historico.ictericia) {
-      aux.push("Icterícia");
+      aux.push({ nome: "Icterícia" });
     }
     if (this.historico.edemaDeConjuntiva) {
-      aux.push("Edema de conjuntiva");
+      aux.push({ nome: "Edema de conjuntiva" });
     }
-    aux.push(this.historico.olhosOutros);
-    this.historico.olhos = aux.toString();
-    //cvc
+    aux.push({ nome: this.historico.olhosOutros });
+    this.historico.olhos = aux;
 
     //genitalia
     aux = [];
     if (this.historico.genitaliaSemAnormalidades) {
-      aux.push("Sem anormalidades");
+      aux.push({ nome: "Sem anormalidades" });
     }
     if (this.historico.genitaliaSecrecao) {
-      aux.push("Secreção");
+      aux.push({ nome: "Secreção" });
     }
-    aux.push(this.historico.genitaliaOutros);
-    this.historico.genitalia = aux.toString();
+    aux.push({ nome: this.historico.genitaliaOutros });
+    this.historico.genitalia = aux;
 
   }
 

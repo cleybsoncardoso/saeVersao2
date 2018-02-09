@@ -31,6 +31,33 @@ export class HidratacaoEEliminacaoVesicalPage {
       this.historico.eliminacaoUrinaria.map(eliminacao => this.historico['eliminacaoUrinaria' + eliminacao.nome] = true)
     }
 
+    if (this.historico.caracteristicas != null) {
+      this.historico.caracteristicas.map(caracteristica => {
+
+        switch (caracteristica.nome) {
+          case "Disúria":
+            this.historico.caracteristicasDisuria = true;
+            break;
+          case "Oligúria":
+            this.historico.caracteristicasOliguria = true;
+            break;
+          case "Anúria":
+            this.historico.caracteristicasAnuria = true;
+            break;
+          case "Poliúria":
+            this.historico.caracteristicasPoliuria = true;
+            break;
+          case "Hematúria":
+            this.historico.caracteristicasHematuria = true;
+            break;
+          default:
+            this.historico.caracteristicasOutros = caracteristica.nome;
+            break;
+        }
+      })
+    }
+
+
     // if (this.historico.hidratacao_Caracteristicas != null) {
 
     //   let aux = this.historico.hidratacao_Caracteristicas.split(",");
@@ -95,25 +122,25 @@ export class HidratacaoEEliminacaoVesicalPage {
     let aux2 = [];
 
     if (this.historico.caracteristicasDisuria) {
-      aux2.push("Disúria");
+      aux2.push({ nome: "Disúria" });
     }
     if (this.historico.caracteristicasOliguria) {
-      aux2.push("Oligúria");
+      aux2.push({ nome: "Oligúria" });
     }
 
     if (this.historico.caracteristicasAnuria) {
-      aux2.push("Anúria");
+      aux2.push({ nome: "Anúria" });
     }
 
     if (this.historico.caracteristicasPoliuria) {
-      aux2.push("Poliúria");
+      aux2.push({ nome: "Poliúria" });
     }
 
     if (this.historico.caracteristicasHematuria) {
-      aux2.push("Hematúria");
+      aux2.push({ nome: "Hematúria" });
     }
-    aux2.push(this.historico.caracteristicasOutros);
-    this.historico.hidratacao_Caracteristicas = aux2.toString();
+    aux2.push({ nome: this.historico.caracteristicasOutros });
+    this.historico.caracteristicas = aux2;
   }
 
   cancel() {
