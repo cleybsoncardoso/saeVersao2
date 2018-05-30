@@ -31,6 +31,8 @@ import { AprazamentoPage } from '../pages/aprazamento/aprazamento';
 import { PlanoDeCuidadosPage } from "../pages/plano-de-cuidados/plano-de-cuidados";
 import { EscalaBradenPage } from "../pages/escala-braden/escala-braden";
 import { CadastrarBradenPage } from "../pages/cadastrar-braden/cadastrar-braden";
+import { BradenService } from "../providers/braden-service";
+import { EvolucaoPage } from "../pages/evolucao/evolucao";
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { CadastrarBradenPage } from "../pages/cadastrar-braden/cadastrar-braden"
     PlanoDeCuidadosPage,
     EscalaBradenPage,
     CadastrarBradenPage,
+    EvolucaoPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -84,7 +87,8 @@ import { CadastrarBradenPage } from "../pages/cadastrar-braden/cadastrar-braden"
     PlanoDeCuidadosPage,
     EscalaBradenPage,
     CadastrarBradenPage,
+    EvolucaoPage,
   ],
-  providers: [EnfermeiroService, HistoricoService, CuidadosService, GerarDiagnosticoService, SenhaService, PacienteService, LoginService, Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [EnfermeiroService, HistoricoService, CuidadosService, GerarDiagnosticoService, SenhaService, BradenService, PacienteService, LoginService, Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

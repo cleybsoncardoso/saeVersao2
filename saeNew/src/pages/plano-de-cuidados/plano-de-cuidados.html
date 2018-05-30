@@ -29,7 +29,11 @@
     <p>
       <b>Próximo Horário:</b> {{item.proximo_horario}}
     </p>
-    <button ion-button full (click)="aprazar(item)" [disabled]="desativar">Realizar Procedimento</button>
+    <button *ngIf="item.can_do" ion-button full (click)="aprazar(item)" [disabled]="desativar">Realizar Procedimento</button>
   </div>
 
 </ion-content>
+
+<ion-footer>
+    <button ion-button (click)="evolucao()" large full style="margin: 10px;">Evolução</button>
+  </ion-footer>

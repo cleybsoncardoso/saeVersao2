@@ -15,7 +15,7 @@ export class HistoricoService {
   }
 
   public getHistoricoID(id): Promise<any> {
-    return this.http.get('http://192.168.15.37:8000/app/pacientes/' + id + '/historico/')
+    return this.http.get('http://995147b5.ngrok.io/app/pacientes/' + id + '/historico/')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
@@ -31,14 +31,14 @@ export class HistoricoService {
   }
 
   public addHistorico(historico): Promise<any> {
-    return this.http.post('http://192.168.15.37:8000/app/historico/cadastrar', JSON.stringify({ historico: historico }), { headers: this.headers })
+    return this.http.post('http://995147b5.ngrok.io/app/historico/cadastrar', JSON.stringify(historico), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
   public editHistorico(historico): Promise<any> {
-    return this.http.post('http://192.168.15.37:8000/app/historico/editar', JSON.stringify({ historico: historico }), { headers: this.headers })
+    return this.http.post('http://995147b5.ngrok.io/app/historico/editar/' + historico.id, JSON.stringify(historico), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);

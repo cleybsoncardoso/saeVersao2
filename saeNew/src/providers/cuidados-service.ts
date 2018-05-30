@@ -24,28 +24,35 @@ export class CuidadosService {
   }
 
   public addCuidados(cuidados, idpaciente, idEnfermeira): Promise<any> {
-    return this.http.post('http://192.168.15.37:8000/app/planodecuidados/aprazar', JSON.stringify({ cuidados: cuidados, idpaciente: idpaciente, idEnfermeira }), { headers: this.headers })
+    return this.http.post('http://995147b5.ngrok.io/app/planodecuidados/aprazar', JSON.stringify({ cuidados: cuidados, idpaciente: idpaciente, idEnfermeira }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
-  public getPlanos(idpaciente): Promise<any> {
-    return this.http.get('http://192.168.15.37:8000/app/planodecuidados/' + idpaciente)
+  public getPlanos(idpaciente, idEnfermeira): Promise<any> {
+    return this.http.get('http://995147b5.ngrok.io/app/planodecuidados/' + idpaciente + "/" + idEnfermeira)
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleErrorMessage);
+  }
+
+  public evolucao(plano_id, paciente_id, evolucao){
+    return this.http.post(`http://995147b5.ngrok.io/app/planodecuidados/${plano_id}/${paciente_id}/evolucao`, JSON.stringify({ evolucao }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
   public isAtrasado(id): Promise<any> {
-    return this.http.post('http://192.168.15.37:8000/app/planodecuidados/procedimento', JSON.stringify({ idCuidado: id }), { headers: this.headers })
+    return this.http.post('http://995147b5.ngrok.io/app/planodecuidados/procedimento', JSON.stringify({ idCuidado: id }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
   public justificar(idCuidado, justificativa, idPaciente, idEnfermeira): Promise<any> {
-    return this.http.post('http://192.168.15.37:8000/app/planodecuidados/procedimento', JSON.stringify({ idCuidado: idCuidado, justificativa: justificativa, paciente: idPaciente, enfermeira: idEnfermeira }), { headers: this.headers })
+    return this.http.post('http://995147b5.ngrok.io/app/planodecuidados/procedimento', JSON.stringify({ idCuidado: idCuidado, justificativa: justificativa, paciente: idPaciente, enfermeira: idEnfermeira }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);

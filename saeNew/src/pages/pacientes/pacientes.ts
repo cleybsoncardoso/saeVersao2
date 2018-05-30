@@ -1,4 +1,4 @@
-import { NavController, ActionSheetController, Platform, AlertController } from 'ionic-angular';
+import { NavController, ActionSheetController, Platform, AlertController, ToastController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Http } from "@angular/http";
 import { IdentificacaoPage } from '../identificacao/identificacao';
@@ -11,6 +11,7 @@ import { HistoricoService } from "../../providers/historico-service";
 import { GerarSaePage } from '../gerar-sae/gerar-sae';
 import { PlanoDeCuidadosPage } from '../plano-de-cuidados/plano-de-cuidados';
 import { EntrevistaPage } from '../entrevista/entrevista';
+import { EscalaBradenPage } from '../escala-braden/escala-braden';
 
 
 
@@ -33,7 +34,8 @@ export class PacientesPage {
     private http: Http,
     private alert: AlertController,
     public actionsheetCtrl: ActionSheetController,
-    private eService: EnfermeiroService
+    private eService: EnfermeiroService,
+    private toastCtrl: ToastController
   ) {
     this.nav = nav;
     this.searchQuery = '';
@@ -113,7 +115,6 @@ export class PacientesPage {
             this.hService.getHistoricoID(paciente.id).then(res => {
 
               let historico = res.value == false ? new Historico() : res.value;
-              console.log("Paciente id", paciente.id)
               historico.paciente_id = paciente.id;
 
               this.nav.push(EntrevistaPage, { historico });
@@ -135,11 +136,125 @@ export class PacientesPage {
           }
         },
         {
-          text: 'Dar alta a paciente',
+          text: 'Alta',
           role: 'destructive',
-          icon: !this.platform.is('ios') ? 'trash' : null,
           handler: () => {
-            this.alta(paciente.nome);
+            let alert = this.alert.create({
+              title: 'Alta',
+              message: 'Qual o motivo?',
+              buttons: [
+                {
+                  text: 'Transfer',
+                  role: 'Transfer',
+                  handler: () => {
+
+                    let alert = this.alert.create({
+                      title: 'Qual Setor?',
+                      inputs: [
+                        {
+                          name: 'setor',
+                          placeholder: 'setor'
+                        },
+                      ],
+                      buttons: [
+                        {
+                          text: 'Cancel',
+                          role: 'cancel',
+                          handler: data => {
+                            console.log('Cancel clicked');
+                          }
+                        },
+                        {
+                          text: 'Confirmar',
+                          handler: data => {
+                            this.pService.alta(paciente.id, "transfer", data.setor).then(res => {
+                              if(res.type){
+                                this.carregarPacientes();
+                                this.presentToast("Alta feita com sucesso");
+                              } else {
+                                let alert = this.alert.create({
+                                  title: 'Erro',
+                                  subTitle: 'Erro em operaçao !',
+                                  buttons: ['OK']
+                                });
+                                alert.present();
+                              }
+                            }).catch(error => {
+                              let alert = this.alert.create({
+                                title: 'Erro',
+                                subTitle: 'Erro em operaçao !',
+                                buttons: ['OK']
+                              });
+                              alert.present();
+                            });
+                          }
+                        }
+                      ]
+                    });
+                    alert.present();
+                  }
+                },
+                {
+                  text: 'Óbito',
+                  role: 'Óbito',
+                  handler: () => {
+                    this.pService.alta(paciente.id, "death", "").then(res => {
+                      if(res.type){
+                        this.presentToast("Alta feita com sucesso");
+                      } else {
+                        this.carregarPacientes();
+                        let alert = this.alert.create({
+                          title: 'Erro',
+                          subTitle: 'Erro em operaçao !',
+                          buttons: ['OK']
+                        });
+                        alert.present();
+                      }
+                    }).catch(error => {
+                      let alert = this.alert.create({
+                        title: 'Erro',
+                        subTitle: 'Erro em operaçao !',
+                        buttons: ['OK']
+                      });
+                      alert.present();
+                    });
+                  }
+                }, {
+                  text: 'Alta',
+                  role: 'Alta',
+                  handler: () => {
+                    this.pService.alta(paciente.id, "release", "").then(res => {
+                      if(res.type){
+                        this.carregarPacientes();
+                        this.presentToast("Alta feita com sucesso");
+                      } else {
+                        let alert = this.alert.create({
+                          title: 'Erro',
+                          subTitle: 'Erro em operaçao !',
+                          buttons: ['OK']
+                        });
+                        alert.present();
+                      }
+                    }).catch(error => {
+                      let alert = this.alert.create({
+                        title: 'Erro',
+                        subTitle: 'Erro em operaçao !',
+                        buttons: ['OK']
+                      });
+                      alert.present();
+                    });
+                  }
+                }
+              ]
+            });
+            alert.present();
+          }
+        },
+        {
+          text: 'Braden',
+          role: 'destructive',
+          handler: () => {
+            this.nav.push(EscalaBradenPage, { paciente });
           }
         },
         {
@@ -153,6 +268,16 @@ export class PacientesPage {
       ]
     });
     actionSheet.present();
+  }
+
+  presentToast(message) {
+    const toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.present();
   }
 
   alta(paciente) {

@@ -23,12 +23,14 @@ export class EntrevistaPage {
   ) {
     this.historico = params.get("historico");
     if (!this.historico.vacinas) {
-      this.historico.vacinas = [{}];
+      this.historico.vacinas = [];
     }
 
     if (!this.historico.alergias) {
-      this.historico.alergias = [{}];
+      this.historico.alergias = [];
     }
+    this.historico.vacinas.push({});
+    this.historico.alergias.push({});
     // this.nav = nav;
     // this.myIcons = ["md-add"];
     // this.historico = new Historico();

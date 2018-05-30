@@ -4,7 +4,7 @@
       Escala de Braden
     </ion-title>
     <ion-buttons start>
-      <button ion-button>Cancelar</button>
+      <button ion-button (click)="cancel()">Cancelar</button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,31 +15,36 @@
       <ion-row>
         <ion-col width-90>{{bradenAtual.data}}</ion-col>
         <ion-col width-10>
-          <ion-icon name={{bradenAtual.icon}}></ion-icon>
+          <div *ngIf="!bradenAtual.icon">
+            <ion-icon name="md-arrow-dropright"></ion-icon>
+          </div>
+          <div *ngIf="bradenAtual.icon">
+            <ion-icon name={{bradenAtual.icon}}></ion-icon>
+          </div>
         </ion-col>
       </ion-row>
     </ion-list-header>
     <div *ngIf="bradenAtual.icon == 'md-arrow-dropdown'">
       <ion-item>Percepção:
-        <b>{{bradenAtual.valores.percepcao}}</b>
+        <b>{{bradenAtual.percepcao}}</b>
       </ion-item>
       <ion-item>Umidade:
-        <b>{{bradenAtual.valores.umidade}}</b>
+        <b>{{bradenAtual.umidade}}</b>
       </ion-item>
       <ion-item>Atividade:
-        <b>{{bradenAtual.valores.atividade}}</b>
+        <b>{{bradenAtual.atividade}}</b>
       </ion-item>
       <ion-item>Mobilidade:
-        <b>{{bradenAtual.valores.mobilidade}}</b>
+        <b>{{bradenAtual.mobilidade}}</b>
       </ion-item>
       <ion-item>Nutrição:
-        <b> {{bradenAtual.valores.nutricao}}</b>
+        <b> {{bradenAtual.nutricao}}</b>
       </ion-item>
       <ion-item>Ficção e forças de deslizamento:
-        <b> {{bradenAtual.valores.ficcao}}</b>
+        <b> {{bradenAtual.friccao}}</b>
       </ion-item>
       <ion-item>escore:
-        <b> {{bradenAtual.valores.escore}}</b>
+        <b> {{bradenAtual.score}}</b>
       </ion-item>
     </div>
   </ion-list>

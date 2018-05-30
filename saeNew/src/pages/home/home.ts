@@ -36,8 +36,7 @@ export class HomePage {
       this.lService.logar(this.coren, this.senha).then(res => {
         if (res.type == true) {
           let enfermeira = new Enfermeira();
-          enfermeira.id = res.data.id;
-          enfermeira.nome = res.data.first_name;
+          enfermeira = res.data;
           this.eService.setEnfermeira(enfermeira).then(() => this.nav.setRoot(PacientesPage));
         } else {
           let alert = this.alert.create({

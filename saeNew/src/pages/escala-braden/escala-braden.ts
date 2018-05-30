@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { CadastrarBradenPage } from '../cadastrar-braden/cadastrar-braden';
+import { BradenService } from '../../providers/braden-service';
 
 
 @Component({
@@ -10,48 +11,34 @@ import { CadastrarBradenPage } from '../cadastrar-braden/cadastrar-braden';
 
 export class EscalaBradenPage {
 
-  private braden = [
-    {
-      data: "20/11/2017",
-      icon: "md-arrow-dropright",
-      valores: {
-        percepcao: 10,
-        umidade: 10,
-        atividade: 10,
-        mobilidade: 10,
-        nutricao: 10,
-        ficcao: 10,
-        escore: 10,
-      }
-    }, {
-      data: "20/11/2017",
-      icon: "md-arrow-dropright",
-      valores: {
-        percepção: 10,
-        umidade: 10,
-        atividade: 10,
-        mobilidade: 10,
-        nutrição: 10,
-        ficcao: 10,
-        escore: 10,
-      }
-    }, {
-      data: "20/11/2017",
-      icon: "md-arrow-dropright",
-      valores: {
-        percepção: 10,
-        umidade: 10,
-        atividade: 10,
-        mobilidade: 10,
-        nutrição: 10,
-        ficcao: 10,
-        escore: 10,
-      }
-    }
-  ]
+  private paciente;
+  private braden;
+
   constructor(
-    private nav: NavController
+    private nav: NavController,
+    private params: NavParams,
+    private bradenService: BradenService,
+    private alertCtrl: AlertController
   ) {
+    this.paciente = this.params.get("paciente");
+  }
+
+  ionViewWillEnter(){
+    this.getBraden();
+  }
+
+  getBraden() {
+    this.bradenService.getBraden(this.paciente.id).then(res => {
+      if (res.type) {
+        this.braden = res.value;
+      } else {
+        this.presentConfirm();
+      }
+    });
+  }
+
+  cancel() {
+    this.nav.popToRoot();
   }
 
   selectBraden(bradenSelected) {
@@ -59,7 +46,32 @@ export class EscalaBradenPage {
   }
 
   cadastroBraden() {
-    this.nav.push(CadastrarBradenPage);
+    this.nav.push(CadastrarBradenPage, { paciente: this.paciente });
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Erro de conexão',
+      message: 'Deseja tentar novamente?',
+      buttons: [
+        {
+          text: 'não',
+          role: 'não',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Sim',
+          role: 'sim',
+          handler: () => {
+            this.getBraden();
+            console.log('Buy clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

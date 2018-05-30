@@ -9,25 +9,23 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class GerarDiagnosticoService {
+export class BradenService {
   private headers = new Headers({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
 
   constructor(public http: Http) {
-    console.log('Hello GerarDiagnosticoService Provider');
   }
 
-  public getCaracteristicas(id): Promise<any> {
-    return this.http.get('http://995147b5.ngrok.io/app/caracteristicas/'+id)
+  public getBraden(id): Promise<any> {
+    return this.http.get('http://995147b5.ngrok.io/app/braden/'+id)
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
-  public getDiagnisticos(ids, idPaciente): Promise<any> {
-    return this.http
-      .post('http://995147b5.ngrok.io/app/planodecuidados/diagnosticos', JSON.stringify({ caracteristicas: ids, idPaciente: idPaciente }), { headers: this.headers })
+  public addScala(escala): Promise<any> {
+    return this.http.post('http://995147b5.ngrok.io/app/braden/create/', JSON.stringify(escala), { headers: this.headers })
       .toPromise()
-      .then(res => this.extractGetData(res))
+      .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 

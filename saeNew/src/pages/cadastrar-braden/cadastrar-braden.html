@@ -4,7 +4,7 @@
       Cadastro de Braden
     </ion-title>
     <ion-buttons start>
-      <button ion-button>Cancelar</button>
+      <button ion-button (click)="cancel()" >Cancelar</button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,7 @@
     <ion-list-header style="background-color:#b4d692 !important">
       Percepção Sensorial
     </ion-list-header>
-    <ion-list radio-group [(ngModel)]="braden.sensorial">
+    <ion-list radio-group [(ngModel)]="braden.percepcao">
       <ion-item>
         <ion-label class="label">1. Completamente Limitada</ion-label>
         <ion-radio value="1" (click)="calcula()"></ion-radio>
@@ -156,6 +156,6 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title>escore: {{braden.escore}}</ion-title>
+    <ion-title>escore: {{braden.score}}</ion-title>
   </ion-toolbar>
 </ion-footer>

@@ -16,7 +16,14 @@ export class PacienteService {
   }
 
   carregar(): Promise<any> {
-    return this.http.get('http://192.168.15.37:8000/app/pacientes')
+    return this.http.get('http://995147b5.ngrok.io/app/pacientes')
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleErrorMessage);
+  }
+
+  public alta(pacienteId, type, setor): Promise<any> {
+    return this.http.post('http://995147b5.ngrok.io/app/pacientes/alta/' + pacienteId, JSON.stringify({ type, setor }), { headers: this.headers })
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
@@ -54,7 +61,7 @@ export class PacienteService {
   }
 
   addPaciente(paciente): Promise<any> {
-    return this.http.post("http://192.168.15.37:8000/app/pacientes/cadastrar", JSON.stringify(paciente), { headers: this.headers })
+    return this.http.post("http://995147b5.ngrok.io/app/pacientes/cadastrar", JSON.stringify(paciente), { headers: this.headers })
       .toPromise().then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
@@ -69,13 +76,13 @@ export class PacienteService {
   }
 
   editPaciente(paciente): Promise<any> {
-    return this.http.post("http://192.168.15.37:8000/app/pacientes/editar", JSON.stringify(paciente), { headers: this.headers })
+    return this.http.post("http://995147b5.ngrok.io/app/pacientes/editar", JSON.stringify(paciente), { headers: this.headers })
       .toPromise().then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
 
   getPacienteByRegistro(registro): Promise<any> {
-    return this.http.get("http://192.168.15.37:8000/app/pacientes/" + registro)
+    return this.http.get("http://995147b5.ngrok.io/app/pacientes/" + registro)
       .toPromise().then(response => this.extractGetData(response))
       .catch(this.handleErrorMessage);
   }
